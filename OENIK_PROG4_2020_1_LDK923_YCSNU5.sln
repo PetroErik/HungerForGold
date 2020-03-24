@@ -3,7 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29319.158
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OENIK_PROG4_2020_1_LDK923_YCSNU5", "OENIK_PROG4_2020_1_LDK923_YCSNU5\OENIK_PROG4_2020_1_LDK923_YCSNU5.csproj", "{65C8928D-36D3-4320-9CB7-60AF12ED155E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HFG.Database", "HFG.Database\HFG.Database.csproj", "{009D727F-069A-4093-91D3-F4CCBC2AFFFA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HFG.Logic", "HFG.Logic\HFG.Logic.csproj", "{5ED31271-CAAB-48B8-B481-581767761AAD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HFG.Game", "HFG.Game\HFG.Game.csproj", "{1967A10E-C55D-43FA-8B4F-8FD842535A70}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HFG.Display", "HFG.Display\HFG.Display.csproj", "{BA33B38D-2775-4EC6-84B6-97D3EDD1D884}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +17,22 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{65C8928D-36D3-4320-9CB7-60AF12ED155E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{65C8928D-36D3-4320-9CB7-60AF12ED155E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{65C8928D-36D3-4320-9CB7-60AF12ED155E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{65C8928D-36D3-4320-9CB7-60AF12ED155E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{009D727F-069A-4093-91D3-F4CCBC2AFFFA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{009D727F-069A-4093-91D3-F4CCBC2AFFFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{009D727F-069A-4093-91D3-F4CCBC2AFFFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{009D727F-069A-4093-91D3-F4CCBC2AFFFA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5ED31271-CAAB-48B8-B481-581767761AAD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5ED31271-CAAB-48B8-B481-581767761AAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5ED31271-CAAB-48B8-B481-581767761AAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5ED31271-CAAB-48B8-B481-581767761AAD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1967A10E-C55D-43FA-8B4F-8FD842535A70}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1967A10E-C55D-43FA-8B4F-8FD842535A70}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1967A10E-C55D-43FA-8B4F-8FD842535A70}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1967A10E-C55D-43FA-8B4F-8FD842535A70}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BA33B38D-2775-4EC6-84B6-97D3EDD1D884}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA33B38D-2775-4EC6-84B6-97D3EDD1D884}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA33B38D-2775-4EC6-84B6-97D3EDD1D884}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA33B38D-2775-4EC6-84B6-97D3EDD1D884}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
