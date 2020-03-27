@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HFG.Logic
+namespace HFG.Display
 {
-    public class Class1
+    class GameControl
     {
     }
 }

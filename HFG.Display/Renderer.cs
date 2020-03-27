@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HFG.Game
+namespace HFG.Display
 {
-    public class Class1
+    public class Renderer
     {
     }
 }

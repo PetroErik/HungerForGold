@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HFG.Display
+namespace HFG.Game
 {
-    public class Class1
+    class GameModel
     {
     }
 }
