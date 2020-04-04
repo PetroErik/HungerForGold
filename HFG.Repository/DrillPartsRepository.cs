@@ -8,9 +8,12 @@ namespace HFG.Repository
 {
     public class DrillPartsRepository : IRepository
     {
-        int ActualStorageLvl = Config.StorageLvl1;
-        int ActualFuelTankLvl = Config.FuelTankLvl1;
-        int AtualDrillLvl = Config.DrillLvl1;
+        int StorageLvl = 1;
+        int DrillLvl = 1;
+        int FuelTankLvl = 1;
+        int ActualStorageSize = Config.StorageLvl1;
+        int ActualFuelTankSize = Config.FuelTankLvl1;
+        int AtualDrillSize = Config.DrillLvl1;
 
         int TotalPoints;
         int ActualPoints;
