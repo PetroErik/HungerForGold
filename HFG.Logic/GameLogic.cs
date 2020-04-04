@@ -23,6 +23,11 @@ namespace HFG.Logic
             throw new NotImplementedException();
         }
 
+        public bool reachGround()
+        {
+            throw new NotImplementedException();
+        }
+
         public void Upgrading()
         {
             throw new NotImplementedException();

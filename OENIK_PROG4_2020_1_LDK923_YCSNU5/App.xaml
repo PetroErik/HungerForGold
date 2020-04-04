@@ -4,6 +4,6 @@
              xmlns:local="clr-namespace:OENIK_PROG4_2020_1_LDK923_YCSNU5"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        
     </Application.Resources>
 </Application>

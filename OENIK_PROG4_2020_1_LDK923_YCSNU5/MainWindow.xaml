@@ -3,10 +3,29 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:OENIK_PROG4_2020_1_LDK923_YCSNU5"
+        xmlns:local="clr-namespace:OENIK_PROG4_2020_1_LDK923_YCSNU5.ViewModel"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
+    <Window.Background>
+        <ImageBrush Stretch="Fill" ImageSource="/OENIK_PROG4_2020_1_LDK923_YCSNU5;component/IMG/background.jpg"/>
+    </Window.Background>
+    <Window.Resources>
+        <Style x:Key="lblDesign" TargetType="TextBlock">
+            <Setter Property="FontFamily" Value="Fonts/lunchds.ttf #Lunchtime Doubly So"/>
+        </Style>
+        <Style x:Key="bttDesign" TargetType="Button">
+            <Setter Property="FontFamily" Value="Fonts/lunchds.ttf #Lunchtime Doubly So"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+        </Style>
+        <local:GameLobbyModel x:Key="VM" />
+    </Window.Resources>
+    <Grid DataContext="{StaticResource VM}">
+        <TextBlock HorizontalAlignment="Left" Margin="174,113,0,0" TextWrapping="Wrap" Style="{StaticResource lblDesign}" Text="Hunger For Gold" FontSize="50" VerticalAlignment="Top"/>
+        <Button Command="{Binding Path=startCommand}" Style="{StaticResource bttDesign}" Content="Start Game" HorizontalAlignment="Left" Margin="304,174,0,0" VerticalAlignment="Top" Width="165" Height="47"/>
+        <Button Command="{Binding Path=continueCommand}" Style="{StaticResource bttDesign}" Content="Continue" HorizontalAlignment="Left" Margin="304,221,0,0" VerticalAlignment="Top" Width="165" Height="47"/>
+        <Button Command="{Binding Path=highScoreCommand}" Style="{StaticResource bttDesign}" Content="Highscores" HorizontalAlignment="Left" Margin="304,268,0,0" VerticalAlignment="Top" Width="165" Height="47"/>
     </Grid>
 </Window>
