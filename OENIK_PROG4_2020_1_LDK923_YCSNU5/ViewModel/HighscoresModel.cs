@@ -1,5 +1,6 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
+using HFG.Logic;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,8 +13,9 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5.ViewModel
 {
     public class HighscoresModel : ViewModelBase
     {
-        public BindingList<int> scoresList;
+        public BindingList<int?> scoresList;
         public ICommand backCommand;
+        public HighscoreLogic highScoreLogic;
 
         public void Test()
         {
@@ -22,10 +24,12 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5.ViewModel
 
         public HighscoresModel()
         {
-            scoresList = new BindingList<int>();
-            scoresList.Add(100);
-            scoresList.Add(200);
-            scoresList.Add(300);
+            highScoreLogic = new HighscoreLogic();
+            scoresList = new BindingList<int?>();
+            foreach (var score in highScoreLogic.Top5HighScore())
+            {
+                scoresList.Add(score);
+            }
             backCommand = new RelayCommand(() => Test());
 
         }

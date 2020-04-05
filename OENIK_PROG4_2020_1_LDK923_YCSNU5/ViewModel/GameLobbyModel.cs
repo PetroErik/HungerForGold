@@ -21,11 +21,23 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5.ViewModel
             MessageBox.Show("click button");
         }
 
+        public void OpenHighScoreWindow()
+        {
+            Highscores win = new Highscores()
+            {
+                Title = "Modal Dialog Window",
+                Topmost = true,
+                ResizeMode = ResizeMode.NoResize,
+                ShowInTaskbar = false
+            };
+            win.ShowDialog();
+        }
+
         public GameLobbyModel()
         {
             startCommand = new RelayCommand(() => Test());
             continueCommand = new RelayCommand(() => Test());
-            highScoreCommand = new RelayCommand(() => Test());
+            highScoreCommand = new RelayCommand(() => OpenHighScoreWindow());
 
         }
 

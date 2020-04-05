@@ -68,7 +68,6 @@
     <Compile Include="brick.cs">
       <DependentUpon>HFGModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Class1.cs" />
     <Compile Include="conn.cs">
       <DependentUpon>HFGModel.tt</DependentUpon>
     </Compile>
