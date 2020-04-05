@@ -23,10 +23,10 @@
         <ImageBrush Stretch="Fill" ImageSource="/OENIK_PROG4_2020_1_LDK923_YCSNU5;component/IMG/background.jpg"/>
     </Window.Background>
     <Grid DataContext="{StaticResource VM}">
-        <ListBox ItemsSource="{Binding Path=scoresList}" HorizontalAlignment="Left" Height="256" Margin="65,35,0,0" VerticalAlignment="Top" Width="576">
-            
+        <ListBox Background="Transparent" ItemsSource="{Binding Path=scoresList}" HorizontalAlignment="Left" Height="212" Margin="100,79,0,0" VerticalAlignment="Top" Width="541">
+
         </ListBox>
-        <Button Style="{StaticResource bttDesign}" Content="Back" HorizontalAlignment="Left" Margin="641,35,0,0" VerticalAlignment="Top" Width="102" Height="55"/>
+        <Button Style="{StaticResource bttDesign}" Content="Back" HorizontalAlignment="Left" Margin="646,79,0,0" VerticalAlignment="Top" Width="102" Height="55"/>
 
     </Grid>
 </Window>

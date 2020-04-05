@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="0db8799d2ce94136bd13d59e05235e85" Name="Diagram1">
+        <EntityTypeShape EntityType="HFGModel.brick" Width="1.5" PointX="0.75" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="HFGModel.conn" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="HFGModel.drill" Width="1.5" PointX="5.375" PointY="0.875" IsExpanded="true" />
+        <AssociationConnector Association="HFGModel.FK__conn__conn_brick__4CA06362" ManuallyRouted="false" />
+        <AssociationConnector Association="HFGModel.FK__conn__conn_drill__4BAC3F29" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
