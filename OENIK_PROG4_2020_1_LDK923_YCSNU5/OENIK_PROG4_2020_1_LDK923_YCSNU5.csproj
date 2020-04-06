@@ -83,6 +83,14 @@
     <Compile Include="Highscores.xaml.cs">
       <DependentUpon>Highscores.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Logic\GameLogic.cs" />
+    <Compile Include="Logic\IGameLogic.cs" />
+    <Compile Include="Model\Character.cs" />
+    <Compile Include="Model\Config.cs" />
+    <Compile Include="Model\Drill.cs" />
+    <Compile Include="Model\GameModel.cs" />
+    <Compile Include="Model\Minerals.cs" />
+    <Compile Include="Model\MineralsType.cs" />
     <Compile Include="ViewModel\GameLobbyModel.cs" />
     <Compile Include="ViewModel\GameModel.cs" />
     <Compile Include="ViewModel\HighscoresModel.cs" />

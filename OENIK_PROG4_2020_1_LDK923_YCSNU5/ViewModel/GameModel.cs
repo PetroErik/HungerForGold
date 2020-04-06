@@ -8,8 +8,9 @@ using System.Threading.Tasks;
 
 namespace OENIK_PROG4_2020_1_LDK923_YCSNU5.ViewModel
 {
-    public class GameModel: ViewModelBase
+    public class GameModel
     {
+        /*
         private Drill drill;
         public Drill Drill
         {
@@ -41,6 +42,6 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5.ViewModel
             Bricks = new ObservableCollection<GoldenBrick>();
             drill = new Drill();
             drillGasBar = 10;
-        }
+        }*/
     }
 }
