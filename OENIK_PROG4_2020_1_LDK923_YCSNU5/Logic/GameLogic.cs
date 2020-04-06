@@ -18,22 +18,20 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5.Logic
             model.TileSize = Math.Min(model.GameWidth / Config.MapWidth, model.GameHeight / Config.MapHeight);
         }
 
+        // When calling the MoveDrill(dx,dy) method in GameControl ==> dx and dy are equal to mode.drill.DrillLvl
         public void MoveDrill(int dx, int dy)
         {
             int newX = (int)(model.drill.Location.X + dx);
             int newY = (int)(model.drill.Location.Y + dy);
-
             if (newX >= 0 && newY >= 0 && newX < model.GameWidth && newY < model.GameHeight)
             {
                 model.drill.Location = new Point(newX, newY);
             }
-
             if (CollisionWithSilo())
             {
                 CalcTotalPoints();
                 ClearStorage();
             }
-
             foreach (Minerals mineral in model.Minerals)
             {
                 CollectMinerals(mineral);
@@ -65,63 +63,45 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5.Logic
             return model.drill.FuelTankFullness == 0;
         }
 
-        // Leveling system is bad... I have to find out something better.
         public void CollectMinerals(Minerals min)
         {
-            foreach (Minerals mineral in model.Minerals)
+            if (model.drill.Location.Equals(min.Location) && model.drill.StorageFullness < model.drill.StorageCapacity)
             {
-                if (model.drill.Location.Equals(mineral.Location) && model.drill.StorageFullness < Config.StorageLvl1)
+                switch (min.Type)
                 {
-                    switch (min.Type)
-                    {
-                        case MineralsType.Gold:
-                            model.ActualPoints += Config.GoldPrice; model.drill.StorageFullness++;
+                    case MineralsType.Gold:
+                        model.ActualPoints += Config.GoldPrice; model.drill.StorageFullness++;
                             break;
-                        case MineralsType.Silver:
-                            model.ActualPoints += Config.SilverPrice; model.drill.StorageFullness++;
+                    case MineralsType.Silver:
+                        model.ActualPoints += Config.SilverPrice; model.drill.StorageFullness++;
                             break;
-                        case MineralsType.Bronze:
-                            model.ActualPoints += Config.BronzePrice; model.drill.StorageFullness++;
+                    case MineralsType.Bronze:
+                        model.ActualPoints += Config.BronzePrice; model.drill.StorageFullness++;
                             break;
-                        default:
+                    default:
                             break;
-                    }
                 }
             }
+        }
+
+        public void UpgradeDrill()
+        {
+            model.drill.DrillLvl++;
+        }
+
+        public void UpgradeFuelTank()
+        {
+            model.drill.FuelTankLvl++;
+        }
+
+        public void UpgradeStorage()
+        {
+            model.drill.StorageLvl++;
         }
 
         // Not implemented yet
         // For upgrading I have to find out some better solution
         public bool Upgradeable()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void UpgradeDrill()
-        {
-            if (model.drill.DrillLvl == 1)
-            {
-                model.drill.DrillLvl = 2;
-                model.drill.ActualDrillSize = Config.DrillLvl2;
-            }
-            if (model.drill.DrillLvl == 2)
-            {
-                model.drill.DrillLvl = 3;
-                model.drill.ActualDrillSize = Config.DrillLvl3;
-            }
-            else
-            {
-                model.drill.DrillLvl = 3;
-                model.drill.ActualDrillSize = Config.DrillLvl3;
-            }
-        }
-
-        public void UpgradeFuelTank()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void UpgradeStorage()
         {
             throw new NotImplementedException();
         }

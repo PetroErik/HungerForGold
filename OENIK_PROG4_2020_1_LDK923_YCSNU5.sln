@@ -15,8 +15,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OENIK_PROG4_2020_1_LDK923_Y
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HFG.Repository", "HFG.Repository\HFG.Repository.csproj", "{649E8189-E59A-4C77-9F1D-865AA2840427}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HFG.Model", "HFG.Model\HFG.Model.csproj", "{0D341387-3560-476F-81D5-A1AA9C766F1B}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,10 +45,6 @@ Global
 		{649E8189-E59A-4C77-9F1D-865AA2840427}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{649E8189-E59A-4C77-9F1D-865AA2840427}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{649E8189-E59A-4C77-9F1D-865AA2840427}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0D341387-3560-476F-81D5-A1AA9C766F1B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0D341387-3560-476F-81D5-A1AA9C766F1B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0D341387-3560-476F-81D5-A1AA9C766F1B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0D341387-3560-476F-81D5-A1AA9C766F1B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

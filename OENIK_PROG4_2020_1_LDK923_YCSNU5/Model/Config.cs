@@ -12,6 +12,7 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5.Model
         public static int SilverPrice = 200;
         public static int GoldPrice = 300;
 
+        // Number of Tiles
         public static int MapWidth = 20;
         public static int MapHeight = 15;
 
@@ -24,16 +25,16 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5.Model
         public static int MaxDrillLevel = 3;
 
         // These values will set according to the practise.
-        public static int StorageLvl3 = 300;
-        public static int StorageLvl2 = 200;
-        public static int StorageLvl1 = 100;
-
-        public static int FuelTankLvl3 = 300;
-        public static int FuelTankLvl2 = 200;
-        public static int FuelTankLvl1 = 100;
-
-        public static int DrillLvl3 = 300;
-        public static int DrillLvl2 = 200;
-        public static int DrillLvl1 = 100;
+        // public static int StorageLvl3 = 300;
+        // public static int StorageLvl2 = 200;
+        // public static int StorageLvl1 = 100;
+        // 
+        // public static int FuelTankLvl3 = 300;
+        // public static int FuelTankLvl2 = 200;
+        // public static int FuelTankLvl1 = 100;
+        // 
+        // public static int DrillLvl3 = 300;
+        // public static int DrillLvl2 = 200;
+        // public static int DrillLvl1 = 100;
     }
 }

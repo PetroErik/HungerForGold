@@ -13,9 +13,8 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5.Model
         public int DrillLvl { get; set; }
         public int FuelTankLvl { get; set; }
 
-        public int ActualStorageSize { get; set; }
-        public int ActualFuelTankSize { get; set; }
-        public int ActualDrillSize { get; set; }
+        public int StorageCapacity { get; set; }
+        public int FuelCapacity { get; set; }
 
         public int StorageFullness { get; set; }
         public int FuelTankFullness { get; set; }
@@ -26,11 +25,10 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5.Model
             this.StorageLvl = 1;
             this.FuelTankLvl = 1;
             this.DrillLvl = 1;
-            this.ActualDrillSize = Config.DrillLvl1;
-            this.ActualFuelTankSize = Config.FuelTankLvl1;
-            this.ActualStorageSize = Config.StorageLvl1;
+            this.FuelCapacity = FuelTankLvl * 100;
+            this.StorageCapacity = StorageLvl * 100;
             this.StorageFullness = 0;
-            this.FuelTankFullness = Config.FuelTankLvl1;
+            this.FuelTankFullness = FuelCapacity;
         }
     }
 }
