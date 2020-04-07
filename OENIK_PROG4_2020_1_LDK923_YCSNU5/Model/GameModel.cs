@@ -27,9 +27,10 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5.Model
         {
             this.GameWidth = w;
             this.GameHeight = h;
+            this.TileSize = Math.Min(GameWidth / Config.MapWidth, GameHeight / Config.MapHeight);
             this.TotalPoints = 0;
             this.ActualPoints = 0;
-            this.drill = new Drill(GameWidth / 2, GameHeight / 3);
+            this.drill = new Drill(GameWidth / 2, GameHeight / 3);              // Ground level is at GameHeight / 3
             this.SiloHouse = new Point(GameWidth * 3 / 4, GameHeight / 3);
             this.MachinistHouse = new Point(GameWidth / 4, GameHeight / 3);
             Minerals = new List<Minerals>();

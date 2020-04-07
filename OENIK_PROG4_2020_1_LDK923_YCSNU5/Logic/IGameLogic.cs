@@ -25,7 +25,10 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5.Logic
         // sets the storage to 0;
         void ClearStorage();
 
-        bool FuelUse();
+        // Imitates gravity
+        void GravityTick();
+
+        bool FuelTick();
 
         bool Upgradeable();
 

@@ -51,16 +51,7 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5.Logic
         public void ClearStorage()
         {
             model.drill.StorageFullness = 0;
-        }
-
-        // If returns true ==> game is over
-        public bool FuelUse()
-        {
-            if (model.drill.FuelTankFullness > 0)
-            {
-                model.drill.FuelTankFullness--;
-            }
-            return model.drill.FuelTankFullness == 0;
+            model.ActualPoints = 0;
         }
 
         public void CollectMinerals(Minerals min)
@@ -84,19 +75,50 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5.Logic
             }
         }
 
+        // If returns true ==> game is over
+        public bool FuelTick()
+        {
+            if (model.drill.FuelTankFullness > 0)
+            {
+                model.drill.FuelTankFullness--;
+            }
+            return model.drill.FuelTankFullness <= 0;
+        }
+
+        // If drill is above ground level it falls down.
+        public void GravityTick()
+        {
+            if (model.drill.Location.Y < model.GameHeight / 3)
+            {
+                int dy = 1;
+                int newY = (int)(model.drill.Location.Y + dy);
+                dy++;
+                model.drill.Location = new Point(model.drill.Location.X, newY);
+            }
+        }
+
         public void UpgradeDrill()
         {
-            model.drill.DrillLvl++;
+            if (model.drill.DrillLvl < Config.MaxDrillLevel)
+            {
+                model.drill.DrillLvl++;
+            }
         }
 
         public void UpgradeFuelTank()
         {
-            model.drill.FuelTankLvl++;
+            if (model.drill.FuelTankLvl < Config.MaxFuelTankLevel)
+            {
+                model.drill.FuelTankLvl++;
+            }
         }
 
         public void UpgradeStorage()
         {
-            model.drill.StorageLvl++;
+            if (model.drill.StorageLvl < Config.MaxStorageLevel)
+            {
+                model.drill.StorageLvl++;
+            }
         }
 
         // Not implemented yet
