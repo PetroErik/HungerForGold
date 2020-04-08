@@ -12,7 +12,7 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5.Model
         public int TotalPoints { get; set; }
         public int ActualPoints { get; set; }
 
-        public Drill drill { get; private set; }    // Tile Size
+        public Drill drill { get; set; }    // Tile Size
         public Point SiloHouse{ get; set; }         // Tile Size
         public Point MachinistHouse { get; set; }   // Tile Size
         public List<Minerals> Minerals{ get; set; } // Tile Size

@@ -110,6 +110,7 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5.Logic
             if (model.drill.FuelTankLvl < Config.MaxFuelTankLevel)
             {
                 model.drill.FuelTankLvl++;
+                model.drill.FuelCapacity = model.drill.FuelTankLvl * 100;
             }
         }
 
@@ -118,6 +119,7 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5.Logic
             if (model.drill.StorageLvl < Config.MaxStorageLevel)
             {
                 model.drill.StorageLvl++;
+                model.drill.StorageCapacity = model.drill.StorageLvl * 100;
             }
         }
 
