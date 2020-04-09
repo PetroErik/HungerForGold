@@ -14,7 +14,7 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5.Model
 
         // Number of Tiles
         public static int MapWidth = 20;
-        public static int MapHeight = 15;
+        public static int MapHeight = 20;
 
         // Fixed upgrade price for all elements for all levels.
         // Later we can make it more complex if we want.

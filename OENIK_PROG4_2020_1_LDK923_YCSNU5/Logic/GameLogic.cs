@@ -21,8 +21,8 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5.Logic
         // When calling the MoveDrill(dx,dy) method in GameControl ==> dx and dy are equal to mode.drill.DrillLvl
         public void MoveDrill(int dx, int dy)
         {
-            int newX = (int)(model.drill.Location.X + dx);
-            int newY = (int)(model.drill.Location.Y + dy);
+            double newX = (model.drill.Location.X + (dx * model.TileSize));
+            double newY = (model.drill.Location.Y + (dy * model.TileSize));
             if (newX >= 0 && newY >= 0 && newX < model.GameWidth && newY < model.GameHeight)
             {
                 model.drill.Location = new Point(newX, newY);
@@ -88,11 +88,11 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5.Logic
         // If drill is above ground level it falls down.
         public void GravityTick()
         {
-            if (model.drill.Location.Y < model.GameHeight / 3)
+            if (model.drill.Location.Y < ((model.GameHeight / 3) - model.TileSize))
             {
-                int dy = 1;
+                int dy = 10;
                 int newY = (int)(model.drill.Location.Y + dy);
-                dy++;
+                dy += 10;
                 model.drill.Location = new Point(model.drill.Location.X, newY);
             }
         }

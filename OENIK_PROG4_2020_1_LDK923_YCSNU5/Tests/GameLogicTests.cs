@@ -38,11 +38,10 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5.Tests
         public void TestGameLogic_MoveDrill()
         {
             model.drill.Location = new Point(1, 1);
-            model.drill.DrillLvl = 1;
 
-            logic.MoveDrill(model.drill.DrillLvl, model.drill.DrillLvl);
-            Assert.That(model.drill.Location.X, Is.EqualTo(2));
-            Assert.That(model.drill.Location.Y, Is.EqualTo(2));
+            logic.MoveDrill(1, 1);
+            Assert.That(model.drill.Location.X, Is.EqualTo(model.TileSize + 1));
+            Assert.That(model.drill.Location.Y, Is.EqualTo(model.TileSize + 1));
         }
 
         [Test]
@@ -154,7 +153,7 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5.Tests
 
             logic.GravityTick();
 
-            Assert.That(model.drill.Location.Y, Is.EqualTo(2));
+            Assert.That(model.drill.Location.Y, Is.EqualTo(11));
             Assert.That(model.drill.Location.X, Is.EqualTo(1));
         }
 
