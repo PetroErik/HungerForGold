@@ -21,15 +21,15 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5.ViewModel
             MessageBox.Show("click button");
         }
 
+        // https://stackoverflow.com/questions/42229838/switching-views-in-mvvm-wpf
+        // navigation view between window
+        // everytime something happens, add new data to conn table
+        // if we got gold, auto change location of goal base on repository
+        //
+
         public void OpenHighScoreWindow()
         {
-            Highscores win = new Highscores()
-            {
-                Title = "Modal Dialog Window",
-                Topmost = true,
-                ResizeMode = ResizeMode.NoResize,
-                ShowInTaskbar = false
-            };
+            Highscores win = new Highscores();
             win.ShowDialog();
         }
 
