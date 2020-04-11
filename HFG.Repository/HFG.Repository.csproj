@@ -59,11 +59,6 @@
     <Compile Include="Repository\BrickRepository.cs" />
     <Compile Include="Repository\ConnRepository.cs" />
     <Compile Include="Repository\DrillRepository.cs" />
-    <Compile Include="TEAMMATESTUFFS\BricksType.cs" />
-    <Compile Include="TEAMMATESTUFFS\Config.cs" />
-    <Compile Include="TEAMMATESTUFFS\Direction.cs" />
-    <Compile Include="TEAMMATESTUFFS\DrillPartsRepository.cs" />
-    <Compile Include="TEAMMATESTUFFS\IRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

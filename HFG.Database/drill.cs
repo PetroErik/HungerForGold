@@ -25,6 +25,9 @@ namespace HFG.Database
         public Nullable<int> drill_storage { get; set; }
         public Nullable<int> drill_fuel { get; set; }
         public Nullable<int> drill_score { get; set; }
+        public Nullable<int> dril_x { get; set; }
+        public Nullable<int> drill_y { get; set; }
+        public Nullable<int> drill_x { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<conn> conns { get; set; }

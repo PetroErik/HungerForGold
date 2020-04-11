@@ -13,5 +13,12 @@ namespace HFG.Repository
         public DrillRepository(DbContext ctx) : base(ctx)
         {
         }
+
+        public void ChangeLocation(drill drill, int x, int y)
+        {
+            drill.drill_x = x;
+            drill.drill_y = y;
+            this.Ctx.SaveChanges();
+        }
     }
 }

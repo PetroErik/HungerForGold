@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="HFGModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="HFGModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="brick">
           <Key>
             <PropertyRef Name="brick_id" />
@@ -31,8 +31,10 @@
           <Property Name="drill_storage" Type="int" />
           <Property Name="drill_fuel" Type="int" />
           <Property Name="drill_score" Type="int" />
+          <Property Name="drill_x" Type="int" />
+          <Property Name="drill_y" Type="int" />
         </EntityType>
-        <Association Name="FK__conn__conn_brick__4CA06362">
+        <Association Name="FK__conn__conn_brick__74AE54BC">
           <End Role="brick" Type="Self.brick" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
           </End>
@@ -46,7 +48,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__conn__conn_drill__4BAC3F29">
+        <Association Name="FK__conn__conn_drill__73BA3083">
           <End Role="drill" Type="Self.drill" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
           </End>
@@ -64,17 +66,16 @@
           <EntitySet Name="brick" EntityType="Self.brick" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="conn" EntityType="Self.conn" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="drill" EntityType="Self.drill" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__conn__conn_brick__4CA06362" Association="Self.FK__conn__conn_brick__4CA06362">
+          <AssociationSet Name="FK__conn__conn_brick__74AE54BC" Association="Self.FK__conn__conn_brick__74AE54BC">
             <End Role="brick" EntitySet="brick" />
             <End Role="conn" EntitySet="conn" />
           </AssociationSet>
-          <AssociationSet Name="FK__conn__conn_drill__4BAC3F29" Association="Self.FK__conn__conn_drill__4BAC3F29">
+          <AssociationSet Name="FK__conn__conn_drill__73BA3083" Association="Self.FK__conn__conn_drill__73BA3083">
             <End Role="drill" EntitySet="drill" />
             <End Role="conn" EntitySet="conn" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="HFGModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -108,6 +109,9 @@
           <Property Name="drill_fuel" Type="Int32" />
           <Property Name="drill_score" Type="Int32" />
           <NavigationProperty Name="conns" Relationship="Self.FK__conn__conn_drill__4BAC3F29" FromRole="drill" ToRole="conn" />
+          <Property Name="dril_x" Type="Int32" />
+          <Property Name="drill_y" Type="Int32" />
+          <Property Name="drill_x" Type="Int32" />
         </EntityType>
         <Association Name="FK__conn__conn_brick__4CA06362">
           <End Role="brick" Type="Self.brick" Multiplicity="0..1">
@@ -178,6 +182,8 @@
           <EntitySetMapping Name="drills">
             <EntityTypeMapping TypeName="HFGModel.drill">
               <MappingFragment StoreEntitySet="drill">
+                <ScalarProperty Name="drill_x" ColumnName="drill_x" />
+                <ScalarProperty Name="drill_y" ColumnName="drill_y" />
                 <ScalarProperty Name="drill_id" ColumnName="drill_id" />
                 <ScalarProperty Name="drill_speed" ColumnName="drill_speed" />
                 <ScalarProperty Name="drill_storage" ColumnName="drill_storage" />
