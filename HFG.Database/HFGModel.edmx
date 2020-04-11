@@ -1,0 +1,218 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="HFGModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="brick">
+          <Key>
+            <PropertyRef Name="brick_id" />
+          </Key>
+          <Property Name="brick_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="brick_type" Type="varchar" MaxLength="200" />
+          <Property Name="brick_x" Type="int" />
+          <Property Name="brick_y" Type="int" />
+        </EntityType>
+        <EntityType Name="conn">
+          <Key>
+            <PropertyRef Name="conn_id" />
+          </Key>
+          <Property Name="conn_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="conn_drill_id" Type="int" />
+          <Property Name="conn_brick_id" Type="int" />
+        </EntityType>
+        <EntityType Name="drill">
+          <Key>
+            <PropertyRef Name="drill_id" />
+          </Key>
+          <Property Name="drill_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="drill_speed" Type="int" />
+          <Property Name="drill_storage" Type="int" />
+          <Property Name="drill_fuel" Type="int" />
+          <Property Name="drill_score" Type="int" />
+          <Property Name="drill_x" Type="int" />
+          <Property Name="drill_y" Type="int" />
+        </EntityType>
+        <Association Name="FK__conn__conn_brick__74AE54BC">
+          <End Role="brick" Type="Self.brick" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="conn" Type="Self.conn" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="brick">
+              <PropertyRef Name="brick_id" />
+            </Principal>
+            <Dependent Role="conn">
+              <PropertyRef Name="conn_brick_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__conn__conn_drill__73BA3083">
+          <End Role="drill" Type="Self.drill" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="conn" Type="Self.conn" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="drill">
+              <PropertyRef Name="drill_id" />
+            </Principal>
+            <Dependent Role="conn">
+              <PropertyRef Name="conn_drill_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="HFGModelStoreContainer">
+          <EntitySet Name="brick" EntityType="Self.brick" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="conn" EntityType="Self.conn" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="drill" EntityType="Self.drill" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__conn__conn_brick__74AE54BC" Association="Self.FK__conn__conn_brick__74AE54BC">
+            <End Role="brick" EntitySet="brick" />
+            <End Role="conn" EntitySet="conn" />
+          </AssociationSet>
+          <AssociationSet Name="FK__conn__conn_drill__73BA3083" Association="Self.FK__conn__conn_drill__73BA3083">
+            <End Role="drill" EntitySet="drill" />
+            <End Role="conn" EntitySet="conn" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="HFGModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="brick">
+          <Key>
+            <PropertyRef Name="brick_id" />
+          </Key>
+          <Property Name="brick_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="brick_type" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="brick_x" Type="Int32" />
+          <Property Name="brick_y" Type="Int32" />
+          <NavigationProperty Name="conns" Relationship="Self.FK__conn__conn_brick__4CA06362" FromRole="brick" ToRole="conn" />
+        </EntityType>
+        <EntityType Name="conn">
+          <Key>
+            <PropertyRef Name="conn_id" />
+          </Key>
+          <Property Name="conn_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="conn_drill_id" Type="Int32" />
+          <Property Name="conn_brick_id" Type="Int32" />
+          <NavigationProperty Name="brick" Relationship="Self.FK__conn__conn_brick__4CA06362" FromRole="conn" ToRole="brick" />
+          <NavigationProperty Name="drill" Relationship="Self.FK__conn__conn_drill__4BAC3F29" FromRole="conn" ToRole="drill" />
+        </EntityType>
+        <EntityType Name="drill">
+          <Key>
+            <PropertyRef Name="drill_id" />
+          </Key>
+          <Property Name="drill_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="drill_speed" Type="Int32" />
+          <Property Name="drill_storage" Type="Int32" />
+          <Property Name="drill_fuel" Type="Int32" />
+          <Property Name="drill_score" Type="Int32" />
+          <NavigationProperty Name="conns" Relationship="Self.FK__conn__conn_drill__4BAC3F29" FromRole="drill" ToRole="conn" />
+          <Property Name="dril_x" Type="Int32" />
+          <Property Name="drill_y" Type="Int32" />
+          <Property Name="drill_x" Type="Int32" />
+        </EntityType>
+        <Association Name="FK__conn__conn_brick__4CA06362">
+          <End Role="brick" Type="Self.brick" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="conn" Type="Self.conn" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="brick">
+              <PropertyRef Name="brick_id" />
+            </Principal>
+            <Dependent Role="conn">
+              <PropertyRef Name="conn_brick_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__conn__conn_drill__4BAC3F29">
+          <End Role="drill" Type="Self.drill" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="conn" Type="Self.conn" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="drill">
+              <PropertyRef Name="drill_id" />
+            </Principal>
+            <Dependent Role="conn">
+              <PropertyRef Name="conn_drill_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="HFGEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="bricks" EntityType="Self.brick" />
+          <EntitySet Name="conns" EntityType="Self.conn" />
+          <EntitySet Name="drills" EntityType="Self.drill" />
+          <AssociationSet Name="FK__conn__conn_brick__4CA06362" Association="Self.FK__conn__conn_brick__4CA06362">
+            <End Role="brick" EntitySet="bricks" />
+            <End Role="conn" EntitySet="conns" />
+          </AssociationSet>
+          <AssociationSet Name="FK__conn__conn_drill__4BAC3F29" Association="Self.FK__conn__conn_drill__4BAC3F29">
+            <End Role="drill" EntitySet="drills" />
+            <End Role="conn" EntitySet="conns" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="HFGModelStoreContainer" CdmEntityContainer="HFGEntities">
+          <EntitySetMapping Name="bricks">
+            <EntityTypeMapping TypeName="HFGModel.brick">
+              <MappingFragment StoreEntitySet="brick">
+                <ScalarProperty Name="brick_id" ColumnName="brick_id" />
+                <ScalarProperty Name="brick_type" ColumnName="brick_type" />
+                <ScalarProperty Name="brick_x" ColumnName="brick_x" />
+                <ScalarProperty Name="brick_y" ColumnName="brick_y" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="conns">
+            <EntityTypeMapping TypeName="HFGModel.conn">
+              <MappingFragment StoreEntitySet="conn">
+                <ScalarProperty Name="conn_id" ColumnName="conn_id" />
+                <ScalarProperty Name="conn_drill_id" ColumnName="conn_drill_id" />
+                <ScalarProperty Name="conn_brick_id" ColumnName="conn_brick_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="drills">
+            <EntityTypeMapping TypeName="HFGModel.drill">
+              <MappingFragment StoreEntitySet="drill">
+                <ScalarProperty Name="drill_x" ColumnName="drill_x" />
+                <ScalarProperty Name="drill_y" ColumnName="drill_y" />
+                <ScalarProperty Name="drill_id" ColumnName="drill_id" />
+                <ScalarProperty Name="drill_speed" ColumnName="drill_speed" />
+                <ScalarProperty Name="drill_storage" ColumnName="drill_storage" />
+                <ScalarProperty Name="drill_fuel" ColumnName="drill_fuel" />
+                <ScalarProperty Name="drill_score" ColumnName="drill_score" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

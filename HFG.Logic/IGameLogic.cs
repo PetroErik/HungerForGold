@@ -13,5 +13,9 @@ namespace HFG.Logic
         void Upgrading();
         void AddGold();
 
+        // These are just notes for myself to remember what methods should be created later on.
+        bool reachGround();
+        // methods for collision check
+
     }
 }

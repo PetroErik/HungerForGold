@@ -1,13 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29319.158
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.539
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HFG.Database", "HFG.Database\HFG.Database.csproj", "{009D727F-069A-4093-91D3-F4CCBC2AFFFA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HFG.Logic", "HFG.Logic\HFG.Logic.csproj", "{5ED31271-CAAB-48B8-B481-581767761AAD}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HFG.Game", "HFG.Game\HFG.Game.csproj", "{1967A10E-C55D-43FA-8B4F-8FD842535A70}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HFG.Display", "HFG.Display\HFG.Display.csproj", "{BA33B38D-2775-4EC6-84B6-97D3EDD1D884}"
 EndProject
@@ -31,10 +29,6 @@ Global
 		{5ED31271-CAAB-48B8-B481-581767761AAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5ED31271-CAAB-48B8-B481-581767761AAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5ED31271-CAAB-48B8-B481-581767761AAD}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1967A10E-C55D-43FA-8B4F-8FD842535A70}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1967A10E-C55D-43FA-8B4F-8FD842535A70}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1967A10E-C55D-43FA-8B4F-8FD842535A70}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1967A10E-C55D-43FA-8B4F-8FD842535A70}.Release|Any CPU.Build.0 = Release|Any CPU
 		{BA33B38D-2775-4EC6-84B6-97D3EDD1D884}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{BA33B38D-2775-4EC6-84B6-97D3EDD1D884}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BA33B38D-2775-4EC6-84B6-97D3EDD1D884}.Release|Any CPU.ActiveCfg = Release|Any CPU
