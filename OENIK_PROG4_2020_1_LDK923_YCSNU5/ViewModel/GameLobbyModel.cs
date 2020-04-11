@@ -40,6 +40,5 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5.ViewModel
             highScoreCommand = new RelayCommand(() => OpenHighScoreWindow());
 
         }
-
     }
 }
