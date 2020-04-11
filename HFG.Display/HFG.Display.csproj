@@ -41,12 +41,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GameControl.cs" />
-    <Compile Include="Renderer.cs" />
+    <Compile Include="CONFIG.cs" />
+    <Compile Include="Elements\Character.cs" />
+    <Compile Include="Elements\Drill.cs" />
+    <Compile Include="Elements\MachinistHouse.cs" />
+    <Compile Include="Elements\Mineral.cs" />
+    <Compile Include="Elements\MineralsType.cs" />
+    <Compile Include="Elements\SiloHouse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\GameModel.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Content Include="maps.txt" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

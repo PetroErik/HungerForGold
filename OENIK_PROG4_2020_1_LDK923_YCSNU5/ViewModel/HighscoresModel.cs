@@ -26,10 +26,10 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5.ViewModel
         {
             highScoreLogic = new HighscoreLogic();
             scoresList = new BindingList<int?>();
-            foreach (var score in highScoreLogic.Top5HighScore())
-            {
-                scoresList.Add(score);
-            }
+            //foreach (var score in highScoreLogic.Top5HighScore())
+            //{
+            //    scoresList.Add(score);
+            //}
             backCommand = new RelayCommand(() => Test());
 
         }

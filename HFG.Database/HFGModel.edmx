@@ -109,7 +109,6 @@
           <Property Name="drill_fuel" Type="Int32" />
           <Property Name="drill_score" Type="Int32" />
           <NavigationProperty Name="conns" Relationship="Self.FK__conn__conn_drill__4BAC3F29" FromRole="drill" ToRole="conn" />
-          <Property Name="dril_x" Type="Int32" />
           <Property Name="drill_y" Type="Int32" />
           <Property Name="drill_x" Type="Int32" />
         </EntityType>

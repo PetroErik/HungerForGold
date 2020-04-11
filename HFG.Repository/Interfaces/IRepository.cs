@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace HFG.Repository
 {
+    /// <summary>
+    /// Repository inteface.
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     public interface IRepository<T> where T:class
     {
         /// <summary>
