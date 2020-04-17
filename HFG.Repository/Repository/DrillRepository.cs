@@ -11,7 +11,7 @@ namespace HFG.Repository
     /// <summary>
     /// Repository for drill .
     /// </summary>
-    public class DrillRepository : EfRepository<drill>
+    public class DrillRepository : EfRepository<drill>, IDrillRepository
     {
         /// <summary>
         /// constructor for Drill repository .

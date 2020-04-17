@@ -8,5 +8,6 @@ namespace HFG.Tests
 {
     public class GameLogicTest
     {
+
     }
 }

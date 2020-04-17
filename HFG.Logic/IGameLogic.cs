@@ -41,6 +41,8 @@ namespace HFG.Logic
 
         void UpgradeFuelTank();
 
+        void SaveGame(Drill drill, List<Mineral> minerals);
 
+        void LoadGame();
     }
 }

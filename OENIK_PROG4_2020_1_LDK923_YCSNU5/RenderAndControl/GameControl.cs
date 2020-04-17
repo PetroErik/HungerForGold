@@ -1,5 +1,7 @@
 ﻿using HFG.Display;
 using HFG.Logic;
+using HFG.Repository;
+using HFG.Repository.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,6 +20,10 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5
         GameLogic logic;
         GameRenderer renderer;
         DispatcherTimer timer;
+        DrillRepository drillRepo;
+        BrickRepository brickRepo;
+        ConnRepository connRepo;
+        
 
         public GameControl()
         {
@@ -27,7 +33,7 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5
         private void GameControl_Loaded(object sender, RoutedEventArgs e)
         {
             this.model = new GameModel(ActualWidth, ActualHeight);
-            this.logic = new GameLogic(model);
+            this.logic = new GameLogic(model, drillRepo, brickRepo, connRepo);
             this.logic.InitialMap();
             this.renderer = new GameRenderer(model);
 

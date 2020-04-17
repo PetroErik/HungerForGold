@@ -11,7 +11,7 @@ namespace HFG.Repository
     /// <summary>
     /// connection repository .
     /// </summary>
-    public class ConnRepository : EfRepository<conn>
+    public class ConnRepository : EfRepository<conn>, IConnRepository
     {
         /// <summary>
         /// Constructor for Conn repository .
