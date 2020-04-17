@@ -62,6 +62,10 @@
       <Project>{009D727F-069A-4093-91D3-F4CCBC2AFFFA}</Project>
       <Name>HFG.Database</Name>
     </ProjectReference>
+    <ProjectReference Include="..\HFG.Display\HFG.Display.csproj">
+      <Project>{ba33b38d-2775-4ec6-84b6-97d3edd1d884}</Project>
+      <Name>HFG.Display</Name>
+    </ProjectReference>
     <ProjectReference Include="..\HFG.Repository\HFG.Repository.csproj">
       <Project>{649E8189-E59A-4C77-9F1D-865AA2840427}</Project>
       <Name>HFG.Repository</Name>

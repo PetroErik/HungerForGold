@@ -8,8 +8,15 @@ using System.Threading.Tasks;
 
 namespace HFG.Repository
 {
-    public class ConnRepository : EfRepository<conn>
+    /// <summary>
+    /// connection repository .
+    /// </summary>
+    public class ConnRepository : EfRepository<conn>, IConnRepository
     {
+        /// <summary>
+        /// Constructor for Conn repository .
+        /// </summary>
+        /// <param name="ctx">Database context .</param>
         public ConnRepository(DbContext ctx) : base(ctx)
         {
         }

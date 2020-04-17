@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace HFG.Repository
 {
+    /// <summary>
+    /// Interface of connection repository .
+    /// </summary>
     public interface IConnRepository: IRepository<conn>
     {
     }
