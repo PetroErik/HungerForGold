@@ -17,14 +17,18 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5
     class GameControl : FrameworkElement
     {
         GameModel model;
-        GameLogic logic;
+        GameLogic gameLogic;
         GameRenderer renderer;
+<<<<<<< HEAD
         DispatcherTimer timer;
         
         DrillRepository drillRepo;
         BrickRepository brickRepo;
         ConnRepository connRepo;
         
+=======
+        DispatcherTimer timer;        
+>>>>>>> e3cf611770f60e51d276080b1e5511f3ca607e67
 
         public GameControl()
         {
@@ -34,8 +38,8 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5
         private void GameControl_Loaded(object sender, RoutedEventArgs e)
         {
             this.model = new GameModel(ActualWidth, ActualHeight);
-            this.logic = new GameLogic(model, drillRepo, brickRepo, connRepo);
-            this.logic.InitialMap();
+            this.gameLogic = new GameLogic(model);
+            this.gameLogic.InitialMap();
             this.renderer = new GameRenderer(model);
 
             Window win = Window.GetWindow(this);
@@ -53,9 +57,9 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5
 
         private void Timer_Tick(object sender, EventArgs e)
         {
-            logic.GravityTick();
+            //gameLogic.tickLogic.GravityTick();
             //logic.FuelTick();
-            bool finished = logic.FuelTick();
+            bool finished = gameLogic.tickLogic.FuelTick();
             if (finished)
             {
                 //MessageBox.Show("Game Is Over", "", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -67,10 +71,10 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5
         {
             switch (e.Key)
             {
-                case Key.A: logic.MoveDrill(-model.drill.DrillLvl, 0); break;
-                case Key.D: logic.MoveDrill(model.drill.DrillLvl, 0); break;
-                case Key.W: logic.MoveDrill(0, -model.drill.DrillLvl); break;
-                case Key.S: logic.MoveDrill(0, model.drill.DrillLvl); break;
+                case Key.A: gameLogic.moveLogic.MoveDrill(-model.drill.DrillLvl, 0); break;
+                case Key.D: gameLogic.moveLogic.MoveDrill(model.drill.DrillLvl, 0); break;
+                case Key.W: gameLogic.moveLogic.MoveDrill(0, -model.drill.DrillLvl); break;
+                case Key.S: gameLogic.moveLogic.MoveDrill(0, model.drill.DrillLvl); break;
             }
             InvalidateVisual();
         }
