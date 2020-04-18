@@ -20,6 +20,7 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5
         GameLogic logic;
         GameRenderer renderer;
         DispatcherTimer timer;
+        
         DrillRepository drillRepo;
         BrickRepository brickRepo;
         ConnRepository connRepo;

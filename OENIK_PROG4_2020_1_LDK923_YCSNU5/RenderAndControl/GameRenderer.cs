@@ -27,6 +27,8 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5
         Point oldPlayerPosition;
         Point currentPos;
 
+        Drawing DeletingGround;
+
         Dictionary<string, Brush> brushes = new Dictionary<string, Brush>();
 
         public GameRenderer(GameModel model)
@@ -60,21 +62,23 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5
                     ib.Viewport = new Rect(0, 0, model.TileSize, model.TileSize);
                     ib.ViewportUnits = BrushMappingMode.Absolute;
                 }
-                
+
                 brushes.Add(fname, ib);
             }
             return brushes[fname];
         }
 
-        Brush BackgroundBrush {  get { return GetBrush(CONFIG.BackgroundBrush, false); } }
-        Brush DrillBrush {  get { return GetBrush(CONFIG.DrillBrush, false); } }
+        Brush BackgroundBrush { get { return GetBrush(CONFIG.BackgroundBrush, false); } }
+        Brush DrillBrush { get { return GetBrush(CONFIG.DrillBrush, false); } }
         Brush GroundBrush { get { return GetBrush(CONFIG.GroundBrush, true); } }
-        Brush GroundLevelBrush {  get { return GetBrush(CONFIG.GroundLevelBrush, true); } }
-        Brush GoldBrush {  get { return GetBrush(CONFIG.GoldBrush, true); } }
+        Brush GroundLevelBrush { get { return GetBrush(CONFIG.GroundLevelBrush, true); } }
+        Brush GoldBrush { get { return GetBrush(CONFIG.GoldBrush, true); } }
         Brush SilverBrush { get { return GetBrush(CONFIG.SilverBrush, true); } }
-        Brush BronzeBrush {  get { return GetBrush(CONFIG.BronzeBrush, true); } }
+        Brush BronzeBrush { get { return GetBrush(CONFIG.BronzeBrush, true); } }
         Brush SiloBrush { get { return GetBrush(CONFIG.SiloBrush, false); } }
         Brush MachinistBrush { get { return GetBrush(CONFIG.MachinistBrush, false); } }
+
+        Brush BlackBrush { get { return new SolidColorBrush(Colors.Black); } }
 
         [Obsolete]
         public Drawing BuildDrawing()
@@ -94,61 +98,94 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5
             dg.Children.Add(GetActualPoints());
             dg.Children.Add(GetTotalPoints());
             dg.Children.Add(GetMenuText());
-
+            dg.Children.Add(DeletingGroundMethod());
             return dg;
         }
 
         private Drawing GetGround()
         {
-           if (oldGround == null)
-           {
-               // Pixel  coordinates!!!!
-               GeometryGroup g = new GeometryGroup();
-               for (int i = 0; i < CONFIG.MapWidth * 2; i++)
-               {
-                   for (int j = CONFIG.MapHeight / 3 + 2; j < CONFIG.MapHeight; j++)
-                   {
-                        Geometry box = new RectangleGeometry(new Rect(i * model.TileSize, j * model.TileSize, model.TileSize, model.TileSize));
+            if (oldGround == null)
+            {
+                // Pixel  coordinates!!!!
+                GeometryGroup g = new GeometryGroup();
+                for (int i = 0; i < CONFIG.MapWidth * 2; i++)
+                {
+                    for (int j = CONFIG.MapHeight / 3 + 2; j < CONFIG.MapHeight; j++)
+                    {
+                        Rect rect = new Rect(i * model.TileSize, j * model.TileSize, model.TileSize, model.TileSize);
+                        Geometry box = new RectangleGeometry(rect);
+
                         g.Children.Add(box);
-                   }
-               }
-               oldGround = new GeometryDrawing(GroundBrush, null, g);
-           }
-           return oldGround;
+       
+                    }
+                }
+                oldGround = new GeometryDrawing(GroundBrush, null, g);
+            }
+            return oldGround;
         }
 
         private Drawing GetGroundLevel()
         {
-           if (oldGroundLevel == null)
-           {
-               // Pixel  coordinates!!!!
-               GeometryGroup g = new GeometryGroup();
-               for (int j = 0; j < CONFIG.MapWidth * 2; j++)
-               {
-                    int i = (CONFIG.MapHeight / 3 + 1) ;
+            if (oldGroundLevel == null)
+            {
+                // Pixel  coordinates!!!!
+                GeometryGroup g = new GeometryGroup();
+                for (int j = 0; j < CONFIG.MapWidth * 2; j++)
+                {
+                    int i = (CONFIG.MapHeight / 3 + 1);
                     Geometry box = new RectangleGeometry(new Rect(j * model.TileSize, i * model.TileSize, model.TileSize, model.TileSize));
                     g.Children.Add(box);
-               }
-               oldGroundLevel = new GeometryDrawing(GroundLevelBrush, null, g);
-           }
-           return oldGroundLevel;
+                }
+                oldGroundLevel = new GeometryDrawing(GroundLevelBrush, null, g);
+            }
+            return oldGroundLevel;
+        }
+
+        GeometryGroup groupBlackBox = new GeometryGroup();
+        List<Point> DeletingPoint = new List<Point>();
+        private Drawing DeletingGroundMethod()
+        {
+            for (int i = 0; i < CONFIG.MapWidth * 2; i++)
+            {
+                for (int j = CONFIG.MapHeight / 3 + 2; j < CONFIG.MapHeight; j++)
+                {
+                    foreach (var item in DeletingPoint)
+                    {
+                        if (i * model.TileSize == item.X && j *model.TileSize == item.Y )
+                        { 
+                        
+                        }
+                    } 
+
+                }
+            }
+            DeletingGround = new GeometryDrawing(BlackBrush, null, groupBlackBox);
+            return DeletingGround;
         }
 
         private Drawing GetDrill()
         {
+
             currentPos = new Point(model.drill.Location[0], model.drill.Location[1]);
+
+            
             if (oldDrill == null || (oldPlayerPosition != currentPos))
             {
+                
                 // Pixel  coordinates!!!!
-                Geometry g = new RectangleGeometry(new Rect(this.model.drill.Location[0], model.drill.Location[1], model.TileSize, model.TileSize));
-                oldDrill = new GeometryDrawing(DrillBrush, null, g);
+                Geometry drill = new RectangleGeometry(new Rect(this.model.drill.Location[0], model.drill.Location[1], model.TileSize, model.TileSize));
+
+                oldDrill = new GeometryDrawing(DrillBrush, null, drill);
+
+                DeletingPoint.Add(oldPlayerPosition);
                 oldPlayerPosition = currentPos;
+
 
             }
             return oldDrill;
         }
 
-        
+
         private Drawing GetMachinist()
         {
             if (oldMachinist == null)
@@ -158,7 +195,7 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5
             }
             return oldMachinist;
         }
-        
+
         private Drawing GetSilo()
         {
             if (oldSilo == null)
@@ -181,9 +218,16 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5
                     {
                         Geometry box = new RectangleGeometry(new Rect(model.Minerals[i].Location[0], model.Minerals[i].Location[1], model.TileSize, model.TileSize));
                         g.Children.Add(box);
+                        if(model.Minerals[i].Location[0] == oldPlayerPosition.X &&
+                            model.Minerals[i].Location[1] == oldPlayerPosition.Y)
+                        {
+                            groupBlackBox.Children.Add(box);
+                        }
                     }
                 }
+
                 oldBronzes = new GeometryDrawing(BronzeBrush, null, g);
+                
             }
             return oldBronzes;
         }
