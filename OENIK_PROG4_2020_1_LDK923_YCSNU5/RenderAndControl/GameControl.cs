@@ -19,16 +19,10 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5
         GameModel model;
         GameLogic gameLogic;
         GameRenderer renderer;
-<<<<<<< HEAD
+        MenuRenderer menuRenderer;
+        string selected;
+
         DispatcherTimer timer;
-        
-        DrillRepository drillRepo;
-        BrickRepository brickRepo;
-        ConnRepository connRepo;
-        
-=======
-        DispatcherTimer timer;        
->>>>>>> e3cf611770f60e51d276080b1e5511f3ca607e67
 
         public GameControl()
         {
@@ -40,6 +34,8 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5
             this.model = new GameModel(ActualWidth, ActualHeight);
             this.gameLogic = new GameLogic(model);
             this.gameLogic.InitialMap();
+            this.selected = "menu";
+            this.menuRenderer = new MenuRenderer(model);
             this.renderer = new GameRenderer(model);
 
             Window win = Window.GetWindow(this);
@@ -75,15 +71,19 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5
                 case Key.D: gameLogic.moveLogic.MoveDrill(model.drill.DrillLvl, 0); break;
                 case Key.W: gameLogic.moveLogic.MoveDrill(0, -model.drill.DrillLvl); break;
                 case Key.S: gameLogic.moveLogic.MoveDrill(0, model.drill.DrillLvl); break;
+                case Key.R: selected = "game"; break;
             }
             InvalidateVisual();
         }
-
         
         protected override void OnRender(DrawingContext drawingContext)
         {
-            if (renderer != null)
+            if (selected == "menu" && menuRenderer != null)
             {
+                drawingContext.DrawDrawing(menuRenderer.BuildDrawing());
+            }
+            if (selected == "game" && renderer != null)
+            {             
                 drawingContext.DrawDrawing(renderer.BuildDrawing());
             }
         }

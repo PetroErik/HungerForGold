@@ -13,7 +13,7 @@ namespace HFG.Logic
 
         public MoveLogic(GameModel model)
         {
-            this.gameModel = model;
+            this.gameModel = model;        
         }
 
         // When calling the MoveDrill(dx,dy) method in GameControl ==> dx and dy are equal to mode.drill.DrillLvl
@@ -21,8 +21,9 @@ namespace HFG.Logic
         {
             double newX = (this.gameModel.drill.Location[0] + (dx * this.gameModel.TileSize));
             double newY = (this.gameModel.drill.Location[1] + (dy * this.gameModel.TileSize));
+            double startingPointToDrill = this.gameModel.GameHeight / 2 - this.gameModel.TileSize * 4;
 
-            if (newX >= 0 && newY >= 0 && newX < this.gameModel.GameWidth && newY < this.gameModel.GameHeight)
+            if (newX >= -1 && newY >= startingPointToDrill -10 && newX <= this.gameModel.GameWidth && newY <= this.gameModel.GameHeight)
             {
                 this.gameModel.drill.Location[0] = newX;
                 this.gameModel.drill.Location[1] = newY;

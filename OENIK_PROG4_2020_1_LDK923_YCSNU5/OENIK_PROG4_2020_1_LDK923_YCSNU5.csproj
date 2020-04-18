@@ -106,6 +106,7 @@
     </Compile>
     <Compile Include="RenderAndControl\GameControl.cs" />
     <Compile Include="RenderAndControl\GameRenderer.cs" />
+    <Compile Include="RenderAndControl\MenuRenderer.cs" />
     <Compile Include="ViewModel\GameLobbyModel.cs" />
     <Compile Include="ViewModel\HighscoresModel.cs" />
     <Page Include="GameWindow.xaml">
