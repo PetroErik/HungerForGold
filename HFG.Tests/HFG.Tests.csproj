@@ -61,11 +61,33 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DbLogicTests.cs" />
     <Compile Include="GameLogicTest.cs" />
+    <Compile Include="MoveLogicTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TickLogicTests.cs" />
+    <Compile Include="UpgradeLogicTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HFG.Database\HFG.Database.csproj">
+      <Project>{009D727F-069A-4093-91D3-F4CCBC2AFFFA}</Project>
+      <Name>HFG.Database</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HFG.Display\HFG.Display.csproj">
+      <Project>{BA33B38D-2775-4EC6-84B6-97D3EDD1D884}</Project>
+      <Name>HFG.Display</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HFG.Logic\HFG.Logic.csproj">
+      <Project>{5ed31271-caab-48b8-b481-581767761aad}</Project>
+      <Name>HFG.Logic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HFG.Repository\HFG.Repository.csproj">
+      <Project>{649e8189-e59a-4c77-9f1d-865aa2840427}</Project>
+      <Name>HFG.Repository</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
