@@ -17,10 +17,15 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5
     class GameControl : FrameworkElement
     {
         GameModel model;
+
         GameLogic gameLogic;
+
         GameRenderer renderer;
         MenuRenderer menuRenderer;
-        string selected;
+
+        Window win;
+
+        bool gameMode;
 
         DispatcherTimer timer;
 
@@ -29,19 +34,24 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5
             Loaded += GameControl_Loaded;
         }
 
+        Point GetMousePos()
+        {
+            return win.PointToScreen(Mouse.GetPosition(win));
+        }
         private void GameControl_Loaded(object sender, RoutedEventArgs e)
         {
             this.model = new GameModel(ActualWidth, ActualHeight);
             this.gameLogic = new GameLogic(model);
             this.gameLogic.InitialMap();
-            this.selected = "menu";
+            this.gameMode = false;
             this.menuRenderer = new MenuRenderer(model);
             this.renderer = new GameRenderer(model);
 
-            Window win = Window.GetWindow(this);
+            win = Window.GetWindow(this);
             if (win != null)
             {
                 win.KeyDown += Win_KeyDown;
+                //win.MouseDown += Win_MouseDown;
                 timer = new DispatcherTimer();
                 timer.Interval = TimeSpan.FromMilliseconds(100);
                 timer.Tick += Timer_Tick;
@@ -71,18 +81,20 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5
                 case Key.D: gameLogic.moveLogic.MoveDrill(model.drill.DrillLvl, 0); break;
                 case Key.W: gameLogic.moveLogic.MoveDrill(0, -model.drill.DrillLvl); break;
                 case Key.S: gameLogic.moveLogic.MoveDrill(0, model.drill.DrillLvl); break;
-                case Key.R: selected = "game"; break;
+                case Key.D1: gameMode = true; break;
+                case Key.D2: if (!gameMode) { MessageBox.Show("Not Implement"); }; break;
+                case Key.D3: if (!gameMode) { MessageBox.Show("Not Implement"); }; break;
             }
             InvalidateVisual();
         }
         
         protected override void OnRender(DrawingContext drawingContext)
         {
-            if (selected == "menu" && menuRenderer != null)
+            if (gameMode == false && menuRenderer != null)
             {
                 drawingContext.DrawDrawing(menuRenderer.BuildDrawing());
             }
-            if (selected == "game" && renderer != null)
+            if (gameMode == true && renderer != null)
             {             
                 drawingContext.DrawDrawing(renderer.BuildDrawing());
             }

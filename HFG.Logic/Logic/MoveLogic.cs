@@ -33,15 +33,16 @@ namespace HFG.Logic
                 CalcTotalPoints();
                 ClearStorage();
             }
-            foreach (Mineral mineral in this.gameModel.Minerals)
-            {
-                CollectMinerals(mineral);
-            }
+            //foreach (Mineral mineral in this.gameModel.Minerals)
+            //{
+            //    CollectMinerals(mineral);
+            //}
         }
 
         public bool CollisionWithSilo()
         {
-            return this.gameModel.drill.Location[0].Equals(this.gameModel.SiloHouse.Location[0]) && this.gameModel.drill.Location[1].Equals(this.gameModel.SiloHouse.Location[1]);
+            return this.gameModel.drill.Location[0].Equals(this.gameModel.SiloHouse.Location[0]) 
+                && this.gameModel.drill.Location[1].Equals(this.gameModel.SiloHouse.Location[1]);
         }
 
         public void CalcTotalPoints()
@@ -57,7 +58,9 @@ namespace HFG.Logic
 
         public void CollectMinerals(Mineral min)
         {
-            if (this.gameModel.drill.Location[1].Equals(min.Location[1]) && this.gameModel.drill.Location[0].Equals(min.Location[0]) && this.gameModel.drill.StorageFullness < this.gameModel.drill.StorageCapacity)
+            if (this.gameModel.drill.Location[1].Equals(min.Location[1]) && 
+                this.gameModel.drill.Location[0].Equals(min.Location[0]) 
+                && this.gameModel.drill.StorageFullness < this.gameModel.drill.StorageCapacity)
             {
                 switch (min.Type)
                 {

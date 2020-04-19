@@ -1,4 +1,5 @@
 ﻿using HFG.Display;
+using HFG.Logic;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,7 +25,7 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5
         Drawing oldDrill;
         Drawing oldSilo;
         Drawing oldMachinist;
-        Drawing DeletingBlock;
+
         Point oldPlayerPosition;
         Point currentPos;
 
@@ -90,10 +91,6 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5
             DrawingGroup dg = new DrawingGroup();
             dg.Children.Add(GetBackground());
             dg.Children.Add(GetGround());
-            //dg.Children.Add(GetGroundLevel()); // We dont need this anymore
-            //dg.Children.Add(GetGolds());
-            //dg.Children.Add(GetSilvers());
-            //dg.Children.Add(GetBronzes());
             dg.Children.Add(GetSilo());
             dg.Children.Add(GetMachinist());
             dg.Children.Add(GetDrill());
@@ -102,7 +99,7 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5
             dg.Children.Add(GetActualPoints());
             dg.Children.Add(GetTotalPoints());
             dg.Children.Add(GetMenuText());
-           //dg.Children.Add(Debug());
+            dg.Children.Add(Debug());
 
             return dg;
         }
@@ -115,48 +112,47 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5
             {
                 // Pixel  coordinates!!!!
 
-                GeometryGroup g = new GeometryGroup();
+                //REDUCE OVERUSE FOR LOOP
+                GeometryGroup groupGound = new GeometryGroup();
+                GeometryGroup groupGoundLevel = new GeometryGroup();
+
+                int numOfGroundLevel = (CONFIG.MapHeight / 3 + 1);
                 for (int i = 0; i < CONFIG.MapWidth * 2; i++)
                 {
+                    Geometry groundLevelBox = new RectangleGeometry(new Rect(i * model.TileSize, numOfGroundLevel * model.TileSize, model.TileSize, model.TileSize));
+                    groupGoundLevel.Children.Add(groundLevelBox);
+
                     for (int j = CONFIG.MapHeight / 3 + 2; j < CONFIG.MapHeight; j++)
                     {
                         Geometry box = new RectangleGeometry(new Rect(i * model.TileSize, j * model.TileSize, model.TileSize, model.TileSize));
-                        g.Children.Add(box);
+                        groupGound.Children.Add(box);
                     }
                 }
 
-                oldGround = new GeometryDrawing(GroundBrush, null, g);
+                oldGround = new GeometryDrawing(GroundBrush, null, groupGound);
+                oldGroundLevel = new GeometryDrawing(GroundLevelBrush, null, groupGoundLevel);
                 groundAndDeleting.Children.Add(oldGround);
+                groundAndDeleting.Children.Add(oldGroundLevel);
             }
 
-            GetGroundLevel();
-            GetBronzes();
-            GetSilvers();
-            GetGolds();
+            GetMinerals();
 
             return groundAndDeleting;
         }
 
-        private void GetGroundLevel()
+        private Drawing drawText(string text)
         {
-            if (oldGroundLevel == null)
-            {
-                // Pixel  coordinates!!!!
-                GeometryGroup g = new GeometryGroup();
-                for (int j = 0; j < CONFIG.MapWidth * 2; j++)
-                {
-                    int i = (CONFIG.MapHeight / 3 + 1);
-                    Geometry box = new RectangleGeometry(new Rect(j * model.TileSize, i * model.TileSize, model.TileSize, model.TileSize));
-                    g.Children.Add(box);
-                }
-                oldGroundLevel = new GeometryDrawing(GroundLevelBrush, null, g);
-                groundAndDeleting.Children.Add(oldGroundLevel);
-            }
+            FormattedText upgradeText = new FormattedText(text,
+                  System.Globalization.CultureInfo.CurrentCulture, FlowDirection.LeftToRight,
+                  new Typeface("Arial"), 40, Brushes.Black);
+            GeometryDrawing upgrade = new GeometryDrawing(Brushes.Black, new Pen(Brushes.Black, 1),
+             upgradeText.BuildGeometry(new Point(model.GameWidth / 2 - 120, model.GameHeight / 2 - 120)));
+            return upgrade;
         }
-
         private Drawing GetDrill()
         {
             currentPos = new Point(model.drill.Location[0], model.drill.Location[1]);
+
             if (oldDrill == null || (oldPlayerPosition != currentPos))
             {
 
@@ -164,11 +160,27 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5
                 Geometry g = new RectangleGeometry(new Rect(this.model.drill.Location[0], model.drill.Location[1], model.TileSize, model.TileSize));
                 oldDrill = new GeometryDrawing(DrillBrush, null, g);
 
+                //Draw black box
                 if (oldPlayerPosition.Y >= startingPointToDrill)
                 {
-                    Geometry blackbox = new RectangleGeometry(new Rect(oldPlayerPosition.X, oldPlayerPosition.Y, model.TileSize, model.TileSize));
-                    GeometryDrawing drawingBlackBox = new GeometryDrawing(DeletingBrush, null, blackbox);
-                    groundAndDeleting.Children.Add(drawingBlackBox);
+                    //Geometry blackbox = new RectangleGeometry(new Rect(oldPlayerPosition.X, oldPlayerPosition.Y, model.TileSize, model.TileSize));
+                    //GeometryDrawing drawingBlackBox = new GeometryDrawing(DeletingBrush, null, blackbox);
+                    //groundAndDeleting.Children.Add(drawingBlackBox);
+                }
+
+                //Collapse silo
+
+                if ((currentPos.X >= model.SiloHouse.Location[0] && currentPos.X <= model.SiloHouse.Location[0] + model.TileSize * 3) &&
+                    (currentPos.Y < startingPointToDrill))
+                {
+                    groundAndDeleting.Children.Add(drawText("UPGRADE SILO"));
+                }
+
+                // COLLAPSE machinist
+                if ((currentPos.X >= model.MachinistHouse.Location[0] && currentPos.X <= model.MachinistHouse.Location[0] + model.TileSize * 3) &&
+                    (currentPos.Y < startingPointToDrill))
+                {
+                    groundAndDeleting.Children.Add(drawText("UPGRADE MachinistHouse"));
                 }
 
                 oldPlayerPosition = currentPos;
@@ -197,70 +209,53 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5
             }
             return oldSilo;
         }
-
-        private void GetBronzes()
+        PointCollection Points = new PointCollection();
+        private void GetMinerals()
         {
-            if (oldBronzes == null)
-            {
-                // Pixel  coordinates!!!!
-                GeometryGroup g = new GeometryGroup();
-                for (int i = 0; i < model.Minerals.Count(); i++)
-                {
-                    if (model.Minerals[i].Type == MineralsType.Bronze)
-                    {
-                        Geometry box = new RectangleGeometry(new Rect(model.Minerals[i].Location[0], model.Minerals[i].Location[1], model.TileSize, model.TileSize));
-                        g.Children.Add(box);
-                    }
-                }
-                oldBronzes = new GeometryDrawing(BronzeBrush, null, g);
-                groundAndDeleting.Children.Add(oldBronzes);
-            }          
-        }
 
-        private void GetSilvers()
-        {
-            if (oldSilvers == null)
+            // Pixel  coordinates!!!!
+            GeometryGroup gBronze = new GeometryGroup();
+            GeometryGroup gSliver = new GeometryGroup();
+            GeometryGroup gGold = new GeometryGroup();
+
+            for (int i = 0; i < model.Minerals.Count(); i++)
             {
-                // Pixel  coordinates!!!!
-                GeometryGroup g = new GeometryGroup();
-                for (int i = 0; i < model.Minerals.Count(); i++)
+                Geometry box = new RectangleGeometry(new Rect(model.Minerals[i].Location[0], model.Minerals[i].Location[1], model.TileSize, model.TileSize));
+
+                if (model.Minerals[i].Type == MineralsType.Bronze)
                 {
-                    if (model.Minerals[i].Type == MineralsType.Silver)
-                    {
-                        Geometry box = new RectangleGeometry(new Rect(model.Minerals[i].Location[0], model.Minerals[i].Location[1], model.TileSize, model.TileSize));
-                        g.Children.Add(box);
-                    }
+                    gBronze.Children.Add(box);
                 }
-                oldSilvers = new GeometryDrawing(SilverBrush, null, g);
-                groundAndDeleting.Children.Add(oldSilvers);
+
+                if (model.Minerals[i].Type == MineralsType.Silver)
+                {
+                    gSliver.Children.Add(box);
+                }
+                if (model.Minerals[i].Type == MineralsType.Gold)
+                {
+                    gGold.Children.Add(box);
+                }
             }
+            oldBronzes = new GeometryDrawing(BronzeBrush, null, gBronze);
+            oldSilvers = new GeometryDrawing(SilverBrush, null, gSliver);
+            oldGolds = new GeometryDrawing(GoldBrush, null, gGold);
+
+
+            groundAndDeleting.Children.Add(oldBronzes);
+            groundAndDeleting.Children.Add(oldSilvers);
+            groundAndDeleting.Children.Add(oldGolds);
+
         }
 
-        private void GetGolds()
-        {
-            if (oldGolds == null)
-            {
-                // Pixel  coordinates!!!!
-                GeometryGroup g = new GeometryGroup();
-                for (int i = 0; i < model.Minerals.Count(); i++)
-                {
-                    if (model.Minerals[i].Type == MineralsType.Gold)
-                    {
-                        Geometry box = new RectangleGeometry(new Rect(model.Minerals[i].Location[0], model.Minerals[i].Location[1], model.TileSize, model.TileSize));
-                        g.Children.Add(box);
-                    }
-                }
-                oldGolds = new GeometryDrawing(GoldBrush, null, g);
-                groundAndDeleting.Children.Add(oldGolds);
-            }
-        }
 
         private Drawing GetBackground()
         {
+
             if (oldBackground == null)
             {
                 Geometry bgGeometry = new RectangleGeometry(new Rect(0, 0, model.GameWidth, model.GameHeight));
                 oldBackground = new GeometryDrawing(BackgroundBrush, null, bgGeometry);
+
             }
             return oldBackground;
         }
@@ -325,14 +320,16 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5
 
         private Drawing Debug()
         {
-            FormattedText textTotal = new FormattedText($"OldplayerPostition: {oldPlayerPosition.Y} {this.model.GameHeight}"
-                , System.Globalization.CultureInfo.CurrentCulture, FlowDirection.LeftToRight, 
-                new Typeface("Arial"), 20, Brushes.Black);
-            GeometryDrawing total = new GeometryDrawing(Brushes.Black, new Pen(Brushes.Black, 1), 
+            FormattedText textTotal = new FormattedText($"Debug: Silo {model.SiloHouse.Location[0]} {model.SiloHouse.Location[1]}"
+                + $"\nDrill {model.drill.Location[0]} {model.drill.Location[1]}"
+                , System.Globalization.CultureInfo.CurrentCulture,
+                FlowDirection.LeftToRight, new Typeface("Arial"), 15, Brushes.Black);
+            GeometryDrawing total = new GeometryDrawing(Brushes.Black, new Pen(Brushes.Black, 1),
                 textTotal.BuildGeometry(new Point(model.GameWidth * 2 / 3, 5)));
 
             return total;
         }
+
 
         [Obsolete]
         private Drawing GetMenuText()

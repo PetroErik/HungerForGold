@@ -3,9 +3,10 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:OENIK_PROG4_2020_1_LDK923_YCSNU5.ViewModel"
+        xmlns:local="clr-namespace:OENIK_PROG4_2020_1_LDK923_YCSNU5"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800"
+        WindowState="Maximized">
     <Window.Background>
         <ImageBrush Stretch="Fill" ImageSource="/OENIK_PROG4_2020_1_LDK923_YCSNU5;component/IMG/background.jpg"/>
     </Window.Background>
@@ -20,7 +21,7 @@
             <Setter Property="BorderThickness" Value="0"/>
             <Setter Property="BorderBrush" Value="Transparent"/>
         </Style>
-        <local:GameLobbyModel x:Key="VM" />
+        <local:GameControl x:Key="VM" />
     </Window.Resources>
     <Grid DataContext="{StaticResource VM}">
         <TextBlock HorizontalAlignment="Left" Margin="174,113,0,0" TextWrapping="Wrap" Style="{StaticResource lblDesign}" Text="Hunger For Gold" FontSize="50" VerticalAlignment="Top"/>

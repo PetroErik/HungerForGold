@@ -18,17 +18,13 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5
         Drawing oldBackground;
         Drawing oldGround;
         Drawing oldGroundLevel;
-        Drawing oldGolds;
-        Drawing oldSilvers;
-        Drawing oldBronzes;
+
         Drawing oldDrill;
         Drawing oldSilo;
         Drawing oldMachinist;
-        Drawing DeletingBlock;
-        Point oldPlayerPosition;
-        Point currentPos;
 
-        double startingPointToDrill;
+
+        public DrawingGroup groupButton;
 
 
         Dictionary<string, Brush> brushes = new Dictionary<string, Brush>();
@@ -36,18 +32,6 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5
         public MenuRenderer(GameModel model)
         {
             this.model = model;
-
-            startingPointToDrill = model.GameHeight / 2 - model.TileSize * 4; //Starting point to drill - draw black box
-        }
-
-        public void Reset()
-        {
-            oldBackground = null;
-            oldGolds = null;
-            oldSilvers = null;
-            oldDrill = null;
-            oldPlayerPosition = new Point(-1, -1);
-            brushes.Clear();
         }
 
         Brush GetBrush(string fname, bool isTiled)
@@ -76,9 +60,6 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5
         Brush DrillBrush { get { return GetBrush(CONFIG.DrillBrush, false); } }
         Brush GroundBrush { get { return GetBrush(CONFIG.GroundBrush, true); } }
         Brush GroundLevelBrush { get { return GetBrush(CONFIG.GroundLevelBrush, true); } }
-        Brush GoldBrush { get { return GetBrush(CONFIG.GoldBrush, true); } }
-        Brush SilverBrush { get { return GetBrush(CONFIG.SilverBrush, true); } }
-        Brush BronzeBrush { get { return GetBrush(CONFIG.BronzeBrush, true); } }
         Brush SiloBrush { get { return GetBrush(CONFIG.SiloBrush, false); } }
         Brush MachinistBrush { get { return GetBrush(CONFIG.MachinistBrush, false); } }
 
@@ -88,17 +69,28 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5
         public Drawing BuildDrawing()
         {
             DrawingGroup dg = new DrawingGroup();
+
+            groupButton = new DrawingGroup();
             dg.Children.Add(GetBackground());
             dg.Children.Add(GetGround());
             dg.Children.Add(GetSilo());
             dg.Children.Add(GetMachinist());
             dg.Children.Add(GetDrill());
-            dg.Children.Add(GetFuelTank());
-            dg.Children.Add(GetStorage());
-            dg.Children.Add(GetActualPoints());
-            dg.Children.Add(GetTotalPoints());
-            dg.Children.Add(GetMenuText());
-            dg.Children.Add(Debug());
+
+            groupButton.Children.Add(TitleText("Hunger for Gold", this.model.GameWidth / 2 - 180, this.model.GameHeight / 2 - 60,
+                this.model.GameWidth / 2 - 90, this.model.GameHeight / 2 - 60
+                ));
+            groupButton.Children.Add(TitleText("1. Start Game", this.model.GameWidth / 2 - 180, this.model.GameHeight / 2,
+                this.model.GameWidth / 2 - 90, this.model.GameHeight / 2
+                ));
+            groupButton.Children.Add(TitleText("2. Continues", this.model.GameWidth / 2 - 180, this.model.GameHeight / 2 + 60,
+                this.model.GameWidth / 2 - 90, this.model.GameHeight / 2 + 60
+                ));
+            groupButton.Children.Add(TitleText("3. Highscore", this.model.GameWidth / 2 - 180, this.model.GameHeight / 2 + 120,
+                this.model.GameWidth / 2 - 90, this.model.GameHeight / 2 + 120
+                ));
+
+            dg.Children.Add(groupButton);
 
             return dg;
         }
@@ -111,65 +103,38 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5
             {
                 // Pixel  coordinates!!!!
 
-                GeometryGroup g = new GeometryGroup();
+                //REDUCE OVERUSE FOR LOOP
+                GeometryGroup groupGound = new GeometryGroup();
+                GeometryGroup groupGoundLevel = new GeometryGroup();
+
+                int numOfGroundLevel = (CONFIG.MapHeight / 3 + 1);
                 for (int i = 0; i < CONFIG.MapWidth * 2; i++)
                 {
+                    Geometry groundLevelBox = new RectangleGeometry(new Rect(i * model.TileSize, numOfGroundLevel * model.TileSize, model.TileSize, model.TileSize));
+                    groupGoundLevel.Children.Add(groundLevelBox);
+
                     for (int j = CONFIG.MapHeight / 3 + 2; j < CONFIG.MapHeight; j++)
                     {
                         Geometry box = new RectangleGeometry(new Rect(i * model.TileSize, j * model.TileSize, model.TileSize, model.TileSize));
-                        g.Children.Add(box);
+                        groupGound.Children.Add(box);
                     }
                 }
 
-                oldGround = new GeometryDrawing(GroundBrush, null, g);
+                oldGround = new GeometryDrawing(GroundBrush, null, groupGound);
+                oldGroundLevel = new GeometryDrawing(GroundLevelBrush, null, groupGoundLevel);
                 groundAndDeleting.Children.Add(oldGround);
-            }
-
-            GetGroundLevel();
-            GetBronzes();
-            GetSilvers();
-            GetGolds();
-
-            return groundAndDeleting;
-        }
-
-        private void GetGroundLevel()
-        {
-            if (oldGroundLevel == null)
-            {
-                // Pixel  coordinates!!!!
-                GeometryGroup g = new GeometryGroup();
-                for (int j = 0; j < CONFIG.MapWidth * 2; j++)
-                {
-                    int i = (CONFIG.MapHeight / 3 + 1);
-                    Geometry box = new RectangleGeometry(new Rect(j * model.TileSize, i * model.TileSize, model.TileSize, model.TileSize));
-                    g.Children.Add(box);
-                }
-                oldGroundLevel = new GeometryDrawing(GroundLevelBrush, null, g);
                 groundAndDeleting.Children.Add(oldGroundLevel);
             }
+           
+            return groundAndDeleting;
         }
 
         private Drawing GetDrill()
         {
-            currentPos = new Point(model.drill.Location[0], model.drill.Location[1]);
-            if (oldDrill == null || (oldPlayerPosition != currentPos))
-            {
+            // Pixel  coordinates!!!!
+            Geometry g = new RectangleGeometry(new Rect(this.model.drill.Location[0], model.drill.Location[1], model.TileSize, model.TileSize));
+            oldDrill = new GeometryDrawing(DrillBrush, null, g);
 
-                // Pixel  coordinates!!!!
-                Geometry g = new RectangleGeometry(new Rect(this.model.drill.Location[0], model.drill.Location[1], model.TileSize, model.TileSize));
-                oldDrill = new GeometryDrawing(DrillBrush, null, g);
-
-                if (oldPlayerPosition.Y >= startingPointToDrill)
-                {
-                    Geometry blackbox = new RectangleGeometry(new Rect(oldPlayerPosition.X, oldPlayerPosition.Y, model.TileSize, model.TileSize));
-                    GeometryDrawing drawingBlackBox = new GeometryDrawing(DeletingBrush, null, blackbox);
-                    groundAndDeleting.Children.Add(drawingBlackBox);
-                }
-
-                oldPlayerPosition = currentPos;
-
-            }
             return oldDrill;
         }
 
@@ -194,62 +159,6 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5
             return oldSilo;
         }
 
-        private void GetBronzes()
-        {
-            if (oldBronzes == null)
-            {
-                // Pixel  coordinates!!!!
-                GeometryGroup g = new GeometryGroup();
-                for (int i = 0; i < model.Minerals.Count(); i++)
-                {
-                    if (model.Minerals[i].Type == MineralsType.Bronze)
-                    {
-                        Geometry box = new RectangleGeometry(new Rect(model.Minerals[i].Location[0], model.Minerals[i].Location[1], model.TileSize, model.TileSize));
-                        g.Children.Add(box);
-                    }
-                }
-                oldBronzes = new GeometryDrawing(BronzeBrush, null, g);
-                groundAndDeleting.Children.Add(oldBronzes);
-            }
-        }
-
-        private void GetSilvers()
-        {
-            if (oldSilvers == null)
-            {
-                // Pixel  coordinates!!!!
-                GeometryGroup g = new GeometryGroup();
-                for (int i = 0; i < model.Minerals.Count(); i++)
-                {
-                    if (model.Minerals[i].Type == MineralsType.Silver)
-                    {
-                        Geometry box = new RectangleGeometry(new Rect(model.Minerals[i].Location[0], model.Minerals[i].Location[1], model.TileSize, model.TileSize));
-                        g.Children.Add(box);
-                    }
-                }
-                oldSilvers = new GeometryDrawing(SilverBrush, null, g);
-                groundAndDeleting.Children.Add(oldSilvers);
-            }
-        }
-
-        private void GetGolds()
-        {
-            if (oldGolds == null)
-            {
-                // Pixel  coordinates!!!!
-                GeometryGroup g = new GeometryGroup();
-                for (int i = 0; i < model.Minerals.Count(); i++)
-                {
-                    if (model.Minerals[i].Type == MineralsType.Gold)
-                    {
-                        Geometry box = new RectangleGeometry(new Rect(model.Minerals[i].Location[0], model.Minerals[i].Location[1], model.TileSize, model.TileSize));
-                        g.Children.Add(box);
-                    }
-                }
-                oldGolds = new GeometryDrawing(GoldBrush, null, g);
-                groundAndDeleting.Children.Add(oldGolds);
-            }
-        }
 
         private Drawing GetBackground()
         {
@@ -261,83 +170,17 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5
             return oldBackground;
         }
 
-        [Obsolete]
-        private Drawing GetFuelTank()
-        {
-            DrawingGroup g = new DrawingGroup();
-            GeometryDrawing background = new GeometryDrawing(Brushes.White, new Pen(Brushes.White, 1), new RectangleGeometry(new Rect(model.GameWidth - 100, model.GameHeight - 20, model.drill.FuelCapacity * 0.3, 10)));
-            GeometryDrawing fuelfullnes = new GeometryDrawing(Brushes.Red, new Pen(Brushes.Red, 1), new RectangleGeometry(new Rect(model.GameWidth - 100, model.GameHeight - 20, model.drill.FuelTankFullness * 0.3, 10)));
 
-            FormattedText textFuelTank = new FormattedText("TuelTank", System.Globalization.CultureInfo.CurrentCulture, FlowDirection.LeftToRight, new Typeface("Arial"), 8, Brushes.Black);
-            GeometryDrawing fuel = new GeometryDrawing(Brushes.Black, new Pen(Brushes.Black, 1), textFuelTank.BuildGeometry(new Point(model.GameWidth - 70, model.GameHeight - 30)));
-
-            FormattedText textFuelCapacity = new FormattedText($"{model.drill.FuelTankFullness}/{model.drill.FuelCapacity}", System.Globalization.CultureInfo.CurrentCulture, FlowDirection.LeftToRight, new Typeface("Arial"), 8, Brushes.Black);
-            GeometryDrawing cap = new GeometryDrawing(Brushes.Black, new Pen(Brushes.Black, 1), textFuelCapacity.BuildGeometry(new Point(model.GameWidth - 68, model.GameHeight - 20)));
-
-            g.Children.Add(background);
-            g.Children.Add(fuelfullnes);
-            g.Children.Add(fuel);
-            g.Children.Add(cap);
-            return g;
-        }
 
         [Obsolete]
-        private Drawing GetStorage()
-        {
-            DrawingGroup g = new DrawingGroup();
-            GeometryDrawing background = new GeometryDrawing(Brushes.White, new Pen(Brushes.White, 1), new RectangleGeometry(new Rect(10, model.GameHeight - 20, model.drill.StorageCapacity * 0.3, 10)));
-            GeometryDrawing storagefullnes = new GeometryDrawing(Brushes.Green, new Pen(Brushes.Green, 1), new RectangleGeometry(new Rect(10, model.GameHeight - 20, model.drill.StorageFullness * 0.3, 10)));
 
-            FormattedText textStorage = new FormattedText("Storage", System.Globalization.CultureInfo.CurrentCulture, FlowDirection.LeftToRight, new Typeface("Arial"), 8, Brushes.Black);
-            GeometryDrawing storage = new GeometryDrawing(Brushes.Black, new Pen(Brushes.Black, 1), textStorage.BuildGeometry(new Point(40, model.GameHeight - 30)));
-
-            FormattedText textStorageCapacity = new FormattedText($"{model.drill.StorageFullness}/{model.drill.StorageCapacity}", System.Globalization.CultureInfo.CurrentCulture, FlowDirection.LeftToRight, new Typeface("Arial"), 8, Brushes.Black);
-            GeometryDrawing cap = new GeometryDrawing(Brushes.Black, new Pen(Brushes.Black, 1), textStorageCapacity.BuildGeometry(new Point(42, model.GameHeight - 20)));
-
-            g.Children.Add(background);
-            g.Children.Add(storagefullnes);
-            g.Children.Add(storage);
-            g.Children.Add(cap);
-            return g;
-        }
-
-        [Obsolete]
-        private Drawing GetActualPoints()
-        {
-            FormattedText textActual = new FormattedText($"Actual Points: {model.ActualPoints}", System.Globalization.CultureInfo.CurrentCulture, FlowDirection.LeftToRight, new Typeface("Arial"), 10, Brushes.Black);
-            GeometryDrawing actual = new GeometryDrawing(Brushes.Black, new Pen(Brushes.Black, 1), textActual.BuildGeometry(new Point(model.GameWidth / 3, 5)));
-
-            return actual;
-        }
-
-        [Obsolete]
-        private Drawing GetTotalPoints()
-        {
-            FormattedText textTotal = new FormattedText($"Total Points: {model.TotalPoints}", System.Globalization.CultureInfo.CurrentCulture, FlowDirection.LeftToRight, new Typeface("Arial"), 10, Brushes.Black);
-            GeometryDrawing total = new GeometryDrawing(Brushes.Black, new Pen(Brushes.Black, 1), textTotal.BuildGeometry(new Point(model.GameWidth * 2 / 3, 5)));
-
-            return total;
-        }
-
-        private Drawing Debug()
-        {
-            FormattedText textTotal = new FormattedText($"DEBUG OK: {oldPlayerPosition.Y} {this.model.GameHeight}"
-                , System.Globalization.CultureInfo.CurrentCulture, FlowDirection.LeftToRight,
-                new Typeface("Arial"), 20, Brushes.Black);
-            GeometryDrawing total = new GeometryDrawing(Brushes.Black, new Pen(Brushes.Black, 1),
-                textTotal.BuildGeometry(new Point(model.GameWidth * 2 / 3, 5)));
-
-            return total;
-        }
-
-        [Obsolete]
-        private Drawing GetMenuText()
+        private DrawingGroup TitleText(string text, double locationboxX, double locationboxY, double locationTextX, double locationTextY)
         {
             DrawingGroup g = new DrawingGroup();
 
-            GeometryDrawing button = new GeometryDrawing(Brushes.AliceBlue, new Pen(Brushes.Blue, 1), new RectangleGeometry(new Rect(2.5, 2.5, 31, 16)));
-            FormattedText textMenu = new FormattedText("Menu", System.Globalization.CultureInfo.CurrentCulture, FlowDirection.LeftToRight, new Typeface("Arial"), 10, Brushes.Black);
-            GeometryDrawing menu = new GeometryDrawing(Brushes.Black, new Pen(Brushes.Black, 1), textMenu.BuildGeometry(new Point(5, 5)));
+            GeometryDrawing button = new GeometryDrawing(Brushes.AliceBlue, new Pen(Brushes.Blue, 1), new RectangleGeometry(new Rect(locationboxX, locationboxY, 400, 40)));
+            FormattedText textMenu = new FormattedText(text, System.Globalization.CultureInfo.CurrentCulture, FlowDirection.LeftToRight, new Typeface("Arial"), 30, Brushes.Black);
+            GeometryDrawing menu = new GeometryDrawing(Brushes.Black, new Pen(Brushes.Black, 1), textMenu.BuildGeometry(new Point(locationTextX, locationTextY)));
 
             g.Children.Add(button);
             g.Children.Add(menu);
