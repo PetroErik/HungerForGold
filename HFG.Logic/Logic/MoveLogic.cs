@@ -33,10 +33,10 @@ namespace HFG.Logic
                 CalcTotalPoints();
                 ClearStorage();
             }
-            //foreach (Mineral mineral in this.gameModel.Minerals)
-            //{
-            //    CollectMinerals(mineral);
-            //}
+            foreach (Mineral mineral in this.gameModel.Minerals)
+            {
+                CollectMinerals(mineral);
+            }
         }
 
         public bool CollisionWithSilo()

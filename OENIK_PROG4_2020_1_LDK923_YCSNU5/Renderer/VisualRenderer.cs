@@ -56,6 +56,8 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5
 
         public Drawing GameDrawing()
         {
+            this.model.drill.FuelTankLvl = 100;
+            this.model.drill.FuelTankFullness = 100;
             DrawingGroup dg = new DrawingGroup();
             dg.Children.Add(background);
             dg.Children.Add(GetDrill());
