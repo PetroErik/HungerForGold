@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace HFG.Logic
 {
+    /// <summary>
+    /// CONTAIN ALL MOVE LOGIC INCLUDE WHAT HAPPEND IF IT COLLISION TO BOTH OF THE HOUSES
+    /// </summary>
     public class MoveLogic : IMoveLogic
     {
         GameModel gameModel;
@@ -17,6 +20,11 @@ namespace HFG.Logic
         }
 
         // When calling the MoveDrill(dx,dy) method in GameControl ==> dx and dy are equal to mode.drill.DrillLvl
+        /// <summary>
+        /// modifed move method, if colide with silo then plus actual point, and if collide with machinist then clear storage.
+        /// </summary>
+        /// <param name="dx"></param>
+        /// <param name="dy"></param>
         public void MoveDrill(int dx, int dy)
         {
             double newX = (this.gameModel.drill.Location[0] + (dx * this.gameModel.TileSize));
@@ -32,6 +40,13 @@ namespace HFG.Logic
             {
                 CalcTotalPoints();
                 ClearStorage();
+
+            }
+            if(CollisionWithMachinist())
+            {
+                //UpgradeDrill();
+                UpgradeFuelTank();
+                UpgradeStorage();
             }
             foreach (Mineral mineral in this.gameModel.Minerals)
             {
@@ -46,8 +61,8 @@ namespace HFG.Logic
             double siloHeight = gameModel.SiloHouse.Location[1] + 5 * gameModel.TileSize;
             double siloWidth = gameModel.SiloHouse.Location[0] + 3 * gameModel.TileSize;
 
-            return siloX <= gameModel.drill.Location[0] && siloWidth >= gameModel.drill.Location[0] 
-                && siloY <= gameModel.drill.Location[1] && siloHeight >= gameModel.drill.Location[1];
+            return siloX < gameModel.drill.Location[0] && siloWidth > gameModel.drill.Location[0] 
+                && siloY < gameModel.drill.Location[1] && siloHeight > gameModel.drill.Location[1];
         }
 
         public void CalcTotalPoints()
@@ -86,8 +101,8 @@ namespace HFG.Logic
                         this.gameModel.ActualPoints += CONFIG.BronzePrice; this.gameModel.drill.StorageFullness++;
                         break;
                 }
-                //min.Location[0] = R.Next(0, CONFIG.MapWidth * 2) * this.gameModel.TileSize;
-                //min.Location[1] = R.Next(CONFIG.MapHeight / 3 + 2, CONFIG.MapHeight) * this.gameModel.TileSize;
+                min.Location[0] = R.Next(0, CONFIG.MapWidth * 2) * this.gameModel.TileSize;
+                min.Location[1] = R.Next(CONFIG.MapHeight / 3 + 2, CONFIG.MapHeight) * this.gameModel.TileSize;
             }
         }
 
@@ -100,6 +115,33 @@ namespace HFG.Logic
 
             return machX <= gameModel.drill.Location[0] && machWidth >= gameModel.drill.Location[0]
                 && machY <= gameModel.drill.Location[1] && machHeight >= gameModel.drill.Location[1];
+        }
+
+        public void UpgradeDrill()
+        {
+            if (this.gameModel.drill.DrillLvl < CONFIG.MaxDrillLevel)
+            {
+                this.gameModel.drill.DrillLvl++;
+            }
+        }
+
+        public void UpgradeFuelTank()
+        {
+            if (this.gameModel.drill.FuelTankLvl < CONFIG.MaxFuelTankLevel)
+            {
+                this.gameModel.drill.FuelTankLvl++;
+                this.gameModel.drill.FuelCapacity = this.gameModel.drill.FuelTankLvl * 100;
+            }
+        }
+
+        public void UpgradeStorage()
+        {
+            if (this.gameModel.drill.StorageLvl < CONFIG.MaxStorageLevel)
+            {
+                this.gameModel.drill.StorageLvl++;
+                this.gameModel.drill.StorageCapacity = this.gameModel.drill.StorageLvl * 100;
+
+            }
         }
     }
 }

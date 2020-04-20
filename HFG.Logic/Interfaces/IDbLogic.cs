@@ -11,6 +11,8 @@ namespace HFG.Logic
     {
         void SaveGame(Drill drill, List<Mineral> minerals);
 
-        void LoadGame();
+        bool LoadGame();
+
+        IEnumerable<int> Highscore();
     }
 }

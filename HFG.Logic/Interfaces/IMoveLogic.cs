@@ -24,5 +24,9 @@ namespace HFG.Logic
         // this will also be called in the logic when the reachGround() returns true
         // sets the storage to 0;
         void ClearStorage();
+
+        void UpgradeDrill();
+        void UpgradeFuelTank();
+        void UpgradeStorage();
     }
 }

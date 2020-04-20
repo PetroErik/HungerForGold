@@ -33,6 +33,15 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5
 
         }
 
+        public DrawingGroup BackGroundClone()
+        {
+            DrawingGroup clone = new DrawingGroup();
+            foreach (var draw in groundAndHouseGroup.Children)
+            {
+                clone.Children.Add(draw);
+            }
+            return clone;
+        }
             private Drawing GetGround()
             {
 

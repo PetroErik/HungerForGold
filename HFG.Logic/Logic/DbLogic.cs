@@ -8,6 +8,9 @@ using HFG.Repository;
 
 namespace HFG.Logic
 {
+    /// <summary>
+    /// LOGIC WHICH RELATED WHICH THE DATABASE
+    /// </summary>
     public class DbLogic : IDbLogic
     {
         GameModel gameModel;
@@ -24,9 +27,14 @@ namespace HFG.Logic
         }
 
         // Loads the last saved state of the game.
-        public void LoadGame()
+
+            /// <summary>
+            /// Modify THIS - repo is always not null
+            /// bool type to verify if there's a prev game or not . If false show a notification  
+            /// </summary>
+        public bool LoadGame()
         {
-            if (drillRepo.GetAll() != null && brickRepo.GetAll() != null)
+            if (drillRepo.GetAll().Any() && brickRepo.GetAll().Any())
             {
                 int max = drillRepo.GetAll().Select(x => x.drill_id).Max();
                 var lastDrill = drillRepo.GetOne(max);
@@ -48,7 +56,9 @@ namespace HFG.Logic
                     mineral.Type = ConvertToMineralsType(brick.brick_type.ToString());
                     minID++;
                 }
+                return true;
             }
+            return false;
         }
 
         public void SaveGame(Drill drill, List<Mineral> minerals)
@@ -94,6 +104,11 @@ namespace HFG.Logic
             {
                 return MineralsType.Bronze;
             }
+        }
+
+        public IEnumerable<int> Highscore()
+        {
+            throw new NotImplementedException();
         }
     }
 }

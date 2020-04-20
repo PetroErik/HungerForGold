@@ -62,26 +62,76 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5
         {
             //gameLogic.tickLogic.GravityTick();
             //logic.FuelTick();
-            bool finished = gameLogic.tickLogic.FuelTick();
-            if (finished)
-            {
-                //MessageBox.Show("Game Is Over", "", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
+            gameLogic.tickLogic.FuelTick();
             InvalidateVisual();
+        }
+
+        private void gameContinues()
+        {
+            try
+            {
+                if (this.gameLogic.dbLogic.LoadGame())
+                {
+                    gameMode = "game";
+                }
+                else
+                {
+                    MessageBox.Show("There is no Save Game!", "", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }catch(Exception ex)
+            {
+                MessageBox.Show($"DATABASE ERROR {ex.Message}", "", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void gameExit()
+        {
+            MessageBoxResult result = MessageBox.Show("Are you sure you want to quit?","QUIT GAME",
+               MessageBoxButton.YesNo, MessageBoxImage.Question);
+
+            
+             if (result == MessageBoxResult.Yes)
+            {
+                try
+                {
+                    this.gameLogic.dbLogic.SaveGame(this.model.drill, this.model.Minerals);
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show($"DATABASE ERROR {ex.Message}", "", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                gameMode = "menu";
+            }
+        }
+
+        private void Move(string move)
+        {
+            if (!this.gameLogic.GameOver())
+            {
+                switch (move)
+                {
+                    case "LEFT": gameLogic.moveLogic.MoveDrill(-model.drill.DrillLvl, 0); break;
+                    case "RIGHT": gameLogic.moveLogic.MoveDrill(model.drill.DrillLvl, 0); break;
+                    case "UP": gameLogic.moveLogic.MoveDrill(0, -model.drill.DrillLvl); break;
+                    case "DOWN": gameLogic.moveLogic.MoveDrill(0, model.drill.DrillLvl); break;
+                }
+            }
         }
 
         private void Win_KeyDown(object sender, KeyEventArgs e)
         {
             switch (e.Key)
             {
-                case Key.A: gameLogic.moveLogic.MoveDrill(-model.drill.DrillLvl, 0); break;
-                case Key.D: gameLogic.moveLogic.MoveDrill(model.drill.DrillLvl, 0); break;
-                case Key.W: gameLogic.moveLogic.MoveDrill(0, -model.drill.DrillLvl); break;
-                case Key.S: gameLogic.moveLogic.MoveDrill(0, model.drill.DrillLvl); break;
+                
+                case Key.A: Move("LEFT"); break;
+                case Key.D: Move("RIGHT"); break;
+                case Key.W: Move("UP"); break;
+                case Key.S: Move("DOWN"); break;
                 case Key.D0: gameMode = "menu"; break;
-                case Key.D1: gameMode = "game"; break;
-                case Key.D2: MessageBox.Show("Not Implement"); break;
+                case Key.D1: gameMode = "game"; this.gameLogic.startGame(); break;
+                case Key.D2: gameContinues(); break;
                 case Key.D3: gameMode = "highscore"; break;
+                case Key.Escape: gameExit();break;
             }
             InvalidateVisual();
         }
@@ -94,9 +144,9 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5
             }
             if (gameMode == "game" && renderer != null)
             {             
-                drawingContext.DrawDrawing(renderer.GameDrawing());
+                drawingContext.DrawDrawing(renderer.GameDrawing(this.gameLogic.GameOver()));
             }
-            if(gameMode == "highscore" && renderer != null)
+            if (gameMode == "highscore" && renderer != null)
             {
                 drawingContext.DrawDrawing(renderer.HighscoreDrawing());
             }

@@ -19,17 +19,20 @@ namespace HFG.Display
         public int StorageFullness { get; set; }
         public int FuelTankFullness { get; set; }
 
-
-        public Drill(double x, double y)
+        public void initialValue()
         {
-            this.Location = new double[2] {x, y};
             this.StorageLvl = 1;
             this.FuelTankLvl = 1;
             this.DrillLvl = 1;
-            this.FuelCapacity = FuelTankLvl * 100;
-            this.StorageCapacity = StorageLvl * 100;
+            this.FuelCapacity = FuelTankLvl * CONFIG.FuelCapacity;
+            this.StorageCapacity = StorageLvl * CONFIG.StorageCapacity;
             this.StorageFullness = 0;
             this.FuelTankFullness = FuelCapacity;
+        }
+
+        public Drill(double x, double y)
+        {
+            this.Location = new double[2] {x, y};          
         }
     }
 }

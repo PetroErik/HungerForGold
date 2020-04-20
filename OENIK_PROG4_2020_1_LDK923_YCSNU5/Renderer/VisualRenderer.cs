@@ -19,6 +19,8 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5
         GameModel model;
 
         DrawingGroup background;
+        DrawingGroup backgroundClone;
+
         DrawingGroup menu;
         DrawingGroup highscore;
 
@@ -36,6 +38,8 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5
             this.highscoreRender = new HighscoreRender(model);
 
             background = this.backGroundAndHouseRenderer.groundAndHouseGroup;
+            backgroundClone = this.backGroundAndHouseRenderer.BackGroundClone();
+
             menu = this.menuRenderer.menuGroup;
             highscore = this.highscoreRender.HighscoreGroup;
 
@@ -48,17 +52,17 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5
         public Drawing MenuDrawing()
         {
             DrawingGroup dg = new DrawingGroup();
-            dg.Children.Add(background);
+            dg.Children.Add(backgroundClone);
 
             dg.Children.Add(menu);
             return dg;
         }
 
-        public Drawing GameDrawing()
+        public Drawing GameDrawing(bool gameOver)
         {
-            this.model.drill.FuelTankLvl = 100;
-            this.model.drill.FuelTankFullness = 100;
+
             DrawingGroup dg = new DrawingGroup();
+            //background = this.backGroundAndHouseRenderer.BackGroundClone();
             dg.Children.Add(background);
             dg.Children.Add(GetDrill());
             dg.Children.Add(GetMinerals());
@@ -66,51 +70,50 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5
             dg.Children.Add(GetStorage());
             dg.Children.Add(GetActualPoints());
             dg.Children.Add(GetTotalPoints());
-            dg.Children.Add(Debug());
+
+            if (gameOver)
+            {
+                dg.Children.Add(drawExtension.drawText("GAME OVER!", 40, model.GameWidth / 2- 120, model.GameHeight / 2 - 160));
+               
+            }
+            //dg.Children.Add(Debug());
             return dg;
         }
 
         public Drawing HighscoreDrawing()
         {
             DrawingGroup dg = new DrawingGroup();
-            dg.Children.Add(background);
+            dg.Children.Add(backgroundClone);
             dg.Children.Add(highscore);
             return dg;
         }
 
 
-        Point oldPlayerPosition;
-        Point currentPos;
+        //Point oldPlayerPosition;
+        //Point currentPos;
 
 
         private Drawing Debug()
         {
             return drawExtension.drawText($"DEBUG: {model.drill.Location[0]} {model.drill.Location[1]}", 30, 10, 10);
         }
-        Drawing oldDrill;
+        //Drawing oldDrill;
         private Drawing GetDrill()
         {
-            currentPos = new Point(model.drill.Location[0], model.drill.Location[1]);
-
-            if (oldPlayerPosition != currentPos)
-            {
 
 
                 // Pixel  coordinates!!!!
                 Geometry g = new RectangleGeometry(new Rect(this.model.drill.Location[0], model.drill.Location[1], model.TileSize, model.TileSize));
-                oldDrill = new GeometryDrawing(drawExtension.DrillBrush, null, g);
+                Drawing oldDrill = new GeometryDrawing(drawExtension.DrillBrush, null, g);
 
-                //Draw black box
-                if (oldPlayerPosition.Y >= startingPointToDrill)
-                {
-                    //Geometry blackbox = new RectangleGeometry(new Rect(oldPlayerPosition.X, oldPlayerPosition.Y, model.TileSize, model.TileSize));
-                    //GeometryDrawing drawingBlackBox = new GeometryDrawing(drawExtension.DeletingBrush, null, blackbox);
-                    //background.Children.Add(drawingBlackBox);
-                }
+            //Draw black box
+            //if (model.drill.Location[1] >= startingPointToDrill)
+            //{
+            //    Geometry blackbox = new RectangleGeometry(new Rect(model.drill.Location[0], model.drill.Location[1], model.TileSize, model.TileSize));
+            //    GeometryDrawing drawingBlackBox = new GeometryDrawing(drawExtension.DeletingBrush, null, blackbox);
+            //    background.Children.Add(drawingBlackBox);
+            //}
 
-                oldPlayerPosition = currentPos;
-
-            }
             return oldDrill;
         }
         private Drawing GetMinerals()
@@ -192,18 +195,12 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5
 
         private Drawing GetActualPoints()
         {
-            FormattedText textActual = new FormattedText($"Actual Points: {model.ActualPoints}", System.Globalization.CultureInfo.CurrentCulture, FlowDirection.LeftToRight, new Typeface("Arial"), 10, Brushes.Black, 1.25);
-            GeometryDrawing actual = new GeometryDrawing(Brushes.Black, new Pen(Brushes.Black, 1), textActual.BuildGeometry(new Point(model.GameWidth / 3, 5)));
-
-            return actual;
+             return drawExtension.drawText($"Actual Points: {model.ActualPoints}", 20, model.GameWidth / 3, 5);
         }
 
         private Drawing GetTotalPoints()
         {
-            FormattedText textTotal = new FormattedText($"Total Points: {model.TotalPoints}", System.Globalization.CultureInfo.CurrentCulture, FlowDirection.LeftToRight, new Typeface("Arial"), 10, Brushes.Black, 1.25);
-            GeometryDrawing total = new GeometryDrawing(Brushes.Black, new Pen(Brushes.Black, 1), textTotal.BuildGeometry(new Point(model.GameWidth * 2 / 3, 5)));
-
-            return total;
+            return drawExtension.drawText($"Total Points: {model.TotalPoints}", 20, model.GameWidth * 2 / 3, 5);
         }
     }
 }

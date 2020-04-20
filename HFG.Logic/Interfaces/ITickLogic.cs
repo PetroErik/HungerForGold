@@ -11,6 +11,6 @@ namespace HFG.Logic
         // Imitates gravity
         void GravityTick();
 
-        bool FuelTick();
+        void FuelTick();
     }
 }

@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace HFG.Logic
 {
+    /// <summary>
+    /// DECREASE THE FUEL TANKS
+    /// </summary>
     public class TickLogic : ITickLogic
     {
         GameModel gameModel;
@@ -16,13 +19,14 @@ namespace HFG.Logic
             this.gameModel = model;
         }
         // If returns true ==> game is over
-        public bool FuelTick()
+        // I move this gameover detect to game logic. It looks more "clear". 
+        // clean code: one function should only handle 1 thing. 
+        public void FuelTick()
         {
             if (this.gameModel.drill.FuelTankFullness > 0)
             {
-                this.gameModel.drill.FuelTankFullness--;
+                this.gameModel.drill.FuelTankFullness--; 
             }
-            return this.gameModel.drill.FuelTankFullness <= 0;
         }
 
         // If drill is above ground level it falls down.

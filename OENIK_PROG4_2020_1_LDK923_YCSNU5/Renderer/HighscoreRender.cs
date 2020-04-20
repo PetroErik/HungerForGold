@@ -9,6 +9,9 @@ using System.Windows.Media;
 
 namespace OENIK_PROG4_2020_1_LDK923_YCSNU5
 {
+    /// <summary>
+    /// NOT YET IMPLEMENTS
+    /// </summary>
     class HighscoreRender
     {
         GameModel model;
