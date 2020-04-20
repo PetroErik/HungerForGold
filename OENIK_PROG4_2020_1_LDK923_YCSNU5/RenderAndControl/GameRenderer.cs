@@ -182,7 +182,7 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5
                 {
                     groundAndDeleting.Children.Add(drawText("UPGRADE MachinistHouse"));
                 }
-
+                
                 oldPlayerPosition = currentPos;
 
             }
