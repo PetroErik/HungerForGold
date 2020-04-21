@@ -53,13 +53,24 @@ namespace HFG.Logic
 
         public bool CollisionWithSilo()
         {
-            double siloX = gameModel.SiloHouse.Location[0];
+            double siloX = gameModel.SiloHouse.Location[0] - 10;
             double siloY = gameModel.SiloHouse.Location[1];
             double siloHeight = gameModel.SiloHouse.Location[1] + 5 * gameModel.TileSize - 10;
             double siloWidth = gameModel.SiloHouse.Location[0] + 3 * gameModel.TileSize - 10;
 
             return siloX <= gameModel.drill.Location[0] && siloWidth >= gameModel.drill.Location[0] 
                 && siloY <= gameModel.drill.Location[1] && siloHeight >= gameModel.drill.Location[1];
+        }
+
+        public bool CollisionWithMachinist()
+        {
+            double machX = gameModel.MachinistHouse.Location[0];
+            double machY = gameModel.MachinistHouse.Location[1];
+            double machHeight = gameModel.MachinistHouse.Location[1] + 5 * gameModel.TileSize - 10;
+            double machWidth = gameModel.MachinistHouse.Location[0] + 3 * gameModel.TileSize - 10;
+
+            return machX <= gameModel.drill.Location[0] && machWidth >= gameModel.drill.Location[0]
+                && machY <= gameModel.drill.Location[1] && machHeight >= gameModel.drill.Location[1];
         }
 
         public void CalcTotalPoints()
@@ -103,41 +114,32 @@ namespace HFG.Logic
             }
         }
 
-        public bool CollisionWithMachinist()
-        {
-            double machX = gameModel.MachinistHouse.Location[0];
-            double machY = gameModel.MachinistHouse.Location[1];
-            double machHeight = gameModel.MachinistHouse.Location[1] + 5 * gameModel.TileSize - 10;
-            double machWidth = gameModel.MachinistHouse.Location[0] + 3 * gameModel.TileSize - 10;
-
-            return machX <= gameModel.drill.Location[0] && machWidth >= gameModel.drill.Location[0]
-                && machY <= gameModel.drill.Location[1] && machHeight >= gameModel.drill.Location[1];
-        }
-
         public void UpgradeDrill()
         {
-            if (this.gameModel.drill.DrillLvl < CONFIG.MaxDrillLevel)
+            if (this.gameModel.drill.DrillLvl < CONFIG.MaxDrillLevel && this.gameModel.TotalPoints >= CONFIG.UpgradePrice)
             {
                 this.gameModel.drill.DrillLvl++;
+                this.gameModel.TotalPoints -= CONFIG.UpgradePrice;
             }
         }
 
         public void UpgradeFuelTank()
         {
-            if (this.gameModel.drill.FuelTankLvl < CONFIG.MaxFuelTankLevel)
+            if (this.gameModel.drill.FuelTankLvl < CONFIG.MaxFuelTankLevel && this.gameModel.TotalPoints >= CONFIG.UpgradePrice)
             {
                 this.gameModel.drill.FuelTankLvl++;
-                this.gameModel.drill.FuelCapacity = this.gameModel.drill.FuelTankLvl * 100;
+                this.gameModel.drill.FuelCapacity = this.gameModel.drill.FuelTankLvl * CONFIG.FuelCapacity;
+                this.gameModel.TotalPoints -= CONFIG.UpgradePrice;
             }
         }
 
         public void UpgradeStorage()
         {
-            if (this.gameModel.drill.StorageLvl < CONFIG.MaxStorageLevel)
+            if (this.gameModel.drill.StorageLvl < CONFIG.MaxStorageLevel && this.gameModel.TotalPoints >= CONFIG.UpgradePrice)
             {
                 this.gameModel.drill.StorageLvl++;
-                this.gameModel.drill.StorageCapacity = this.gameModel.drill.StorageLvl * 100;
-
+                this.gameModel.drill.StorageCapacity = this.gameModel.drill.StorageLvl * CONFIG.StorageCapacity;
+                this.gameModel.TotalPoints -= CONFIG.UpgradePrice;
             }
         }
     }

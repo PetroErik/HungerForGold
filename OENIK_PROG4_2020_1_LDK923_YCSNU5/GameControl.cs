@@ -60,9 +60,7 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5
 
         private void Timer_Tick(object sender, EventArgs e)
         {
-            //gameLogic.tickLogic.GravityTick();
-            //logic.FuelTick();
-            //gameLogic.tickLogic.FuelTick();
+            gameLogic.tickLogic.FuelTick();
             InvalidateVisual();
         }
 
