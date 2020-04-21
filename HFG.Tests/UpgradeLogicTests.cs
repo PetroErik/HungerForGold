@@ -17,8 +17,9 @@ namespace HFG.Tests
         {
             GameLogic logic = new GameLogic(new GameModel(500, 500));
             logic.InitialMap();
+            logic.startGame();
 
-            logic.upgradeLogic.UpgradeFuelTank();
+            logic.moveLogic.UpgradeFuelTank();
 
             Assert.That(logic.gameModel.drill.FuelTankLvl, Is.EqualTo(2));
         }
@@ -30,7 +31,7 @@ namespace HFG.Tests
             logic.InitialMap();
             logic.gameModel.drill.FuelTankLvl = 3;
 
-            logic.upgradeLogic.UpgradeFuelTank();
+            logic.moveLogic.UpgradeFuelTank();
 
             Assert.That(logic.gameModel.drill.FuelTankLvl, Is.EqualTo(3));
         }
@@ -40,8 +41,9 @@ namespace HFG.Tests
         {
             GameLogic logic = new GameLogic(new GameModel(500, 500));
             logic.InitialMap();
+            logic.startGame();
 
-            logic.upgradeLogic.UpgradeDrill();
+            logic.moveLogic.UpgradeDrill();
 
             Assert.That(logic.gameModel.drill.DrillLvl, Is.EqualTo(2));
         }
@@ -53,7 +55,7 @@ namespace HFG.Tests
             logic.InitialMap();
             logic.gameModel.drill.DrillLvl = 3;
 
-            logic.upgradeLogic.UpgradeFuelTank();
+            logic.moveLogic.UpgradeFuelTank();
 
             Assert.That(logic.gameModel.drill.DrillLvl, Is.EqualTo(3));
         }
@@ -63,8 +65,9 @@ namespace HFG.Tests
         {
             GameLogic logic = new GameLogic(new GameModel(500, 500));
             logic.InitialMap();
+            logic.startGame();
 
-            logic.upgradeLogic.UpgradeStorage();
+            logic.moveLogic.UpgradeStorage();
 
             Assert.That(logic.gameModel.drill.StorageLvl, Is.EqualTo(2));
         }
@@ -76,7 +79,7 @@ namespace HFG.Tests
             logic.InitialMap();
             logic.gameModel.drill.StorageLvl = 3;
 
-            logic.upgradeLogic.UpgradeFuelTank();
+            logic.moveLogic.UpgradeFuelTank();
 
             Assert.That(logic.gameModel.drill.StorageLvl, Is.EqualTo(3));
         }

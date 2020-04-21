@@ -30,12 +30,12 @@ namespace HFG.Tests
         {
             GameLogic logic = new GameLogic(new GameModel(500, 500));
             logic.InitialMap();
+            logic.startGame();
             logic.gameModel.drill.FuelTankFullness = 40;
 
-            //bool result = logic.tickLogic.FuelTick();
+            logic.tickLogic.FuelTick();
 
             Assert.That(logic.gameModel.drill.FuelTankFullness, Is.EqualTo(39));
-           // Assert.That(result, Is.False);
         }
 
         [Test]
@@ -45,10 +45,9 @@ namespace HFG.Tests
             logic.InitialMap();
             logic.gameModel.drill.FuelTankFullness = 0;
 
-            //bool result = logic.tickLogic.FuelTick();
+            logic.tickLogic.FuelTick();
 
             Assert.That(logic.gameModel.drill.FuelTankFullness, Is.EqualTo(0));
-            //Assert.That(result, Is.True);
         }
     }
 }

@@ -62,7 +62,7 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5
         {
             //gameLogic.tickLogic.GravityTick();
             //logic.FuelTick();
-            gameLogic.tickLogic.FuelTick();
+            //gameLogic.tickLogic.FuelTick();
             InvalidateVisual();
         }
 
@@ -110,10 +110,10 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5
             {
                 switch (move)
                 {
-                    case "LEFT": gameLogic.moveLogic.MoveDrill(-model.drill.DrillLvl, 0); break;
-                    case "RIGHT": gameLogic.moveLogic.MoveDrill(model.drill.DrillLvl, 0); break;
-                    case "UP": gameLogic.moveLogic.MoveDrill(0, -model.drill.DrillLvl); break;
-                    case "DOWN": gameLogic.moveLogic.MoveDrill(0, model.drill.DrillLvl); break;
+                    case "LEFT": gameLogic.moveLogic.MoveDrill(-1, 0); break;
+                    case "RIGHT": gameLogic.moveLogic.MoveDrill(1, 0); break;
+                    case "UP": gameLogic.moveLogic.MoveDrill(0, -1); break;
+                    case "DOWN": gameLogic.moveLogic.MoveDrill(0, 1); break;
                 }
             }
         }
