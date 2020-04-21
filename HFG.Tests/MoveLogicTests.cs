@@ -94,6 +94,21 @@ namespace HFG.Tests
         }
 
         [Test]
+        public void TestMoveLogic_CollisionWithMachinsit()
+        {
+            GameModel model = new GameModel(500, 500);
+            GameLogic logic = new GameLogic(model);
+            logic.InitialMap();
+            logic.startGame();
+            model.drill.Location = new double[] { 15, 15 };
+            model.MachinistHouse.Location = new double[] { 15, 15 };
+
+            bool result = logic.moveLogic.CollisionWithMachinist();
+
+            Assert.That(result, Is.EqualTo(true));
+        }
+
+        [Test]
         public void TestMoveLogic_CalcTotalPoints()
         {
             GameLogic logic = new GameLogic(new GameModel(500, 500));

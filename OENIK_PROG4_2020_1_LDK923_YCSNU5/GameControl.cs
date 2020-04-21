@@ -122,7 +122,6 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5
         {
             switch (e.Key)
             {
-                
                 case Key.A: Move("LEFT"); break;
                 case Key.D: Move("RIGHT"); break;
                 case Key.W: Move("UP"); break;
@@ -132,6 +131,16 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5
                 case Key.D2: gameContinues(); break;
                 case Key.D3: gameMode = "highscore"; break;
                 case Key.Escape: gameExit();break;
+            }
+            if (gameLogic.moveLogic.CollisionWithMachinist())
+            {
+                switch (e.Key)
+                {
+                    case Key.F1: gameLogic.moveLogic.UpgradeDrill(); break;
+                    case Key.F2: gameLogic.moveLogic.UpgradeFuelTank(); break;
+                    case Key.F3: gameLogic.moveLogic.UpgradeStorage(); break;
+                    default: break;
+                }
             }
             InvalidateVisual();
         }

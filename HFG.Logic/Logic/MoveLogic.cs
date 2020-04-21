@@ -48,13 +48,6 @@ namespace HFG.Logic
             {
                 CalcTotalPoints();
                 ClearStorage();
-
-            }
-            if (CollisionWithMachinist())
-            {
-                UpgradeDrill();
-                UpgradeFuelTank();
-                UpgradeStorage();
             }
         }
 
