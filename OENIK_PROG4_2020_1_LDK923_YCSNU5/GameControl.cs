@@ -100,7 +100,9 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5
                 {
                     MessageBox.Show($"DATABASE ERROR {ex.Message}", "", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
-                gameMode = "menu";
+
+                    gameMode = "menu";
+                
             }
         }
 
@@ -115,6 +117,10 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5
                     case "UP": gameLogic.moveLogic.MoveDrill(0, -model.drill.DrillLvl); break;
                     case "DOWN": gameLogic.moveLogic.MoveDrill(0, model.drill.DrillLvl); break;
                 }
+            }
+            if(this.gameLogic.GameOver() == true)
+            {
+                this.gameLogic.dbLogic.SaveGame(this.model.drill, this.model.Minerals);
             }
         }
 
@@ -148,7 +154,18 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5
             }
             if (gameMode == "highscore" && renderer != null)
             {
-                drawingContext.DrawDrawing(renderer.HighscoreDrawing());
+                List<int?> highscore;
+                string message = "Done";
+                try
+                {
+                    highscore = this.gameLogic.dbLogic.Highscore();
+                }
+                catch (Exception ex)
+                {
+                    highscore = new List<int?>();
+                    message = ex.Message;
+                }
+                drawingContext.DrawDrawing(renderer.HighscoreDrawing(highscore, message));
             }
         }
     }

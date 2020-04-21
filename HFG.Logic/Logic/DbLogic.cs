@@ -106,9 +106,20 @@ namespace HFG.Logic
             }
         }
 
-        public IEnumerable<int> Highscore()
+        public List<int?> Highscore()
         {
-            throw new NotImplementedException();
+            List<int?> highScore = new List<int?>();
+            if (drillRepo.GetAll().Any())
+            {
+                var scores = drillRepo.GetAll().Select(x => x.drill_score).Distinct().OrderByDescending(x => x);
+
+                foreach (var score in scores)
+                {
+                    highScore.Add(score);
+                }
+               
+            }
+            return highScore;
         }
     }
 }

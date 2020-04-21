@@ -14,7 +14,7 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5
     {
         BackGroundAndHouseRenderer backGroundAndHouseRenderer;
         MenuRenderer menuRenderer;
-        HighscoreRender highscoreRender;
+        //HighscoreRender highscoreRender;
 
         GameModel model;
 
@@ -22,7 +22,7 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5
         DrawingGroup backgroundClone;
 
         DrawingGroup menu;
-        DrawingGroup highscore;
+        //DrawingGroup highscore;
 
         DrawExtension drawExtension;
 
@@ -34,14 +34,15 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5
             this.model = model;
 
             this.backGroundAndHouseRenderer = new BackGroundAndHouseRenderer(model);
+            
             this.menuRenderer = new MenuRenderer(model);
-            this.highscoreRender = new HighscoreRender(model);
-
+            menu = this.menuRenderer.menuGroup;
+            
+            
             background = this.backGroundAndHouseRenderer.groundAndHouseGroup;
             backgroundClone = this.backGroundAndHouseRenderer.BackGroundClone();
 
-            menu = this.menuRenderer.menuGroup;
-            highscore = this.highscoreRender.HighscoreGroup;
+           
 
             this.drawExtension = new DrawExtension(model.TileSize, model.TileSize);
 
@@ -80,11 +81,34 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5
             return dg;
         }
 
-        public Drawing HighscoreDrawing()
+        public Drawing HighscoreDrawing(List<int?> scores, string message)
         {
             DrawingGroup dg = new DrawingGroup();
+
             dg.Children.Add(backgroundClone);
-            dg.Children.Add(highscore);
+            dg.Children.Add(drawExtension.TitleText("HIGHSCORE", this.model.GameWidth / 2 - 180, this.model.GameHeight / 2 - 120,
+                 this.model.GameWidth / 2 - 90, this.model.GameHeight / 2 - 120
+                 ));
+
+            //scores = new int?[5] { 1000, 2000, 3000, 4000, 5000};
+
+            int distance = -60;
+            if (scores.Any())
+            {
+                foreach (var score in scores)
+                {
+                    dg.Children.Add(drawExtension.TitleText($"{score}", this.model.GameWidth / 2 - 180, this.model.GameHeight / 2 + distance,
+                      this.model.GameWidth / 2 - 90, this.model.GameHeight / 2 + distance
+                      ));
+                    distance += 60;
+                }
+            }
+            else
+            {
+                dg.Children.Add(drawExtension.TitleText($"{message}", this.model.GameWidth / 2 - 180, this.model.GameHeight / 2 - 60,
+               this.model.GameWidth / 2 - 90, this.model.GameHeight / 2 - 60
+               ));
+            }
             return dg;
         }
 
