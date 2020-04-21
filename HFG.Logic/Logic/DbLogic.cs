@@ -28,10 +28,10 @@ namespace HFG.Logic
 
         // Loads the last saved state of the game.
 
-            /// <summary>
-            /// Modify THIS - repo is always not null
-            /// bool type to verify if there's a prev game or not . If false show a notification  
-            /// </summary>
+        /// <summary>
+        /// Modify THIS - repo is always not null
+        /// bool type to verify if there's a prev game or not . If false show a notification  
+        /// </summary>
         public bool LoadGame()
         {
             if (drillRepo.GetAll().Any() && brickRepo.GetAll().Any())
@@ -106,9 +106,20 @@ namespace HFG.Logic
             }
         }
 
-        public IEnumerable<int> Highscore()
+        public List<int?> Highscore()
         {
-            throw new NotImplementedException();
+            List<int?> highScore = new List<int?>();
+            if (drillRepo.GetAll().Any())
+            {
+                var scores = drillRepo.GetAll().Select(x => x.drill_score).Distinct().OrderByDescending(x => x);
+
+                foreach (var score in scores)
+                {
+                    highScore.Add(score);
+                }
+
+            }
+            return highScore;
         }
     }
 }

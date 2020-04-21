@@ -13,6 +13,6 @@ namespace HFG.Logic
 
         bool LoadGame();
 
-        IEnumerable<int> Highscore();
+        List<int?> Highscore();
     }
 }

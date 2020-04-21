@@ -104,7 +104,6 @@
     <Compile Include="Renderer\BackGroundAndHouseRenderer.cs" />
     <Compile Include="Renderer\DrawExtension.cs" />
     <Compile Include="GameControl.cs" />
-    <Compile Include="Renderer\HighscoreRender.cs" />
     <Compile Include="Renderer\MenuRenderer.cs" />
     <Compile Include="Renderer\VisualRenderer.cs" />
     <Page Include="GameWindow.xaml">

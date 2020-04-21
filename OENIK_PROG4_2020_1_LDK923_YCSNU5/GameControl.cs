@@ -60,6 +60,8 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5
 
         private void Timer_Tick(object sender, EventArgs e)
         {
+            //gameLogic.tickLogic.GravityTick();
+            //logic.FuelTick();
             gameLogic.tickLogic.FuelTick();
             InvalidateVisual();
         }
@@ -76,7 +78,8 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5
                 {
                     MessageBox.Show("There is no Save Game!", "", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show($"DATABASE ERROR {ex.Message}", "", MessageBoxButton.OK, MessageBoxImage.Error);
             }
@@ -84,21 +87,23 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5
 
         private void gameExit()
         {
-            MessageBoxResult result = MessageBox.Show("Are you sure you want to quit?","QUIT GAME",
+            MessageBoxResult result = MessageBox.Show("Are you sure you want to quit?", "QUIT GAME",
                MessageBoxButton.YesNo, MessageBoxImage.Question);
 
-            
-             if (result == MessageBoxResult.Yes)
+
+            if (result == MessageBoxResult.Yes)
             {
                 try
                 {
                     this.gameLogic.dbLogic.SaveGame(this.model.drill, this.model.Minerals);
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     MessageBox.Show($"DATABASE ERROR {ex.Message}", "", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
+
                 gameMode = "menu";
+
             }
         }
 
@@ -108,11 +113,15 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5
             {
                 switch (move)
                 {
-                    case "LEFT": gameLogic.moveLogic.MoveDrill(-1, 0); break;
-                    case "RIGHT": gameLogic.moveLogic.MoveDrill(1, 0); break;
-                    case "UP": gameLogic.moveLogic.MoveDrill(0, -1); break;
-                    case "DOWN": gameLogic.moveLogic.MoveDrill(0, 1); break;
+                    case "LEFT": gameLogic.moveLogic.MoveDrill(-model.drill.DrillLvl, 0); break;
+                    case "RIGHT": gameLogic.moveLogic.MoveDrill(model.drill.DrillLvl, 0); break;
+                    case "UP": gameLogic.moveLogic.MoveDrill(0, -model.drill.DrillLvl); break;
+                    case "DOWN": gameLogic.moveLogic.MoveDrill(0, model.drill.DrillLvl); break;
                 }
+            }
+            if (this.gameLogic.GameOver() == true)
+            {
+                this.gameLogic.dbLogic.SaveGame(this.model.drill, this.model.Minerals);
             }
         }
 
@@ -120,6 +129,7 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5
         {
             switch (e.Key)
             {
+
                 case Key.A: Move("LEFT"); break;
                 case Key.D: Move("RIGHT"); break;
                 case Key.W: Move("UP"); break;
@@ -128,21 +138,11 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5
                 case Key.D1: gameMode = "game"; this.gameLogic.startGame(); break;
                 case Key.D2: gameContinues(); break;
                 case Key.D3: gameMode = "highscore"; break;
-                case Key.Escape: gameExit();break;
-            }
-            if (gameLogic.moveLogic.CollisionWithMachinist())
-            {
-                switch (e.Key)
-                {
-                    case Key.F1: gameLogic.moveLogic.UpgradeDrill(); break;
-                    case Key.F2: gameLogic.moveLogic.UpgradeFuelTank(); break;
-                    case Key.F3: gameLogic.moveLogic.UpgradeStorage(); break;
-                    default: break;
-                }
+                case Key.Escape: gameExit(); break;
             }
             InvalidateVisual();
         }
-        
+
         protected override void OnRender(DrawingContext drawingContext)
         {
             if (gameMode == "menu" && renderer != null)
@@ -150,12 +150,23 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5
                 drawingContext.DrawDrawing((renderer.MenuDrawing()));
             }
             if (gameMode == "game" && renderer != null)
-            {             
+            {
                 drawingContext.DrawDrawing(renderer.GameDrawing(this.gameLogic.GameOver()));
             }
             if (gameMode == "highscore" && renderer != null)
             {
-                drawingContext.DrawDrawing(renderer.HighscoreDrawing());
+                List<int?> highscore;
+                string message = "Done";
+                try
+                {
+                    highscore = this.gameLogic.dbLogic.Highscore();
+                }
+                catch (Exception ex)
+                {
+                    highscore = new List<int?>();
+                    message = ex.Message;
+                }
+                drawingContext.DrawDrawing(renderer.HighscoreDrawing(highscore, message));
             }
         }
     }

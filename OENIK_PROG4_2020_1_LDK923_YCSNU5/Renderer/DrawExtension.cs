@@ -38,6 +38,20 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5
              upgradeText.BuildGeometry(new Point(x, y)));
             return upgrade;
         }
+
+        public DrawingGroup TitleText(string text, double locationboxX, double locationboxY, double locationTextX, double locationTextY)
+        {
+            DrawingGroup g = new DrawingGroup();
+
+            GeometryDrawing button = new GeometryDrawing(Brushes.AliceBlue, new Pen(Brushes.Blue, 1), new RectangleGeometry(new Rect(locationboxX, locationboxY, 400, 40)));
+            FormattedText textMenu = new FormattedText(text, System.Globalization.CultureInfo.CurrentCulture, FlowDirection.LeftToRight, new Typeface("Arial"), 30, Brushes.Black, 1.25);
+            GeometryDrawing menu = new GeometryDrawing(Brushes.Black, new Pen(Brushes.Black, 1), textMenu.BuildGeometry(new Point(locationTextX, locationTextY)));
+
+            g.Children.Add(button);
+            g.Children.Add(menu);
+
+            return g;
+        }
         Brush GetBrush(string fname, bool isTiled)
         {
             if (!brushes.ContainsKey(fname))
