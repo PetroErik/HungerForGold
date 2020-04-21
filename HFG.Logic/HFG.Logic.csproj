@@ -51,11 +51,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GameLogic.cs" />
-    <Compile Include="HighscoreLogic.cs" />
-    <Compile Include="IGameLogic.cs" />
-    <Compile Include="IHighScoreLogic.cs" />
+    <Compile Include="Logic\DbLogic.cs" />
+    <Compile Include="Logic\GameLogic.cs" />
+    <Compile Include="Interfaces\IGameLogic.cs" />
+    <Compile Include="Interfaces\IMoveLogic.cs" />
+    <Compile Include="Interfaces\IDbLogic.cs" />
+    <Compile Include="Interfaces\ITickLogic.cs" />
+    <Compile Include="Logic\MoveLogic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Logic\TickLogic.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\HFG.Database\HFG.Database.csproj">

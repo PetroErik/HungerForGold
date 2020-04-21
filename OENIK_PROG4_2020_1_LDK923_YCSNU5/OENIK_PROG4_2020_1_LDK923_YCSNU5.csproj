@@ -101,18 +101,12 @@
     <Compile Include="GameWindow.xaml.cs">
       <DependentUpon>GameWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Highscores.xaml.cs">
-      <DependentUpon>Highscores.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="RenderAndControl\GameControl.cs" />
-    <Compile Include="RenderAndControl\GameRenderer.cs" />
-    <Compile Include="ViewModel\GameLobbyModel.cs" />
-    <Compile Include="ViewModel\HighscoresModel.cs" />
+    <Compile Include="Renderer\BackGroundAndHouseRenderer.cs" />
+    <Compile Include="Renderer\DrawExtension.cs" />
+    <Compile Include="GameControl.cs" />
+    <Compile Include="Renderer\MenuRenderer.cs" />
+    <Compile Include="Renderer\VisualRenderer.cs" />
     <Page Include="GameWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Highscores.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

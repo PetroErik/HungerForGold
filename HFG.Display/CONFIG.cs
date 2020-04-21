@@ -13,6 +13,9 @@ namespace HFG.Display
         public static int SilverPrice = 200;
         public static int GoldPrice = 300;
 
+        public static int FuelCapacity = 100;
+        public static int StorageCapacity = 10;
+
         // Number of Tiles
         public static int MapWidth = 20;
         public static int MapHeight = 20;

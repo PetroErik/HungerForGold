@@ -10,6 +10,7 @@ namespace HFG.Display
     public class Mineral : Character
     {
         public MineralsType Type { get; set; }
+        public bool Collapse { get; set; } 
 
         public Mineral(double x, double y, MineralsType type)
         {
