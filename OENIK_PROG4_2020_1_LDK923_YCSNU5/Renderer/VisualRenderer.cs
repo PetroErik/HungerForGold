@@ -72,6 +72,7 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5
             dg.Children.Add(GetActualPoints());
             dg.Children.Add(GetTotalPoints());
             dg.Children.Add(GetLevelInformation());
+            dg.Children.Add(GetMenuText());
 
             if (gameOver)
             {
@@ -221,12 +222,25 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5
         private Drawing GetLevelInformation()
         {
             DrawingGroup g = new DrawingGroup();
-            GeometryDrawing background = new GeometryDrawing(Brushes.AliceBlue, new Pen(Brushes.Blue, 1), new RectangleGeometry(new Rect(10, 0, 300, 20)));
+            GeometryDrawing background = new GeometryDrawing(Brushes.AliceBlue, new Pen(Brushes.Blue, 1), new RectangleGeometry(new Rect(30, 0, 300, 20)));
             FormattedText text = new FormattedText($"Drill Level: {model.drill.DrillLvl}/3\tStorage Level: {model.drill.StorageLvl}/3\tFuelTank Level: {model.drill.FuelTankLvl}/3", System.Globalization.CultureInfo.CurrentCulture, FlowDirection.LeftToRight, new Typeface("Arial"), 10, Brushes.Black, 1.25);
-            GeometryDrawing levelText = new GeometryDrawing(Brushes.Black, new Pen(Brushes.Black, 1), text.BuildGeometry(new Point(15, 5)));
+            GeometryDrawing levelText = new GeometryDrawing(Brushes.Black, new Pen(Brushes.Black, 1), text.BuildGeometry(new Point(35, 5)));
 
             g.Children.Add(background);
             g.Children.Add(levelText);
+
+            return g;
+        }
+
+        private Drawing GetMenuText()
+        {
+            DrawingGroup g = new DrawingGroup();
+            GeometryDrawing background = new GeometryDrawing(Brushes.AliceBlue, new Pen(Brushes.Blue, 1), new RectangleGeometry(new Rect(model.MenuButton[0], model.MenuButton[1], model.MenuButton[2], model.MenuButton[3])));
+            FormattedText text = new FormattedText("Menu", System.Globalization.CultureInfo.CurrentCulture, FlowDirection.LeftToRight, new Typeface("Arial"), 10, Brushes.Black, 1.25);
+            GeometryDrawing menuText = new GeometryDrawing(Brushes.Black, new Pen(Brushes.Black, 1), text.BuildGeometry(new Point(3, 5)));
+
+            g.Children.Add(background);
+            g.Children.Add(menuText);
 
             return g;
         }

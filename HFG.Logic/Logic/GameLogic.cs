@@ -32,6 +32,10 @@ namespace HFG.Logic
             this.dbLogic = new DbLogic(model, new DrillRepository(entities), new BrickRepository(entities), new ConnRepository(entities));
             this.tickLogic = new TickLogic(model);
             this.gameModel.TileSize = Math.Min(this.gameModel.GameWidth / CONFIG.MapWidth, this.gameModel.GameHeight / CONFIG.MapHeight);
+            this.gameModel.MenuButton = new double[] { 0, 0, 30, 20 };
+            this.gameModel.StartButton = new double[] {this.gameModel.GameWidth / 2 - 180, this.gameModel.GameHeight / 2, 400, 40};
+            this.gameModel.ContinueButton = new double[] { this.gameModel.GameWidth / 2 - 180, this.gameModel.GameHeight / 2 + 60, 400, 40 };
+            this.gameModel.HighscoreButton = new double[] { this.gameModel.GameWidth / 2 - 180, this.gameModel.GameHeight / 2 + 120, 400, 40 };
         }
 
         static Random R = new Random();

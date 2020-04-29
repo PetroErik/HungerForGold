@@ -20,6 +20,18 @@ namespace HFG.Display
         public double GameHeight { get; set; }      // Pixel Size
         public double TileSize { get; set; }        // Pixel Size
 
+        /*
+         double array to set area for mouse click:
+         index 0: X,
+         index 1: Y,
+         index 2: width,
+         index 3: height
+             */
+        public double[] MenuButton { get; set; }
+        public double[] StartButton { get; set; }
+        public double[] ContinueButton { get; set; }
+        public double[] HighscoreButton { get; set; }
+
         public GameModel(double w, double h)
         {
             this.GameWidth = w;
