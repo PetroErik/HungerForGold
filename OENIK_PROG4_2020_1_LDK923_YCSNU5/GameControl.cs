@@ -48,7 +48,7 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5
             if (win != null)
             {
                 win.KeyDown += Win_KeyDown;
-                //win.MouseDown += Win_MouseDown;
+                win.MouseDown += Win_MouseDown;
                 timer = new DispatcherTimer();
                 timer.Interval = TimeSpan.FromMilliseconds(100);
                 timer.Tick += Timer_Tick;
@@ -56,6 +56,10 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5
             }
 
             InvalidateVisual();
+        }
+
+        private void Win_MouseDown(object sender, MouseButtonEventArgs e)
+        {
         }
 
         private void Timer_Tick(object sender, EventArgs e)
@@ -138,6 +142,9 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5
                 case Key.D1: gameMode = "game"; this.gameLogic.startGame(); break;
                 case Key.D2: gameContinues(); break;
                 case Key.D3: gameMode = "highscore"; break;
+                case Key.F1: gameLogic.moveLogic.UpgradeDrill(); break;
+                case Key.F2: gameLogic.moveLogic.UpgradeFuelTank(); break;
+                case Key.F3: gameLogic.moveLogic.UpgradeStorage(); break;
                 case Key.Escape: gameExit(); break;
             }
             InvalidateVisual();

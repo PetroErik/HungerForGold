@@ -42,12 +42,6 @@ namespace HFG.Logic
                 ClearStorage();
 
             }
-            if (CollisionWithMachinist())
-            {
-                //UpgradeDrill();
-                UpgradeFuelTank();
-                UpgradeStorage();
-            }
             foreach (Mineral mineral in this.gameModel.Minerals)
             {
                 CollectMinerals(mineral);
@@ -119,27 +113,30 @@ namespace HFG.Logic
 
         public void UpgradeDrill()
         {
-            if (this.gameModel.drill.DrillLvl < CONFIG.MaxDrillLevel)
+            if (this.gameModel.drill.DrillLvl < CONFIG.MaxDrillLevel && this.gameModel.TotalPoints >= 5000)
             {
                 this.gameModel.drill.DrillLvl++;
+                this.gameModel.TotalPoints = this.gameModel.TotalPoints - 5000;
             }
         }
 
         public void UpgradeFuelTank()
         {
-            if (this.gameModel.drill.FuelTankLvl < CONFIG.MaxFuelTankLevel)
+            if (this.gameModel.drill.FuelTankLvl < CONFIG.MaxFuelTankLevel && this.gameModel.TotalPoints >= 5000)
             {
                 this.gameModel.drill.FuelTankLvl++;
                 this.gameModel.drill.FuelCapacity = this.gameModel.drill.FuelTankLvl * 100;
+                this.gameModel.TotalPoints = this.gameModel.TotalPoints - 5000;
             }
         }
 
         public void UpgradeStorage()
         {
-            if (this.gameModel.drill.StorageLvl < CONFIG.MaxStorageLevel)
+            if (this.gameModel.drill.StorageLvl < CONFIG.MaxStorageLevel && this.gameModel.TotalPoints >= 5000)
             {
                 this.gameModel.drill.StorageLvl++;
-                this.gameModel.drill.StorageCapacity = this.gameModel.drill.StorageLvl * 100;
+                this.gameModel.drill.StorageCapacity = this.gameModel.drill.StorageLvl * 10;
+                this.gameModel.TotalPoints = this.gameModel.TotalPoints - 5000;
 
             }
         }
