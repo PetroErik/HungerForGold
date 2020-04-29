@@ -27,32 +27,35 @@ namespace HFG.Logic
         /// <param name="dy"></param>
         public void MoveDrill(int dx, int dy)
         {
-            double newX = (this.gameModel.drill.Location[0] + (dx * this.gameModel.TileSize));
-            double newY = (this.gameModel.drill.Location[1] + (dy * this.gameModel.TileSize));
-            double startingPointToDrill = this.gameModel.GameHeight / 2 - this.gameModel.TileSize * 4;
+            for (int i = 0; i < this.gameModel.drill.DrillLvl; i++)
+            {
+                double newX = this.gameModel.drill.Location[0] + (dx * this.gameModel.TileSize);
+                double newY = this.gameModel.drill.Location[1] + (dy * this.gameModel.TileSize);
+                double startingPointToDrill = this.gameModel.GameHeight / 2 - this.gameModel.TileSize * 4;
+                if (newX >= -1 && newY >= startingPointToDrill - 10 && newX <= this.gameModel.GameWidth && newY <= this.gameModel.GameHeight)
+                {
+                    this.gameModel.drill.Location[0] = newX;
+                    this.gameModel.drill.Location[1] = newY;
+                }
+                if (CollisionWithSilo())
+                {
+                    CalcTotalPoints();
+                    ClearStorage();
 
-            if (newX >= -1 && newY >= startingPointToDrill - 10 && newX <= this.gameModel.GameWidth && newY <= this.gameModel.GameHeight)
-            {
-                this.gameModel.drill.Location[0] = newX;
-                this.gameModel.drill.Location[1] = newY;
+                }
+                foreach (Mineral mineral in this.gameModel.Minerals)
+                {
+                    CollectMinerals(mineral);
+                }
             }
-            if (CollisionWithSilo())
-            {
-                CalcTotalPoints();
-                ClearStorage();
 
-            }
-            foreach (Mineral mineral in this.gameModel.Minerals)
-            {
-                CollectMinerals(mineral);
-            }
         }
 
         public bool CollisionWithSilo()
         {
             double siloX = gameModel.SiloHouse.Location[0];
             double siloY = gameModel.SiloHouse.Location[1];
-            double siloHeight = gameModel.SiloHouse.Location[1] + 5 * gameModel.TileSize;
+            double siloHeight = gameModel.SiloHouse.Location[1] + 5 * gameModel.TileSize -10;
             double siloWidth = gameModel.SiloHouse.Location[0] + 3 * gameModel.TileSize;
 
             return siloX < gameModel.drill.Location[0] && siloWidth > gameModel.drill.Location[0]
@@ -104,7 +107,7 @@ namespace HFG.Logic
         {
             double machX = gameModel.MachinistHouse.Location[0];
             double machY = gameModel.MachinistHouse.Location[1];
-            double machHeight = gameModel.MachinistHouse.Location[1] + 5 * gameModel.TileSize;
+            double machHeight = gameModel.MachinistHouse.Location[1] + 5 * gameModel.TileSize - 10;
             double machWidth = gameModel.MachinistHouse.Location[0] + 3 * gameModel.TileSize;
 
             return machX <= gameModel.drill.Location[0] && machWidth >= gameModel.drill.Location[0]
