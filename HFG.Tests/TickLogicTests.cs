@@ -9,22 +9,15 @@ using System.Threading.Tasks;
 
 namespace HFG.Tests
 {
+    /// <summary>
+    /// Tests for the TickLogic.
+    /// </summary>
     [TestFixture]
     class TickLogicTests
     {
-        [Test]
-        public void TestTickLogic_GravityTick()
-        {
-            GameLogic logic = new GameLogic(new GameModel(500, 500));
-            logic.InitialMap();
-            logic.gameModel.drill.Location = new double[] { 15, 15 };
-            
-            logic.tickLogic.GravityTick();
-
-            Assert.That(logic.gameModel.drill.Location[0], Is.EqualTo(15));
-            Assert.That(logic.gameModel.drill.Location[1], Is.EqualTo(16));
-        }
-
+        /// <summary>
+        /// Test the FuelTick method when the fuel tank is not empty.
+        /// </summary>
         [Test]
         public void TestTickLogic_FuelTick_WhenFuelNotNull()
         {
@@ -38,6 +31,9 @@ namespace HFG.Tests
             Assert.That(logic.gameModel.drill.FuelTankFullness, Is.EqualTo(39));
         }
 
+        /// <summary>
+        /// Test the FuelTick method when the fuel tank is empty.
+        /// </summary>
         [Test]
         public void TestTickLogic_FuelTick_WhenFuelNull()
         {

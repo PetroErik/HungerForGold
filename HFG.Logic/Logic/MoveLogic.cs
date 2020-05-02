@@ -19,12 +19,11 @@ namespace HFG.Logic
             this.gameModel = model;
         }
 
-        // When calling the MoveDrill(dx,dy) method in GameControl ==> dx and dy are equal to mode.drill.DrillLvl
         /// <summary>
-        /// modifed move method, if colide with silo then plus actual point, and if collide with machinist then clear storage.
+        /// Defines the movement of the drill.
         /// </summary>
-        /// <param name="dx"></param>
-        /// <param name="dy"></param>
+        /// <param name="dx">Movement vector to the x direction.</param>
+        /// <param name="dy">Movement vector to the y direction.</param>
         public void MoveDrill(int dx, int dy)
         {
             for (int i = 0; i < this.gameModel.drill.DrillLvl; i++)
@@ -41,16 +40,18 @@ namespace HFG.Logic
                 {
                     CalcTotalPoints();
                     ClearStorage();
-
                 }
                 foreach (Mineral mineral in this.gameModel.Minerals)
                 {
                     CollectMinerals(mineral);
                 }
             }
-
         }
 
+        /// <summary>
+        /// Checks if the drill hits the Silo.
+        /// </summary>
+        /// <returns>True if the drill is colliding with the Silo.</returns>
         public bool CollisionWithSilo()
         {
             double siloX = gameModel.SiloHouse.Location[0];
@@ -62,11 +63,17 @@ namespace HFG.Logic
                 && siloY < gameModel.drill.Location[1] && siloHeight > gameModel.drill.Location[1];
         }
 
+        /// <summary>
+        /// Add the actual points to the TotalPoints.
+        /// </summary>
         public void CalcTotalPoints()
         {
             this.gameModel.TotalPoints += this.gameModel.ActualPoints;
         }
 
+        /// <summary>
+        /// Sets the Storage and FuelTank element to the initial state.
+        /// </summary>
         public void ClearStorage()
         {
             this.gameModel.drill.StorageFullness = 0;
@@ -74,6 +81,10 @@ namespace HFG.Logic
             this.gameModel.drill.FuelTankFullness = this.gameModel.drill.FuelCapacity;
         }
 
+        /// <summary>
+        /// When the drill hits a mineral item, then it collects it.
+        /// </summary>
+        /// <param name="min">Mineral that the drill is colliding with.</param>
         public void CollectMinerals(Mineral min)
         {
             double minX = gameModel.drill.Location[0] - 10;
@@ -103,6 +114,10 @@ namespace HFG.Logic
             }
         }
 
+        /// <summary>
+        /// Checks if the drill hits the Machinist.
+        /// </summary>
+        /// <returns>True if the drill is colliding with the Machinist.</returns>
         public bool CollisionWithMachinist()
         {
             double machX = gameModel.MachinistHouse.Location[0];
@@ -114,6 +129,9 @@ namespace HFG.Logic
                 && machY <= gameModel.drill.Location[1] && machHeight >= gameModel.drill.Location[1];
         }
 
+        /// <summary>
+        /// Upgrade the drill element.
+        /// </summary>
         public void UpgradeDrill()
         {
             if (this.gameModel.drill.DrillLvl < CONFIG.MaxDrillLevel && this.gameModel.TotalPoints >= 5000)
@@ -123,6 +141,9 @@ namespace HFG.Logic
             }
         }
 
+        /// <summary>
+        /// Upgrade the FuelTank element.
+        /// </summary>
         public void UpgradeFuelTank()
         {
             if (this.gameModel.drill.FuelTankLvl < CONFIG.MaxFuelTankLevel && this.gameModel.TotalPoints >= 5000)
@@ -133,6 +154,9 @@ namespace HFG.Logic
             }
         }
 
+        /// <summary>
+        /// Upgrade the Storage element.
+        /// </summary>
         public void UpgradeStorage()
         {
             if (this.gameModel.drill.StorageLvl < CONFIG.MaxStorageLevel && this.gameModel.TotalPoints >= 5000)
@@ -140,7 +164,6 @@ namespace HFG.Logic
                 this.gameModel.drill.StorageLvl++;
                 this.gameModel.drill.StorageCapacity = this.gameModel.drill.StorageLvl * 10;
                 this.gameModel.TotalPoints = this.gameModel.TotalPoints - 5000;
-
             }
         }
     }

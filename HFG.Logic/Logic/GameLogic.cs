@@ -18,12 +18,16 @@ namespace HFG.Logic
     /// </summary>
     public class GameLogic : IGameLogic
     {
+        static Random R = new Random();
         public GameModel gameModel;
         public MoveLogic moveLogic;
         public DbLogic dbLogic;
         public TickLogic tickLogic;
 
-        
+        /// <summary>
+        /// Initiates properties of logics and model.
+        /// </summary>
+        /// <param name="model">GameModel parameter help the initialization of properties.</param>
         public GameLogic(GameModel model)
         {
             HFGEntities entities = new HFGEntities();
@@ -38,8 +42,9 @@ namespace HFG.Logic
             this.gameModel.HighscoreButton = new double[] { this.gameModel.GameWidth / 2 - 180, this.gameModel.GameHeight / 2 + 120, 400, 40 };
         }
 
-        static Random R = new Random();
-
+        /// <summary>
+        /// Sets the initial state of the game.
+        /// </summary>
         public void startGame()
         {
             this.gameModel.drill.Location[0] = CONFIG.MapWidth * this.gameModel.TileSize;
@@ -65,6 +70,10 @@ namespace HFG.Logic
                 }
             }
         }
+
+        /// <summary>
+        /// Sets the initial state of the map.
+        /// </summary>
         public void InitialMap()
         {
             this.gameModel.TileSize = Math.Min(this.gameModel.GameWidth / CONFIG.MapWidth, this.gameModel.GameHeight / CONFIG.MapHeight);
@@ -74,6 +83,10 @@ namespace HFG.Logic
             this.gameModel.MachinistHouse = new MachinistHouse(CONFIG.MapWidth / 4 * this.gameModel.TileSize, CONFIG.MapHeight / 3 * this.gameModel.TileSize - 4 * this.gameModel.TileSize);           
         }
 
+        /// <summary>
+        /// Decide if the game is still on or it is over.
+        /// </summary>
+        /// <returns>Return value defines the state of the game. If the value is true, the game is over.</returns>
         public bool GameOver()
         {
             return this.gameModel.drill.FuelTankFullness <= 0;

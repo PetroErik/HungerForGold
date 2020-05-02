@@ -6,11 +6,14 @@ using System.Threading.Tasks;
 
 namespace HFG.Logic
 {
+    /// <summary>
+    /// Interface for tick logic.
+    /// </summary>
     interface ITickLogic
     {
-        // Imitates gravity
-        void GravityTick();
-
+        /// <summary>
+        /// Decreases the FuelTankFullness by 1.
+        /// </summary>
         void FuelTick();
     }
 }

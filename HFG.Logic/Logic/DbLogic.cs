@@ -18,6 +18,13 @@ namespace HFG.Logic
         IBrickRepository brickRepo;
         IConnRepository connRepo;
 
+        /// <summary>
+        /// Sets the intial values of the properties.
+        /// </summary>
+        /// <param name="model">Initial GameModel.</param>
+        /// <param name="drillRepo">Initial DrillRepository.</param>
+        /// <param name="brickRepo">Initial BrickRepository.</param>
+        /// <param name="connRepo">Initial ConnRepository.</param>
         public DbLogic(GameModel model, IDrillRepository drillRepo, IBrickRepository brickRepo, IConnRepository connRepo)
         {
             this.gameModel = model;
@@ -25,8 +32,6 @@ namespace HFG.Logic
             this.brickRepo = brickRepo;
             this.connRepo = connRepo;
         }
-
-        // Loads the last saved state of the game.
 
         /// <summary>
         /// Modify THIS - repo is always not null
@@ -61,6 +66,11 @@ namespace HFG.Logic
             return false;
         }
 
+        /// <summary>
+        /// Save the actual state of the game.
+        /// </summary>
+        /// <param name="drill">Drill that has to be saved.</param>
+        /// <param name="minerals">List of minerals that are have to be saved.</param>
         public void SaveGame(Drill drill, List<Mineral> minerals)
         {
             Database.drill newDrill = new Database.drill()
@@ -90,6 +100,11 @@ namespace HFG.Logic
             }
         }
 
+        /// <summary>
+        /// Converting strings to MineralType.
+        /// </summary>
+        /// <param name="type">String that has to be converted.</param>
+        /// <returns>Result MineralType of the convertion.</returns>
         private static MineralsType ConvertToMineralsType(string type)
         {
             if (type.ToLower() == "gold")
@@ -106,6 +121,10 @@ namespace HFG.Logic
             }
         }
 
+        /// <summary>
+        /// Lists HighScores.
+        /// </summary>
+        /// <returns>List of the top 5 highest score.</returns>
         public List<int?> Highscore()
         {
             List<int?> highScore = new List<int?>();
@@ -117,7 +136,6 @@ namespace HFG.Logic
                 {
                     highScore.Add(score);
                 }
-
             }
             return highScore;
         }

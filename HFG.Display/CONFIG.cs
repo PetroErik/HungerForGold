@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace HFG.Display
 {
+    /// <summary>
+    /// Containing the constants of our Game.
+    /// </summary>
     public static class CONFIG
     {
 
@@ -21,7 +24,6 @@ namespace HFG.Display
         public static int MapHeight = 20;
 
         // Fixed upgrade price for all elements for all levels.
-        // Later we can make it more complex if we want.
         public static int UpgradePrice = 5000;
 
         public static int MaxFuelTankLevel = 3;
@@ -37,18 +39,5 @@ namespace HFG.Display
         public static string BronzeBrush = "OENIK_PROG4_2020_1_LDK923_YCSNU5.IMG.Bronze.png";
         public static string SiloBrush = "OENIK_PROG4_2020_1_LDK923_YCSNU5.IMG.Silo.png";
         public static string MachinistBrush = "OENIK_PROG4_2020_1_LDK923_YCSNU5.IMG.Machinist.png";
-
-        // These values will set according to the practise.
-        // public static int StorageLvl3 = 300;
-        // public static int StorageLvl2 = 200;
-        // public static int StorageLvl1 = 100;
-        // 
-        // public static int FuelTankLvl3 = 300;
-        // public static int FuelTankLvl2 = 200;
-        // public static int FuelTankLvl1 = 100;
-        // 
-        // public static int DrillLvl3 = 300;
-        // public static int DrillLvl2 = 200;
-        // public static int DrillLvl1 = 100;
     }
 }

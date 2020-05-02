@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace HFG.Display
 {
+    /// <summary>
+    /// Model of our Game.
+    /// </summary>
     public class GameModel
     {
         public int TotalPoints { get; set; }
@@ -32,6 +35,11 @@ namespace HFG.Display
         public double[] ContinueButton { get; set; }
         public double[] HighscoreButton { get; set; }
 
+        /// <summary>
+        /// Sets the values of game width and height.
+        /// </summary>
+        /// <param name="w">Width of the Game.</param>
+        /// <param name="h">Height of the Game.</param>
         public GameModel(double w, double h)
         {
             this.GameWidth = w;

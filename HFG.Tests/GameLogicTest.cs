@@ -9,9 +9,15 @@ using System.Threading.Tasks;
 
 namespace HFG.Tests
 {
+    /// <summary>
+    /// Tests for GameLogic.
+    /// </summary>
     [TestFixture]
     public class GameLogicTest
     {
+        /// <summary>
+        /// Tests if the constructor work properly.
+        /// </summary>
         [Test]
         public void TestGameLogic_Ctor()
         {
@@ -21,6 +27,9 @@ namespace HFG.Tests
             Assert.That(logic.gameModel.TileSize, Is.Not.EqualTo(0));
         }
 
+        /// <summary>
+        /// Tests of the StartGame method works.
+        /// </summary>
         [Test]
         public void TestGameLogic_StartGame()
         {

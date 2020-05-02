@@ -7,6 +7,9 @@ using System.Windows;
 
 namespace HFG.Display
 {
+    /// <summary>
+    /// Drill character.
+    /// </summary>
     public class Drill : Character
     {
         public int StorageLvl { get; set; }
@@ -19,6 +22,9 @@ namespace HFG.Display
         public int StorageFullness { get; set; }
         public int FuelTankFullness { get; set; }
 
+        /// <summary>
+        /// Sets the intial values of the drill components.
+        /// </summary>
         public void initialValue()
         {
             this.StorageLvl = 1;
@@ -30,9 +36,14 @@ namespace HFG.Display
             this.FuelTankFullness = FuelCapacity;
         }
 
+        /// <summary>
+        /// Sets the location of the drill.
+        /// </summary>
+        /// <param name="x">X location of the drill.</param>
+        /// <param name="y">Y location of the drill.</param>
         public Drill(double x, double y)
         {
-            this.Location = new double[2] {x, y};          
+            this.Location = new double[2] {x, y};
         }
     }
 }

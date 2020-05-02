@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace HFG.Display
 {
+    /// <summary>
+    /// Possible types of a mineral.
+    /// </summary>
     public enum MineralsType
     {
         Gold,

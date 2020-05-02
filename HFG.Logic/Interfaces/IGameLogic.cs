@@ -16,11 +16,16 @@ namespace HFG.Logic
         /// create the houses
         /// </summary>
         void InitialMap();
+
         /// <summary>
         /// create the drill and the list of minerals
         /// </summary>
         void startGame();
 
+        /// <summary>
+        /// Check is the Game is Over.
+        /// </summary>
+        /// <returns>True if the Game is Over.</returns>
         bool GameOver();
     }
 }

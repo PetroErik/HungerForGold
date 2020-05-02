@@ -9,9 +9,15 @@ using System.Threading.Tasks;
 
 namespace HFG.Tests
 {
+    /// <summary>
+    /// Tests the MoveLogic.
+    /// </summary>
     [TestFixture]
     class MoveLogicTests
     {
+        /// <summary>
+        /// Test if the MoveDrill method works well.
+        /// </summary>
         [Test]
         public void TestMoveLogic_MoveDrill()
         {
@@ -26,6 +32,9 @@ namespace HFG.Tests
             Assert.That(logic.gameModel.drill.Location[1], Is.EqualTo(300 + logic.gameModel.TileSize));
         }
 
+        /// <summary>
+        /// Test the MoveLogic if the drill is on the left border of the screen.
+        /// </summary>
         [Test]
         public void TestMoveLogic_MoveDrill_ToLeftBorder()
         {
@@ -39,6 +48,9 @@ namespace HFG.Tests
             Assert.That(logic.gameModel.drill.Location[1], Is.EqualTo(5));
         }
 
+        /// <summary>
+        /// Test the MoveLogic if the drill is on the upper border of the screen.
+        /// </summary>
         [Test]
         public void TestMoveLogic_MoveDrill_ToUpBorder()
         {
@@ -52,6 +64,9 @@ namespace HFG.Tests
             Assert.That(logic.gameModel.drill.Location[1], Is.EqualTo(5));
         }
 
+        /// <summary>
+        /// Test the MoveLogic if the drill is on the right border of the screen.
+        /// </summary>
         [Test]
         public void TestMoveLogic_MoveDrill_ToRightBorder()
         {
@@ -65,6 +80,9 @@ namespace HFG.Tests
             Assert.That(logic.gameModel.drill.Location[1], Is.EqualTo(490));
         }
 
+        /// <summary>
+        /// Test the MoveLogic if the drill is on the bottom border of the screen.
+        /// </summary>
         [Test]
         public void TestMoveLogic_MoveDrill_ToDownBorder()
         {
@@ -78,6 +96,9 @@ namespace HFG.Tests
             Assert.That(logic.gameModel.drill.Location[1], Is.EqualTo(490));
         }
 
+        /// <summary>
+        /// Test the collisionWithSilo method.
+        /// </summary>
         [Test]
         public void TestMoveLogic_CollisionWithSilo()
         {
@@ -86,13 +107,16 @@ namespace HFG.Tests
             logic.InitialMap();
             logic.startGame();
             model.drill.Location = new double[] { 15, 15 };
-            model.SiloHouse.Location = new double[] { 15, 15 };
+            model.SiloHouse.Location = new double[] { 0, 0 };
 
             bool result = logic.moveLogic.CollisionWithSilo();
 
             Assert.That(result, Is.EqualTo(true));
         }
 
+        /// <summary>
+        /// Test the collisionWithMachinist method.
+        /// </summary>
         [Test]
         public void TestMoveLogic_CollisionWithMachinsit()
         {
@@ -108,6 +132,9 @@ namespace HFG.Tests
             Assert.That(result, Is.EqualTo(true));
         }
 
+        /// <summary>
+        /// Test the CalcTotalPoints method.
+        /// </summary>
         [Test]
         public void TestMoveLogic_CalcTotalPoints()
         {
@@ -121,6 +148,9 @@ namespace HFG.Tests
             Assert.That(logic.gameModel.TotalPoints, Is.EqualTo(100));
         }
 
+        /// <summary>
+        /// Test the ClearStorage method.
+        /// </summary>
         [Test]
         public void TestMoveLogic_ClearStorage()
         {
@@ -135,6 +165,9 @@ namespace HFG.Tests
             Assert.That(logic.gameModel.ActualPoints, Is.EqualTo(0));
         }
 
+        /// <summary>
+        /// Test the collection of minerals when the storage is not full.
+        /// </summary>
         [Test]
         public void TestMoveLogic_CollectMineral_WhenStorageNotFull()
         {
@@ -150,6 +183,9 @@ namespace HFG.Tests
             Assert.That(logic.gameModel.drill.StorageFullness, Is.EqualTo(1));
         }
 
+        /// <summary>
+        /// Test the collection of a mineral when the storage is full.
+        /// </summary>
         [Test]
         public void TestMoveLogic_CollectMineral_WhenStorageFull()
         {

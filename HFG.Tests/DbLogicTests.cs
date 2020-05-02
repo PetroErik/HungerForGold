@@ -11,6 +11,9 @@ using System.Threading.Tasks;
 
 namespace HFG.Tests
 {
+    /// <summary>
+    /// Tests for Database logic.
+    /// </summary>
     [TestFixture]
     class DbLogicTests
     {
