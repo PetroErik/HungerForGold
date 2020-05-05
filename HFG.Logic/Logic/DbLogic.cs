@@ -13,12 +13,13 @@ namespace HFG.Logic
     /// </summary>
     public class DbLogic : IDbLogic
     {
-        GameModel gameModel;
+        private GameModel gameModel;
         IDrillRepository drillRepo;
         IBrickRepository brickRepo;
         IConnRepository connRepo;
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="DbLogic"/> class.
         /// Sets the intial values of the properties.
         /// </summary>
         /// <param name="model">Initial GameModel.</param>
@@ -80,7 +81,7 @@ namespace HFG.Logic
                 drill_score = gameModel.TotalPoints,
                 drill_fuel = gameModel.drill.FuelTankLvl,
                 drill_storage = gameModel.drill.StorageLvl,
-                drill_speed = gameModel.drill.DrillLvl
+                drill_speed = this.gameModel.drill.DrillLvl,
             };
             drillRepo.Addnew(newDrill);
             foreach (Mineral mineral in minerals)

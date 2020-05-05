@@ -20,7 +20,7 @@ namespace HFG.Logic
         /// <summary>
         /// create the drill and the list of minerals
         /// </summary>
-        void startGame();
+        void StartGame();
 
         /// <summary>
         /// Check is the Game is Over.

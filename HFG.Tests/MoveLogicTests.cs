@@ -23,7 +23,7 @@ namespace HFG.Tests
         {
             GameLogic logic = new GameLogic(new GameModel(500,500));
             logic.InitialMap();
-            logic.startGame();
+            logic.StartGame();
             logic.gameModel.drill.Location = new double[] { 300, 300 };
 
             logic.moveLogic.MoveDrill(1, 1);
@@ -105,7 +105,7 @@ namespace HFG.Tests
             GameModel model = new GameModel(500, 500);
             GameLogic logic = new GameLogic(model);
             logic.InitialMap();
-            logic.startGame();
+            logic.StartGame();
             model.drill.Location = new double[] { 15, 15 };
             model.SiloHouse.Location = new double[] { 0, 0 };
 
@@ -123,7 +123,7 @@ namespace HFG.Tests
             GameModel model = new GameModel(500, 500);
             GameLogic logic = new GameLogic(model);
             logic.InitialMap();
-            logic.startGame();
+            logic.StartGame();
             model.drill.Location = new double[] { 15, 15 };
             model.MachinistHouse.Location = new double[] { 15, 15 };
 
@@ -174,7 +174,7 @@ namespace HFG.Tests
             GameLogic logic = new GameLogic(new GameModel(500, 500));
             Mineral min = new Mineral(5, 5, MineralsType.Gold);
             logic.InitialMap();
-            logic.startGame();
+            logic.StartGame();
             logic.gameModel.drill.Location = new double[] { 5, 5 };
 
             logic.moveLogic.CollectMinerals(min);

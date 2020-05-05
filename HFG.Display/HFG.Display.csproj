@@ -57,8 +57,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CONFIG.cs" />
+    <Compile Include="Elements\Bomb.cs" />
     <Compile Include="Elements\Character.cs" />
     <Compile Include="Elements\Drill.cs" />
+    <Compile Include="Elements\Enemy.cs" />
     <Compile Include="Elements\MachinistHouse.cs" />
     <Compile Include="Elements\Mineral.cs" />
     <Compile Include="Elements\MineralsType.cs" />
@@ -68,6 +70,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Analyzer Include="..\packages\StyleCop.Analyzers.Unstable.1.2.0.164\analyzers\dotnet\cs\StyleCop.Analyzers.CodeFixes.dll" />
+    <Analyzer Include="..\packages\StyleCop.Analyzers.Unstable.1.2.0.164\analyzers\dotnet\cs\StyleCop.Analyzers.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

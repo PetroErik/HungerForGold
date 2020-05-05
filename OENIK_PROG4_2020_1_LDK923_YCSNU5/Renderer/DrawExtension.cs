@@ -71,19 +71,32 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5
 
                 brushes.Add(fname, ib);
             }
+
             return brushes[fname];
         }
 
         public Brush BackgroundBrush { get { return GetBrush(CONFIG.BackgroundBrush, false); } }
+
         public Brush DrillBrush { get { return GetBrush(CONFIG.DrillBrush, false); } }
+
         public Brush GroundBrush { get { return GetBrush(CONFIG.GroundBrush, true); } }
+
         public Brush GroundLevelBrush { get { return GetBrush(CONFIG.GroundLevelBrush, true); } }
+
         public Brush GoldBrush { get { return GetBrush(CONFIG.GoldBrush, true); } }
+
         public Brush SilverBrush { get { return GetBrush(CONFIG.SilverBrush, true); } }
+
         public Brush BronzeBrush { get { return GetBrush(CONFIG.BronzeBrush, true); } }
+
         public Brush SiloBrush { get { return GetBrush(CONFIG.SiloBrush, false); } }
+
         public Brush MachinistBrush { get { return GetBrush(CONFIG.MachinistBrush, false); } }
+
         public Brush DeletingBrush { get { return new SolidColorBrush(Colors.Black); } }
 
+        public Brush EnemyBrush { get { return GetBrush(CONFIG.EnemyBrush, true); } }
+
+        public Brush BombBrush {  get { return GetBrush(CONFIG.BombBrush, true); } }
     }
 }

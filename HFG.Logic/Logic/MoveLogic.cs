@@ -1,4 +1,5 @@
 ﻿using HFG.Display;
+using HFG.Display.Elements;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -127,6 +128,42 @@ namespace HFG.Logic
 
             return machX <= gameModel.drill.Location[0] && machWidth >= gameModel.drill.Location[0]
                 && machY <= gameModel.drill.Location[1] && machHeight >= gameModel.drill.Location[1];
+        }
+
+        public bool CollisionWithEnemy()
+        {
+            double minX = this.gameModel.drill.Location[0] - 10;
+            double maxX = minX + this.gameModel.TileSize;
+            double minY = this.gameModel.drill.Location[1] - 10;
+            double maxY = minY + this.gameModel.TileSize;
+
+            foreach (Enemy enemy in this.gameModel.Enemies)
+            {
+                if (minX <= enemy.Location[0] && maxX >= enemy.Location[0] && minY <= enemy.Location[1] && maxY >= enemy.Location[1])
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        public bool CollisionWithBomb()
+        {
+            double minX = this.gameModel.drill.Location[0] - 10;
+            double maxX = minX + this.gameModel.TileSize;
+            double minY = this.gameModel.drill.Location[1] - 10;
+            double maxY = minY + this.gameModel.TileSize;
+
+            foreach (Bomb bomb in this.gameModel.Bombs)
+            {
+                if (minX <= bomb.Location[0] && maxX >= bomb.Location[0] && minY <= bomb.Location[1] && maxY >= bomb.Location[1])
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
 
         /// <summary>

@@ -23,7 +23,7 @@ namespace HFG.Tests
         {
             GameLogic logic = new GameLogic(new GameModel(500, 500));
             logic.InitialMap();
-            logic.startGame();
+            logic.StartGame();
             logic.gameModel.TotalPoints = 5000;
 
             logic.moveLogic.UpgradeFuelTank();
@@ -54,7 +54,7 @@ namespace HFG.Tests
         {
             GameLogic logic = new GameLogic(new GameModel(500, 500));
             logic.InitialMap();
-            logic.startGame();
+            logic.StartGame();
             logic.gameModel.TotalPoints = 5000;
 
             logic.moveLogic.UpgradeDrill();
@@ -85,7 +85,7 @@ namespace HFG.Tests
         {
             GameLogic logic = new GameLogic(new GameModel(500, 500));
             logic.InitialMap();
-            logic.startGame();
+            logic.StartGame();
             logic.gameModel.TotalPoints = 5000;
 
             logic.moveLogic.UpgradeStorage();

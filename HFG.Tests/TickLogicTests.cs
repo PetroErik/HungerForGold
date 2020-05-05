@@ -23,7 +23,7 @@ namespace HFG.Tests
         {
             GameLogic logic = new GameLogic(new GameModel(500, 500));
             logic.InitialMap();
-            logic.startGame();
+            logic.StartGame();
             logic.gameModel.drill.FuelTankFullness = 40;
 
             logic.tickLogic.FuelTick();

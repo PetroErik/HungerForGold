@@ -1,4 +1,5 @@
 ﻿using HFG.Display;
+using HFG.Display.Elements;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -63,23 +64,24 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5
         {
 
             DrawingGroup dg = new DrawingGroup();
-            //background = this.backGroundAndHouseRenderer.BackGroundClone();
             dg.Children.Add(background);
-            dg.Children.Add(GetDrill());
             dg.Children.Add(GetMinerals());
+            dg.Children.Add(GetEnemies());
+            dg.Children.Add(GetBombs());
             dg.Children.Add(GetFuelTank());
             dg.Children.Add(GetStorage());
             dg.Children.Add(GetActualPoints());
             dg.Children.Add(GetTotalPoints());
             dg.Children.Add(GetLevelInformation());
             dg.Children.Add(GetMenuText());
+            dg.Children.Add(GetDrill());
 
             if (gameOver)
             {
                 dg.Children.Add(drawExtension.drawText("GAME OVER!", 40, model.GameWidth / 2 - 120, model.GameHeight / 2 - 160));
 
             }
-            //dg.Children.Add(Debug());
+
             return dg;
         }
 
@@ -114,34 +116,19 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5
             return dg;
         }
 
-
-        //Point oldPlayerPosition;
-        //Point currentPos;
-
-
         private Drawing Debug()
         {
             return drawExtension.drawText($"DEBUG: {model.drill.Location[0]} {model.drill.Location[1]}", 30, 10, 10);
         }
-        //Drawing oldDrill;
+
         private Drawing GetDrill()
         {
-
-
-            // Pixel  coordinates!!!!
             Geometry g = new RectangleGeometry(new Rect(this.model.drill.Location[0], model.drill.Location[1], model.TileSize, model.TileSize));
             Drawing oldDrill = new GeometryDrawing(drawExtension.DrillBrush, null, g);
 
-            //Draw black box
-            //if (model.drill.Location[1] >= startingPointToDrill)
-            //{
-            //    Geometry blackbox = new RectangleGeometry(new Rect(model.drill.Location[0], model.drill.Location[1], model.TileSize, model.TileSize));
-            //    GeometryDrawing drawingBlackBox = new GeometryDrawing(drawExtension.DeletingBrush, null, blackbox);
-            //    background.Children.Add(drawingBlackBox);
-            //}
-
             return oldDrill;
         }
+
         private Drawing GetMinerals()
         {
             DrawingGroup minerals = new DrawingGroup();
@@ -169,6 +156,7 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5
                     gGold.Children.Add(box);
                 }
             }
+
             Drawing oldBronzes = new GeometryDrawing(drawExtension.BronzeBrush, null, gBronze);
             Drawing oldSilvers = new GeometryDrawing(drawExtension.SilverBrush, null, gSliver);
             Drawing oldGolds = new GeometryDrawing(drawExtension.GoldBrush, null, gGold);
@@ -180,6 +168,33 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5
             return minerals;
         }
 
+        private Drawing GetEnemies()
+        {
+            GeometryGroup enemies = new GeometryGroup();
+            for (int i = 0; i < this.model.Enemies.Count(); i++)
+            {
+                Geometry box = new RectangleGeometry(new Rect(this.model.Enemies[i].Location[0], this.model.Enemies[i].Location[1], this.model.TileSize, this.model.TileSize));
+                enemies.Children.Add(box);
+            }
+
+            Drawing enems = new GeometryDrawing(this.drawExtension.EnemyBrush, null, enemies);
+
+            return enems;
+        }
+
+        private Drawing GetBombs()
+        {
+            GeometryGroup bombs = new GeometryGroup();
+            for (int i = 0; i < this.model.Bombs.Count(); i++)
+            {
+                Geometry box = new RectangleGeometry(new Rect(this.model.Bombs[i].Location[0], this.model.Bombs[i].Location[1], this.model.TileSize, this.model.TileSize));
+                bombs.Children.Add(box);
+            }
+
+            Drawing bmbs = new GeometryDrawing(this.drawExtension.BombBrush, null, bombs);
+
+            return bmbs;
+        }
 
         private Drawing GetFuelTank()
         {

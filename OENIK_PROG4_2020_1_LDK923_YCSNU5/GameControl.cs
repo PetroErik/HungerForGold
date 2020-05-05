@@ -1,4 +1,5 @@
 ﻿using HFG.Display;
+using HFG.Display.Elements;
 using HFG.Logic;
 using System;
 using System.Collections.Generic;
@@ -35,6 +36,7 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5
         {
             return win.PointToScreen(Mouse.GetPosition(win));
         }
+
         private void GameControl_Loaded(object sender, RoutedEventArgs e)
         {
             this.model = new GameModel(ActualWidth, ActualHeight);
@@ -50,7 +52,7 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5
                 win.KeyDown += Win_KeyDown;
                 win.MouseDown += Win_MouseDown;
                 timer = new DispatcherTimer();
-                timer.Interval = TimeSpan.FromMilliseconds(100);
+                timer.Interval = TimeSpan.FromMilliseconds(200);
                 timer.Tick += Timer_Tick;
                 timer.Start();
             }
@@ -64,10 +66,9 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5
 
         private void Timer_Tick(object sender, EventArgs e)
         {
-            //gameLogic.tickLogic.GravityTick();
-            //logic.FuelTick();
-            gameLogic.tickLogic.FuelTick();
-            InvalidateVisual();
+            this.gameLogic.tickLogic.FuelTick();
+            this.gameLogic.tickLogic.EnemyTick();
+            this.InvalidateVisual();
         }
 
         private void gameContinues()
@@ -123,6 +124,7 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5
                     case "DOWN": gameLogic.moveLogic.MoveDrill(0, 1); break;
                 }
             }
+
             if (this.gameLogic.GameOver() == true)
             {
                 this.gameLogic.dbLogic.SaveGame(this.model.drill, this.model.Minerals);
@@ -139,7 +141,7 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5
                 case Key.W: Move("UP"); break;
                 case Key.S: Move("DOWN"); break;
                 case Key.D0: gameMode = "menu"; break;
-                case Key.D1: gameMode = "game"; this.gameLogic.startGame(); break;
+                case Key.D1: gameMode = "game"; this.gameLogic.StartGame(); break;
                 case Key.D2: gameContinues(); break;
                 case Key.D3: gameMode = "highscore"; break;
                 case Key.F1: gameLogic.moveLogic.UpgradeDrill(); break;

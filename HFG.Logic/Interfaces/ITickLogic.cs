@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HFG.Display.Elements;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,11 +10,16 @@ namespace HFG.Logic
     /// <summary>
     /// Interface for tick logic.
     /// </summary>
-    interface ITickLogic
+    public interface ITickLogic
     {
         /// <summary>
         /// Decreases the FuelTankFullness by 1.
         /// </summary>
         void FuelTick();
+
+        /// <summary>
+        /// Moves enemies.
+        /// </summary>
+        void EnemyTick();
     }
 }

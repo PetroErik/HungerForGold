@@ -23,6 +23,10 @@ namespace HFG.Display
         public static int MapWidth = 20;
         public static int MapHeight = 20;
 
+        public static int NmbOfBombs = 3;
+        public static int NmbOfEnemies = 3;
+        public static int NmbOfMinerals = 30;
+
         // Fixed upgrade price for all elements for all levels.
         public static int UpgradePrice = 5000;
 
@@ -39,5 +43,7 @@ namespace HFG.Display
         public static string BronzeBrush = "OENIK_PROG4_2020_1_LDK923_YCSNU5.IMG.Bronze.png";
         public static string SiloBrush = "OENIK_PROG4_2020_1_LDK923_YCSNU5.IMG.Silo.png";
         public static string MachinistBrush = "OENIK_PROG4_2020_1_LDK923_YCSNU5.IMG.Machinist.png";
+        public static string EnemyBrush = "OENIK_PROG4_2020_1_LDK923_YCSNU5.IMG.Enemy.png";
+        public static string BombBrush = "OENIK_PROG4_2020_1_LDK923_YCSNU5.IMG.Bomb.png";
     }
 }

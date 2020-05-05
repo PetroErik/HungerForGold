@@ -35,7 +35,7 @@ namespace HFG.Tests
         {
             GameLogic logic = new GameLogic(new GameModel(500, 500));
             logic.InitialMap();
-            logic.startGame();
+            logic.StartGame();
 
             Assert.That(logic.gameModel.Minerals, Is.Not.EqualTo(null));
             Assert.That(logic.gameModel.Minerals.Count, Is.EqualTo(30));
