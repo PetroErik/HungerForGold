@@ -1,19 +1,17 @@
-﻿using HFG.Display;
-using HFG.Display.Elements;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// <copyright file="TickLogic.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
 
 namespace HFG.Logic
 {
+    using HFG.Display;
+    using HFG.Display.Elements;
+
     /// <summary>
-    /// DECREASE THE FUEL TANKS.
+    /// Moves elements in every tick.
     /// </summary>
     public class TickLogic : ITickLogic
     {
-
         private int tickCount;
 
         private GameModel gameModel;
@@ -38,10 +36,10 @@ namespace HFG.Logic
             {
                 if (this.tickCount % 3 == 0)
                 {
-                    enemy.dx = -enemy.dx;
+                    enemy.Dx = -enemy.Dx;
                 }
 
-                enemy.Location[0] += enemy.dx * this.gameModel.TileSize;
+                enemy.Location[0] += enemy.Dx * this.gameModel.TileSize;
             }
         }
 
@@ -50,9 +48,9 @@ namespace HFG.Logic
         /// </summary>
         public void FuelTick()
         {
-            if (this.gameModel.drill.FuelTankFullness > 0)
+            if (this.gameModel.Drill.FuelTankFullness > 0)
             {
-                this.gameModel.drill.FuelTankFullness--;
+                this.gameModel.Drill.FuelTankFullness--;
             }
         }
     }

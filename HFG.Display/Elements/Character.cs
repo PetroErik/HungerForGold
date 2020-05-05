@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿// <copyright file="Character.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
 
 namespace HFG.Display
 {
@@ -14,7 +10,7 @@ namespace HFG.Display
     public abstract class Character
     {
         /// <summary>
-        /// Location of the character.
+        /// Gets or sets location of the character.
         /// </summary>
         public double[] Location { get; set; }
     }

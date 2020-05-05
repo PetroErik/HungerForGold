@@ -1,19 +1,18 @@
-﻿using HFG.Database;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// <copyright file="IBrickRepository.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
 
 namespace HFG.Repository
 {
+    using HFG.Database;
+
     /// <summary>
-    /// Interface for Brick repository .
+    /// Interface for Brick repository.
     /// </summary>
-   public interface IBrickRepository :IRepository<brick>
+    public interface IBrickRepository : IRepository<brick>
     {
         /// <summary>
-        /// method for changing the location of Brick .
+        /// method for changing the location of Brick.
         /// </summary>
         /// <param name="brick">selected brick .</param>
         /// <param name="x">x coordinate .</param>

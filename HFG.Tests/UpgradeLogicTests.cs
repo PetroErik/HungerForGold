@@ -1,19 +1,18 @@
-﻿using HFG.Display;
-using HFG.Logic;
-using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// <copyright file="UpgradeLogicTests.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
 
 namespace HFG.Tests
 {
+    using HFG.Display;
+    using HFG.Logic;
+    using NUnit.Framework;
+
     /// <summary>
     /// Tests for UpgradeLogic.
     /// </summary>
     [TestFixture]
-    class UpgradeLogicTests
+    public class UpgradeLogicTests
     {
         /// <summary>
         /// Test the UpgradeFuelTank method when FuelTank is not on max level.
@@ -24,11 +23,11 @@ namespace HFG.Tests
             GameLogic logic = new GameLogic(new GameModel(500, 500));
             logic.InitialMap();
             logic.StartGame();
-            logic.gameModel.TotalPoints = 5000;
+            logic.GameModel.TotalPoints = 5000;
 
-            logic.moveLogic.UpgradeFuelTank();
+            logic.MoveLogic.UpgradeFuelTank();
 
-            Assert.That(logic.gameModel.drill.FuelTankLvl, Is.EqualTo(2));
+            Assert.That(logic.GameModel.Drill.FuelTankLvl, Is.EqualTo(2));
         }
 
         /// <summary>
@@ -39,11 +38,11 @@ namespace HFG.Tests
         {
             GameLogic logic = new GameLogic(new GameModel(500, 500));
             logic.InitialMap();
-            logic.gameModel.drill.FuelTankLvl = 3;
+            logic.GameModel.Drill.FuelTankLvl = 3;
 
-            logic.moveLogic.UpgradeFuelTank();
+            logic.MoveLogic.UpgradeFuelTank();
 
-            Assert.That(logic.gameModel.drill.FuelTankLvl, Is.EqualTo(3));
+            Assert.That(logic.GameModel.Drill.FuelTankLvl, Is.EqualTo(3));
         }
 
         /// <summary>
@@ -55,11 +54,11 @@ namespace HFG.Tests
             GameLogic logic = new GameLogic(new GameModel(500, 500));
             logic.InitialMap();
             logic.StartGame();
-            logic.gameModel.TotalPoints = 5000;
+            logic.GameModel.TotalPoints = 5000;
 
-            logic.moveLogic.UpgradeDrill();
+            logic.MoveLogic.UpgradeDrill();
 
-            Assert.That(logic.gameModel.drill.DrillLvl, Is.EqualTo(2));
+            Assert.That(logic.GameModel.Drill.DrillLvl, Is.EqualTo(2));
         }
 
         /// <summary>
@@ -70,11 +69,11 @@ namespace HFG.Tests
         {
             GameLogic logic = new GameLogic(new GameModel(500, 500));
             logic.InitialMap();
-            logic.gameModel.drill.DrillLvl = 3;
+            logic.GameModel.Drill.DrillLvl = 3;
 
-            logic.moveLogic.UpgradeFuelTank();
+            logic.MoveLogic.UpgradeFuelTank();
 
-            Assert.That(logic.gameModel.drill.DrillLvl, Is.EqualTo(3));
+            Assert.That(logic.GameModel.Drill.DrillLvl, Is.EqualTo(3));
         }
 
         /// <summary>
@@ -86,11 +85,11 @@ namespace HFG.Tests
             GameLogic logic = new GameLogic(new GameModel(500, 500));
             logic.InitialMap();
             logic.StartGame();
-            logic.gameModel.TotalPoints = 5000;
+            logic.GameModel.TotalPoints = 5000;
 
-            logic.moveLogic.UpgradeStorage();
+            logic.MoveLogic.UpgradeStorage();
 
-            Assert.That(logic.gameModel.drill.StorageLvl, Is.EqualTo(2));
+            Assert.That(logic.GameModel.Drill.StorageLvl, Is.EqualTo(2));
         }
 
         /// <summary>
@@ -101,11 +100,11 @@ namespace HFG.Tests
         {
             GameLogic logic = new GameLogic(new GameModel(500, 500));
             logic.InitialMap();
-            logic.gameModel.drill.StorageLvl = 3;
+            logic.GameModel.Drill.StorageLvl = 3;
 
-            logic.moveLogic.UpgradeFuelTank();
+            logic.MoveLogic.UpgradeFuelTank();
 
-            Assert.That(logic.gameModel.drill.StorageLvl, Is.EqualTo(3));
+            Assert.That(logic.GameModel.Drill.StorageLvl, Is.EqualTo(3));
         }
     }
 }

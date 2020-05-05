@@ -1,21 +1,16 @@
-﻿using HFG.Display;
-using HFG.Logic;
-using HFG.Repository;
-using Moq;
-using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// <copyright file="DbLogicTests.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
 
 namespace HFG.Tests
 {
+    using NUnit.Framework;
+
     /// <summary>
     /// Tests for Database logic.
     /// </summary>
     [TestFixture]
-    class DbLogicTests
+    public class DbLogicTests
     {
     }
 }

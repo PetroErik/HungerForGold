@@ -1,17 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// <copyright file="EfRepository.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
 
 namespace HFG.Repository
 {
-        /// <summary>
-        /// abstract class has basic functions that all repositories have.
-        /// </summary>
-        /// <typeparam name="TEntity">type of repository entity.</typeparam>
-        public abstract class EfRepository<TEntity> : IRepository<TEntity>
+    using System.Data.Entity;
+    using System.Linq;
+
+    /// <summary>
+    /// abstract class has basic functions that all repositories have.
+    /// </summary>
+    /// <typeparam name="TEntity">type of repository entity.</typeparam>
+    public abstract class EfRepository<TEntity> : IRepository<TEntity>
             where TEntity : class
         {
             /// <summary>

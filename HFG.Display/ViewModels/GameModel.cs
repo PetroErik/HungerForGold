@@ -1,37 +1,70 @@
-﻿using HFG.Display.Elements;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// <copyright file="GameModel.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
 
 namespace HFG.Display
 {
+    using System.Collections.Generic;
+    using HFG.Display.Elements;
+
     /// <summary>
     /// Model of our Game.
     /// </summary>
     public class GameModel
     {
+        /// <summary>
+        /// Gets or sets the total points that are collected.
+        /// </summary>
         public int TotalPoints { get; set; }
 
+        /// <summary>
+        /// Gets or sets the current points that are collected.
+        /// </summary>
         public int ActualPoints { get; set; }
 
-        public Drill drill { get; set; }
+        /// <summary>
+        /// Gets or sets the drill element of the game.
+        /// </summary>
+        public Drill Drill { get; set; }
 
+        /// <summary>
+        /// Gets or sets the Silo element of the game.
+        /// </summary>
         public SiloHouse SiloHouse { get; set; }
 
+        /// <summary>
+        /// Gets or sets the Machinist element of the game.
+        /// </summary>
         public MachinistHouse MachinistHouse { get; set; }
 
+        /// <summary>
+        /// Gets or sets the list of the minerals of the game.
+        /// </summary>
         public List<Mineral> Minerals { get; set; }
 
+        /// <summary>
+        /// Gets or sets the list of enemies of the game.
+        /// </summary>
         public List<Enemy> Enemies { get; set; }
 
+        /// <summary>
+        /// Gets or sets the list of the  bombs of the game.
+        /// </summary>
         public List<Bomb> Bombs { get; set; }
 
+        /// <summary>
+        /// Gets or sets the width of the game.
+        /// </summary>
         public double GameWidth { get; set; }
 
+        /// <summary>
+        /// Gets or sets the height of the game.
+        /// </summary>
         public double GameHeight { get; set; }
 
+        /// <summary>
+        /// Gets or sets the size of tiles of the game.
+        /// </summary>
         public double TileSize { get; set; }
 
         /*
@@ -41,12 +74,25 @@ namespace HFG.Display
          index 2: width,
          index 3: height
              */
+
+        /// <summary>
+        /// Gets or sets the area of the Menu button.
+        /// </summary>
         public double[] MenuButton { get; set; }
 
+        /// <summary>
+        /// Gets or sets the area of the Start button.
+        /// </summary>
         public double[] StartButton { get; set; }
 
-        public double[] ContinueButton { get; set;}
+        /// <summary>
+        /// Gets or sets the area of the continue button.
+        /// </summary>
+        public double[] ContinueButton { get; set; }
 
+        /// <summary>
+        /// Gets or sets the area of the highscore button.
+        /// </summary>
         public double[] HighscoreButton { get; set; }
 
         /// <summary>

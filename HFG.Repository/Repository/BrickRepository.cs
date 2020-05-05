@@ -1,23 +1,24 @@
-﻿using HFG.Database;
-using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// <copyright file="BrickRepository.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
 
 namespace HFG.Repository.Repository
 {
+    using System.Data.Entity;
+    using HFG.Database;
+
     /// <summary>
     /// Brick repository .
     /// </summary>
     public class BrickRepository : EfRepository<brick>, IBrickRepository
     {
         /// <summary>
-        /// constructor for Brick repository .
+        /// Initializes a new instance of the <see cref="BrickRepository"/> class.
+        /// constructor for Brick repository.
         /// </summary>
         /// <param name="ctx">Database context .</param>
-        public BrickRepository(DbContext ctx) : base(ctx)
+        public BrickRepository(DbContext ctx)
+            : base(ctx)
         {
         }
 

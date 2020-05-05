@@ -1,16 +1,16 @@
-﻿using HFG.Display;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// <copyright file="IDbLogic.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
 
 namespace HFG.Logic
 {
+    using System.Collections.Generic;
+    using HFG.Display;
+
     /// <summary>
     /// Interface for the logic of the Database.
     /// </summary>
-    interface IDbLogic
+    public interface IDbLogic
     {
         /// <summary>
         /// Saves the state of the game.
@@ -22,7 +22,7 @@ namespace HFG.Logic
         /// <summary>
         /// Loads the previous state of the game.
         /// </summary>
-        /// <returns>True if there is a saved game in the Database</returns>
+        /// <returns>True if there is a saved game in the Database.</returns>
         bool LoadGame();
 
         /// <summary>

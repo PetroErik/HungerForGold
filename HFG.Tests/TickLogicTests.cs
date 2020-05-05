@@ -1,19 +1,18 @@
-﻿using HFG.Display;
-using HFG.Logic;
-using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// <copyright file="TickLogicTests.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
 
 namespace HFG.Tests
 {
+    using HFG.Display;
+    using HFG.Logic;
+    using NUnit.Framework;
+
     /// <summary>
     /// Tests for the TickLogic.
     /// </summary>
     [TestFixture]
-    class TickLogicTests
+    public class TickLogicTests
     {
         /// <summary>
         /// Test the FuelTick method when the fuel tank is not empty.
@@ -24,11 +23,11 @@ namespace HFG.Tests
             GameLogic logic = new GameLogic(new GameModel(500, 500));
             logic.InitialMap();
             logic.StartGame();
-            logic.gameModel.drill.FuelTankFullness = 40;
+            logic.GameModel.Drill.FuelTankFullness = 40;
 
-            logic.tickLogic.FuelTick();
+            logic.TickLogic.FuelTick();
 
-            Assert.That(logic.gameModel.drill.FuelTankFullness, Is.EqualTo(39));
+            Assert.That(logic.GameModel.Drill.FuelTankFullness, Is.EqualTo(39));
         }
 
         /// <summary>
@@ -39,11 +38,11 @@ namespace HFG.Tests
         {
             GameLogic logic = new GameLogic(new GameModel(500, 500));
             logic.InitialMap();
-            logic.gameModel.drill.FuelTankFullness = 0;
+            logic.GameModel.Drill.FuelTankFullness = 0;
 
-            logic.tickLogic.FuelTick();
+            logic.TickLogic.FuelTick();
 
-            Assert.That(logic.gameModel.drill.FuelTankFullness, Is.EqualTo(0));
+            Assert.That(logic.GameModel.Drill.FuelTankFullness, Is.EqualTo(0));
         }
     }
 }

@@ -1,25 +1,40 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// <copyright file="Enemy.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
 
 namespace HFG.Display.Elements
 {
+    using System;
+
+    /// <summary>
+    /// Enemy component of the game.
+    /// </summary>
     public class Enemy : Character
     {
-        private static Random R = new Random();
+        private static Random r = new Random();
 
-        public int dx;
+        /// <summary>
+        /// Gets or sets the movement vector in the X direction.
+        /// </summary>
+        public int Dx { get; set; }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Enemy"/> class.
+        /// Declares the location of the enemy.
+        /// </summary>
+        /// <param name="x">X coordinate of the enemy.</param>
+        /// <param name="y">Y coordinate of the enemy.</param>
         public Enemy(double x, double y)
         {
             this.Location = new double[] { x, y };
-            if (R.Next(0, 2) == 0)
+            if (r.Next(0, 2) == 0)
             {
-                dx = -1;
+                this.Dx = -1;
             }
-            else dx = 1;
+            else
+            {
+                this.Dx = 1;
+            }
         }
     }
 }

@@ -1,28 +1,43 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
-using HFG.Display;
-using HFG.Repository;
-using HFG.Database;
-using HFG.Repository.Repository;
-using HFG.Display.Elements;
+﻿// <copyright file="GameLogic.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
 
 namespace HFG.Logic
 {
+    using System;
+    using System.Collections.Generic;
+    using HFG.Database;
+    using HFG.Display;
+    using HFG.Display.Elements;
+    using HFG.Repository;
+    using HFG.Repository.Repository;
+
     /// <summary>
     /// OVERALL LOGIC FOR GAME. INITIAL MAP, START NEW GAME, DETECT WHEN GAME IS OVER
     /// </summary>
     public class GameLogic : IGameLogic
     {
-        static Random R = new Random();
-        public GameModel gameModel;
-        public MoveLogic moveLogic;
-        public DbLogic dbLogic;
-        public TickLogic tickLogic;
+        /// <summary>
+        /// GameModel instance for the logic.
+        /// </summary>
+        public GameModel GameModel;
+
+        /// <summary>
+        /// MoveLogic instance for the logic.
+        /// </summary>
+        public MoveLogic MoveLogic;
+
+        /// <summary>
+        /// Database logic instance for the logic.
+        /// </summary>
+        public DbLogic DbLogic;
+
+        /// <summary>
+        /// TickLogic instance for the logic.
+        /// </summary>
+        public TickLogic TickLogic;
+
+        private static Random r = new Random();
 
         /// <summary>
         /// Initializes a new instance of the <see cref="GameLogic"/> class.
@@ -32,25 +47,25 @@ namespace HFG.Logic
         public GameLogic(GameModel model)
         {
             HFGEntities entities = new HFGEntities();
-            this.gameModel = model;
-            this.moveLogic = new MoveLogic(model);
-            this.dbLogic = new DbLogic(model, new DrillRepository(entities), new BrickRepository(entities), new ConnRepository(entities));
-            this.tickLogic = new TickLogic(model);
-            this.gameModel.TileSize = Math.Min(this.gameModel.GameWidth / CONFIG.MapWidth, this.gameModel.GameHeight / CONFIG.MapHeight);
-            this.gameModel.MenuButton = new double[] { 0, 0, 30, 20 };
-            this.gameModel.StartButton = new double[] {this.gameModel.GameWidth / 2 - 180, this.gameModel.GameHeight / 2, 400, 40};
-            this.gameModel.ContinueButton = new double[] { (this.gameModel.GameWidth / 2) - 180, this.gameModel.GameHeight / 2 + 60, 400, 40 };
-            this.gameModel.HighscoreButton = new double[] { this.gameModel.GameWidth / 2 - 180, this.gameModel.GameHeight / 2 + 120, 400, 40 };
-            this.gameModel.Bombs = new List<Bomb>();
+            this.GameModel = model;
+            this.MoveLogic = new MoveLogic(model);
+            this.DbLogic = new DbLogic(model, new DrillRepository(entities), new BrickRepository(entities), new ConnRepository(entities));
+            this.TickLogic = new TickLogic(model);
+            this.GameModel.TileSize = Math.Min(this.GameModel.GameWidth / CONFIG.MapWidth, this.GameModel.GameHeight / CONFIG.MapHeight);
+            this.GameModel.MenuButton = new double[] { 0, 0, 30, 20 };
+            this.GameModel.StartButton = new double[] { (this.GameModel.GameWidth / 2) - 180, this.GameModel.GameHeight / 2, 400, 40 };
+            this.GameModel.ContinueButton = new double[] { (this.GameModel.GameWidth / 2) - 180, (this.GameModel.GameHeight / 2) + 60, 400, 40 };
+            this.GameModel.HighscoreButton = new double[] { (this.GameModel.GameWidth / 2) - 180, (this.GameModel.GameHeight / 2) + 120, 400, 40 };
+            this.GameModel.Bombs = new List<Bomb>();
             for (int i = 0; i < CONFIG.NmbOfBombs; i++)
             {
-                this.gameModel.Bombs.Add(new Bomb((double)(R.Next(0, CONFIG.MapWidth * 2) * this.gameModel.TileSize), (double)(R.Next(CONFIG.MapHeight / 3 + 2, CONFIG.MapHeight) * this.gameModel.TileSize)));
+                this.GameModel.Bombs.Add(new Bomb((double)(r.Next(0, CONFIG.MapWidth * 2) * this.GameModel.TileSize), (double)(r.Next((CONFIG.MapHeight / 3) + 2, CONFIG.MapHeight) * this.GameModel.TileSize)));
             }
 
-            this.gameModel.Enemies = new List<Enemy>();
+            this.GameModel.Enemies = new List<Enemy>();
             for (int i = 0; i < CONFIG.NmbOfEnemies; i++)
             {
-                this.gameModel.Enemies.Add(new Enemy((double)(R.Next(0, CONFIG.MapWidth * 2) * this.gameModel.TileSize), (double)(R.Next(CONFIG.MapHeight / 3 + 2, CONFIG.MapHeight) * this.gameModel.TileSize)));
+                this.GameModel.Enemies.Add(new Enemy((double)(r.Next(0, CONFIG.MapWidth * 2) * this.GameModel.TileSize), (double)(r.Next((CONFIG.MapHeight / 3) + 2, CONFIG.MapHeight) * this.GameModel.TileSize)));
             }
         }
 
@@ -59,28 +74,28 @@ namespace HFG.Logic
         /// </summary>
         public void StartGame()
         {
-            this.gameModel.drill.Location[0] = CONFIG.MapWidth * this.gameModel.TileSize;
-            this.gameModel.drill.Location[1] = CONFIG.MapHeight / 3 * this.gameModel.TileSize;
-            this.gameModel.drill.initialValue();
-            this.gameModel.TotalPoints = 0;
-            this.gameModel.ActualPoints = 0;
-            this.gameModel.Minerals = new List<Mineral>();
+            this.GameModel.Drill.Location[0] = CONFIG.MapWidth * this.GameModel.TileSize;
+            this.GameModel.Drill.Location[1] = CONFIG.MapHeight / 3 * this.GameModel.TileSize;
+            this.GameModel.Drill.InitialValue();
+            this.GameModel.TotalPoints = 0;
+            this.GameModel.ActualPoints = 0;
+            this.GameModel.Minerals = new List<Mineral>();
             for (int i = 0; i < CONFIG.NmbOfMinerals; i++)
             {
-                int typeSelector = R.Next(0, 3);
+                int typeSelector = r.Next(0, 3);
                 if (typeSelector == 0)
                 {
-                    this.gameModel.Minerals.Add(new Mineral(R.Next(0, CONFIG.MapWidth * 2) * this.gameModel.TileSize, (R.Next(CONFIG.MapHeight / 3 + 2, CONFIG.MapHeight) * this.gameModel.TileSize), MineralsType.Bronze)); // + 2 to avoid gameModel.Mineralss on the ground level
+                    this.GameModel.Minerals.Add(new Mineral(r.Next(0, CONFIG.MapWidth * 2) * this.GameModel.TileSize, r.Next((CONFIG.MapHeight / 3) + 2, CONFIG.MapHeight) * this.GameModel.TileSize, MineralsType.Bronze)); // + 2 to avoid gameModel.Mineralss on the ground level
                 }
 
                 if (typeSelector == 1)
                 {
-                    this.gameModel.Minerals.Add(new Mineral(R.Next(0, CONFIG.MapWidth * 2) * this.gameModel.TileSize, (R.Next(CONFIG.MapHeight / 3 + 2, CONFIG.MapHeight) * this.gameModel.TileSize), MineralsType.Silver));
+                    this.GameModel.Minerals.Add(new Mineral(r.Next(0, CONFIG.MapWidth * 2) * this.GameModel.TileSize, r.Next((CONFIG.MapHeight / 3) + 2, CONFIG.MapHeight) * this.GameModel.TileSize, MineralsType.Silver));
                 }
 
                 if (typeSelector == 2)
                 {
-                    this.gameModel.Minerals.Add(new Mineral(R.Next(0, CONFIG.MapWidth * 2) * this.gameModel.TileSize, (R.Next(CONFIG.MapHeight / 3 + 2, CONFIG.MapHeight) * this.gameModel.TileSize), MineralsType.Gold));
+                    this.GameModel.Minerals.Add(new Mineral(r.Next(0, CONFIG.MapWidth * 2) * this.GameModel.TileSize, r.Next((CONFIG.MapHeight / 3) + 2, CONFIG.MapHeight) * this.GameModel.TileSize, MineralsType.Gold));
                 }
             }
         }
@@ -90,11 +105,11 @@ namespace HFG.Logic
         /// </summary>
         public void InitialMap()
         {
-            this.gameModel.TileSize = Math.Min(this.gameModel.GameWidth / CONFIG.MapWidth, this.gameModel.GameHeight / CONFIG.MapHeight);
+            this.GameModel.TileSize = Math.Min(this.GameModel.GameWidth / CONFIG.MapWidth, this.GameModel.GameHeight / CONFIG.MapHeight);
 
-            this.gameModel.drill = new Drill(CONFIG.MapWidth * this.gameModel.TileSize, CONFIG.MapHeight / 3 * this.gameModel.TileSize);                                // Ground level is at GameHeight / 3
-            this.gameModel.SiloHouse = new SiloHouse(CONFIG.MapWidth * 3 / 2 * this.gameModel.TileSize, CONFIG.MapHeight / 3 * this.gameModel.TileSize - 4 * this.gameModel.TileSize);     // Silo is 4 tile higher than the drill
-            this.gameModel.MachinistHouse = new MachinistHouse(CONFIG.MapWidth / 4 * this.gameModel.TileSize, CONFIG.MapHeight / 3 * this.gameModel.TileSize - 4 * this.gameModel.TileSize);           
+            this.GameModel.Drill = new Drill(CONFIG.MapWidth * this.GameModel.TileSize, CONFIG.MapHeight / 3 * this.GameModel.TileSize);
+            this.GameModel.SiloHouse = new SiloHouse(CONFIG.MapWidth * 3 / 2 * this.GameModel.TileSize, ((CONFIG.MapHeight / 3) * this.GameModel.TileSize) - (4 * this.GameModel.TileSize));
+            this.GameModel.MachinistHouse = new MachinistHouse(CONFIG.MapWidth / 4 * this.GameModel.TileSize, ((CONFIG.MapHeight / 3) * this.GameModel.TileSize) - (4 * this.GameModel.TileSize));
         }
 
         /// <summary>
@@ -103,7 +118,7 @@ namespace HFG.Logic
         /// <returns>Return value defines the state of the game. If the value is true, the game is over.</returns>
         public bool GameOver()
         {
-            return this.gameModel.drill.FuelTankFullness <= 0 || this.moveLogic.CollisionWithEnemy() || this.moveLogic.CollisionWithBomb();
+            return this.GameModel.Drill.FuelTankFullness <= 0 || this.MoveLogic.CollisionWithEnemy() || this.MoveLogic.CollisionWithBomb();
         }
     }
 }

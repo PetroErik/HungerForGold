@@ -1,16 +1,15 @@
-﻿using HFG.Display;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// <copyright file="IMoveLogic.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
 
 namespace HFG.Logic
 {
+    using HFG.Display;
+
     /// <summary>
     /// Interface for the movement of the drill.
     /// </summary>
-    interface IMoveLogic
+    public interface IMoveLogic
     {
         /// <summary>
         /// Collects a mineral that the drill is colliding with.
