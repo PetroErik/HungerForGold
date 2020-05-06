@@ -48,5 +48,7 @@ namespace HFG.Logic
         /// Upgrades the Storage element.
         /// </summary>
         void UpgradeStorage();
+
+
     }
 }

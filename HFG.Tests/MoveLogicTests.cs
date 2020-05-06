@@ -222,10 +222,12 @@ namespace HFG.Tests
         /// <summary>
         /// Tests if the collision with bomb method works properly.
         /// </summary>
-        [Test]
-        public void TestMoveLogic_CollisionWithBomb()
+        [TestCase(500,500)]
+        [TestCase(700, 700)]
+
+        public void TestMoveLogic_CollisionWithBomb(int width, int height)
         {
-            GameLogic logic = new GameLogic(new GameModel(500, 500));
+            GameLogic logic = new GameLogic(new GameModel(width, height));
             Bomb bomb = new Bomb(10, 10);
             logic.InitialMap();
             logic.GameModel.Drill.Location = new double[] { 10, 10 };

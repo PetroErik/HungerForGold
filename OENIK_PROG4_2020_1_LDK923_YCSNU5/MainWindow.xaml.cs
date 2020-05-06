@@ -22,7 +22,7 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5
     {
         public MainWindow()
         {
-            InitializeComponent();
+            this.InitializeComponent();
         }
     }
 }

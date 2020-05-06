@@ -9,7 +9,6 @@ namespace HFG.Display
     /// </summary>
     public static class CONFIG
     {
-
         /// <summary>
         /// Price of t he bronze mineral.
         /// </summary>
@@ -134,5 +133,7 @@ namespace HFG.Display
         /// Brush for the bomb.
         /// </summary>
         public static string BombBrush = "OENIK_PROG4_2020_1_LDK923_YCSNU5.IMG.Bomb.png";
+
+        public static int bombExplodeTime = 30;
     }
 }

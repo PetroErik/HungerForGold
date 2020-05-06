@@ -52,6 +52,7 @@ namespace HFG.Logic
                 {
                     this.CollectMinerals(mineral);
                 }
+
             }
         }
 
@@ -172,7 +173,10 @@ namespace HFG.Logic
 
             foreach (Bomb bomb in this.gameModel.Bombs)
             {
-                if (minX <= bomb.Location[0] && maxX >= bomb.Location[0] && minY <= bomb.Location[1] && maxY >= bomb.Location[1])
+                if (minX <= bomb.Location[0] + 2 * this.gameModel.TileSize - 10
+                    && maxX >= bomb.Location[0] - 2 * this.gameModel.TileSize - 10
+                    && minY <= bomb.Location[1] + 2 * this.gameModel.TileSize - 10
+                    && maxY >= bomb.Location[1] - 2 * this.gameModel.TileSize - 10)
                 {
                     return true;
                 }

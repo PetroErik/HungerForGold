@@ -18,5 +18,7 @@ namespace HFG.Logic
         /// Moves enemies.
         /// </summary>
         void EnemyTick();
+
+        void BoomTick();
     }
 }

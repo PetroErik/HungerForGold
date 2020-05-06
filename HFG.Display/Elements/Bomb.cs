@@ -2,6 +2,8 @@
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
+using System.Collections.Generic;
+
 namespace HFG.Display.Elements
 {
     /// <summary>
@@ -19,5 +21,6 @@ namespace HFG.Display.Elements
         {
             this.Location = new double[] { x, y };
         }
+
     }
 }

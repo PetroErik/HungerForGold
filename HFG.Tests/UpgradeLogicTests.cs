@@ -14,6 +14,7 @@ namespace HFG.Tests
     [TestFixture]
     public class UpgradeLogicTests
     {
+       
         /// <summary>
         /// Test the UpgradeFuelTank method when FuelTank is not on max level.
         /// </summary>
