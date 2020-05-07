@@ -40,7 +40,7 @@ namespace HFG.Repository
             public void Addnew(TEntity newinstance)
             {
                 this.Ctx.Set<TEntity>().Add(newinstance);
-                this.Ctx.SaveChanges();
+                ddddthis.Ctx.SaveChanges();
             }
 
             /// <summary>

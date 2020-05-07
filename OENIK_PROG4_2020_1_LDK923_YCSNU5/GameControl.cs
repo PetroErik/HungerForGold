@@ -163,6 +163,19 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5
             }
         }
 
+        private void StartGame()
+        {
+            this.gameMode = "game";
+            try
+            {
+                this.gameLogic.StartGame();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"DATABASE ERROR {ex.Message}", string.Empty, MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
         private void Win_KeyDown(object sender, KeyEventArgs e)
         {
             switch (e.Key)
@@ -172,7 +185,7 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5
                 case Key.W: this.Move("UP"); break;
                 case Key.S: this.Move("DOWN"); break;
                 case Key.D0: this.gameMode = "menu"; break;
-                case Key.D1: this.gameMode = "game"; this.gameLogic.StartGame(); break;
+                case Key.D1: this.StartGame(); break;
                 case Key.D2: this.GameContinues(); break;
                 case Key.D3: this.gameMode = "highscore"; break;
                 case Key.F1: this.gameLogic.MoveLogic.UpgradeDrill(); break;
