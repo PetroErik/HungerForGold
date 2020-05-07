@@ -27,7 +27,8 @@ namespace HFG.Display.Elements
         public Enemy(double x, double y)
         {
             this.Location = new double[] { x, y };
-            //this.Dx = -1;
+
+            // this.Dx = -1;
             if (r.Next(0, 2) == 0)
             {
                 this.Dx = -1;

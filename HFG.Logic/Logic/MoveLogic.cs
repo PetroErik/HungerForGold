@@ -52,7 +52,6 @@ namespace HFG.Logic
                 {
                     this.CollectMinerals(mineral);
                 }
-
             }
         }
 

@@ -2,10 +2,10 @@
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
-using System.Collections.Generic;
-
 namespace HFG.Display.Elements
 {
+    using System.Collections.Generic;
+
     /// <summary>
     /// Bomb element of the Game.
     /// </summary>
@@ -21,6 +21,5 @@ namespace HFG.Display.Elements
         {
             this.Location = new double[] { x, y };
         }
-
     }
 }

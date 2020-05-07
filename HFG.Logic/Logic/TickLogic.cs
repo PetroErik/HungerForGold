@@ -4,9 +4,9 @@
 
 namespace HFG.Logic
 {
+    using System;
     using HFG.Display;
     using HFG.Display.Elements;
-    using System;
 
     /// <summary>
     /// Moves elements in every tick.
@@ -32,21 +32,10 @@ namespace HFG.Logic
         /// </summary>
         public void EnemyTick()
         {
-            this.tickCount++;
             foreach (Enemy enemy in this.gameModel.Enemies)
             {
                 this.changeEnemyLocation(enemy);
             }
-        }
-
-        private void changeEnemyLocation(Enemy enemy)
-        {
-            if (this.tickCount % CONFIG.MapWidth/2 == 0)
-            {
-                enemy.Dx = -enemy.Dx;
-            }
-
-            enemy.Location[0] += enemy.Dx * this.gameModel.TileSize;
         }
 
         /// <summary>
@@ -59,26 +48,44 @@ namespace HFG.Logic
                 this.gameModel.Drill.FuelTankFullness--;
             }
         }
-        
+
+        private void changeEnemyLocation(Enemy enemy)
+        {
+            if (enemy.Location[0] >= (CONFIG.MapWidth - 1) * 2 * this.gameModel.TileSize ||
+                enemy.Location[0] <= 0)
+            {
+                enemy.Dx = -enemy.Dx;
+            }
+
+            enemy.Location[0] += enemy.Dx * this.gameModel.TileSize;
+        }
+
         private static Random r = new Random();
+
+        /// <summary>
+        /// Time decreases and bomb will explode .
+        /// </summary>
         public void BoomTick()
         {
             this.tickCount++;
-            
+
             foreach (var bomb in this.gameModel.Bombs)
             {
-                if (tickCount % CONFIG.bombExplodeTime == 0)
+                if (this.tickCount % CONFIG.BombExplodeTime == 0)
                 {
                     this.changeLocationBomb(bomb);
                 }
             }
         }
 
+        /// <summary>
+        /// Method to change the bomb's location .
+        /// </summary>
+        /// <param name="bomb">the chosen bomb .</param>
         private void changeLocationBomb(Bomb bomb)
         {
             bomb.Location[0] = (double)r.Next(0, CONFIG.MapWidth * 2) * this.gameModel.TileSize;
             bomb.Location[1] = (double)r.Next((CONFIG.MapHeight / 3) + 2, CONFIG.MapHeight) * this.gameModel.TileSize;
-
         }
     }
 }

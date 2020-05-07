@@ -6,6 +6,7 @@ namespace HFG.Logic
 {
     using System.Collections.Generic;
     using System.Linq;
+    using HFG.Database;
     using HFG.Display;
     using HFG.Repository;
 
@@ -42,10 +43,13 @@ namespace HFG.Logic
         /// <returns>True if there is a previously saved game.</returns>
         public bool LoadGame()
         {
-            if (this.drillRepo.GetAll().Any() && this.brickRepo.GetAll().Any())
+            var drills = this.GetDrills();
+            var brickLists = this.GetBricks();
+            var conns = this.GetConns();
+            if (drills.Any() && brickLists.Any())
             {
-                int max = this.drillRepo.GetAll().Select(x => x.drill_id).Max();
-                var lastDrill = this.drillRepo.GetOne(max);
+                int max = drills.Select(x => x.drill_id).Max();
+                var lastDrill = this.GetDrillInstance(max);
 
                 this.gameModel.Drill.Location[0] = (int)lastDrill.drill_x;
                 this.gameModel.Drill.Location[1] = (int)lastDrill.drill_y;
@@ -53,12 +57,12 @@ namespace HFG.Logic
                 this.gameModel.Drill.FuelTankLvl = (int)lastDrill.drill_fuel;
                 this.gameModel.Drill.StorageLvl = (int)lastDrill.drill_storage;
 
-                var bricks = this.connRepo.GetAll().Where(x => x.conn_drill_id == lastDrill.drill_id).Select(x => x.conn_brick_id);
+                var bricks = conns.Where(x => x.conn_drill_id == lastDrill.drill_id).Select(x => x.conn_brick_id);
                 int minID = (int)bricks.Min();
 
                 foreach (Mineral mineral in this.gameModel.Minerals)
                 {
-                    var brick = this.brickRepo.GetOne(minID);
+                    var brick = this.GetBrickInstance(minID);
                     mineral.Location[0] = (int)brick.brick_x;
                     mineral.Location[1] = (int)brick.brick_y;
                     mineral.Type = ConvertToMineralsType(brick.brick_type.ToString());
@@ -69,6 +73,55 @@ namespace HFG.Logic
             }
 
             return false;
+        }
+
+        /// <summary>
+        /// Add new drill to database.
+        /// </summary>
+        /// <param name="drill">new drill instance.</param>
+        public void AddNewDrill(drill drill)
+        {
+            this.drillRepo.Addnew(drill);
+        }
+
+        public void AddNewBrick(brick brick)
+        {
+            this.brickRepo.Addnew(brick);
+        }
+
+        public void AddNewConnection(conn conn)
+        {
+            this.connRepo.Addnew(conn);
+        }
+
+        public drill GetDrillInstance(int id)
+        {
+            return this.drillRepo.GetOne(id);
+        }
+
+        public brick GetBrickInstance(int id)
+        {
+            return this.brickRepo.GetOne(id);
+        }
+
+        public conn GetConnInstance(int id)
+        {
+            return this.connRepo.GetOne(id);
+        }
+
+        public IQueryable<brick> GetBricks()
+        {
+            return this.brickRepo.GetAll();
+        }
+
+        public IQueryable<drill> GetDrills() 
+        {
+            return this.drillRepo.GetAll();
+        }
+
+        public IQueryable<conn> GetConns()
+        {
+            return this.connRepo.GetAll();
         }
 
         /// <summary>
@@ -87,7 +140,8 @@ namespace HFG.Logic
                 drill_storage = this.gameModel.Drill.StorageLvl,
                 drill_speed = this.gameModel.Drill.DrillLvl,
             };
-            this.drillRepo.Addnew(newDrill);
+
+            this.AddNewDrill(newDrill);
             foreach (Mineral mineral in minerals)
             {
                 Database.brick newBrick = new Database.brick()
@@ -96,12 +150,13 @@ namespace HFG.Logic
                     brick_x = (int)mineral.Location[0],
                     brick_y = (int)mineral.Location[1],
                 };
-                this.brickRepo.Addnew(newBrick);
-                this.connRepo.Addnew(new Database.conn()
+                this.AddNewBrick(newBrick);
+                conn newConn = new conn()
                 {
                     conn_brick_id = newBrick.brick_id,
                     conn_drill_id = newDrill.drill_id,
-                });
+                };
+                this.AddNewConnection(newConn);
             }
         }
 

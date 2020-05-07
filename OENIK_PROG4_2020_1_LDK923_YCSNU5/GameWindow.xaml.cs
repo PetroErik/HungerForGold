@@ -1,4 +1,8 @@
-﻿namespace OENIK_PROG4_2020_1_LDK923_YCSNU5
+﻿// <copyright file="GameWindow.xaml.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+
+namespace OENIK_PROG4_2020_1_LDK923_YCSNU5
 {
     using System;
     using System.Collections.Generic;

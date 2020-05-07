@@ -133,7 +133,11 @@ namespace HFG.Display
         /// Brush for the bomb.
         /// </summary>
         public static string BombBrush = "OENIK_PROG4_2020_1_LDK923_YCSNU5.IMG.Bomb.png";
+        /// <summary>
+        /// 
+        /// </summary>
+        public static int BombExplodeTime = 30;
 
-        public static int bombExplodeTime = 30;
+        public static string HighscoreMessage = "No data yet!";
     }
 }

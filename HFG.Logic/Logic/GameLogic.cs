@@ -13,7 +13,7 @@ namespace HFG.Logic
     using HFG.Repository.Repository;
 
     /// <summary>
-    /// OVERALL LOGIC FOR GAME. INITIAL MAP, START NEW GAME, DETECT WHEN GAME IS OVER
+    /// OVERALL LOGIC FOR GAME. INITIAL MAP, START NEW GAME, DETECT WHEN GAME IS OVER.
     /// </summary>
     public class GameLogic : IGameLogic
     {
@@ -65,14 +65,13 @@ namespace HFG.Logic
             this.GameModel.Enemies = new List<Enemy>();
             for (int i = 0; i < CONFIG.NmbOfEnemies; i++)
             {
-                this.GameModel.Enemies.Add(new Enemy((double)(CONFIG.MapWidth/2 * this.GameModel.TileSize), (double)(r.Next((CONFIG.MapHeight / 3) + 2, CONFIG.MapHeight) * this.GameModel.TileSize)));
+                this.GameModel.Enemies.Add(new Enemy((double)(CONFIG.MapWidth / 2 * this.GameModel.TileSize), (double)(r.Next((CONFIG.MapHeight / 3) + 2, CONFIG.MapHeight) * this.GameModel.TileSize)));
             }
-            //for (int i = 0; i < CONFIG.NmbOfEnemies; i++)
-            //{
+
+            // for (int i = 0; i < CONFIG.NmbOfEnemies; i++)
+            // {
             //    this.GameModel.Enemies.Add(new Enemy((double)(CONFIG.MapWidth * this.GameModel.TileSize), (double)(r.Next((CONFIG.MapHeight / 3) + 2, CONFIG.MapHeight) * this.GameModel.TileSize)));
-            //}
-
-
+            // }
         }
 
         /// <summary>

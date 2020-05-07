@@ -52,7 +52,7 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5
             if (this.gameMode == "highscore" && this.renderer != null)
             {
                 List<int?> highscore;
-                string message = "Done";
+                string message = CONFIG.HighscoreMessage;
                 try
                 {
                     highscore = this.gameLogic.DbLogic.Highscore();
