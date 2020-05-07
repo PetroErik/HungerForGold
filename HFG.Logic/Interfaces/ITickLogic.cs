@@ -1,16 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// <copyright file="ITickLogic.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
 
 namespace HFG.Logic
 {
-    interface ITickLogic
+    /// <summary>
+    /// Interface for tick logic.
+    /// </summary>
+    public interface ITickLogic
     {
-        // Imitates gravity
-        void GravityTick();
-
+        /// <summary>
+        /// Decreases the FuelTankFullness by 1.
+        /// </summary>
         void FuelTick();
+
+        /// <summary>
+        /// Moves enemies.
+        /// </summary>
+        void EnemyTick();
+
+        void BoomTick();
     }
 }

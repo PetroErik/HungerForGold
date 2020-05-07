@@ -1,32 +1,52 @@
-﻿using HFG.Display;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// <copyright file="IMoveLogic.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
 
 namespace HFG.Logic
 {
-    interface IMoveLogic
+    using HFG.Display;
+
+    /// <summary>
+    /// Interface for the movement of the drill.
+    /// </summary>
+    public interface IMoveLogic
     {
-        // adds different amount of points to the ActualPoints depending in the type of the brick
-        // only adds points until the storage is not reached the maximum capiblity of its level
+        /// <summary>
+        /// Collects a mineral that the drill is colliding with.
+        /// </summary>
+        /// <param name="min">Mineral that is collected.</param>
         void CollectMinerals(Mineral min);
 
-        // Add the actualPoints to the TotalPoints. 
-        // This will be called in the logic if the reachGround() method returns true.
+        /// <summary>
+        /// Calculates the total points.
+        /// </summary>
         void CalcTotalPoints();
 
-        // Changes the X Y coordinate of the drill based on the input. 
-        // I am not sure yet how it should be implemented properly so maybe we should wait until we know how to use imagebrushes.
+        /// <summary>
+        /// Moves the drill to x and y direction.
+        /// </summary>
+        /// <param name="dx">Movement to the x direction.</param>
+        /// <param name="dy">Movement to the y direction.</param>
         void MoveDrill(int dx, int dy);
 
-        // this will also be called in the logic when the reachGround() returns true
-        // sets the storage to 0;
+        /// <summary>
+        /// Sets the storage fullness to 0.
+        /// </summary>
         void ClearStorage();
 
+        /// <summary>
+        /// Upgrades the drill.
+        /// </summary>
         void UpgradeDrill();
+
+        /// <summary>
+        /// Upgrades the FuelTank element.
+        /// </summary>
         void UpgradeFuelTank();
+
+        /// <summary>
+        /// Upgrades the Storage element.
+        /// </summary>
         void UpgradeStorage();
     }
 }

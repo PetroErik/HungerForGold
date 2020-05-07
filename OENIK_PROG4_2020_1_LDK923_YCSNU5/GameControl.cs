@@ -1,109 +1,154 @@
-﻿using HFG.Display;
-using HFG.Logic;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Threading;
+﻿// <copyright file="GameControl.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
 
 namespace OENIK_PROG4_2020_1_LDK923_YCSNU5
 {
-    class GameControl : FrameworkElement
+    using System;
+    using System.Collections.Generic;
+    using System.Windows;
+    using System.Windows.Input;
+    using System.Windows.Media;
+    using System.Windows.Threading;
+    using HFG.Display;
+    using HFG.Logic;
+
+    /// <summary>
+    /// Control class for the game.
+    /// </summary>
+    public class GameControl : FrameworkElement
     {
-        GameModel model;
+        private GameModel model;
+        private GameLogic gameLogic;
+        private VisualRenderer renderer;
+        private Window win;
+        private string gameMode;
+        private DispatcherTimer timer;
 
-        GameLogic gameLogic;
-
-        VisualRenderer renderer;
-
-        Window win;
-
-        string gameMode;
-
-        DispatcherTimer timer;
-
+        /// <summary>
+        /// Initializes a new instance of the <see cref="GameControl"/> class.
+        /// </summary>
         public GameControl()
         {
-            Loaded += GameControl_Loaded;
+            this.Loaded += this.GameControl_Loaded;
         }
 
-        Point GetMousePos()
+        /// <summary>
+        /// Renders the game.
+        /// </summary>
+        /// <param name="drawingContext">DrawingContext for drawing the game.</param>
+        protected override void OnRender(DrawingContext drawingContext)
         {
-            return win.PointToScreen(Mouse.GetPosition(win));
+            if (this.gameMode == "menu" && this.renderer != null)
+            {
+                drawingContext.DrawDrawing(this.renderer.MenuDrawing());
+            }
+
+            if (this.gameMode == "game" && this.renderer != null)
+            {
+                drawingContext.DrawDrawing(this.renderer.GameDrawing(this.gameLogic.GameOver()));
+            }
+
+            if (this.gameMode == "highscore" && this.renderer != null)
+            {
+                List<int?> highscore;
+                string message = CONFIG.HighscoreMessage;
+                try
+                {
+                    highscore = this.gameLogic.DbLogic.Highscore();
+                }
+                catch (Exception ex)
+                {
+                    highscore = new List<int?>();
+                    message = ex.Message;
+                }
+
+                drawingContext.DrawDrawing(this.renderer.HighscoreDrawing(highscore, message));
+            }
         }
+
+        private Point GetMousePos()
+        {
+            return this.win.PointToScreen(Mouse.GetPosition(this.win));
+        }
+
         private void GameControl_Loaded(object sender, RoutedEventArgs e)
         {
-            this.model = new GameModel(ActualWidth, ActualHeight);
-            this.gameLogic = new GameLogic(model);
+            this.model = new GameModel(this.ActualWidth, this.ActualHeight);
+            this.gameLogic = new GameLogic(this.model);
             this.gameLogic.InitialMap();
             this.gameMode = "menu";
 
-            this.renderer = new VisualRenderer(model);
+            this.renderer = new VisualRenderer(this.model);
 
-            win = Window.GetWindow(this);
-            if (win != null)
+            this.win = Window.GetWindow(this);
+            if (this.win != null)
             {
-                win.KeyDown += Win_KeyDown;
-                //win.MouseDown += Win_MouseDown;
-                timer = new DispatcherTimer();
-                timer.Interval = TimeSpan.FromMilliseconds(100);
-                timer.Tick += Timer_Tick;
-                timer.Start();
+                this.win.KeyDown += this.Win_KeyDown;
+                this.win.MouseDown += this.Win_MouseDown;
+                this.timer = new DispatcherTimer();
+                this.timer.Interval = TimeSpan.FromMilliseconds(200);
+                this.timer.Tick += this.Timer_Tick;
+                this.timer.Start();
             }
 
-            InvalidateVisual();
+            this.InvalidateVisual();
+        }
+
+        private void Win_MouseDown(object sender, MouseButtonEventArgs e)
+        {
         }
 
         private void Timer_Tick(object sender, EventArgs e)
         {
-            //gameLogic.tickLogic.GravityTick();
-            //logic.FuelTick();
-            gameLogic.tickLogic.FuelTick();
-            InvalidateVisual();
+            if (!this.gameLogic.GameOver())
+            {
+                this.gameLogic.TickLogic.FuelTick();
+                this.gameLogic.TickLogic.EnemyTick();
+                this.gameLogic.TickLogic.BoomTick();
+            }
+            this.InvalidateVisual();
         }
 
-        private void gameContinues()
+        private void SaveIntoDB()
         {
             try
             {
-                if (this.gameLogic.dbLogic.LoadGame())
+                this.gameLogic.DbLogic.SaveGame(this.model.Drill, this.model.Minerals);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"DATABASE ERROR {ex.Message}", string.Empty, MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void GameContinues()
+        {
+            try
+            {
+                if (this.gameLogic.DbLogic.LoadGame())
                 {
-                    gameMode = "game";
+                    this.gameMode = "game";
                 }
                 else
                 {
-                    MessageBox.Show("There is no Save Game!", "", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show("There is no Save Game!", string.Empty, MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"DATABASE ERROR {ex.Message}", "", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show($"DATABASE ERROR {ex.Message}", string.Empty, MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
-        private void gameExit()
+        private void GameExit()
         {
-            MessageBoxResult result = MessageBox.Show("Are you sure you want to quit?", "QUIT GAME",
-               MessageBoxButton.YesNo, MessageBoxImage.Question);
-
-
+            MessageBoxResult result = MessageBox.Show("Are you sure you want to quit?", "QUIT GAME", MessageBoxButton.YesNo, MessageBoxImage.Question);
             if (result == MessageBoxResult.Yes)
             {
-                try
-                {
-                    this.gameLogic.dbLogic.SaveGame(this.model.drill, this.model.Minerals);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"DATABASE ERROR {ex.Message}", "", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
+                this.SaveIntoDB();
 
-                gameMode = "menu";
-
+                this.gameMode = "menu";
             }
         }
 
@@ -113,15 +158,30 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5
             {
                 switch (move)
                 {
-                    case "LEFT": gameLogic.moveLogic.MoveDrill(-model.drill.DrillLvl, 0); break;
-                    case "RIGHT": gameLogic.moveLogic.MoveDrill(model.drill.DrillLvl, 0); break;
-                    case "UP": gameLogic.moveLogic.MoveDrill(0, -model.drill.DrillLvl); break;
-                    case "DOWN": gameLogic.moveLogic.MoveDrill(0, model.drill.DrillLvl); break;
+                    case "LEFT": this.gameLogic.MoveLogic.MoveDrill(-1, 0); break;
+                    case "RIGHT": this.gameLogic.MoveLogic.MoveDrill(1, 0); break;
+                    case "UP": this.gameLogic.MoveLogic.MoveDrill(0, -1); break;
+                    case "DOWN": this.gameLogic.MoveLogic.MoveDrill(0, 1); break;
                 }
             }
+
             if (this.gameLogic.GameOver() == true)
             {
-                this.gameLogic.dbLogic.SaveGame(this.model.drill, this.model.Minerals);
+                this.SaveIntoDB();
+            }
+        }
+
+        private void StartGame()
+        {
+            this.gameMode = "game";
+            try
+            {
+                this.gameLogic.StartGame();
+                this.gameLogic.GameOver(true);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"DATABASE ERROR {ex.Message}", string.Empty, MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -129,45 +189,21 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5
         {
             switch (e.Key)
             {
+                case Key.A: this.Move("LEFT"); break;
+                case Key.D: this.Move("RIGHT"); break;
+                case Key.W: this.Move("UP"); break;
+                case Key.S: this.Move("DOWN"); break;
+                case Key.D0: this.gameMode = "menu"; break;
+                case Key.D1: this.StartGame(); break;
+                case Key.D2: this.GameContinues(); break;
+                case Key.D3: this.gameMode = "highscore"; break;
+                case Key.F1: this.gameLogic.MoveLogic.UpgradeDrill(); break;
+                case Key.F2: this.gameLogic.MoveLogic.UpgradeFuelTank(); break;
+                case Key.F3: this.gameLogic.MoveLogic.UpgradeStorage(); break;
+                case Key.Escape: this.GameExit(); break;
+            }
 
-                case Key.A: Move("LEFT"); break;
-                case Key.D: Move("RIGHT"); break;
-                case Key.W: Move("UP"); break;
-                case Key.S: Move("DOWN"); break;
-                case Key.D0: gameMode = "menu"; break;
-                case Key.D1: gameMode = "game"; this.gameLogic.startGame(); break;
-                case Key.D2: gameContinues(); break;
-                case Key.D3: gameMode = "highscore"; break;
-                case Key.Escape: gameExit(); break;
-            }
-            InvalidateVisual();
-        }
-
-        protected override void OnRender(DrawingContext drawingContext)
-        {
-            if (gameMode == "menu" && renderer != null)
-            {
-                drawingContext.DrawDrawing((renderer.MenuDrawing()));
-            }
-            if (gameMode == "game" && renderer != null)
-            {
-                drawingContext.DrawDrawing(renderer.GameDrawing(this.gameLogic.GameOver()));
-            }
-            if (gameMode == "highscore" && renderer != null)
-            {
-                List<int?> highscore;
-                string message = "Done";
-                try
-                {
-                    highscore = this.gameLogic.dbLogic.Highscore();
-                }
-                catch (Exception ex)
-                {
-                    highscore = new List<int?>();
-                    message = ex.Message;
-                }
-                drawingContext.DrawDrawing(renderer.HighscoreDrawing(highscore, message));
-            }
+            this.InvalidateVisual();
         }
     }
 }

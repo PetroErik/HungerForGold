@@ -1,54 +1,143 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// <copyright file="CONFIG.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
 
 namespace HFG.Display
 {
+    /// <summary>
+    /// Containing the constants of our Game.
+    /// </summary>
     public static class CONFIG
     {
-
+        /// <summary>
+        /// Price of t he bronze mineral.
+        /// </summary>
         public static int BronzePrice = 100;
+
+        /// <summary>
+        /// Price of the silver mineral.
+        /// </summary>
         public static int SilverPrice = 200;
+
+        /// <summary>
+        /// Price of the gold mineral.
+        /// </summary>
         public static int GoldPrice = 300;
 
+        /// <summary>
+        /// Multiplier for the fuel tank capacity at a given fuel tank level.
+        /// </summary>
         public static int FuelCapacity = 100;
+
+        /// <summary>
+        /// Multiplier for the storage capacity at a given storage level.
+        /// </summary>
         public static int StorageCapacity = 10;
 
-        // Number of Tiles
+        /// <summary>
+        /// Number of tiles in the X direction.
+        /// </summary>
         public static int MapWidth = 20;
+
+        /// <summary>
+        /// Number of tiles in the Y direction.
+        /// </summary>
         public static int MapHeight = 20;
 
-        // Fixed upgrade price for all elements for all levels.
-        // Later we can make it more complex if we want.
+        /// <summary>
+        /// Number of bombs in the game.
+        /// </summary>
+        public static int NmbOfBombs = 3;
+
+        /// <summary>
+        /// Number of enemies in the game.
+        /// </summary>
+        public static int NmbOfEnemies = 3;
+
+        /// <summary>
+        /// Number of minerals of the game.
+        /// </summary>
+        public static int NmbOfMinerals = 30;
+
+        /// <summary>
+        /// Fixed price to upgrade an element.
+        /// </summary>
         public static int UpgradePrice = 5000;
 
+        /// <summary>
+        /// Maximum level of the fuel tank element.
+        /// </summary>
         public static int MaxFuelTankLevel = 3;
+
+        /// <summary>
+        /// Maximum levele of the storage element.
+        /// </summary>
         public static int MaxStorageLevel = 3;
+
+        /// <summary>
+        /// Maximum level of the drill element.
+        /// </summary>
         public static int MaxDrillLevel = 3;
 
+        /// <summary>
+        /// Brush for the background.
+        /// </summary>
         public static string BackgroundBrush = "OENIK_PROG4_2020_1_LDK923_YCSNU5.IMG.background.jpg";
+
+        /// <summary>
+        /// Brush for the drill.
+        /// </summary>
         public static string DrillBrush = "OENIK_PROG4_2020_1_LDK923_YCSNU5.IMG.Drill.png";
+
+        /// <summary>
+        /// Brush for the ground.
+        /// </summary>
         public static string GroundBrush = "OENIK_PROG4_2020_1_LDK923_YCSNU5.IMG.Ground.png";
+
+        /// <summary>
+        /// Brush for the grass.
+        /// </summary>
         public static string GroundLevelBrush = "OENIK_PROG4_2020_1_LDK923_YCSNU5.IMG.GroundLevel.png";
+
+        /// <summary>
+        /// Brush for the gold mineral type.
+        /// </summary>
         public static string GoldBrush = "OENIK_PROG4_2020_1_LDK923_YCSNU5.IMG.Gold.png";
+
+        /// <summary>
+        /// Brush for the silver mineral type.
+        /// </summary>
         public static string SilverBrush = "OENIK_PROG4_2020_1_LDK923_YCSNU5.IMG.Silver.png";
+
+        /// <summary>
+        /// Brush for the bronze mineral type.
+        /// </summary>
         public static string BronzeBrush = "OENIK_PROG4_2020_1_LDK923_YCSNU5.IMG.Bronze.png";
+
+        /// <summary>
+        /// Brush for the Silo.
+        /// </summary>
         public static string SiloBrush = "OENIK_PROG4_2020_1_LDK923_YCSNU5.IMG.Silo.png";
+
+        /// <summary>
+        /// Brush for the Machinist.
+        /// </summary>
         public static string MachinistBrush = "OENIK_PROG4_2020_1_LDK923_YCSNU5.IMG.Machinist.png";
 
-        // These values will set according to the practise.
-        // public static int StorageLvl3 = 300;
-        // public static int StorageLvl2 = 200;
-        // public static int StorageLvl1 = 100;
-        // 
-        // public static int FuelTankLvl3 = 300;
-        // public static int FuelTankLvl2 = 200;
-        // public static int FuelTankLvl1 = 100;
-        // 
-        // public static int DrillLvl3 = 300;
-        // public static int DrillLvl2 = 200;
-        // public static int DrillLvl1 = 100;
+        /// <summary>
+        /// Brush for the enemy.
+        /// </summary>
+        public static string EnemyBrush = "OENIK_PROG4_2020_1_LDK923_YCSNU5.IMG.Enemy.png";
+
+        /// <summary>
+        /// Brush for the bomb.
+        /// </summary>
+        public static string BombBrush = "OENIK_PROG4_2020_1_LDK923_YCSNU5.IMG.Bomb.png";
+        /// <summary>
+        /// 
+        /// </summary>
+        public static int BombExplodeTime = 30;
+
+        public static string HighscoreMessage = "No data yet!";
     }
 }

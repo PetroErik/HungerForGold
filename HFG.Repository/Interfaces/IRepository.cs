@@ -1,16 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// <copyright file="IRepository.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
 
 namespace HFG.Repository
 {
+    using System.Linq;
+
     /// <summary>
     /// Repository inteface.
     /// </summary>
-    /// <typeparam name="T"></typeparam>
-    public interface IRepository<T> where T:class
+    /// <typeparam name="T">Type of any classes.</typeparam>
+    public interface IRepository<T>
+        where T : class
     {
         /// <summary>
         /// method to get 1 instance.

@@ -1,44 +1,91 @@
-﻿using HFG.Display;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// <copyright file="TickLogic.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
 
 namespace HFG.Logic
 {
+    using System;
+    using HFG.Display;
+    using HFG.Display.Elements;
+
     /// <summary>
-    /// DECREASE THE FUEL TANKS
+    /// Moves elements in every tick.
     /// </summary>
     public class TickLogic : ITickLogic
     {
-        GameModel gameModel;
+        private int tickCount;
 
+        private GameModel gameModel;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="TickLogic"/> class.
+        /// Initialize the GameModel property.
+        /// </summary>
+        /// <param name="model">GameModel parameter to set the value of gameModel.</param>
         public TickLogic(GameModel model)
         {
             this.gameModel = model;
         }
-        // If returns true ==> game is over
-        // I move this gameover detect to game logic. It looks more "clear". 
-        // clean code: one function should only handle 1 thing. 
-        public void FuelTick()
+
+        /// <summary>
+        /// Moves enemies at every tick.
+        /// </summary>
+        public void EnemyTick()
         {
-            if (this.gameModel.drill.FuelTankFullness > 0)
+            foreach (Enemy enemy in this.gameModel.Enemies)
             {
-                this.gameModel.drill.FuelTankFullness--; 
+                this.changeEnemyLocation(enemy);
             }
         }
 
-        // If drill is above ground level it falls down.
-        public void GravityTick()
+        /// <summary>
+        /// If fuel tank is not empty, then decrease it's value by 1.
+        /// </summary>
+        public void FuelTick()
         {
-            if (this.gameModel.drill.Location[1] + 1 < (this.gameModel.GameHeight / 3))
+            if (this.gameModel.Drill.FuelTankFullness > 0)
             {
-                int dy = 1;
-                int newY = (int)(this.gameModel.drill.Location[1] + dy);
-                dy += 1;
-                this.gameModel.drill.Location = new double[2] { this.gameModel.drill.Location[0], newY };
+                this.gameModel.Drill.FuelTankFullness--;
             }
+        }
+
+        private void changeEnemyLocation(Enemy enemy)
+        {
+            if (enemy.Location[0] >= (CONFIG.MapWidth - 1) * 2 * this.gameModel.TileSize ||
+                enemy.Location[0] <= 0)
+            {
+                enemy.Dx = -enemy.Dx;
+            }
+
+            enemy.Location[0] += enemy.Dx * this.gameModel.TileSize;
+        }
+
+        private static Random r = new Random();
+
+        /// <summary>
+        /// Time decreases and bomb will explode .
+        /// </summary>
+        public void BoomTick()
+        {
+            this.tickCount++;
+
+            foreach (var bomb in this.gameModel.Bombs)
+            {
+                if (this.tickCount % CONFIG.BombExplodeTime == 0)
+                {
+                    this.changeLocationBomb(bomb);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Method to change the bomb's location .
+        /// </summary>
+        /// <param name="bomb">the chosen bomb .</param>
+        private void changeLocationBomb(Bomb bomb)
+        {
+            bomb.Location[0] = (double)r.Next(0, CONFIG.MapWidth * 2) * this.gameModel.TileSize;
+            bomb.Location[1] = (double)r.Next((CONFIG.MapHeight / 3) + 2, CONFIG.MapHeight) * this.gameModel.TileSize;
         }
     }
 }
