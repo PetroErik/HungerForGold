@@ -108,6 +108,11 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5
             get { return this.GetBrush(CONFIG.BombBrush, true); }
         }
 
+        public Brush FireBrush
+        {
+            get { return this.GetBrush(CONFIG.EnemyBrush, false); }
+        }
+
         /// <summary>
         /// Initializes a new instance of the <see cref="DrawExtension"/> class.
         /// </summary>

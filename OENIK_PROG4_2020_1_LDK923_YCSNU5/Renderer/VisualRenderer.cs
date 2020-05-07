@@ -178,14 +178,16 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5
         private Drawing GetBombs()
         {
             GeometryGroup bombs = new GeometryGroup();
-            for (int i = 0; i < this.model.Bombs.Count(); i++)
+            Drawing bmbs;
+
+            foreach (var bomb in this.model.Bombs)
             {
-                Geometry box = new RectangleGeometry(new Rect(this.model.Bombs[i].Location[0], this.model.Bombs[i].Location[1], this.model.TileSize, this.model.TileSize));
+                Geometry box = new RectangleGeometry(new Rect(bomb.Location[0], bomb.Location[1], this.model.TileSize, this.model.TileSize));
                 bombs.Children.Add(box);
+
             }
 
-            Drawing bmbs = new GeometryDrawing(this.drawExtension.BombBrush, null, bombs);
-
+            bmbs = new GeometryDrawing(this.drawExtension.BombBrush, null, bombs);
             return bmbs;
         }
 

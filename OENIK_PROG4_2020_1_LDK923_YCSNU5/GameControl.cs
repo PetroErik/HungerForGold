@@ -101,10 +101,25 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5
 
         private void Timer_Tick(object sender, EventArgs e)
         {
-            this.gameLogic.TickLogic.FuelTick();
-            this.gameLogic.TickLogic.EnemyTick();
-            this.gameLogic.TickLogic.BoomTick();
+            if (!this.gameLogic.GameOver())
+            {
+                this.gameLogic.TickLogic.FuelTick();
+                this.gameLogic.TickLogic.EnemyTick();
+                this.gameLogic.TickLogic.BoomTick();
+            }
             this.InvalidateVisual();
+        }
+
+        private void SaveIntoDB()
+        {
+            try
+            {
+                this.gameLogic.DbLogic.SaveGame(this.model.Drill, this.model.Minerals);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"DATABASE ERROR {ex.Message}", string.Empty, MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private void GameContinues()
@@ -131,14 +146,7 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5
             MessageBoxResult result = MessageBox.Show("Are you sure you want to quit?", "QUIT GAME", MessageBoxButton.YesNo, MessageBoxImage.Question);
             if (result == MessageBoxResult.Yes)
             {
-                try
-                {
-                    this.gameLogic.DbLogic.SaveGame(this.model.Drill, this.model.Minerals);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"DATABASE ERROR {ex.Message}", string.Empty, MessageBoxButton.OK, MessageBoxImage.Error);
-                }
+                this.SaveIntoDB();
 
                 this.gameMode = "menu";
             }
@@ -159,7 +167,7 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5
 
             if (this.gameLogic.GameOver() == true)
             {
-                this.gameLogic.DbLogic.SaveGame(this.model.Drill, this.model.Minerals);
+                this.SaveIntoDB();
             }
         }
 
@@ -169,6 +177,7 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5
             try
             {
                 this.gameLogic.StartGame();
+                this.gameLogic.GameOver(true);
             }
             catch (Exception ex)
             {
