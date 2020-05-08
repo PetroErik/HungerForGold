@@ -17,8 +17,7 @@ namespace HFG.Tests
         /// <summary>
         /// Test the FuelTick method when the fuel tank is not empty.
         /// </summary>
-        /// 
-
+        ///
         [Test]
         public void TestTickLogic_FuelTick_WhenFuelNotNull()
         {

@@ -107,6 +107,7 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5
                 this.gameLogic.TickLogic.EnemyTick();
                 this.gameLogic.TickLogic.BoomTick();
             }
+
             this.InvalidateVisual();
         }
 

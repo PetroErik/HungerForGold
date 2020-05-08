@@ -19,6 +19,9 @@ namespace HFG.Logic
         /// </summary>
         void EnemyTick();
 
+        /// <summary>
+        /// Decreases the time by 1 until explode.
+        /// </summary>
         void BoomTick();
     }
 }

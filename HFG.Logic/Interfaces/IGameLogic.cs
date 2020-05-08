@@ -20,9 +20,10 @@ namespace HFG.Logic
         void StartGame();
 
         /// <summary>
-        /// Check is the Game is Over.
+        /// Check game state.
         /// </summary>
-        /// <returns>True if the Game is Over.</returns>
-        bool GameOver();
+        /// <param name="active">Change state game.</param>
+        /// <returns>True if over.</returns>
+        bool GameOver(bool active = false);
     }
 }

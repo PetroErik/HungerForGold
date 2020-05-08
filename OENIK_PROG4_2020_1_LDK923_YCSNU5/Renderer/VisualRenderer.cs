@@ -184,7 +184,6 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5
             {
                 Geometry box = new RectangleGeometry(new Rect(bomb.Location[0], bomb.Location[1], this.model.TileSize, this.model.TileSize));
                 bombs.Children.Add(box);
-
             }
 
             bmbs = new GeometryDrawing(this.drawExtension.BombBrush, null, bombs);

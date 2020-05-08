@@ -67,11 +67,6 @@ namespace HFG.Logic
             {
                 this.GameModel.Enemies.Add(new Enemy((double)(CONFIG.MapWidth / 2 * this.GameModel.TileSize), (double)(r.Next((CONFIG.MapHeight / 3) + 2, CONFIG.MapHeight) * this.GameModel.TileSize)));
             }
-
-            // for (int i = 0; i < CONFIG.NmbOfEnemies; i++)
-            // {
-            //    this.GameModel.Enemies.Add(new Enemy((double)(CONFIG.MapWidth * this.GameModel.TileSize), (double)(r.Next((CONFIG.MapHeight / 3) + 2, CONFIG.MapHeight) * this.GameModel.TileSize)));
-            // }
         }
 
         /// <summary>
@@ -118,11 +113,17 @@ namespace HFG.Logic
         }
 
         /// <summary>
-        /// Decide if the game is still on or it is over.
+        /// Check game state.
         /// </summary>
-        /// <returns>Return value defines the state of the game. If the value is true, the game is over.</returns>
-        public bool GameOver()
+        /// <param name="active">Change state game.</param>
+        /// <returns>True if over.</returns>
+        public bool GameOver(bool active = false)
         {
+            if (active)
+            {
+                return false;
+            }
+
             return this.GameModel.Drill.FuelTankFullness <= 0 || this.MoveLogic.CollisionWithEnemy() || this.MoveLogic.CollisionWithBomb();
         }
     }
