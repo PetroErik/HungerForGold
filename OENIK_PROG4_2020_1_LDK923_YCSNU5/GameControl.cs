@@ -107,6 +107,7 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5
                 this.gameLogic.TickLogic.EnemyTick();
                 this.gameLogic.TickLogic.BoomTick();
             }
+
             this.InvalidateVisual();
         }
 
@@ -177,7 +178,7 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5
             try
             {
                 this.gameLogic.StartGame();
-                this.gameLogic.GameOver(true);
+                this.gameLogic.GameOver();
             }
             catch (Exception ex)
             {
