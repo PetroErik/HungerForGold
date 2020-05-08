@@ -23,6 +23,9 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5
     /// </summary>
     public partial class GameWindow : Window
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="GameWindow"/> class.
+        /// </summary>
         public GameWindow()
         {
             this.InitializeComponent();

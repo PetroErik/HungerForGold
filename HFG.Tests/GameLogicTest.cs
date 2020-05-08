@@ -15,14 +15,20 @@ namespace HFG.Tests
     [TestFixture]
     public class GameLogicTest
     {
-        GameLogic logic;
-        GameModel gameModel;
+        private GameLogic logic;
+        private GameModel gameModel;
 
-        Mineral min;
-        Enemy enemy;
-        Bomb bomb;
+        private Mineral min;
+        private Enemy enemy;
+        private Bomb bomb;
 
-       [SetUp]
+        /// <summary>
+        /// Set up is an attribute used inside a [TestFixture]
+        /// to provide a common set of functions that are performed
+        /// just before each test method is called. Can only have 1 setup,
+        /// if more than 1 the tests will not run .
+        /// </summary>
+        [SetUp]
         public void SetUp()
         {
             this.gameModel = new GameModel(500, 500);
@@ -59,16 +65,15 @@ namespace HFG.Tests
         /// <summary>
         /// Test the FuelTick method when the fuel tank is not empty.
         /// </summary>
-        /// 
-
+        ///
         [Test]
         public void TestTickLogic_FuelTick_WhenFuelNotNull()
         {
-            logic.GameModel.Drill.FuelTankFullness = 40;
+            this.logic.GameModel.Drill.FuelTankFullness = 40;
 
-            logic.TickLogic.FuelTick();
+            this.logic.TickLogic.FuelTick();
 
-            Assert.That(logic.GameModel.Drill.FuelTankFullness, Is.EqualTo(39));
+            Assert.That(this.logic.GameModel.Drill.FuelTankFullness, Is.EqualTo(39));
         }
 
         /// <summary>
@@ -77,11 +82,11 @@ namespace HFG.Tests
         [Test]
         public void TestTickLogic_FuelTick_WhenFuelNull()
         {
-            logic.GameModel.Drill.FuelTankFullness = 0;
+            this.logic.GameModel.Drill.FuelTankFullness = 0;
 
-            logic.TickLogic.FuelTick();
+            this.logic.TickLogic.FuelTick();
 
-            Assert.That(logic.GameModel.Drill.FuelTankFullness, Is.EqualTo(0));
+            Assert.That(this.logic.GameModel.Drill.FuelTankFullness, Is.EqualTo(0));
         }
 
         /// <summary>
@@ -90,11 +95,11 @@ namespace HFG.Tests
         [Test]
         public void TestUpgradeLogic_UpgradeFuelTank_WhenNotMaxLevel()
         {
-            logic.GameModel.TotalPoints = 5000;
+            this.logic.GameModel.TotalPoints = 5000;
 
-            logic.MoveLogic.UpgradeFuelTank();
+            this.logic.MoveLogic.UpgradeFuelTank();
 
-            Assert.That(logic.GameModel.Drill.FuelTankLvl, Is.EqualTo(2));
+            Assert.That(this.logic.GameModel.Drill.FuelTankLvl, Is.EqualTo(2));
         }
 
         /// <summary>
@@ -103,11 +108,11 @@ namespace HFG.Tests
         [Test]
         public void TestUpgradeLogic_UpgradeFuelTank_WhenMaxLevel()
         {
-            logic.GameModel.Drill.FuelTankLvl = 3;
+            this.logic.GameModel.Drill.FuelTankLvl = 3;
 
-            logic.MoveLogic.UpgradeFuelTank();
+            this.logic.MoveLogic.UpgradeFuelTank();
 
-            Assert.That(logic.GameModel.Drill.FuelTankLvl, Is.EqualTo(3));
+            Assert.That(this.logic.GameModel.Drill.FuelTankLvl, Is.EqualTo(3));
         }
 
         /// <summary>
@@ -116,11 +121,11 @@ namespace HFG.Tests
         [Test]
         public void TestUpgradeLogic_UpgradeDrill_WhenNotMaxLevel()
         {
-            logic.GameModel.TotalPoints = 5000;
+            this.logic.GameModel.TotalPoints = 5000;
 
-            logic.MoveLogic.UpgradeDrill();
+            this.logic.MoveLogic.UpgradeDrill();
 
-            Assert.That(logic.GameModel.Drill.DrillLvl, Is.EqualTo(2));
+            Assert.That(this.logic.GameModel.Drill.DrillLvl, Is.EqualTo(2));
         }
 
         /// <summary>
@@ -129,11 +134,11 @@ namespace HFG.Tests
         [Test]
         public void TestUpgradeLogic_UpgradeDrill_WhenMaxLevel()
         {
-            logic.GameModel.Drill.DrillLvl = 3;
+            this.logic.GameModel.Drill.DrillLvl = 3;
 
-            logic.MoveLogic.UpgradeFuelTank();
+            this.logic.MoveLogic.UpgradeFuelTank();
 
-            Assert.That(logic.GameModel.Drill.DrillLvl, Is.EqualTo(3));
+            Assert.That(this.logic.GameModel.Drill.DrillLvl, Is.EqualTo(3));
         }
 
         /// <summary>
@@ -142,11 +147,11 @@ namespace HFG.Tests
         [Test]
         public void TestUpgradeLogic_UpgradeStorage_WhenNotMaxLevel()
         {
-            logic.GameModel.TotalPoints = 5000;
+            this.logic.GameModel.TotalPoints = 5000;
 
-            logic.MoveLogic.UpgradeStorage();
+            this.logic.MoveLogic.UpgradeStorage();
 
-            Assert.That(logic.GameModel.Drill.StorageLvl, Is.EqualTo(2));
+            Assert.That(this.logic.GameModel.Drill.StorageLvl, Is.EqualTo(2));
         }
 
         /// <summary>
@@ -155,11 +160,11 @@ namespace HFG.Tests
         [Test]
         public void TestUpgradeLogic_UpgradeStorage_WhenMaxLevel()
         {
-            logic.GameModel.Drill.StorageLvl = 3;
+            this.logic.GameModel.Drill.StorageLvl = 3;
 
-            logic.MoveLogic.UpgradeFuelTank();
+            this.logic.MoveLogic.UpgradeFuelTank();
 
-            Assert.That(logic.GameModel.Drill.StorageLvl, Is.EqualTo(3));
+            Assert.That(this.logic.GameModel.Drill.StorageLvl, Is.EqualTo(3));
         }
 
         /// <summary>
@@ -168,12 +173,12 @@ namespace HFG.Tests
         [Test]
         public void TestMoveLogic_MoveDrill()
         {
-            logic.GameModel.Drill.Location = new double[] { 300, 300 };
+            this.logic.GameModel.Drill.Location = new double[] { 300, 300 };
 
-            logic.MoveLogic.MoveDrill(1, 1);
+            this.logic.MoveLogic.MoveDrill(1, 1);
 
-            Assert.That(logic.GameModel.Drill.Location[0], Is.EqualTo(300 + logic.GameModel.TileSize));
-            Assert.That(logic.GameModel.Drill.Location[1], Is.EqualTo(300 + logic.GameModel.TileSize));
+            Assert.That(this.logic.GameModel.Drill.Location[0], Is.EqualTo(300 + this.logic.GameModel.TileSize));
+            Assert.That(this.logic.GameModel.Drill.Location[1], Is.EqualTo(300 + this.logic.GameModel.TileSize));
         }
 
         /// <summary>
@@ -182,12 +187,12 @@ namespace HFG.Tests
         [Test]
         public void TestMoveLogic_MoveDrill_ToLeftBorder()
         {
-            logic.GameModel.Drill.Location = new double[] { 5, 5 };
+            this.logic.GameModel.Drill.Location = new double[] { 5, 5 };
 
-            logic.MoveLogic.MoveDrill(-1, 0);
+            this.logic.MoveLogic.MoveDrill(-1, 0);
 
-            Assert.That(logic.GameModel.Drill.Location[0], Is.EqualTo(5));
-            Assert.That(logic.GameModel.Drill.Location[1], Is.EqualTo(5));
+            Assert.That(this.logic.GameModel.Drill.Location[0], Is.EqualTo(5));
+            Assert.That(this.logic.GameModel.Drill.Location[1], Is.EqualTo(5));
         }
 
         /// <summary>
@@ -196,12 +201,12 @@ namespace HFG.Tests
         [Test]
         public void TestMoveLogic_MoveDrill_ToUpBorder()
         {
-            logic.GameModel.Drill.Location = new double[] { 5, 5 };
+            this.logic.GameModel.Drill.Location = new double[] { 5, 5 };
 
-            logic.MoveLogic.MoveDrill(0, -1);
+            this.logic.MoveLogic.MoveDrill(0, -1);
 
-            Assert.That(logic.GameModel.Drill.Location[0], Is.EqualTo(5));
-            Assert.That(logic.GameModel.Drill.Location[1], Is.EqualTo(5));
+            Assert.That(this.logic.GameModel.Drill.Location[0], Is.EqualTo(5));
+            Assert.That(this.logic.GameModel.Drill.Location[1], Is.EqualTo(5));
         }
 
         /// <summary>
@@ -210,12 +215,12 @@ namespace HFG.Tests
         [Test]
         public void TestMoveLogic_MoveDrill_ToRightBorder()
         {
-            logic.GameModel.Drill.Location = new double[] { 490, 490 };
+            this.logic.GameModel.Drill.Location = new double[] { 490, 490 };
 
-            logic.MoveLogic.MoveDrill(1, 0);
+            this.logic.MoveLogic.MoveDrill(1, 0);
 
-            Assert.That(logic.GameModel.Drill.Location[0], Is.EqualTo(490));
-            Assert.That(logic.GameModel.Drill.Location[1], Is.EqualTo(490));
+            Assert.That(this.logic.GameModel.Drill.Location[0], Is.EqualTo(490));
+            Assert.That(this.logic.GameModel.Drill.Location[1], Is.EqualTo(490));
         }
 
         /// <summary>
@@ -224,12 +229,12 @@ namespace HFG.Tests
         [Test]
         public void TestMoveLogic_MoveDrill_ToDownBorder()
         {
-            logic.GameModel.Drill.Location = new double[] { 490, 490 };
+            this.logic.GameModel.Drill.Location = new double[] { 490, 490 };
 
-            logic.MoveLogic.MoveDrill(0, 1);
+            this.logic.MoveLogic.MoveDrill(0, 1);
 
-            Assert.That(logic.GameModel.Drill.Location[0], Is.EqualTo(490));
-            Assert.That(logic.GameModel.Drill.Location[1], Is.EqualTo(490));
+            Assert.That(this.logic.GameModel.Drill.Location[0], Is.EqualTo(490));
+            Assert.That(this.logic.GameModel.Drill.Location[1], Is.EqualTo(490));
         }
 
         /// <summary>
@@ -241,7 +246,7 @@ namespace HFG.Tests
             this.gameModel.Drill.Location = new double[] { 15, 15 };
             this.gameModel.SiloHouse.Location = new double[] { 0, 0 };
 
-            bool result = logic.MoveLogic.CollisionWithSilo();
+            bool result = this.logic.MoveLogic.CollisionWithSilo();
 
             Assert.That(result, Is.EqualTo(true));
         }
@@ -255,7 +260,7 @@ namespace HFG.Tests
             this.gameModel.Drill.Location = new double[] { 15, 15 };
             this.gameModel.MachinistHouse.Location = new double[] { 15, 15 };
 
-            bool result = logic.MoveLogic.CollisionWithMachinist();
+            bool result = this.logic.MoveLogic.CollisionWithMachinist();
 
             Assert.That(result, Is.EqualTo(true));
         }
@@ -266,12 +271,12 @@ namespace HFG.Tests
         [Test]
         public void TestMoveLogic_CalcTotalPoints()
         {
-            logic.GameModel.ActualPoints = 100;
-            logic.GameModel.TotalPoints = 0;
+            this.logic.GameModel.ActualPoints = 100;
+            this.logic.GameModel.TotalPoints = 0;
 
-            logic.MoveLogic.CalcTotalPoints();
+            this.logic.MoveLogic.CalcTotalPoints();
 
-            Assert.That(logic.GameModel.TotalPoints, Is.EqualTo(100));
+            Assert.That(this.logic.GameModel.TotalPoints, Is.EqualTo(100));
         }
 
         /// <summary>
@@ -280,13 +285,13 @@ namespace HFG.Tests
         [Test]
         public void TestMoveLogic_ClearStorage()
         {
-            logic.GameModel.Drill.StorageFullness = 50;
-            logic.GameModel.ActualPoints = 300;
+            this.logic.GameModel.Drill.StorageFullness = 50;
+            this.logic.GameModel.ActualPoints = 300;
 
-            logic.MoveLogic.ClearStorage();
+            this.logic.MoveLogic.ClearStorage();
 
-            Assert.That(logic.GameModel.Drill.StorageFullness, Is.EqualTo(0));
-            Assert.That(logic.GameModel.ActualPoints, Is.EqualTo(0));
+            Assert.That(this.logic.GameModel.Drill.StorageFullness, Is.EqualTo(0));
+            Assert.That(this.logic.GameModel.ActualPoints, Is.EqualTo(0));
         }
 
         /// <summary>
@@ -295,12 +300,12 @@ namespace HFG.Tests
         [Test]
         public void TestMoveLogic_CollectMineral_WhenStorageNotFull()
         {
-            logic.GameModel.Drill.Location = new double[] { 5, 5 };
+            this.logic.GameModel.Drill.Location = new double[] { 5, 5 };
 
-            logic.MoveLogic.CollectMinerals(min);
+            this.logic.MoveLogic.CollectMinerals(this.min);
 
-            Assert.That(logic.GameModel.ActualPoints, Is.EqualTo(300));
-            Assert.That(logic.GameModel.Drill.StorageFullness, Is.EqualTo(1));
+            Assert.That(this.logic.GameModel.ActualPoints, Is.EqualTo(300));
+            Assert.That(this.logic.GameModel.Drill.StorageFullness, Is.EqualTo(1));
         }
 
         /// <summary>
@@ -309,14 +314,14 @@ namespace HFG.Tests
         [Test]
         public void TestMoveLogic_CollectMineral_WhenStorageFull()
         {
-            logic.GameModel.Drill.Location = new double[] { 5, 5 };
-            logic.GameModel.Drill.StorageFullness = logic.GameModel.Drill.StorageCapacity;
-            logic.GameModel.ActualPoints = 100;
+            this.logic.GameModel.Drill.Location = new double[] { 5, 5 };
+            this.logic.GameModel.Drill.StorageFullness = this.logic.GameModel.Drill.StorageCapacity;
+            this.logic.GameModel.ActualPoints = 100;
 
-            logic.MoveLogic.CollectMinerals(min);
+            this.logic.MoveLogic.CollectMinerals(this.min);
 
-            Assert.That(logic.GameModel.ActualPoints, Is.EqualTo(100));
-            Assert.That(logic.GameModel.Drill.StorageFullness, Is.EqualTo(logic.GameModel.Drill.StorageCapacity));
+            Assert.That(this.logic.GameModel.ActualPoints, Is.EqualTo(100));
+            Assert.That(this.logic.GameModel.Drill.StorageFullness, Is.EqualTo(this.logic.GameModel.Drill.StorageCapacity));
         }
 
         /// <summary>
@@ -325,10 +330,10 @@ namespace HFG.Tests
         [Test]
         public void TestMoveLogic_CollisionWithEnemy()
         {
-            logic.GameModel.Drill.Location = new double[] { 10, 10 };
-            logic.GameModel.Enemies.Add(enemy);
+            this.logic.GameModel.Drill.Location = new double[] { 10, 10 };
+            this.logic.GameModel.Enemies.Add(this.enemy);
 
-            bool result = logic.MoveLogic.CollisionWithEnemy();
+            bool result = this.logic.MoveLogic.CollisionWithEnemy();
 
             Assert.That(result, Is.True);
         }
@@ -338,10 +343,10 @@ namespace HFG.Tests
         /// </summary>
         public void TestMoveLogic_CollisionWithBomb()
         {
-            logic.GameModel.Drill.Location = new double[] { 10, 10 };
-            logic.GameModel.Bombs.Add(bomb);
+            this.logic.GameModel.Drill.Location = new double[] { 10, 10 };
+            this.logic.GameModel.Bombs.Add(this.bomb);
 
-            bool result = logic.MoveLogic.CollisionWithBomb();
+            bool result = this.logic.MoveLogic.CollisionWithBomb();
 
             Assert.That(result, Is.True);
         }

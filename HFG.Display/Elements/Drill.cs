@@ -10,6 +10,17 @@ namespace HFG.Display
     public class Drill : Character
     {
         /// <summary>
+        /// Initializes a new instance of the <see cref="Drill"/> class.
+        /// Sets the location of the drill.
+        /// </summary>
+        /// <param name="x">X location of the drill.</param>
+        /// <param name="y">Y location of the drill.</param>
+        public Drill(double x, double y)
+        {
+            this.Location = new double[2] { x, y };
+        }
+
+        /// <summary>
         /// Gets or sets the level of the Storage element.
         /// </summary>
         public int StorageLvl { get; set; }
@@ -43,17 +54,6 @@ namespace HFG.Display
         /// Gets or sets the fullness of the fuel tank element.
         /// </summary>
         public int FuelTankFullness { get; set; }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Drill"/> class.
-        /// Sets the location of the drill.
-        /// </summary>
-        /// <param name="x">X location of the drill.</param>
-        /// <param name="y">Y location of the drill.</param>
-        public Drill(double x, double y)
-        {
-            this.Location = new double[2] { x, y };
-        }
 
         /// <summary>
         /// Sets the intial values of the drill components.

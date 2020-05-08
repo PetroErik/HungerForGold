@@ -10,7 +10,7 @@ namespace HFG.Display
     public static class CONFIG
     {
         /// <summary>
-        /// Price of t he bronze mineral.
+        /// Price of the bronze mineral.
         /// </summary>
         public static int BronzePrice = 100;
 
@@ -47,12 +47,12 @@ namespace HFG.Display
         /// <summary>
         /// Number of bombs in the game.
         /// </summary>
-        public static int NmbOfBombs = 3;
+        public static int NmbOfBombs = 10;
 
         /// <summary>
         /// Number of enemies in the game.
         /// </summary>
-        public static int NmbOfEnemies = 3;
+        public static int NmbOfEnemies = 6;
 
         /// <summary>
         /// Number of minerals of the game.
@@ -62,7 +62,7 @@ namespace HFG.Display
         /// <summary>
         /// Fixed price to upgrade an element.
         /// </summary>
-        public static int UpgradePrice = 5000;
+        private static int upgradePrice = 5000;
 
         /// <summary>
         /// Maximum level of the fuel tank element.
@@ -133,11 +133,30 @@ namespace HFG.Display
         /// Brush for the bomb.
         /// </summary>
         public static string BombBrush = "OENIK_PROG4_2020_1_LDK923_YCSNU5.IMG.Bomb.png";
-        /// <summary>
-        /// 
-        /// </summary>
-        public static int BombExplodeTime = 30;
 
-        public static string HighscoreMessage = "No data yet!";
+        /// <summary>
+        /// Bomb explode time.
+        /// </summary>
+        private static int bombExplodeTime = 30;
+
+        /// <summary>
+        /// highscore text.
+        /// </summary>
+        private static string highscoreMessage = "No data yet!";
+
+        /// <summary>
+        /// Gets or sets bomb exlode time.
+        /// </summary>
+        public static int BombExplodeTime { get => bombExplodeTime; set => bombExplodeTime = value; }
+
+        /// <summary>
+        /// Gets or sets highscore text.
+        /// </summary>
+        public static string HighscoreMessage { get => highscoreMessage; set => highscoreMessage = value; }
+
+        /// <summary>
+        /// Gets or sets the mineral prices.
+        /// </summary>
+        public static int UpgradePrice { get => upgradePrice; set => upgradePrice = value; }
     }
 }

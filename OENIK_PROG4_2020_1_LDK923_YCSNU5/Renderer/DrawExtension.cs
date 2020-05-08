@@ -21,6 +21,17 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5
         private double height;
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="DrawExtension"/> class.
+        /// </summary>
+        /// <param name="width">Width of the game.</param>
+        /// <param name="height">Height of the game.</param>
+        public DrawExtension(double width, double height)
+        {
+            this.width = width;
+            this.height = height;
+        }
+
+        /// <summary>
         /// Gets the brush for the background of the game.
         /// </summary>
         public Brush BackgroundBrush
@@ -108,20 +119,12 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5
             get { return this.GetBrush(CONFIG.BombBrush, true); }
         }
 
+        /// <summary>
+        /// Gets the brush for the fire.
+        /// </summary>
         public Brush FireBrush
         {
             get { return this.GetBrush(CONFIG.EnemyBrush, false); }
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="DrawExtension"/> class.
-        /// </summary>
-        /// <param name="width">Width of the game.</param>
-        /// <param name="height">Height of the game.</param>
-        public DrawExtension(double width, double height)
-        {
-            this.width = width;
-            this.height = height;
         }
 
         /// <summary>

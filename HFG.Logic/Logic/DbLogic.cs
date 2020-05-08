@@ -84,6 +84,10 @@ namespace HFG.Logic
             this.drillRepo.Addnew(drill);
         }
 
+        /// <summary>
+        /// Add new brick to database.
+        /// </summary>
+        /// <param name="brick">new brick instance.</param>
         public void AddNewBrick(brick brick)
         {
             this.brickRepo.Addnew(brick);
@@ -94,6 +98,11 @@ namespace HFG.Logic
             this.connRepo.Addnew(conn);
         }
 
+        /// <summary>
+        /// Get 1 drill from database.
+        /// </summary>
+        /// <param name="id">the chosen drill.</param>
+        /// <returns>drill instance.</returns>
         public drill GetDrillInstance(int id)
         {
             return this.drillRepo.GetOne(id);
@@ -114,7 +123,7 @@ namespace HFG.Logic
             return this.brickRepo.GetAll();
         }
 
-        public IQueryable<drill> GetDrills() 
+        public IQueryable<drill> GetDrills()
         {
             return this.drillRepo.GetAll();
         }
@@ -167,9 +176,9 @@ namespace HFG.Logic
         public List<int?> Highscore()
         {
             List<int?> highScore = new List<int?>();
-            if (this.drillRepo.GetAll().Any())
+            if (this.GetDrills().Any())
             {
-                var scores = this.drillRepo.GetAll().Select(x => x.drill_score).Distinct().OrderByDescending(x => x);
+                var scores = this.GetDrills().Select(x => x.drill_score).Distinct().OrderByDescending(x => x);
 
                 foreach (var score in scores)
                 {

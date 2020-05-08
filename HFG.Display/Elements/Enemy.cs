@@ -14,11 +14,6 @@ namespace HFG.Display.Elements
         private static Random r = new Random();
 
         /// <summary>
-        /// Gets or sets the movement vector in the X direction.
-        /// </summary>
-        public int Dx { get; set; }
-
-        /// <summary>
         /// Initializes a new instance of the <see cref="Enemy"/> class.
         /// Declares the location of the enemy.
         /// </summary>
@@ -38,5 +33,10 @@ namespace HFG.Display.Elements
                 this.Dx = 1;
             }
         }
+
+        /// <summary>
+        /// Gets or sets the movement vector in the X direction.
+        /// </summary>
+        public int Dx { get; set; }
     }
 }
