@@ -93,6 +93,10 @@ namespace HFG.Logic
             this.brickRepo.Addnew(brick);
         }
 
+        /// <summary>
+        /// Add new connection in the database.
+        /// </summary>
+        /// <param name="conn">new connection instance.</param>
         public void AddNewConnection(conn conn)
         {
             this.connRepo.Addnew(conn);
@@ -108,21 +112,39 @@ namespace HFG.Logic
             return this.drillRepo.GetOne(id);
         }
 
+        /// <summary>
+        /// Get 1 Brick from database.
+        /// </summary>
+        /// <param name="id">the chosen brick.</param>
+        /// <returns>brick instance.</returns>
         public brick GetBrickInstance(int id)
         {
             return this.brickRepo.GetOne(id);
         }
 
+        /// <summary>
+        /// Get 1 Connection from database.
+        /// </summary>
+        /// <param name="id">the chosen connection.</param>
+        /// <returns>connection instance.</returns>
         public conn GetConnInstance(int id)
         {
             return this.connRepo.GetOne(id);
         }
 
+        /// <summary>
+        /// Method to get the list of bricks.
+        /// </summary>
+        /// <returns>a list of brick types.</returns>
         public IQueryable<brick> GetBricks()
         {
             return this.brickRepo.GetAll();
         }
 
+        /// <summary>
+        /// Method to get the list of drills.
+        /// </summary>
+        /// <returns>a list of all the drills.</returns>
         public IQueryable<drill> GetDrills()
         {
             return this.drillRepo.GetAll();
