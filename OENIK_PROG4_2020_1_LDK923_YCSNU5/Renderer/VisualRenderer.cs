@@ -67,9 +67,9 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5
             dg.Children.Add(this.GetBombs());
             dg.Children.Add(this.GetFuelTank());
             dg.Children.Add(this.GetStorage());
+            dg.Children.Add(this.GetLevelInformation());
             dg.Children.Add(this.GetActualPoints());
             dg.Children.Add(this.GetTotalPoints());
-            dg.Children.Add(this.GetLevelInformation());
             dg.Children.Add(this.GetMenuText());
             dg.Children.Add(this.GetDrill());
 
@@ -107,12 +107,14 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5
                 dg.Children.Add(this.drawExtension.TitleText($"{message}", (this.model.GameWidth / 2) - 180, (this.model.GameHeight / 2) - 60, (this.model.GameWidth / 2) - 90, (this.model.GameHeight / 2) - 60));
             }
 
-            return dg;
-        }
+            GeometryDrawing background = new GeometryDrawing(Brushes.AliceBlue, new Pen(Brushes.Blue, 1), new RectangleGeometry(new Rect(this.model.MenuButton[0], this.model.MenuButton[1], this.model.MenuButton[2], this.model.MenuButton[3])));
+            FormattedText text = new FormattedText("Back", System.Globalization.CultureInfo.CurrentCulture, FlowDirection.LeftToRight, new Typeface("Arial"), 15, Brushes.Black, 1.25);
+            GeometryDrawing backText = new GeometryDrawing(Brushes.Black, new Pen(Brushes.Black, 1), text.BuildGeometry(new Point(7, 5)));
 
-        private Drawing Debug()
-        {
-            return this.drawExtension.DrawText($"DEBUG: {this.model.Drill.Location[0]} {this.model.Drill.Location[1]}", 30, 10, 10);
+            dg.Children.Add(background);
+            dg.Children.Add(backText);
+
+            return dg;
         }
 
         private Drawing GetDrill()
@@ -231,9 +233,9 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5
         private Drawing GetLevelInformation()
         {
             DrawingGroup g = new DrawingGroup();
-            GeometryDrawing background = new GeometryDrawing(Brushes.AliceBlue, new Pen(Brushes.Blue, 1), new RectangleGeometry(new Rect(30, 0, 300, 20)));
-            FormattedText text = new FormattedText($"Drill Level: {this.model.Drill.DrillLvl}/3\tStorage Level: {this.model.Drill.StorageLvl}/3\tFuelTank Level: {this.model.Drill.FuelTankLvl}/3", System.Globalization.CultureInfo.CurrentCulture, FlowDirection.LeftToRight, new Typeface("Arial"), 10, Brushes.Black, 1.25);
-            GeometryDrawing levelText = new GeometryDrawing(Brushes.Black, new Pen(Brushes.Black, 1), text.BuildGeometry(new Point(35, 5)));
+            GeometryDrawing background = new GeometryDrawing(Brushes.AliceBlue, new Pen(Brushes.Blue, 1), new RectangleGeometry(new Rect(30, 0, this.model.GameWidth, 30)));
+            FormattedText text = new FormattedText($"\t(F1) Drill Level: {this.model.Drill.DrillLvl}/3\t(F2) Storage Level: {this.model.Drill.StorageLvl}/3\t\t(F3) FuelTank Level: {this.model.Drill.FuelTankLvl}/3", System.Globalization.CultureInfo.CurrentCulture, FlowDirection.LeftToRight, new Typeface("Arial"), 15, Brushes.Black, 1.25);
+            GeometryDrawing levelText = new GeometryDrawing(Brushes.Black, new Pen(Brushes.Black, 1), text.BuildGeometry(new Point(33, 5)));
 
             g.Children.Add(background);
             g.Children.Add(levelText);
@@ -245,8 +247,8 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5
         {
             DrawingGroup g = new DrawingGroup();
             GeometryDrawing background = new GeometryDrawing(Brushes.AliceBlue, new Pen(Brushes.Blue, 1), new RectangleGeometry(new Rect(this.model.MenuButton[0], this.model.MenuButton[1], this.model.MenuButton[2], this.model.MenuButton[3])));
-            FormattedText text = new FormattedText("Menu", System.Globalization.CultureInfo.CurrentCulture, FlowDirection.LeftToRight, new Typeface("Arial"), 10, Brushes.Black, 1.25);
-            GeometryDrawing menuText = new GeometryDrawing(Brushes.Black, new Pen(Brushes.Black, 1), text.BuildGeometry(new Point(3, 5)));
+            FormattedText text = new FormattedText("Menu", System.Globalization.CultureInfo.CurrentCulture, FlowDirection.LeftToRight, new Typeface("Arial"), 15, Brushes.Black, 1.25);
+            GeometryDrawing menuText = new GeometryDrawing(Brushes.Black, new Pen(Brushes.Black, 1), text.BuildGeometry(new Point(5, 5)));
 
             g.Children.Add(background);
             g.Children.Add(menuText);
@@ -256,12 +258,12 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5
 
         private Drawing GetActualPoints()
         {
-            return this.drawExtension.DrawText($"Actual Points: {this.model.ActualPoints}", 20, this.model.GameWidth / 3, 5);
+            return this.drawExtension.DrawText($"Actual Points: {this.model.ActualPoints}", 15, this.model.GameWidth * 2 / 3, 5);
         }
 
         private Drawing GetTotalPoints()
         {
-            return this.drawExtension.DrawText($"Total Points: {this.model.TotalPoints}", 20, this.model.GameWidth * 2 / 3, 5);
+            return this.drawExtension.DrawText($"Total Points: {this.model.TotalPoints}", 15, this.model.GameWidth - 200, 5);
         }
     }
 }

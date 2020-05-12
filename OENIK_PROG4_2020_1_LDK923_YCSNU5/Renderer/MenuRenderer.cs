@@ -17,6 +17,7 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5
         /// Drawing group for the menu.
         /// </summary>
         public DrawingGroup MenuGroup;
+
         private GameModel model;
 
         /// <summary>

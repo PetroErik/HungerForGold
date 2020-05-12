@@ -52,7 +52,7 @@ namespace HFG.Logic
             this.DbLogic = new DbLogic(model, new DrillRepository(entities), new BrickRepository(entities), new ConnRepository(entities));
             this.TickLogic = new TickLogic(model);
             this.GameModel.TileSize = Math.Min(this.GameModel.GameWidth / CONFIG.MapWidth, this.GameModel.GameHeight / CONFIG.MapHeight);
-            this.GameModel.MenuButton = new double[] { 0, 0, 30, 20 };
+            this.GameModel.MenuButton = new double[] { 0, 0, 50, 30 };
             this.GameModel.StartButton = new double[] { (this.GameModel.GameWidth / 2) - 180, this.GameModel.GameHeight / 2, 400, 40 };
             this.GameModel.ContinueButton = new double[] { (this.GameModel.GameWidth / 2) - 180, (this.GameModel.GameHeight / 2) + 60, 400, 40 };
             this.GameModel.HighscoreButton = new double[] { (this.GameModel.GameWidth / 2) - 180, (this.GameModel.GameHeight / 2) + 120, 400, 40 };

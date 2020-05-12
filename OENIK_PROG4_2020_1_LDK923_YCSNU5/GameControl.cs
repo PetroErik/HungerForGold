@@ -22,6 +22,7 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5
         private GameLogic gameLogic;
         private VisualRenderer renderer;
         private Window win;
+        private ControlExtension extension;
         private string gameMode;
         private DispatcherTimer timer;
 
@@ -80,6 +81,7 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5
             this.gameMode = "menu";
 
             this.renderer = new VisualRenderer(this.model);
+            this.extension = new ControlExtension(this.gameLogic);
 
             this.win = Window.GetWindow(this);
             if (this.win != null)
@@ -97,6 +99,30 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5
 
         private void Win_MouseDown(object sender, MouseButtonEventArgs e)
         {
+            if (this.extension.ClickOnMenu(e.GetPosition(this).X, e.GetPosition(this).Y, this.gameMode))
+            {
+                this.gameMode = "menu";
+            }
+
+            if (this.extension.ClickOnStart(e.GetPosition(this).X, e.GetPosition(this).Y, this.gameMode))
+            {
+                this.StartGame();
+            }
+
+            if (this.extension.ClickOnContinue(e.GetPosition(this).X, e.GetPosition(this).Y, this.gameMode))
+            {
+                this.GameContinues();
+            }
+
+            if (this.extension.ClickOnHighscore(e.GetPosition(this).X, e.GetPosition(this).Y, this.gameMode))
+            {
+                this.gameMode = "highscore";
+            }
+
+            if (this.extension.ClickOnBack(e.GetPosition(this).X, e.GetPosition(this).Y, this.gameMode))
+            {
+                this.gameMode = "menu";
+            }
         }
 
         private void Timer_Tick(object sender, EventArgs e)
@@ -199,8 +225,8 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5
                 case Key.D2: this.GameContinues(); break;
                 case Key.D3: this.gameMode = "highscore"; break;
                 case Key.F1: this.gameLogic.MoveLogic.UpgradeDrill(); break;
-                case Key.F2: this.gameLogic.MoveLogic.UpgradeFuelTank(); break;
-                case Key.F3: this.gameLogic.MoveLogic.UpgradeStorage(); break;
+                case Key.F2: this.gameLogic.MoveLogic.UpgradeStorage(); break;
+                case Key.F3: this.gameLogic.MoveLogic.UpgradeFuelTank(); break;
                 case Key.Escape: this.GameExit(); break;
             }
 
