@@ -34,7 +34,6 @@ namespace HFG.Tests
         /// </summary>
         private Mock<IConnRepository> connRepo;
 
-
         /// <summary>
         /// Testing List of drill instances.
         /// </summary>
@@ -123,6 +122,9 @@ namespace HFG.Tests
             this.dbLogic = new DbLogic(this.gameModel, this.drillRepo.Object, this.brickRepo.Object, this.connRepo.Object);
         }
 
+        /// <summary>
+        /// Test to see if add new drill is successful .
+        /// </summary>
         [Test]
         public void TestAddNewDrill()
         {
@@ -131,6 +133,9 @@ namespace HFG.Tests
             Assert.That(this.dbLogic.GetDrills().Count(), Is.EqualTo(6));
         }
 
+        /// <summary>
+        /// Test to see if add new brick is successful .
+        /// </summary>
         [Test]
         public void TestAddNewBrick()
         {
@@ -139,6 +144,9 @@ namespace HFG.Tests
             Assert.That(this.dbLogic.GetBricks().Count(), Is.EqualTo(6));
         }
 
+        /// <summary>
+        /// Test to see if add new connection is successful .
+        /// </summary>
         [Test]
         public void TestAddNewConn()
         {
@@ -147,6 +155,11 @@ namespace HFG.Tests
             Assert.That(this.dbLogic.GetConns().Count(), Is.EqualTo(6));
         }
 
+        /// <summary>
+        /// TestGetOneDrill to make sure that the drill and the score is correct .
+        /// </summary>
+        /// <param name="id">index of the drill.</param>
+        /// <param name="drill_score">the scores of the drill .</param>
         [TestCase(1, 11)]
         [TestCase(2, 12)]
         [TestCase(3, 13)]
@@ -159,6 +172,10 @@ namespace HFG.Tests
             Assert.That(this.dbLogic.GetDrillInstance(id).drill_score, Is.EqualTo(drill_score));
         }
 
+        /// <summary>
+        /// TestGetOneBrick to test and make sure that the brick is correct .
+        /// </summary>
+        /// <param name="id">index of the chosen brick.</param>
         [TestCase(1)]
         [TestCase(2)]
         [TestCase(3)]
@@ -170,6 +187,10 @@ namespace HFG.Tests
             Assert.That(this.dbLogic.GetBrickInstance(id).brick_id, Is.EqualTo(id));
         }
 
+        /// <summary>
+        /// TestGetOneConnection to test and make sure that the connection is correct .
+        /// </summary>
+        /// <param name="id">index of the chosen connection.</param>
         [TestCase(1)]
         [TestCase(2)]
         [TestCase(3)]
@@ -181,12 +202,16 @@ namespace HFG.Tests
             Assert.That(this.dbLogic.GetConnInstance(id).conn_id, Is.EqualTo(id));
         }
 
+        /// <summary>
+        /// TestHighscore to make sure that the highscore is placed from highest to lowest .
+        /// </summary>
+        /// <param name="index">index of the highscore.</param>
+        /// <param name="score">the scores of the game .</param>
         [TestCase(0, 15)]
         [TestCase(1, 14)]
         [TestCase(2, 13)]
         [TestCase(3, 12)]
         [TestCase(4, 11)]
-
         public void TestHighscore(int index, int score)
         {
             Assert.That(this.dbLogic.Highscore()[index], Is.EqualTo(score));

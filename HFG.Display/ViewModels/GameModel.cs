@@ -13,6 +13,18 @@ namespace HFG.Display
     public class GameModel
     {
         /// <summary>
+        /// Initializes a new instance of the <see cref="GameModel"/> class.
+        /// Sets the values of game width and height.
+        /// </summary>
+        /// <param name="w">Width of the Game.</param>
+        /// <param name="h">Height of the Game.</param>
+        public GameModel(double w, double h)
+        {
+            this.GameWidth = w;
+            this.GameHeight = h;
+        }
+
+        /// <summary>
         /// Gets or sets the total points that are collected.
         /// </summary>
         public int TotalPoints { get; set; }
@@ -96,15 +108,8 @@ namespace HFG.Display
         public double[] HighscoreButton { get; set; }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="GameModel"/> class.
-        /// Sets the values of game width and height.
+        /// Gets or sets a value indicating whether gets or sets the bomb's explosion state .
         /// </summary>
-        /// <param name="w">Width of the Game.</param>
-        /// <param name="h">Height of the Game.</param>
-        public GameModel(double w, double h)
-        {
-            this.GameWidth = w;
-            this.GameHeight = h;
-        }
+        public bool IsExplode { get; set; }
     }
 }

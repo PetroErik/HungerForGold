@@ -17,33 +17,18 @@ namespace HFG.Logic
     /// </summary>
     public class GameLogic : IGameLogic
     {
-        /// <summary>
-        /// GameModel instance for the logic.
-        /// </summary>
-        public GameModel GameModel;
-
-        /// <summary>
-        /// MoveLogic instance for the logic.
-        /// </summary>
-        public MoveLogic MoveLogic;
-
-        /// <summary>
-        /// Database logic instance for the logic.
-        /// </summary>
-        public DbLogic DbLogic;
-
-        /// <summary>
-        /// TickLogic instance for the logic.
-        /// </summary>
-        public TickLogic TickLogic;
-
         private static Random r = new Random();
 
         /// <summary>
         /// Initializes a new instance of the <see cref="GameLogic"/> class.
-        /// Initiates properties of logics and model.
+        /// TickLogic instance for the logic.
         /// </summary>
-        /// <param name="model">GameModel parameter help the initialization of properties.</param>
+        private TickLogic tickLogic;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="GameLogic"/> class.
+        /// </summary>
+        /// <param name="model">game model .</param>
         public GameLogic(GameModel model)
         {
             HFGEntities entities = new HFGEntities();
@@ -52,7 +37,7 @@ namespace HFG.Logic
             this.DbLogic = new DbLogic(model, new DrillRepository(entities), new BrickRepository(entities), new ConnRepository(entities));
             this.TickLogic = new TickLogic(model);
             this.GameModel.TileSize = Math.Min(this.GameModel.GameWidth / CONFIG.MapWidth, this.GameModel.GameHeight / CONFIG.MapHeight);
-            this.GameModel.MenuButton = new double[] { 0, 0, 30, 20 };
+            this.GameModel.MenuButton = new double[] { 0, 0, 50, 30 };
             this.GameModel.StartButton = new double[] { (this.GameModel.GameWidth / 2) - 180, this.GameModel.GameHeight / 2, 400, 40 };
             this.GameModel.ContinueButton = new double[] { (this.GameModel.GameWidth / 2) - 180, (this.GameModel.GameHeight / 2) + 60, 400, 40 };
             this.GameModel.HighscoreButton = new double[] { (this.GameModel.GameWidth / 2) - 180, (this.GameModel.GameHeight / 2) + 120, 400, 40 };
@@ -67,12 +52,33 @@ namespace HFG.Logic
             {
                 this.GameModel.Enemies.Add(new Enemy((double)(CONFIG.MapWidth / 2 * this.GameModel.TileSize), (double)(r.Next((CONFIG.MapHeight / 3) + 2, CONFIG.MapHeight) * this.GameModel.TileSize)));
             }
-
-            // for (int i = 0; i < CONFIG.NmbOfEnemies; i++)
-            // {
-            //    this.GameModel.Enemies.Add(new Enemy((double)(CONFIG.MapWidth * this.GameModel.TileSize), (double)(r.Next((CONFIG.MapHeight / 3) + 2, CONFIG.MapHeight) * this.GameModel.TileSize)));
-            // }
         }
+
+        /// <summary>
+        /// Gets or sets gameModel instance for the logic.
+        /// </summary>
+        public GameModel GameModel { get; set; }
+
+        /// <summary>
+        /// Gets or sets moveLogic instance for the logic.
+        /// </summary>
+        public MoveLogic MoveLogic { get; set; }
+
+        /// <summary>
+        /// Gets or sets database logic instance for the logic.
+        /// </summary>
+        public DbLogic DbLogic { get; set; }
+
+        /// <summary>
+        /// gets or sets the TickLogic instance for the logic.
+        /// </summary>
+        public TickLogic TickLogic { get => this.tickLogic; set => this.tickLogic = value; }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="GameLogic"/> class.
+        /// Initiates properties of logics and model.
+        /// </summary>
+        /// <param name="model">GameModel parameter help the initialization of properties.</param>
 
         /// <summary>
         /// Sets the initial state of the game.
@@ -118,11 +124,17 @@ namespace HFG.Logic
         }
 
         /// <summary>
-        /// Decide if the game is still on or it is over.
+        /// Check game state.
         /// </summary>
-        /// <returns>Return value defines the state of the game. If the value is true, the game is over.</returns>
-        public bool GameOver()
+        /// <param name="active">Change state game.</param>
+        /// <returns>True if over.</returns>
+        public bool GameOver(bool active = false)
         {
+            if (active)
+            {
+                return false;
+            }
+
             return this.GameModel.Drill.FuelTankFullness <= 0 || this.MoveLogic.CollisionWithEnemy() || this.MoveLogic.CollisionWithBomb();
         }
     }

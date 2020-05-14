@@ -16,7 +16,8 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5
         /// <summary>
         /// Drawing group for the menu.
         /// </summary>
-        public DrawingGroup MenuGroup;
+        private DrawingGroup menuGroup;
+
         private GameModel model;
 
         /// <summary>
@@ -27,13 +28,18 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5
         public MenuRenderer(GameModel model)
         {
             this.model = model;
-            this.MenuGroup = new DrawingGroup();
+            this.menuGroup = new DrawingGroup();
 
-            this.MenuGroup.Children.Add(this.TitleText("Hunger for Gold", (this.model.GameWidth / 2) - 180, (this.model.GameHeight / 2) - 60, (this.model.GameWidth / 2) - 90, (this.model.GameHeight / 2) - 60));
-            this.MenuGroup.Children.Add(this.TitleText("1. Start Game", this.model.StartButton[0], this.model.StartButton[1], (this.model.GameWidth / 2) - 90, this.model.GameHeight / 2));
-            this.MenuGroup.Children.Add(this.TitleText("2. Continues", this.model.ContinueButton[0], this.model.ContinueButton[1], (this.model.GameWidth / 2) - 90, (this.model.GameHeight / 2) + 60));
-            this.MenuGroup.Children.Add(this.TitleText("3. Highscore", this.model.HighscoreButton[0], this.model.HighscoreButton[1], (this.model.GameWidth / 2) - 90, (this.model.GameHeight / 2) + 120));
+            this.menuGroup.Children.Add(this.TitleText(CONFIG.GameNameText, (this.model.GameWidth / 2) - 180, (this.model.GameHeight / 2) - 60, (this.model.GameWidth / 2) - 90, (this.model.GameHeight / 2) - 60));
+            this.menuGroup.Children.Add(this.TitleText(CONFIG.MenuText1, this.model.StartButton[0], this.model.StartButton[1], (this.model.GameWidth / 2) - 90, this.model.GameHeight / 2));
+            this.menuGroup.Children.Add(this.TitleText(CONFIG.MenuText2, this.model.ContinueButton[0], this.model.ContinueButton[1], (this.model.GameWidth / 2) - 90, (this.model.GameHeight / 2) + 60));
+            this.menuGroup.Children.Add(this.TitleText(CONFIG.MenuText3, this.model.HighscoreButton[0], this.model.HighscoreButton[1], (this.model.GameWidth / 2) - 90, (this.model.GameHeight / 2) + 120));
         }
+
+        /// <summary>
+        /// Gets or sets get and set MenuGroup.
+        /// </summary>
+        public DrawingGroup MenuGroup { get => this.menuGroup; set => this.menuGroup = value; }
 
         private DrawingGroup TitleText(string text, double locationboxX, double locationboxY, double locationTextX, double locationTextY)
         {

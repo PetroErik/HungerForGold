@@ -10,16 +10,6 @@ namespace HFG.Display
     public class Mineral : Character
     {
         /// <summary>
-        /// Gets or sets the Type of the mineral.
-        /// </summary>
-        public MineralsType Type { get; set; }
-
-        /// <summary>
-        /// Gets or sets a value indicating whether the mineral is collected.
-        /// </summary>
-        public bool Collapse { get; set; }
-
-        /// <summary>
         /// Initializes a new instance of the <see cref="Mineral"/> class.
         /// Sets the location and the type of the mineral.
         /// </summary>
@@ -31,5 +21,15 @@ namespace HFG.Display
             this.Location = new double[2] { x, y };
             this.Type = type;
         }
+
+        /// <summary>
+        /// Gets or sets the Type of the mineral.
+        /// </summary>
+        public MineralsType Type { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether the mineral is collected.
+        /// </summary>
+        public bool Collapse { get; set; }
     }
 }
