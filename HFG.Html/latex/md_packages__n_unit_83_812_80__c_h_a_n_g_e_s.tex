@@ -1,0 +1,1562 @@
+This release of N\+Unit finally drops support for .N\+ET 2.\+0. If your application still targets .N\+ET 2.\+0, your tests will need to target at least .N\+ET 3.\+5. Microsoft ended support for .N\+ET 2.\+0 on July 12, 2011. Microsoft recommends that everyone migrate to at least .N\+ET Framework 3.\+5 S\+P1 for security and performance fixes.
+
+This release dramatically improves N\+Unit support for async tests including returning Value\+Task and custom tasks from tests, improved handling of Synchronization\+Contexts and better exception handling.
+
+The .N\+ET Standard 2.\+0 version of N\+Unit continues to gain more functionality that is found in the .N\+ET 4.\+5 version of the framework like setting the Apartment\+State and enabling Timeout on tests.\hypertarget{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md33}{}\doxysubsubsection{Issues Resolved}\label{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md33}
+
+\begin{DoxyItemize}
+\item 474 Type\+Helper\+Tests.\+cs is orphaned
+\item 999 Support multiple Test\+Of attributes per test
+\item 1638 Timeout\+Attribute not available when targeting netcoreapp framework
+\item 2168 Throws\+Async reports Operation\+Canceled\+Exception as Task\+Canceled\+Exception
+\item 2194 How to use {\ttfamily Contains.\+Substring} with {\ttfamily And}
+\item 2286 Add support for custom Task (i.\+e. Value\+Task)
+\item 2579 App\+Veyor Test Failures under .N\+ET 3.\+5
+\item 2614 Test\+Execution\+Context.\+Current\+Context is saved in Remoting Call\+Context between test runs
+\item 2696 Getting Worker\+Id fails in debug
+\item 2772 Random failing of parallel test run\+: Unhandled Exception\+: System.\+Invalid\+Operation\+Exception\+: Stack empty.
+\item 2975 Comparison\+Constraints are allocating string on construction
+\item 3014 Timeout failures on Mac\+OS
+\item 3023 N\+Unit runner fails when test method returns Value\+Task$<$$>$
+\item 3035 Apartment state can\textquotesingle{}t be used for .N\+ET Standard 2.\+0 tests
+\item 3036 Apartment state can\textquotesingle{}t be used for .N\+ET Standard 2.\+0 tests
+\item 3038 Test\+Name in Test\+Case attribute not validated to be not empty
+\item 3042 Requires\+Thread\+Attribute allows Apartment\+State.\+Unknown, unlike Apartment\+Attribute
+\item 3048 Add .idea folder to .gitignore
+\item 3053 Conversion from Test\+Case string parameter to Date\+Time\+Offset
+\item 3059 Constraint Throws.\+Exception does not work with async return value
+\item 3068 First Chance Exception in Runtime\+Framework
+\item 3070 End support for .N\+ET Framework 2.\+0 (released in 2005)
+\item 3073 Collection\+Assert.\+Are\+Equivalent fails for Value\+Tuple Wrapped Dictionary
+\item 3079 Regression from 3.\+10 to 3.\+11\+: Range in bytes
+\item 3082 Is.\+Ordered.\+By
+\item 3085 X\+ML Test-\/\+Suite Assembly does not contain D\+LL path anymore
+\item 3089 Remove outdated comment
+\item 3093 Tests having Task\+Like objects as their return type throws Exception
+\item 3094 Bad error message if collections have different types
+\item 3104 Removed N\+E\+T20 compile output
+\item 3105 Add tests for use of Apartment\+State.\+Unknown in Requires\+Thread\+Attribute
+\item 3107 Declare class in Program.\+cs provided with N\+Unit\+Lite Nuget package static
+\item 3109 Azure Dev\+Ops build fails in Save package artifacts
+\item 3124 Switch copyright notice
+\item 3128 Correct documentation on Parallel\+Scope
+\item 3137 Fix doc-\/comments in N\+Unit\+Test\+Assembly\+Runner
+\item 3138 Assert.\+Ignore breaks when a Task is returned w/o using async/await
+\item 3139 Add Azure pipelines badge to frontpage
+\item 3144 Retry attribute should not derive from Property\+Attribute
+\item 3145 Capture additional exception details in the test output
+\item 3156 Unexpected\+Exception\+Tests should tolerate Mono on Azure Dev\+Ops Ubuntu
+\item 3159 Make tests more tolerant
+\item 3161 https url repo
+\item 3166 Allow static Set\+Up\+Fixture classes
+\item 3171 Incorrect type for Test Fixtures when using running explore with a filter
+\item 3175 Improve user-\/facing messages
+\item 3181 Template Based Test Naming -\/ Incorrect truncation for individual arguments
+\item 3186 Fix license\+Url element in nuspec, will be deprecated
+\item 3193 Cake Build Fails with Visual Studio 2019
+\item 3195 Drop or at least make Travis not required?
+\item 3231 Breaking change in filter functionality between framework 2.\+7 and 3.\+11
+\item 3209 Test fail when posting to Synchronization\+Context.\+Current
+\item 3211 Fix logging
+\item 3218 Remove todos from the code base
+\item 3222 Our build script tests hang when run with Mono on Windows
+\item 3233 And\+Constraint should write additional information from failed constraint
+\end{DoxyItemize}\hypertarget{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md34}{}\doxysubsection{N\+Unit 3.\+11 -\/ October 6, 2018}\label{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md34}
+
+\begin{DoxyItemize}
+\item More informative assertion messages
+\item Platform\+Attribute is available on .N\+ET Standard and now detects .N\+ET Core
+\item Values\+Attribute now works with nullable types
+\item Async tests detecting and running Windows Forms or W\+PF message pumps rather than deadlocking
+\item Support for U\+WP 10.\+0 is back via .N\+ET Standard 1.\+4
+\end{DoxyItemize}\hypertarget{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md35}{}\doxysubsubsection{Issues Resolved}\label{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md35}
+
+\begin{DoxyItemize}
+\item 352 Test with infinite loop in Tear\+Down cannot be aborted
+\item 452 Deprecate the existing Chocolatey framework package
+\item 660 Order dependence of And and Or constraints should be documented
+\item 1200 async test + Apartment(Apartment\+State.\+S\+TA) =$>$ await not returning on S\+TA thread
+\item 2123 Task.\+Run inside a test will result in deadlock if a control was created previously
+\item 2146 Assert.\+That with a Throws constraint does not provide as much info as Assert.\+Throws
+\item 2427 Property\+Constraint throws away the more helpful message in the base constraint result
+\item 2432 Ability to exclude/include the platform .N\+ET Core
+\item 2450 Null\+Reference\+Exception in Exception\+Helper.\+Build\+Message on Mono
+\item 2536 Set\+Arg\+Display\+Names for Test\+Case\+Data and Test\+Fixture\+Data
+\item 2611 Enable .N\+ET Standard 1.\+6 tests on non-\/\+Windows
+\item 2693 Ensure that resharper settings are consistent with the editorconfig configuration
+\item 2757 Broken {\ttfamily char} comparison in v3.\+7 and higher
+\item 2759 Test fails with \char`\"{}\+No arguments were provided\char`\"{} error when no values returned from I\+Parameter\+Data\+Source
+\item 2761 Infinite loop in nunit 3.\+9
+\item 2781 Fixed precompiler typo
+\item 2786 Timeout value not resetting on Retry of failed test
+\item 2790 Removing I\+Type\+Info abstraction
+\item 2798 \mbox{[}Request\mbox{]} Show actual count value when test fail on Has.\+Exactly(x).Items
+\item 2814 Remove public marker types
+\item 2819 Only run App\+Veyor PR build against open P\+Rs
+\item 2821 Save and restore the Synchronization\+Context before and after each test case
+\item 2823 Set\+Up failed for test fixture -\/ Array was not a one-\/dimensional array. Issue seems related to byte\mbox{[},\mbox{]} method parameters
+\item 2829 Obsoletion warning for Data\+Attribute
+\item 2831 Regular \char`\"{}\+Busy\+Exec\+Idle after 200 milliseconds delay\char`\"{} CI failures
+\item 2833 Use longer Busy\+Exec\+Idle to avoid CI failures
+\item 2836 N\+Unit.\+Framework.\+Does cannot be extended
+\item 2837 Dictionary\+Contains\+Key\+Constraint behaviour is inconstant with Dictionary.\+Contains\+Key when the dictionary uses a custom Comparer
+\item 2842 Supporting inheritance of Assert and related classes
+\item 2854 Has.\+All.../\+Has.None... -\/ show non-\/matching items in error message
+\item 2863 Make tests robust without depending on the order of attributes
+\item 2867 Skip executing Test\+Case\+Sources for tests which are not included in the filter
+\item 2876 Implement Discovery-\/time filtering for N\+Unit\+Lite
+\item 2883 Our public Concurrent\+Queue causes type conflicts
+\item 2885 Copy/paste error in Assert.\+That documentation
+\item 2887 N\+E\+T\+Standard 1.\+3 support dropped in N\+Unit 3.\+10
+\item 2896 Some tests are silently skipped on netstandard1.\+x since \#2796
+\item 2898 Assembly\+Path contains invalid charaters
+\item 2901 Values attribute support for nullable bool and enum types
+\item 2923 Update outdated Category\+Attribute xmldoc
+\item 2928 Improve error message on Empty\+Constraint
+\item 2929 Added N\+Unit X\+ML schemas
+\item 2940 Increase Stack\+Traces\+Are\+Filtered amount to 5
+\item 2955 Potential threading issue in Isolated\+Context
+\item 2965 Nu\+Get Package \+: Add {\ttfamily repository} metadata.
+\item 2970 Invalid\+Cast\+Exception @ N\+Unit.\+Framework.\+Test\+Fixture\+Source\+Attribute.\+Build\+From
+\item 2979 Warn.\+If in Assert.\+Multiple
+\item 2994 Error in .N\+ET Standard 1.\+4 Dictionary\+Contains\+Key\+Constraint Metadata\+Token compatibility methods
+\item 2996 Remove unused enum
+\item 3009 Fix failing CI Builds by upgrading to N\+Unit Console 3.\+9.\+0
+\item 3020 Upgrade nunit-\/vs-\/adapter to 3.\+10 for n\+Unit 3.\+11
+\item 3024 Unable to add {\ttfamily .Ignore\+Case} modifier to an {\ttfamily Any\+Of} constraint in collection constraints
+\item 3032 A\+P\+Is to restore before 3.\+11
+\end{DoxyItemize}\hypertarget{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md36}{}\doxysubsection{N\+Unit 3.\+10.\+1 -\/ March 12, 2018}\label{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md36}
+Added a namespace to the props file included in the Nu\+Get package to make it compatible with versions of Visual Studio prior to VS 2017.\hypertarget{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md37}{}\doxysubsection{N\+Unit 3.\+10 -\/ March 12, 2018}\label{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md37}
+This release adds a .N\+ET Standard 2.\+0 version of the framework which re-\/enables most of the features that have been missing in our earlier .N\+ET Standard builds like parallelism, timeouts, directory and path based asserts, etc. It also contains numerous bug fixes and smaller enhancements. We\textquotesingle{}ve improved our X\+ML docs, fixed performance issues and added more detail to Multiple Asserts.
+
+This release also contains source-\/indexed P\+DB files allowing developers to debug into the N\+Unit Framework. This allows you to track down errors or see how the framework works.
+
+In order to support the .N\+ET Standard 2.\+0 version, the N\+Unit project switched to the new C\+S\+P\+R\+OJ format and now requires Visual Studio 2017 to compile. This only effects people contributing to the project. N\+Unit still supports building and compiling your tests in older .N\+ET I\+D\+Es and N\+Unit still supports older versions of the .N\+ET Framework back to 2.\+0. For contributors, N\+Unit can now compile all supported targets on Windows, Linux and Mac using the Cake command line build.\hypertarget{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md38}{}\doxysubsubsection{Issues Resolved}\label{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md38}
+
+\begin{DoxyItemize}
+\item 1373 Setting with a null value
+\item 1382 Use array argument contents in name of parameterized tests rather than just array type.
+\item 1578 Test\+Context.\+Current\+Test exposes too much internal info
+\item 1678 Result Message\+: One\+Time\+Set\+Up\+: Category name must not contain \textquotesingle{},\textquotesingle{}, \textquotesingle{}!\textquotesingle{}, \textquotesingle{}+\textquotesingle{} or \textquotesingle{}-\/\textquotesingle{}
+\item 1944 Removing Compact Framework workarounds
+\item 1958 System.\+Reflection.\+Target\+Invocation\+Exception after run finished
+\item 2033 Nameof refactor
+\item 2202 Best practices for X\+ML doc comments
+\item 2325 Retry attribute doesn\textquotesingle{}t retry the test.
+\item 2331 Repo does not build in VS without running {\ttfamily build -\/t build} first
+\item 2405 Improve Property\+Constraint error output
+\item 2421 Publishing symbols with releases
+\item 2494 Collection\+Assert.\+All\+Items\+Are\+Unique() very slow
+\item 2515 Retarget Solution to use the New C\+S\+P\+R\+OJ Format
+\item 2518 Bug in Collection\+Assert.\+Are\+Equal for Value\+Tuples.
+\item 2530 Running tests on main thread. Revisiting \#2483
+\item 2542 N\+Unit does not support parallelism on .N\+ET Core 2.\+0
+\item 2555 CI timeout\+: N\+Unit.\+Framework.\+Assertions.\+Collection\+Assert\+Test.\+Performance\+Tests
+\item 2564 Add min\+Client\+Version to .nuspec files
+\item 2566 Refactor {\ttfamily Simple\+Enumerable\+With\+I\+Equatable} test object
+\item 2577 Warning in Tear\+Down is inconsistent with Assertion failure
+\item 2580 Remove unused defines
+\item 2591 N\+Unit\+Equality\+Comparer.\+Default should be replaced with new N\+Unit\+Equality\+Comparer()
+\item 2592 Add .props with Project\+Capability to suppress test project service G\+U\+ID item
+\item 2608 Culture differences on .N\+ET Core on non-\/\+Windows causes test failures
+\item 2622 Fix flakey test
+\item 2624 Prevent emails for successful builds on Travis
+\item 2626 Set\+Up/\+Tear\+Down methods are invoked multiple times before/after test in .N\+ET Standard targeted projects
+\item 2627 Breaking change in Collection\+Assert.\+All\+Items\+Are\+Unique with N\+Unit 3.\+9
+\item 2628 Error during installing tools when running build script
+\item 2630 Framework throws Null\+Reference\+Exception if test parameter is marked with \mbox{[}Values(null)\mbox{]}
+\item 2632 Parallel tests are loading 100\% C\+PU when nested Set\+Up\+Fixture exists
+\item 2639 Values\+Attribute causes Expected\+Result to have no effect
+\item 2647 Add Current Attempt indicator in Test\+Context for use with Retry\+Attribute
+\item 2654 Address feedback from @oznetmaster
+\item 2656 Nu\+Get package links to outdated license
+\item 2659 Naming Errors
+\item 2662 Null\+Reference\+Exception after parallel tests have finished executing
+\item 2663 Building N\+Unit .N\+ET 4.\+5 in V\+S2017 fails
+\item 2669 Removed vestigial build script helper method
+\item 2670 Invalid assemblies no longer give an error message
+\item 2671 Ensure that Failure\+Site.\+Child is used where appropriate.
+\item 2685 Remove Rebracer file
+\item 2688 Assert.\+Throws swallows console output
+\item 2695 Multiple\+Assert\+Exception doesn\textquotesingle{}t provide proper details on failures
+\item 2698 Syntax suggestions errors as warnings
+\item 2704 Add Constraint to test whether actual item is contained in expected collection
+\item 2711 N\+Unit\+Lite\+: Add support for --nocolor option
+\item 2714 Any\+Of\+Constraint enumerates multiple times
+\item 2725 Enable \textquotesingle{}strict\textquotesingle{} compilation flag
+\item 2726 Replace the Concurrent\+Queue and Spin\+Wait compatibility classes
+\item 2727 Avoid treating warnings as errors inside the I\+DE
+\item 2734 Test\+Case\+Attribute\+: Expected\+Result should support same value conversion as normal method arguments
+\item 2742 Failure\+Site not correctly set on containing suites when tests are ignored.
+\item 2749 Update Travis S\+DK versions
+\end{DoxyItemize}\hypertarget{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md39}{}\doxysubsection{N\+Unit 3.\+9 -\/ November 10, 2017}\label{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md39}
+This release addresses numerous parallelization issues that were introduced in 3.\+8 when method level parallelization was added. Most of the parallelization issues resolved were tests never completing when using some combinations of parallel tests and {\ttfamily Apartment\+State} not being properly applied to tests in all cases.\hypertarget{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md40}{}\doxysubsubsection{Issues Resolved}\label{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md40}
+
+\begin{DoxyItemize}
+\item 893 Inconsistent Tuple behavior.
+\item 1239 N\+Unit3 sometimes hangs if Set\+Up\+Fixtures are run in parallel
+\item 1346 Null\+Reference\+Exception when \mbox{[}Test\+Fixture\+Source\mbox{]} refers to data in a generic class.
+\item 1473 Allow Is.\+Ordered to Compare Null Values
+\item 1899 Constraint Throws.\+Exception does not catch exception with async lambdas
+\item 1905 Setup\+Fixture without namespace will make assembly-\/level Parallelizable attribute useless
+\item 2091 When a native exception of corrupted state is thrown, nunit test thread crashes and the nunit-\/console process hangs
+\item 2102 N\+Unit\+Lite incorrectly reports Win 10 OS name
+\item 2271 When Collection\+Assert.\+Are\+Equal do compare each element, it will ignore the I\+Equatable of the element too
+\item 2289 Resolve\+Type\+Name\+Difference does not handle generic types well
+\item 2311 Resolve test projects\textquotesingle{} namespace situation
+\item 2319 Add .editorconfig to set file encodings so that people don\textquotesingle{}t have to think about it
+\item 2364 Parallelizable attribute not invalidating invalid parallel scope combinations
+\item 2372 Create testing for compounded Constraint\+Filters
+\item 2388 Parallelization causes test cases to stop respecting fixture\textquotesingle{}s apartment state
+\item 2395 N\+Unit 3.\+8+ does not finish running tests
+\item 2398 N\+Unit CI spurious failures, N\+Unit.\+Framework.\+Internal.\+Thread\+Utility\+Tests.\+Kill
+\item 2402 --labels=All doesn\textquotesingle{}t show anything in console output executing N\+Unit\+Lite Console Runner
+\item 2406 Summary descriptions replaced by more detailed ones
+\item 2411 And constraint on Has.\+Member throws
+\item 2412 Using fluent syntax unintentionally removed in 3.\+8
+\item 2418 Support equality comparison delegate
+\item 2422 Has.\+Property causes Ambiguous\+Match\+Exception for shadowing properties
+\item 2425 X\+ML doc typo fix
+\item 2426 Regression in 3.\+8.\+1\+: Apartment\+Attribute no longer works when applied to an assembly
+\item 2428 Fix Null\+Reference\+Exceptions caused by Work\+Item\+Queue not being thread-\/safe
+\item 2429 Stack trace shown for Assert.\+Warn
+\item 2438 \mbox{[}Parallelizable\mbox{]} hangs after a few tests
+\item 2441 Allows to override load-\/time/execution-\/time interfaces in built-\/in tests attributes
+\item 2446 CI failure in mono Warning tests
+\item 2448 Inherited Test Set\+Up, Tear\+Down, etc. are not executed in .N\+ET Core if they are not public
+\item 2451 Compile Reg\+Ex to improve performance
+\item 2454 Set\+Up\+Fixture not respecting Non\+Parallelizable tag on Test\+Fixtures.
+\item 2459 \mbox{[}Parallelizable(Parallel\+Scope.\+Children)\mbox{]} Unable to finish tests
+\item 2465 Possible wrong properties are returned by reflection in Reflection\+Extensions.\+cs
+\item 2467 Test execution hangs when using \mbox{[}Set\+Up\+Fixture\mbox{]} with N\+Unit 3.\+8.\+x
+\item 2469 Allow Range\+Attribute to be specified multiple times for the same argument
+\item 2471 Parametrized testcases not running in parallel
+\item 2475 Framework incorrectly identifies Win 10 in xml results
+\item 2478 Attributes on Set\+Up\+Fixture are not applied
+\item 2486 Message when asserting null with Is.\+Equivalent\+To could be more helpful
+\item 2497 Use Constraint\+Utils.\+Require\+Actual through out the codebase
+\item 2504 Support changing test display name on Test\+Fixture\+Data
+\item 2508 Correct divergence from shadowed Is / Has members.
+\item 2516 When test writes something to the std\+Err there is no guaranteed way to link a test-\/output event to a target test using I\+Test\+Event\+Listener
+\item 2525 Remove unwanted space from comment
+\item 2526 Serialization\+Exception in low trust floating point equality test
+\item 2533 Matches$<$\+T$>$(\+Predicate$<$\+T$>$) throws Argument\+Exception or Fails when actual is null
+\item 2534 Set\+Up\+Fixture causes N\+Unit to lock with Apartment( S\+T\+A )
+\item 2551 Collection\+Items\+Equal\+Constraint is missing Using(\+Func$<$\+T, T, bool$>$)
+\item 2554 Made Test\+Fixture\+Data.\+Set\+Name internal for 3.\+9
+\end{DoxyItemize}\hypertarget{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md41}{}\doxysubsection{N\+Unit 3.\+8.\+1 -\/ August 28, 2017}\label{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md41}
+This release fixes two critical regressions in the 3.\+8 release. The first caused the console runner to crash if you are using test parameters. The second issue caused collection constraints checking for multiple items in a collection to fail.\hypertarget{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md42}{}\doxysubsubsection{Issues Resolved}\label{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md42}
+
+\begin{DoxyItemize}
+\item 2386 Contains.\+Item() fails for collections in N\+Unit 3.\+8
+\item 2390 Missing value attribute in test parameters setting causes Null\+Reference\+Exception in console
+\end{DoxyItemize}\hypertarget{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md43}{}\doxysubsection{N\+Unit 3.\+8 -\/ August 27, 2017}\label{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md43}
+This release removes several methods and attributes that were marked obsolete in the original 3.\+0 release. Support for i\+OS and Android has been improved.
+
+An issue that caused unit tests to run slower was addressed as was a bug that prevented the use of Assert.\+Multiple in async code.
+
+The Order attribute can now also be applied to the class level to set the order that test fixtures will be run.\hypertarget{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md44}{}\doxysubsubsection{Issues Resolved}\label{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md44}
+
+\begin{DoxyItemize}
+\item 345 Order of Fixture Execution
+\item 1151 Include differences in output for Is.\+Equivalent\+To
+\item 1324 Remove Collection\+Contains\+Constraint
+\item 1670 Attaching files to the test result
+\item 1674 In\+Range-\/\+Constraint must work with object
+\item 1851 Test\+Case\+Source unable to pass one element byte array
+\item 1996 Timeout does not work if native code is running at the time
+\item 2004 Has.\+One as synonym for Has.\+Exactly(1).Items
+\item 2062 Test\+Case\+Source attribute causes test to pass when source is not defined
+\item 2144 Allow option on Random\+Attribute to produce distinct values
+\item 2179 Some N\+Unit project\textquotesingle{}s tests fail on systems with Culture\+Info other than en
+\item 2195 Contains.\+Substring with custom String\+Comparison
+\item 2196 Expose Parallelizable\+Attribute (and other attribute) constructor arguments as properties
+\item 2201 Invalid platform name passed to Platform\+Attribute should mark test Not\+Runnable
+\item 2208 Stack\+F\+Ilter trims leading spaces from each line
+\item 2213 Set\+Culture\+Attribute\+: Culture\+Info ctor should use default culture settings
+\item 2217 Console runner performance varies wildly depending on environmental characteristics
+\item 2219 Remove Obsolete Attributes
+\item 2225 One\+Time\+Tear\+Down and Dispose Ordering
+\item 2237 System.\+Runtime.\+Loader not available for i\+O\+S/\+Android
+\item 2242 Running tests directly should never surface a Null\+Reference\+Exception
+\item 2244 Add Key\+Value\+Pair$<$\+T\+Key, T\+Value$>$ to the default formatters
+\item 2251 Randomizer.\+Next\+Guid()
+\item 2253 Parallelizable(Parallel\+Scope.\+Fixtures) doesn\textquotesingle{}t work on a Test\+Fixture
+\item 2254 Equal\+To on Value\+Tuple with Nullable unexpected
+\item 2261 When an assembly is marked with Parallel\+Scope.\+None and there are Parallelizable tests N\+Unit hangs
+\item 2269 Parallelizable and Non\+Parallelizable attributes on setup and teardown silently ignored
+\item 2276 Intermittent test failures in Travic CI\+: Test\+Context\+Tests
+\item 2281 Add type constraint for Throws and any method requiring Exception
+\item 2288 Killing thread cancels test run
+\item 2292 Is.\+Ordered.\+By() with a field throws Null\+Reference\+Exception
+\item 2298 Write Test\+Parameters\+Dictionary to xml result file in readable format
+\item 2299 N\+Unit\+Lite Nu\+Get package no longer installs N\+Unit Nu\+Get package
+\item 2304 Revert accidental doc removal
+\item 2305 Correct misprint \char`\"{}.\+con\char`\"{} -\/$>$ \char`\"{}.\+com\char`\"{}
+\item 2312 Prevent crash on invalid --result parsing in N\+Unit\+Lite
+\item 2313 Incorrect xmldoc on Retry\+Attribute
+\item 2332 Update build script to use N\+Unit\+Console\+Runner v3.\+7.\+0
+\item 2335 Execute One\+Time\+Tear\+Down as early as possible when running fixtures in parallel
+\item 2342 Remove deprecated Is.\+String$\ast$ Constraints
+\item 2348 Can\textquotesingle{}t use Assert.\+Multiple with async code
+\item 2353 Provide additional Result information through Test\+Context
+\item 2358 Get framework to build under Mono 5.\+0
+\item 2360 Obsolete Collection\+Contains\+Constraint Constructors
+\item 2361 N\+Unit Parallelizable and One\+Time\+Set\+Up with no namespace results in single-\/threaded test execution
+\item 2370 Test\+Case\+Attribute can\textquotesingle{}t convert int to nullable long
+\end{DoxyItemize}\hypertarget{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md45}{}\doxysubsection{N\+Unit 3.\+7.\+1 -\/ June 6, 2017}\label{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md45}
+This is a hotfix release that addresses occasional hangs when using test parallelization and fixes crashes in N\+Crunch prior to version 3.\+9.\hypertarget{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md46}{}\doxysubsubsection{Issues Resolved}\label{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md46}
+
+\begin{DoxyItemize}
+\item 2205 Ncrunch\+: System.\+Xml.\+Xml\+Exception\+: Root element is missing, when adding N\+Unit 3.\+7.\+0
+\item 2209 N\+Unit occasionally hangs when parallelizable Test\+Fixture has One\+Time\+Set\+Up and One\+Time\+Tear\+Down
+\end{DoxyItemize}\hypertarget{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md47}{}\doxysubsection{N\+Unit 3.\+7 -\/ May 29, 2017}\label{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md47}
+This release of N\+Unit expands on parallel test execution to allow test methods to be run in parallel. Please see the \href{https://github.com/nunit/docs/wiki/Parallelizable-Attribute}{\texttt{ Parallelizable Attribute}} for more information.
+
+N\+Unit 3.\+7 also drops the Portable build of the framework and replaces it with a .N\+ET Standard 1.\+3 version to compliment the .N\+ET Standard 1.\+6 version. This change enables several constraints and other features in the .N\+ET Standard builds that weren\textquotesingle{}t available in portable like Path and Directory based asserts.
+
+The Assertion\+Helper class has been deprecated because it is seldom used and has not received any of the updates that Asserts and Constraints receive. If your code is using the Assertion\+Helper class, we recommend that you migrate your asserts.\hypertarget{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md48}{}\doxysubsubsection{Issues Resolved}\label{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md48}
+
+\begin{DoxyItemize}
+\item 164 Run test methods within a fixture in parallel
+\item 391 Multiple Assertions
+\item 652 Add ability to execute test actions before Set\+Up or One\+Time\+Set\+Up
+\item 1000 Support multiple Author attributes per test
+\item 1096 Treat One\+Time\+Setup and One\+Time\+Tear\+Down as separate work items
+\item 1143 N\+Unit\+Lite -\/ Explore flag does not apply where filter to output
+\item 1238 Feature request\+: Print Loader\+Exceptions when fixture loading fails
+\item 1363 Make Timeouts work without running test on its own thread
+\item 1474 Several Set\+Up\+Fixtures at the same level may be active at the same time
+\item 1819 Test\+Context.\+Progress.\+Write writes new line
+\item 1830 Add --labels switch changes to nunilite and nunitlite tests
+\item 1859 Concurrent\+Queue is duplicate with System.\+Threading.\+dll package
+\item 1877 Resolve differences between N\+Unit Console and N\+Unit\+Lite implementations of @filename
+\item 1885 Test parameter containing a semicolon
+\item 1896 Test has passed however Reason with an empty message is printed in the xml
+\item 1918 Changing Default\+Floating\+Point\+Tolerance breaks tests running in parallel
+\item 1932 N\+Unit Warn class should be removed from stack trace by filter
+\item 1934 Null\+Reference\+Exception when null arguments are used in Test\+Fixture\+Attribute
+\item 1952 Test\+Context.\+Out null when used in task with .N\+ET Core
+\item 1963 Investigate removing Special\+Value
+\item 1965 Test\+Context does not flow in async method
+\item 1971 Switch C\+H\+A\+N\+G\+E\+S.\+txt to Markdown
+\item 1973 Implemented Test\+Execution\+Context to use Async\+Local$<$$>$ for N\+E\+T\+S\+T\+A\+N\+D\+A\+R\+D1\+\_\+6
+\item 1975 Test\+Fixture\+Source doesn\textquotesingle{}t work with a class that has no namespace
+\item 1983 Add missing Constraint\+Expression.\+Contain overload
+\item 1990 Add namespace filter
+\item 1997 Remove unused --verbose and --full command line options
+\item 1999 Author Tests assume I\+Custom\+Attribute\+Provider.\+Get\+Custom\+Attributes return order is defined
+\item 2003 Better user info about Parallelizable\+Attribute and Parallel\+Scope
+\item 2005 Exclude empty failure messages from results xml
+\item 2007 3.\+6 Multiple assertion backwards compatibility
+\item 2010 Add Delayed\+Constraint in Net\+Standard 1.\+6 build
+\item 2020 Better message when timeout fails
+\item 2023 Ability to abort threads running a message pump
+\item 2025 Null\+Reference\+Exception using Is.\+Equal\+To on two unequal strings
+\item 2030 Add method to mark tests as invalid with a reason
+\item 2031 Limit Language level to C\#6
+\item 2034 Remove silverlight project -\/ no longer used
+\item 2035 Null\+Reference\+Exception inside failing Assert.\+That call
+\item 2040 Cannot catch Assertion\+Exception
+\item 2045 N\+Unitlite-\/runner crashes if no file is provided
+\item 2050 Creation of Test\+Execution\+Context should be explicit
+\item 2052 Null\+Reference\+Exception with Test\+Case\+Source if a property has no setter
+\item 2061 Test\+Context.\+Work\+Directory not initialized during build process
+\item 2079 Make Test\+Method.\+Arguments public or otherwise accessible (e.\+g. Test\+Context)
+\item 2080 Allow comments in @\+F\+I\+LE files
+\item 2087 Enhance error message\+: Test is not runnable in single-\/threaded context. Timeout
+\item 2092 Convert Portable library to .N\+ET Standard 1.\+3
+\item 2095 Extend use of tolerance to Comparison\+Constraints
+\item 2099 Include type in start-\/suite/start-\/test report elements
+\item 2110 Null\+Reference\+Exception when getting Test\+Directory from Test\+Context
+\item 2115 Mark Assertion\+Helper as Obsolete
+\item 2121 Chained Property\+Constraint constraints report incorrect Actual\+Value
+\item 2131 Remove \char`\"{}\+Version 3\char`\"{} suffix from N\+Unit\+Lite Nu\+Get Package
+\item 2132 Test\+Fixture\+Tests.\+Captures\+Arguments\+For\+Constructor\+With\+Multiple\+Args\+Supplied assumes order of custom attributes
+\item 2143 Non-\/parallel fixture with parallel children runs in parallel with other fixtures
+\item 2147 Test Assembly using N\+Unit\+Lite \& Nunit 3.\+6.\+1 hangs under .N\+ET Core when {\ttfamily -\/-\/timeout} is supplied on command line
+\item 2150 Add portable-\/slow-\/tests to Cake file
+\item 2152 Allow attaching files to Test\+Results
+\item 2154 Fix execution of non-\/parallel test fixtures
+\item 2157 Getting Worker\+Id inside Assert.\+Throws / Does\+Not\+Throw returns null instead of previous non-\/null value
+\item 2158 Update Setup\+Fixture\+Attribute X\+ML Docs
+\item 2159 Prevent crash in .N\+ET standard with log file path
+\item 2165 Trying to install N\+Unit 3.\+6.\+1 on .N\+ET Framework asks for download of 20 more packages
+\item 2169 Incorrect xmldocs for Set\+Up\+Attribute
+\item 2170 Cake build fails if only Visual Studio 2017 installed
+\item 2173 Remove Pre\+Test\+Attribute and Post\+Test\+Attribute
+\item 2186 Replace special characters as part of converting branch names to package versions
+\item 2191 System.\+Reflection.\+Target\+Invocation\+Exception with nunit3-\/console --debug on Mono
+\end{DoxyItemize}\hypertarget{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md49}{}\doxysubsection{N\+Unit 3.\+6.\+1 -\/ February 26, 2017}\label{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md49}
+This is a hotfix release of the framework that addresses critical issues found in the 3.\+6 release.\hypertarget{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md50}{}\doxysubsubsection{Issues Resolved}\label{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md50}
+
+\begin{DoxyItemize}
+\item 1962 A Theory with no data passes
+\item 1986 N\+Unit\+Lite ignores --workers option
+\item 1994 N\+Unit\+Lite runner crashing when --trace is specified
+\item 2017 Two N\+Unit project\textquotesingle{}s tests fail on systems with comma decimal mark settings
+\item 2043 Regression in 3.\+6.\+0 when catching Assertion\+Exception
+\end{DoxyItemize}\hypertarget{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md51}{}\doxysubsection{N\+Unit 3.\+6 -\/ January 9, 2017}\label{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md51}
+This release of the framework no longer includes builds for Compact Framework or for Silver\+Light, but adds a .N\+ET Standard 1.\+6 build. If anyone still using Compact Framework or Silver\+Light and would like to continue development on those versions of the framework, please contact the N\+Unit team.\hypertarget{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md52}{}\doxysubsubsection{Framework}\label{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md52}
+
+\begin{DoxyItemize}
+\item .N\+ET Standard 1.\+6 is now supported
+\item Adds support for Multiple Assert blocks
+\item Added the --params option to N\+Unit\+Lite
+\item Theories now support Nullable enums
+\item Improved assert error messages to help differentiate differences in values
+\item Added warnings with Warn.\+If(), Warn.\+Unless() and Assert.\+Warn()
+\item Enabled Path, File and Directory Asserts/\+Contraints for .N\+ET Core testing
+\item Added Non\+Test\+Assembly\+Attribute for use by third-\/party developers to indicate that their assemblies reference the N\+Unit framework, but do not contain tests
+\end{DoxyItemize}\hypertarget{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md53}{}\doxysubsubsection{Issues Resolved}\label{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md53}
+
+\begin{DoxyItemize}
+\item 406 Warning-\/level Assertions
+\item 890 Allow file references anywhere in the command line.
+\item 1380 Appveyor Failures when branch name is too long
+\item 1589 Split the nunit repository into multiple repositories
+\item 1599 Move Compact Framework to separate project
+\item 1601 Move Silverlight to a separate project
+\item 1609 Upgrade Cake build to latest version
+\item 1661 Create .N\+ET Standard Framework Build
+\item 1668 Need implementation-\/independent way to test number of items in a collection
+\item 1743 Provide multiple results for a test case in the X\+ML output
+\item 1758 No direct inverse for Contains.\+Key
+\item 1765 Test\+Case\+Source\+Attribute constructor for method with parameters
+\item 1802 Design Multiple Assert syntax as seen by users
+\item 1808 Disambiguate error messages from Equal\+Constraint
+\item 1811 Build.\+ps1 fails if spaces in path
+\item 1823 Remove engine nuspecs and old global.\+json
+\item 1827 Remove unused repository paths from repositories.\+config
+\item 1828 Add Retry for failed tests only
+\item 1829 N\+Unit\+Lite accepts --params option but does not make any use of it.
+\item 1836 Support nullable enums in Theories
+\item 1837 \mbox{[}Request\mbox{]} After\+Contraint to support more readable usage
+\item 1840 Remove SL and CF \#\+Defined source
+\item 1866 \mbox{[}Request\mbox{]} More readable way to set polling interval in After constraint
+\item 1870 Equal\+Constraint result failure message for Date\+Time doesn\textquotesingle{}t show sufficient resolution
+\item 1872 Parameterized method being called with no parameter
+\item 1876 What should we do about Env.\+cs
+\item 1880 Attribute\+Usage for various Attributes
+\item 1889 Modify nunitlite to display multiple assert information
+\item 1891 Test\+Context.\+Progress and Test\+Context.\+Error silently drop text that is not properly X\+ML encoded
+\item 1901 Make nunitlite-\/runner Prefer32\+Bit option consistent across Debug/\+Release
+\item 1904 Add .N\+ET Standard 1.\+6 Dependencies to the Nuspec Files
+\item 1907 Handle early termination of multiple assert block
+\item 1911 Changing misleading comment that implies that every {\ttfamily I\+Collection$<$T$>$} is a list
+\item 1912 Add new warning status and result state
+\item 1913 Report Warnings in N\+Unit\+Lite
+\item 1914 Extra Assertion\+Result entries in Test\+Results
+\item 1915 Enable Path, File and Directory Assert/\+Constraints in the .N\+ET Standard Build
+\item 1917 Use of Isolated\+Context breaks tests in user-\/created App\+Domain
+\item 1924 Run tests using the N\+Unit Console Runner
+\item 1929 Rename zip and remove source zip
+\item 1933 Tests should pass if test case source provides 0 test cases
+\item 1941 Use dictionary-\/based property for test run parameters
+\item 1945 Use high-\/quality icon for nuspecs
+\item 1947 Add Non\+Test\+Assembly\+Attribute
+\item 1954 Change Error Message for Assert.\+Equals
+\item 1960 Typo fixes
+\item 1966 Xamarin Runner cannot reference N\+Unit Nu\+Get Package
+\end{DoxyItemize}\hypertarget{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md54}{}\doxysubsection{N\+Unit 3.\+5 -\/ October 3, 2016}\label{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md54}
+This is the first version of N\+Unit where the framework will be released separately from the console runner, engine and other extensions. From this point forward, the N\+Unit Framework will be released on its own schedule that is not bound to that of any other N\+Unit project and version numbers may diverge over time.
+
+This is also the first release where the N\+Unit Framework will not be included in the installer. Only the console runner, engine and extensions will be available as an M\+SI installer. We recommend that you use the N\+Unit Nu\+Get packages for the framework, but a Z\+IP file with the binaries will also be available.\hypertarget{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md55}{}\doxysubsubsection{Framework}\label{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md55}
+
+\begin{DoxyItemize}
+\item Added Assert.\+Zero and Assert.\+Not\+Zero methods
+\item You can now pass a {\ttfamily Func$<$string$>$} to Asserts to lazily evaluate exception messages
+\item Added the ability to Assert on the order of multiple properties in a collection
+\item Tests with a Timeout will no longer timeout while you are debugging
+\end{DoxyItemize}\hypertarget{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md56}{}\doxysubsubsection{Issues Resolved}\label{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md56}
+
+\begin{DoxyItemize}
+\item 144 Pass a {\ttfamily Func$<$string$>$} to lazily evaluate an exception message
+\item 995 Enable Warning as Error
+\item 1106 Move various Assembly Info files under Properties for CF
+\item 1334 Add Assert.\+Zero and Assert.\+Not\+Zero
+\item 1479 Don\textquotesingle{}t enforce \mbox{[}Timeout\mbox{]} when debugger is attached
+\item 1540 Remove old .N\+ET Core Projects
+\item 1553 Allow ordering tests to be done in multiple properties
+\item 1575 Escaping control chars in custom message
+\item 1596 Eliminate code sharing across projects to be split
+\item 1598 Split framework and console/engine into separate projects
+\item 1610 Refactor dependencies in build.\+cake
+\item 1615 Appveyor error in Test\+CF
+\item 1621 Remove console and command-\/line option files from common
+\item 1640 When submitting only part of optional parameters, all are overriden by defaults
+\item 1641 Create O\+SX CI Build on Travis
+\item 1663 Find way to hide N\+Unit.\+Compatability.\+Path from intellisense
+\item 1681 N\+Unit\+Lite under .net core doesn\textquotesingle{}t support Team\+City output
+\item 1683 Existence of Serializable\+Attribute in .N\+ET Core
+\item 1693 2 unit tests fail due to localization
+\item 1716 Move installer to new repository
+\item 1717 Change suffix for master builds
+\item 1723 Remove Cake target Test\+All
+\item 1739 Create separate copies of Mock\+Assembly for framework, engine and extensions
+\item 1751 Serializable attribute exists in both System.\+Runtime.\+Serialization.\+Formatters and nunit.\+framework
+\item 1775 Support N\+Unit assertions in partial trust code.
+\item 1800 Remove Console/\+Engine projects from nunit.\+linux.\+sln
+\item 1805 Error message \char`\"{}arguments provided for method not taking any\char`\"{} seems incomplete / doesn\textquotesingle{}t make much sense
+\item 1815 Prevent Null\+Reference\+Exception in Sub\+Path\+Constraint
+\end{DoxyItemize}\hypertarget{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md57}{}\doxysubsection{N\+Unit 3.\+4.\+1 -\/ June 30, 2016}\label{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md57}
+\hypertarget{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md58}{}\doxysubsubsection{Console Runner}\label{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md58}
+
+\begin{DoxyItemize}
+\item A new option, --list-\/extensions, will display all the engine extensions that have been installed by the engine.
+\end{DoxyItemize}\hypertarget{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md59}{}\doxysubsubsection{Issues Resolved}\label{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md59}
+
+\begin{DoxyItemize}
+\item 1623 N\+Unit 3.\+4 is not integrated with Team\+City
+\item 1626 N\+Unit.\+Console\+Runner is not picking up N\+Unit.\+Extension.\+N\+Unit\+V2\+Result\+Writer
+\item 1628 Agent\textquotesingle{}s process stays in memory when it was failed to unload App\+Domain
+\item 1635 Console option to list loaded extensions
+\end{DoxyItemize}\hypertarget{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md60}{}\doxysubsection{N\+Unit 3.\+4 -\/ June 25, 2016}\label{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md60}
+\hypertarget{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md61}{}\doxysubsubsection{Framework}\label{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md61}
+
+\begin{DoxyItemize}
+\item Improvements in comparing equality using {\ttfamily I\+Equatable$<$T$>$}
+\item Test case names will only be truncated if the runner requests it or it is overridden on the command line with the --test-\/name-\/format option
+\item The .N\+ET 2.\+0 version of the framework now includes L\+I\+NQ. If your tests target .N\+ET 2.\+0, you can now use L\+I\+NQ queries in your tests
+\end{DoxyItemize}\hypertarget{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md62}{}\doxysubsubsection{Engine}\label{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md62}
+
+\begin{DoxyItemize}
+\item The Team\+City event listener has been separated out into an engine extension
+\item Fixed numerous issues around thread safety of parallel test runs
+\item Additional fixes to reduce memory usage
+\item Fixes for Mono 4.\+4
+\end{DoxyItemize}\hypertarget{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md63}{}\doxysubsubsection{Console Runner}\label{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md63}
+
+\begin{DoxyItemize}
+\item There is a new --params command line option that allows you to pass parameters to your tests which can be retrieved using Test\+Context.\+Parameters
+\item Another new command line option --loaduserprofile causes the User Profile to be loaded into the N\+Unit Agent process.
+\end{DoxyItemize}\hypertarget{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md64}{}\doxysubsubsection{Issues Resolved}\label{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md64}
+
+\begin{DoxyItemize}
+\item 329 (C\+LI) Runner does not report App\+Domain unloading timeout
+\item 720 Need a way to get test-\/specific command-\/line arguments at runtime
+\item 1010 Need to control engine use of extensions
+\item 1139 Nunit3 console doesn\textquotesingle{}t show test output continously
+\item 1225 The --teamcity option should really be an extension
+\item 1241 Make Test\+Directory accessible when Test\+Case\+Source attributes are evaluated
+\item 1366 Classname for inherited test is not correct
+\item 1371 Support {\ttfamily dotnet test} in .N\+ET C\+LI and .N\+ET Core
+\item 1379 Console returns 0 for invalid fixtures
+\item 1422 Include Test\+List\+With\+Empty\+Line.\+tst in Z\+IP Package
+\item 1423 Single\+Threaded attribute should raise an error if a thread is required
+\item 1425 Lazy initialization of Out\+Writer in Test\+Result is not thread safe
+\item 1427 Engine extensions load old packages
+\item 1430 Test\+Objects are retained for lifetime of test run, causing high memory usage
+\item 1432 N\+Unit hangs when reporting to Team\+City
+\item 1434 Test\+Result class needs to be thread-\/safe
+\item 1435 Parallel queue creation needs to be thread-\/safe
+\item 1436 Current\+Framework and Current Platform need to be more thread-\/safe
+\item 1439 Equal\+Constraint does Not use Equals Override on the Expected Object
+\item 1441 Add Linq for use internally in .N\+ET 2.\+0 code
+\item 1446 Test\+Order\+Attribute\+Tests is not public
+\item 1450 Silverlight detection doesn\textquotesingle{}t work when building on 32-\/bit OS
+\item 1457 Set the 2.\+0 build to ignore missing xml dcoumentation
+\item 1463 Should Test\+Result.\+Assert\+Count have a public setter?
+\item 1464 T\+Node.\+Escape\+Invalid\+Xml\+Characters recreates Regex continually
+\item 1470 Make Event\+Queue and associated classes lock-\/less and thread safe
+\item 1476 Examine need for \char`\"{}synchronous\char`\"{} events in event queue
+\item 1481 Test\+Case with generic return type causes Null\+Reference\+Exception
+\item 1483 Remoting exceptions during test execution
+\item 1484 Comparing Equality using {\ttfamily I\+Equatable$<$T$>$} Should Use Most Specific Method
+\item 1493 N\+Unit 2 test results report Parameterized\+Method but should be Parameterized\+Test
+\item 1507 Null\+Reference\+Exception when null arguments are used in Test\+Fixture\+Attribute
+\item 1513 Add new teamcity extension to packages
+\item 1518 N\+Unit does not send the \char`\"{}test\+Started\char`\"{} Team\+City service message when exception was thrown from Set\+Up/\+One\+Time\+Set\+Up
+\item 1520 Detect Portable, Silverlight and Compact and give error message
+\item 1528 Use of Sleep(0) in N\+Unit
+\item 1543 Blank name attribute in nunit2-\/formatted X\+ML result file test-\/run element
+\item 1547 Create separate assembly for System.\+Linq compatibility classes
+\item 1548 Invalid Exception when engine is in a 32-\/bit process
+\item 1549 Changing default behavior for generating test case names
+\item 1551 Path in default .addins file for Console\+Runner package may not exist
+\item 1555 Ends\+With calls in Constraint constructor can cause major perf issues
+\item 1560 Engine writes setting file unnecessarily
+\item 1573 Move Nunit.\+Portable.\+Agent to new Repo
+\item 1579 N\+Unit v3 dangerously overrides C\+O\+M\+P\+L\+U\+S\+\_\+\+Version environment variable
+\item 1582 Mono 4.\+4.\+0 Causes Test Failures
+\item 1593 Nunit Console Runner 3.\+2.\+1 and Mono 4.\+4 throws Remoting\+Exception
+\item 1597 Move Portable agent to its own repository
+\item 1605 Team\+City package has no pre-\/release suffix
+\item 1607 nunit.\+nuget.\+addins discovery pattern is wrong then restored through project.\+json
+\item 1617 Load user profile on test runners
+\end{DoxyItemize}\hypertarget{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md65}{}\doxysubsection{N\+Unit 3.\+2.\+1 -\/ April 19, 2016}\label{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md65}
+\hypertarget{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md66}{}\doxysubsubsection{Framework}\label{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md66}
+
+\begin{DoxyItemize}
+\item The output and error files are now thread safe when running tests in parallel
+\item Added a .N\+ET 3.\+5 build of the framework preventing conflicts with the compatiblity classes in the 2.\+0 framework
+\item Added a Single\+Threaded\+Attribute to be added to a Test\+Fixture to indicate all child tests should run on the same thread
+\end{DoxyItemize}\hypertarget{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md67}{}\doxysubsubsection{Engine}\label{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md67}
+
+\begin{DoxyItemize}
+\item Unless required, run all tests within a fixture on the same thread
+\item Added an Event\+Listener extension point
+\item Reduced memory usage
+\end{DoxyItemize}\hypertarget{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md68}{}\doxysubsubsection{Console Runner}\label{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md68}
+
+\begin{DoxyItemize}
+\item No longer probes for newer versions of the engine, instead uses the engine that is included with the console
+\end{DoxyItemize}\hypertarget{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md69}{}\doxysubsubsection{Issues Resolved}\label{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md69}
+
+\begin{DoxyItemize}
+\item 332 Add CF to the Appveyor CI build
+\item 640 Keep CF Build (and other future builds) in Sync
+\item 773 Upgrade Travis CI from Legacy Infrastructure
+\item 1141 Explicit Tests get run when using --where with some filters
+\item 1161 N\+Unit3-\/\+Console should disallow the combination of --inprocess and --x86, giving an error message
+\item 1208 Apartment on assembly level broken
+\item 1231 Build may silently fail some tests
+\item 1247 Potential memory issue
+\item 1266 Set\+Culture\+Attribute does not work if set on assembly level
+\item 1302 Create Event\+Listener Extension\+Point for the Engine
+\item 1317 Getting CF framework unit tests running on CI build
+\item 1318 N\+Unit console runner fails with error code -\/100
+\item 1327 Test\+Case\+Source in N\+Unit 3 converts an argument declared as String\mbox{[}\mbox{]} to String
+\item 1329 Unable to build without Compact Framework
+\item 1333 Single Thread per Worker
+\item 1338 B\+U\+I\+L\+D\+I\+N\+G.\+txt is outdated
+\item 1349 Collision on System.\+Func from nunit.\+framework with System.\+Core in .Net 3.\+5 (C\+S0433)
+\item 1352 Tests losing data setup on thread
+\item 1359 Compilation error in N\+Unit\+Portable\+Driver\+Tests.\+cs
+\item 1383 Skip Silverlight build if S\+DK not installed
+\item 1386 Bug when using Assert.\+Equals() with types that explicitly implement {\ttfamily I\+Equatable$<$T$>$}
+\item 1390 --testlist with file with blank first line causes Index\+Out\+Of\+Range\+Exception
+\item 1399 Fixed Null\+Reference issue introduced by the fix for \#681
+\item 1405 I\+Test\+Runner.\+Stop\+Run throws exception of type \textquotesingle{}System.\+Missing\+Method\+Exception\textquotesingle{}
+\item 1406 Text\+Capture is not threadsafe but is used to intercept calls that are expected to be threadsafe
+\item 1410 Make Out\+File and Err\+File streamwriters synchronized
+\item 1413 Switch console to use a local engine
+\end{DoxyItemize}\hypertarget{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md70}{}\doxysubsection{N\+Unit 3.\+2 -\/ March 5, 2016}\label{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md70}
+\hypertarget{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md71}{}\doxysubsubsection{Framework}\label{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md71}
+
+\begin{DoxyItemize}
+\item Added an Order attribute that defines the order in which tests are run
+\item Added Assert.\+Throws\+Async for testing if async methods throw an exception
+\item You can now compare unlike collections using Is.\+Equivalent\+To().Using(...)
+\item Added the ability to add custom message formatters to Msg\+Utils
+\item Test\+Case\+Source\+Attribute now optionally takes an array of parameters that can be passed to the source method
+\item Added Is.\+Zero and Is.\+Not.\+Zero to the fluent syntax as a shorter option for Is.\+Equal\+To(0) and Is.\+Not.\+Equal\+To(0)
+\end{DoxyItemize}\hypertarget{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md72}{}\doxysubsubsection{Engine}\label{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md72}
+
+\begin{DoxyItemize}
+\item Engine extensions can be installed via Nu\+Get packages
+\end{DoxyItemize}\hypertarget{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md73}{}\doxysubsubsection{Issues Resolved}\label{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md73}
+
+\begin{DoxyItemize}
+\item 170 Test Order Attribute
+\item 300 Create an N\+Unit Visual Studio Template
+\item 464 Async delegate assertions
+\item 532 Batch runner for Silverlight tests
+\item 533 Separate N\+Unit\+Lite runner and autorunner
+\item 681 N\+Unit agent cannot resolve test dependency assemblies when mixed mode initialization runs in the default App\+Domain
+\item 793 Replace Core\+Engine by use of Extensions
+\item 907 Console report tests are too fragile
+\item 922 Wrap Console in N\+Unit\+Lite
+\item 930 Switch from M\+S\+Build based build system to Cake
+\item 981 Define N\+Unit Versioning for post-\/3.\+0 Development
+\item 1004 Poor formatting of results for Assert.\+Are\+Equal(\+Date\+Time\+Offset, Date\+Time\+Offset)
+\item 1018 Argument\+Exception when 2.\+x version of N\+Unit Framework is in the bin directory
+\item 1022 Support Comparing Unlike Collections using Is.\+Equivalent\+To().Using(...)
+\item 1044 Re-\/order Test Summary Errors/\+Failures
+\item 1066 Apartment\+Attribute and Test\+Case\+Attribute(s) do not work together
+\item 1103 Can\textquotesingle{}t use Test\+Case\+Data from base class
+\item 1109 Null\+Reference\+Exception when using inherited property for Value\+Source
+\item 1113 Console runner and xml output consistency
+\item 1117 Fix misbehaviour of Throws.\+Exception with non-\/void returning functions
+\item 1120 N\+Unit\+Project should parse .nunit project files containing Xml Declarations
+\item 1121 Usage of field set to null as value source leads to somewhat cryptic error
+\item 1122 Region may be disposed before test delegate is executed
+\item 1133 Provide a way to install extensions as nuget packages
+\item 1136 Don\textquotesingle{}t allow V2 framework to update in V2 driver tests
+\item 1171 A bug when using Assert.\+That() with Is.\+Not.\+Empty
+\item 1185 Engine finds .N\+ET 4.\+0 Client Profile twice
+\item 1187 I\+Test\+Assembly\+Runner.\+Stop\+Run as implemented by N\+Unit\+Test\+Assembly\+Runner
+\item 1195 name attribute in test-\/suite and test-\/results element of output xml is different to nunit 2.\+6.\+4 using nunit2-\/format
+\item 1196 Custom value formatter for v3 via Msg\+Utils
+\item 1210 Available runtimes issues
+\item 1230 Add ability for testcasedatasource to have parameters passed to methods
+\item 1233 Add Test\+Assembly\+Runner tests to both portable and silverlight builds
+\item 1234 Have default N\+Unit\+Lite Runner Program.\+cs return exit code
+\item 1236 Make Appveyor Nu\+Get feed more useable
+\item 1246 Introduce Is.\+Zero syntax to test for zero
+\item 1252 Exception thrown when any assembly is not found
+\item 1261 Type\+Helper.\+Get\+Display\+Name generates the wrong name for generic types with nested classes
+\item 1278 Fix optional parameters in Test\+Case\+Attribute
+\item 1282 Test\+Case using Params Behaves Oddly
+\item 1283 Engine should expose available frameworks.
+\item 1286 value of the time attribute in nunit2 outputs depends on the machine culture
+\item 1297 N\+Unit.\+Engine nuget package improvements
+\item 1301 Assert.\+Are\+Not\+Same evaluates To\+String unnecessarily
+\end{DoxyItemize}\hypertarget{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md74}{}\doxysubsection{N\+Unit 3.\+0.\+1 -\/ December 1, 2015}\label{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md74}
+\hypertarget{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md75}{}\doxysubsubsection{Console Runner}\label{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md75}
+
+\begin{DoxyItemize}
+\item The Nunit.\+Runners Nu\+Get package was updated to become a meta-\/package that pulls in the N\+Unit.\+Console package
+\item Reinstated the --pause command line option that will display a message box allowing you to attach a debugger if the --debug option does not work
+\end{DoxyItemize}\hypertarget{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md76}{}\doxysubsubsection{Issues Resolved}\label{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md76}
+
+\begin{DoxyItemize}
+\item 994 Add max number of Agents to the N\+Unit project file
+\item 1014 Ensure N\+Unit A\+PI assembly updates with M\+SI installs
+\item 1024 Added --pause flag to console runner
+\item 1030 Update Nunit.\+Runners package to 3.\+0
+\item 1033 \char`\"{}\+No arguments were provided\char`\"{} with Theory and Values combination
+\item 1035 Check null arguments
+\item 1037 Async tests not working on Windows 10 Universal
+\item 1041 N\+Unit2\+Xml\+Result Writer is reporting Sucess when test fails
+\item 1042 N\+Unit2 reports on 3.\+0 is different than 2.\+6.\+4
+\item 1046 Floating\+Point\+Numerics.\+Are\+Almost\+Equal\+Ulps throws Overflow\+Exception
+\item 1049 Cannot select Generic tests from command line
+\item 1050 Do not expose System.\+Runtime.\+Compiler\+Services.\+Extension\+Attribute to public
+\item 1054 Create nuget feeds for CI builds on Appveyor
+\item 1055 nunit3 console runner --where option does not return error on invalid selection string
+\item 1060 Remove \char`\"{}\+Version 3\char`\"{} from N\+Unit Nuget Package
+\item 1061 Nunit30\+Settings.\+xml becomes corrupted
+\item 1062 Console.\+Write\+Line statements in \char`\"{}\+One\+Time\+Set\+Up\char`\"{} and \char`\"{}\+One\+Time\+Tear\+Down\char`\"{} annotated methods are not directed to the console when using nunit3-\/console.\+exe runner
+\item 1063 Error in Random Test
+\end{DoxyItemize}\hypertarget{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md77}{}\doxysubsection{N\+Unit 3.\+0.\+0 Final Release -\/ November 15, 2015}\label{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md77}
+\hypertarget{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md78}{}\doxysubsubsection{Issues Resolved}\label{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md78}
+
+\begin{DoxyItemize}
+\item 635 Mono 4.\+0 Support
+\end{DoxyItemize}\hypertarget{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md79}{}\doxysubsection{N\+Unit 3.\+0.\+0 Release Candidate 3 -\/ November 13, 2015}\label{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md79}
+\hypertarget{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md80}{}\doxysubsubsection{Engine}\label{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md80}
+
+\begin{DoxyItemize}
+\item The engine now only sets the config file for project.\+nunit to project.\+config if project.\+config exists. Otherwise, each assembly uses its own config, provided it is run in a separate App\+Domain by itself.
+
+N\+O\+TE\+: It is not possible for multiple assemblies in the same App\+Domain to use different configs. This is not an N\+Unit limitation, it\textquotesingle{}s just how configs work!
+\end{DoxyItemize}\hypertarget{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md81}{}\doxysubsubsection{Issues Resolved}\label{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md81}
+
+\begin{DoxyItemize}
+\item 856 Extensions support for third party runners in N\+Unit 3.\+0
+\item 1003 Delete Team\+City\+Event\+Handler as it is not used
+\item 1015 Specifying .nunit project and --framework on command line causes crash
+\item 1017 Remove Assert.\+Multiple from framework
+\end{DoxyItemize}\hypertarget{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md82}{}\doxysubsection{N\+Unit 3.\+0.\+0 Release Candidate 2 -\/ November 8, 2015}\label{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md82}
+\hypertarget{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md83}{}\doxysubsubsection{Engine}\label{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md83}
+
+\begin{DoxyItemize}
+\item The I\+Driver\+Factory extensibility interface has been modified.
+\end{DoxyItemize}\hypertarget{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md84}{}\doxysubsubsection{Issues Resolved}\label{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md84}
+
+\begin{DoxyItemize}
+\item 970 Define P\+A\+R\+A\+L\+L\+EL in CF build of nunitlite
+\item 978 It should be possible to determine version of N\+Unit using nunit console tool
+\item 983 Inconsistent return codes depending on Process\+Model
+\item 986 Update docs for parallel execution
+\item 988 Don\textquotesingle{}t run portable tests from N\+Unit Console
+\item 990 V2 driver is passing invalid filter elements to N\+Unit
+\item 991 Mono.\+Options should not be exposed to public directly
+\item 993 Give error message when a regex filter is used with N\+Unit V2
+\item 997 Add missing X\+ML Documentation
+\item 1008 N\+Unit\+Lite namespace not updated in the Nu\+Get Packages
+\end{DoxyItemize}\hypertarget{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md85}{}\doxysubsection{N\+Unit 3.\+0.\+0 Release Candidate -\/ November 1, 2015}\label{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md85}
+\hypertarget{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md86}{}\doxysubsubsection{Framework}\label{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md86}
+
+\begin{DoxyItemize}
+\item The portable build now supports A\+S\+P.\+N\+ET 5 and the new Core C\+LR.
+
+N\+O\+TE\+: The {\ttfamily nunit3-\/console} runner cannot run tests that reference the portable build. You may run such tests using N\+Unit\+Lite or a platform-\/specific runner.
+\item {\ttfamily Test\+Case\+Attribute} and {\ttfamily Test\+Case\+Data} now allow modifying the test name without replacing it entirely.
+\item The Silverlight packages are now separate downloads.
+\end{DoxyItemize}\hypertarget{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md87}{}\doxysubsubsection{N\+Unit\+Lite}\label{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md87}
+
+\begin{DoxyItemize}
+\item The N\+Unit\+Lite runner now produces the same output display and X\+ML results as the console runner.
+\end{DoxyItemize}\hypertarget{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md88}{}\doxysubsubsection{Engine}\label{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md88}
+
+\begin{DoxyItemize}
+\item The format of the X\+ML result file has been finalized and documented.
+\end{DoxyItemize}\hypertarget{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md89}{}\doxysubsubsection{Console Runner}\label{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md89}
+
+\begin{DoxyItemize}
+\item The console runner program is now called {\ttfamily nunit3-\/console}.
+\item Console runner output has been modified so that the summary comes at the end, to reduce the need for scrolling.
+\end{DoxyItemize}\hypertarget{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md90}{}\doxysubsubsection{Issues Resolved}\label{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md90}
+
+\begin{DoxyItemize}
+\item 59 Length of generated test names should be limited
+\item 68 Customization of test case name generation
+\item 404 Split tests between nunitlite.\+runner and nunit.\+framework
+\item 575 Add support for A\+S\+P.\+N\+ET 5 and the new Core C\+LR
+\item 783 Package separately for Silverlight
+\item 833 Intermittent failure of Work\+Item\+Queue\+Tests.\+Stop\+Queue\+\_\+\+With\+Workers
+\item 859 N\+Unit-\/\+Console output -\/ move Test Run Summary to end
+\item 867 Remove Warnings from Ignored tests
+\item 868 Review skipped tests
+\item 887 Move environment and settings elements to the assembly suite in the result file
+\item 899 Colors for Color\+Console on grey background are too light
+\item 904 Internal\+Preserve\+Stack\+Trace is not supported on all Portable platforms
+\item 914 Unclear error message from console runner when assembly has no tests
+\item 916 Console runner dies when test agent dies
+\item 918 Console runner --where parameter is case sensitive
+\item 920 Remove addins\textbackslash{}nunit.\+engine.\+api.\+dll from Nu\+Get package
+\item 929 Rename nunit-\/console.\+exe
+\item 931 Remove beta warnings from Nu\+Get packages
+\item 936 Explicit skipped tests not displayed
+\item 939 Installer complains about .N\+ET even if already installed
+\item 940 Confirm or modify list of packages for release
+\item 947 Breaking A\+PI change in Value\+Source\+Attribute
+\item 949 Update copyright in N\+Unit Console
+\item 954 N\+Unit\+Lite X\+ML output is not consistent with the engine\textquotesingle{}s
+\item 955 N\+Unit\+Lite does not display the where clause
+\item 959 Restore filter options for N\+Unit\+Lite portable build
+\item 960 Intermittent failure of Category\+Filter\+Tests
+\item 967 Run Settings Report is not being displayed.
+\end{DoxyItemize}\hypertarget{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md91}{}\doxysubsection{N\+Unit 3.\+0.\+0 Beta 5 -\/ October 16, 2015}\label{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md91}
+\hypertarget{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md92}{}\doxysubsubsection{Framework}\label{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md92}
+
+\begin{DoxyItemize}
+\item Parameterized test cases now support nullable arguments.
+\item The N\+Unit framework may now be built for the .N\+ET Core framework. Note that this is only available through building the source code. A binary will be available in the next release.
+\end{DoxyItemize}\hypertarget{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md93}{}\doxysubsubsection{Engine}\label{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md93}
+
+\begin{DoxyItemize}
+\item The engine now runs multiple test assemblies in parallel by default
+\item The output X\+ML now includes more information about the test run, including the text of the command used, any engine settings and the filter used to select tests.
+\item Extensions may now specify data in an identifying attribute, for use by the engine in deciding whether to load that extension.
+\end{DoxyItemize}\hypertarget{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md94}{}\doxysubsubsection{Console Runner}\label{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md94}
+
+\begin{DoxyItemize}
+\item The console now displays all settings used by the engine to run tests as well as the filter used to select tests.
+\item The console runner accepts a new option --maxagents. If multiple assemblies are run in separate processes, this value may be used to limit the number that are executed simultaneously in parallel.
+\item The console runner no longer accepts the --include and --exclude options. Instead, the new --where option provides a more general way to express which tests will be executed, such as --where \char`\"{}cat==\+Fast \&\& Priority==\+High\char`\"{}. See the docs for details of the syntax.
+\item The new --debug option causes N\+Unit to break in the debugger immediately before tests are run. This simplifies debugging, especially when the test is run in a separate process.
+\end{DoxyItemize}\hypertarget{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md95}{}\doxyparagraph{Issues Resolved}\label{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md95}
+
+\begin{DoxyItemize}
+\item 41 Check for zeroes in Assert messages
+\item 254 Finalize X\+ML format for test results
+\item 275 N\+Unit\+Equality\+Comparer fails to compare {\ttfamily I\+Equatable$<$T$>$} where second object is derived from T
+\item 304 Run test Assemblies in parallel
+\item 374 New syntax for selecting tests to be run
+\item 515 O\+S\+Platform.\+Is\+Mac\+O\+SX doesn\textquotesingle{}t work
+\item 573 nunit-\/console hangs on Mac OS X after all tests have run
+\item 669 Team\+City service message should have assembly name as a part of test name.
+\item 689 The Team\+City service message \char`\"{}test\+Finished\char`\"{} should have an integer value in the \char`\"{}duration\char`\"{} attribute
+\item 713 Include command information in X\+ML
+\item 719 We have no way to configure tests for several assemblies using N\+Unit project file and the common installation from msi file
+\item 735 Workers number in xml report file cannot be found
+\item 784 Build Portable Framework on Linux
+\item 790 Allow Extensions to provide data through an attribute
+\item 794 Make it easier to debug tests as well as N\+Unit itself
+\item 801 N\+Unit calls Dispose multiple times
+\item 814 Support nullable types with Test\+Case
+\item 818 Possible error in Merge Pull Request \#797
+\item 821 Wrapped method results in loss of result information
+\item 822 Test for Debugger in N\+Unit\+Test\+Assembly\+Runner probably should not be in CF build
+\item 824 Remove unused System.\+Reflection using statements
+\item 826 Randomizer uniqueness tests fail randomly!
+\item 828 Merge pull request \#827 (issue 826)
+\item 830 Add ability to report test results synchronously to test runners
+\item 837 Enumerators not disposed when comparing I\+Enumerables
+\item 840 Add missing copyright notices
+\item 844 Pull Request \#835 (Issue \#814) does not build in CF
+\item 847 Add new --process\+:inprocess and --inprocess options
+\item 850 Test runner fails if test name contains invalid xml characters
+\item 851 \textquotesingle{}Exclude\textquotesingle{} console option is not working in N\+Unit Lite
+\item 853 Cannot run N\+Unit Console from another directory
+\item 860 Use C\+D\+A\+TA section for message, stack-\/trace and output elements of X\+ML
+\item 863 Eliminate core engine
+\item 865 Intermittent failures of Stop\+Watch\+Tests
+\item 869 Tests that use directory separator char to determine platform misreport Linux on Max\+O\+SX
+\item 870 N\+Unit Console Runtime Environment misreports on Mac\+O\+SX
+\item 874 Add .N\+ET Core Framework
+\item 878 Cannot exclude Mac\+O\+SX or X\+Box platforms when running on CF
+\item 892 Fixed test runner returning early when executing more than one test run.
+\item 894 Give nunit.\+engine and nunit.\+engine.\+api assemblies strong names
+\item 896 N\+Unit 3.\+0 console runner not placing test result xml in --work directory
+\end{DoxyItemize}\hypertarget{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md96}{}\doxysubsection{N\+Unit 3.\+0.\+0 Beta 4 -\/ August 25, 2015}\label{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md96}
+\hypertarget{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md97}{}\doxysubsubsection{Framework}\label{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md97}
+
+\begin{DoxyItemize}
+\item A new Retry\+Attribute allows retrying of failing tests.
+\item New Superset\+Constraint and Is.\+Superset\+Of syntax complement Subset\+Constraint.
+\item Tests skipped due to Explicit\+Attribute are now reported as skipped.
+\end{DoxyItemize}\hypertarget{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md98}{}\doxysubsubsection{Engine}\label{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md98}
+
+\begin{DoxyItemize}
+\item We now use Cecil to examine assemblies prior to loading them.
+\item Extensions are no longer based on Mono.\+Addins but use our own extension framework.
+\end{DoxyItemize}\hypertarget{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md99}{}\doxysubsubsection{Issues Resolved}\label{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md99}
+
+\begin{DoxyItemize}
+\item 125 3rd-\/party dependencies should be downloaded on demand
+\item 283 What should we do when a user extension does something bad?
+\item 585 Retry\+Attribute
+\item 642 Restructure M\+S\+Build script
+\item 649 Change how we zip packages
+\item 654 Reflection\+Only\+Load and Reflection\+Only\+Load\+From
+\item 664 Invalid \char`\"{}id\char`\"{} attribute in the report for case \char`\"{}test started\char`\"{}
+\item 685 In the some cases when tests cannot be started N\+Unit returns exit code \char`\"{}0\char`\"{}
+\item 728 Missing Assert.\+That overload
+\item 741 Explicit Tests get run when using --exclude
+\item 746 Framework should send events for all tests
+\item 747 N\+Unit should apply attributes even if test is non-\/runnable
+\item 749 Review Use of Mono.\+Addins for Engine Extensibility
+\item 750 Include Explicit Tests in Test Results
+\item 753 Feature request\+: Is.\+Superset\+Of() assertion constraint
+\item 755 Time\+Out attribute doesn\textquotesingle{}t work with Test\+Case\+Source Attribute
+\item 757 Implement some way to wait for execution to complete in I\+Test\+Engine\+Runner
+\item 760 Packaging targets do not run on Linux
+\item 766 Added overloads for True()/\+False() accepting booleans
+\item 778 Build and build.\+cmd scripts invoke nuget.\+exe improperly
+\item 780 Teamcity fix
+\item 782 No sources for 2.\+6.\+4
+\end{DoxyItemize}\hypertarget{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md100}{}\doxysubsection{N\+Unit 3.\+0.\+0 Beta 3 -\/ July 15, 2015}\label{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md100}
+\hypertarget{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md101}{}\doxysubsubsection{Framework}\label{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md101}
+
+\begin{DoxyItemize}
+\item The Range\+Attribute has been extended to support more data types including uint, long and ulong
+\item Added platform support for Windows 10 and fixed issues with Windows 8 and 8.\+1 support
+\item Added async support to the portable version of N\+Unit Framework
+\item The named members of the Test\+Case\+Source and Value\+Source attributes must now be static.
+\item Random\+Attribute has been extended to add support for new data types including uint, long, ulong, short, ushort, float, byte and sbyte
+\item Test\+Context.\+Random has also been extended to add support for new data types including uint, long, ulong, short, ushort, float, byte, sbyte and decimal
+\item Removed the dependency on Microsoft.\+Bcl.\+Async from the N\+Unit Framework assembly targeting .N\+ET 4.\+0. If you want to write async tests in .N\+ET 4.\+0, you will need to reference the Nu\+Get package yourself.
+\item Added a new Test\+Fixture\+Source attribute which is the equivalent to Test\+Case\+Source but provides for instantiation of fixtures.
+\item Significant improvements have been made in how N\+Unit deduces the type arguments of generic methods based on the arguments provided.
+\end{DoxyItemize}\hypertarget{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md102}{}\doxysubsubsection{Engine}\label{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md102}
+
+\begin{DoxyItemize}
+\item If the target framework is not specified, test assemblies that are compiled to target .N\+ET 4.\+5 will no longer run in .N\+ET 4.\+0 compatibility mode
+\end{DoxyItemize}\hypertarget{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md103}{}\doxysubsubsection{Console}\label{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md103}
+
+\begin{DoxyItemize}
+\item If the console is run without arguments, it will now display help
+\end{DoxyItemize}\hypertarget{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md104}{}\doxysubsubsection{Issues Resolved}\label{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md104}
+
+\begin{DoxyItemize}
+\item 47 Extensions to Range\+Attribute
+\item 237 System.\+Uri .ctor works not properly under Nunit
+\item 244 N\+Unit should properly distinguish between .N\+ET 4.\+0 and 4.\+5
+\item 310 Target framework not specified on the App\+Domain when running against .Net 4.\+5
+\item 321 Rationalize how we count tests
+\item 472 Overflow exception and Divide\+By\+Zero exception from the Range\+Attribute
+\item 524 int and char do not compare correctly?
+\item 539 Truncation of string arguments
+\item 544 Async\+Test\+Method\+Tests for 4.\+5 Framework fails frequently on Travis CI
+\item 656 Unused parameter in Console.\+Write\+Line found
+\item 670 Failing Tests in Team\+City Build
+\item 673 Ensure proper disposal of engine objects
+\item 674 Engine does not release test assemblies
+\item 679 Windows 10 Support
+\item 682 Add Async Support to Portable Framework
+\item 683 Make Framework\+Controller available in portable build
+\item 687 Test\+Agency does not launch agent process correctly if runtime type is not specified (i.\+e. v4.\+0)
+\item 692 Platform\+Attribute\+\_\+\+Operating\+System\+Bit\+Ness fails when running in 32-\/bit process
+\item 693 Generic {\ttfamily Test$<$T$>$} Method cannot determine type arguments for fixture when passed as {\ttfamily I\+Enumerable$<$T$>$}
+\item 698 Require Test\+Case\+Source and Value\+Source named members to be static
+\item 703 Team\+City non-\/equal flowid for \textquotesingle{}test\+Started\textquotesingle{} and \textquotesingle{}test\+Finished\textquotesingle{} messages
+\item 712 Extensions to Random\+Attribute
+\item 715 Provide a data source attribute at Test\+Fixture Level
+\item 718 Range\+Constraint gives error with from and two args of differing types
+\item 723 Does nunit.\+nuspec require dependency on Microsoft.\+Bcl.\+Async?
+\item 724 Adds support for {\ttfamily Nullable$<$bool$>$} to Assert.\+Is\+True and Assert.\+Is\+False
+\item 734 Console without parameters doesn\textquotesingle{}t show help
+\end{DoxyItemize}\hypertarget{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md105}{}\doxysubsection{N\+Unit 3.\+0.\+0 Beta 2 -\/ May 12, 2015}\label{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md105}
+\hypertarget{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md106}{}\doxysubsubsection{Framework}\label{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md106}
+
+\begin{DoxyItemize}
+\item The Compact Framework version of the framework is now packaged separately and will be distributed as a Z\+IP file and as a Nu\+Get package.
+\item The N\+Unit 2.\+x Repeat\+Attribute was added back into the framework.
+\item Added Throws.\+Argument\+Null\+Exception
+\item Added Get\+String methods to N\+Unit.\+Framework.\+Internal.\+Random\+Generator to create repeatable random strings for testing
+\item When checking the equality of Date\+Time\+Offset, you can now use the With\+Same\+Offset modifier
+\item Some classes intended for internal usage that were public for testing have now been made internal. Additional classes will be made internal for the final 3.\+0 release.
+\end{DoxyItemize}\hypertarget{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md107}{}\doxysubsubsection{Engine}\label{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md107}
+
+\begin{DoxyItemize}
+\item Added a core engine which is a non-\/extensible, minimal engine for use by devices and similar situations where reduced functionality is compensated for by reduced size and simplicity of usage. See \href{https://github.com/nunit/dev/wiki/Core-Engine}{\texttt{ https\+://github.\+com/nunit/dev/wiki/\+Core-\/\+Engine}} for more information.
+\end{DoxyItemize}\hypertarget{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md108}{}\doxysubsubsection{Issues Resolved}\label{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md108}
+
+\begin{DoxyItemize}
+\item 22 Add O\+S\+Architecture Attribute to Environment node in result xml
+\item 24 Assert on Dictionary Content
+\item 48 Explicit seems to conflict with Ignore
+\item 168 Create N\+Unit 3.\+0 documentation
+\item 196 Compare Date\+Time\+Offsets including the offset in the comparison
+\item 217 New icon for the 3.\+0 release
+\item 316 N\+Unit\+Lite Text\+UI Runner
+\item 320 No Tests found\+: Using parametrized Fixture and Test\+Case\+Source
+\item 360 Better exception message when using non-\/\+B\+CL class in property
+\item 454 Rare registry configurations may cause N\+Unit to fail
+\item 478 Repeat\+Attribute
+\item 481 Testing multiple assemblies in nunitlite
+\item 538 Potential bug using Test\+Context in constructors
+\item 546 Enable Parallel in N\+Unit\+Lite/\+CF (or more) builds
+\item 551 Text\+Runner not passing the Num\+Workers option to the I\+Test\+Assembly\+Runner
+\item 556 Executed tests should always return a non-\/zero duration
+\item 559 Fix text of Nu\+Get packages
+\item 560 Fix Package\+Version property on wix install projects
+\item 562 Program.\+cs in N\+Unit\+Lite Nu\+Get package is incorrect
+\item 564 N\+Unit\+Lite Nuget package is Beta 1a, Framework is Beta 1
+\item 565 N\+Unit\+Lite Nuget package adds Program.\+cs to a VB Project
+\item 568 Isolate packaging from building
+\item 570 Throws\+Constraint failure message should include stack trace of actual exception
+\item 576 Throws.\+Argument\+Null\+Exception would be nice
+\item 577 Documentation on some members of Throws falsely claims that they return {\ttfamily Target\+Invocation\+Exception} constraints
+\item 579 No documentation for recommended usage of Test\+Case\+Source\+Attribute
+\item 580 Team\+City Service Message Uses Incorrect Test Name with N\+Unit2\+Driver
+\item 582 Test Ids Are Not Unique
+\item 583 Team\+City service messages to support parallel test execution
+\item 584 Non-\/runnable assembly has incorrect Result\+State
+\item 609 Add support for integration with Team\+City
+\item 611 Remove unused --teamcity option from CF build of N\+Unit\+Lite
+\item 612 Max\+Time doesn\textquotesingle{}t work when used for Test\+Case
+\item 621 Core Engine
+\item 622 nunit-\/console fails when use --output
+\item 628 Modify I\+Service interface and simplify Service\+Context
+\item 631 Separate packaging for the compact framework
+\item 646 Configuration\+Manager.\+App\+Settings Params Return Null under Beta 1
+\item 648 Passing 2 or more test assemblies targeting $>$ .N\+ET 2.\+0 to nunit-\/console fails
+\end{DoxyItemize}\hypertarget{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md109}{}\doxysubsection{N\+Unit 3.\+0.\+0 Beta 1 -\/ March 25, 2015}\label{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md109}
+\hypertarget{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md110}{}\doxysubsubsection{General}\label{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md110}
+
+\begin{DoxyItemize}
+\item There is now a master windows installer for the framework, engine and console runner.
+\end{DoxyItemize}\hypertarget{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md111}{}\doxysubsubsection{Framework}\label{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md111}
+
+\begin{DoxyItemize}
+\item We no longer create a separate framework build for .N\+ET 3.\+5. The 2.\+0 and 3.\+5 builds were essentially the same, so the former should now be used under both runtimes.
+\item A new Constraint, Dictionary\+Contains\+Key\+Constraint, may be used to test that a specified key is present in a dictionary.
+\item Level\+Of\+Parallelization\+Attribute has been renamed to Level\+Of\+Parallelism\+Attribute.
+\item The Silverlight runner now displays output in color and includes any text output created by the tests.
+\item The class and method names of each test are included in the output xml where applicable.
+\item String arguments used in test case names are now truncated to 40 rather than 20 characters.
+\end{DoxyItemize}\hypertarget{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md112}{}\doxysubsubsection{Engine}\label{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md112}
+
+\begin{DoxyItemize}
+\item The engine A\+PI has now been finalized. It permits specifying a minimum version of the engine that a runner is able to use. The best installed version of the engine will be loaded. Third-\/party runners may override the selection process by including a copy of the engine in their installation directory and specifying that it must be used.
+\item The V2 framework driver now uses the event listener and test listener passed to it by the runner. This corrects several outstanding issues caused by events not being received and allows selecting V2 tests to be run from the command-\/line, in the same way that V3 tests are selected.
+\end{DoxyItemize}\hypertarget{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md113}{}\doxysubsubsection{Console}\label{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md113}
+
+\begin{DoxyItemize}
+\item The console now defaults to not using shadowcopy. There is a new option --shadowcopy to turn it on if needed.
+\end{DoxyItemize}\hypertarget{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md114}{}\doxysubsubsection{Issues Resolved}\label{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md114}
+
+\begin{DoxyItemize}
+\item 224 Silverlight Support
+\item 318 Test\+Action\+Attribute\+: Retrieving the Test\+Fixture
+\item 428 Add Expected\+Exception\+Attribute to C\# samples
+\item 440 Automatic selection of Test Engine to use
+\item 450 Create master install that includes the framework, engine and console installs
+\item 477 Assert does not work with Array\+Segment
+\item 482 nunit-\/console has multiple errors related to -\/framework option
+\item 483 Adds constraint for asserting that a dictionary contains a particular key
+\item 484 Missing file in N\+Unit.\+Console nuget package
+\item 485 Can\textquotesingle{}t run v2 tests with nunit-\/console 3.\+0
+\item 487 N\+Unit\+Lite can\textquotesingle{}t load assemblies by their file name
+\item 488 Async setup and teardown still don\textquotesingle{}t work
+\item 497 Framework installer shold register the portable framework
+\item 504 Option --workers\+:0 is ignored
+\item 508 Travis builds with failure in engine tests show as successful
+\item 509 Under linux, not all mono profiles are listed as available
+\item 512 Drop the .N\+ET 3.\+5 build
+\item 517 V2 Framework\+Driver does not make use of passed in Test\+Event\+Listener
+\item 523 Provide an option to disable shadowcopy in N\+Unit v3
+\item 528 V2 Framework\+Driver does not make use of passed in Test\+Filter
+\item 530 Color display for Silverlight runner
+\item 531 Display text output from tests in Silverlight runner
+\item 534 Add classname and methodname to test result xml
+\item 541 Console help doesn\textquotesingle{}t indicate defaults
+\end{DoxyItemize}\hypertarget{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md115}{}\doxysubsection{N\+Unit 3.\+0.\+0 Alpha 5 -\/ January 30, 2015}\label{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md115}
+\hypertarget{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md116}{}\doxysubsubsection{General}\label{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md116}
+
+\begin{DoxyItemize}
+\item A Windows installer is now included in the release packages.
+\end{DoxyItemize}\hypertarget{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md117}{}\doxysubsubsection{Framework}\label{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md117}
+
+\begin{DoxyItemize}
+\item Test\+Case\+Attribute now allows arguments with default values to be omitted. Additionaly, it accepts a Platform property to specify the platforms on which the test case should be run.
+\item Test\+Fixture and Test\+Case attributes now enforce the requirement that a reason needs to be provided when ignoring a test.
+\item Set\+Up, Tear\+Down, One\+Time\+Set\+Up and One\+Time\+Tear\+Down methods may now be async.
+\item String arguments over 20 characters in length are truncated when used as part of a test name.
+\end{DoxyItemize}\hypertarget{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md118}{}\doxysubsubsection{Engine}\label{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md118}
+
+\begin{DoxyItemize}
+\item The engine is now extensible using Mono.\+Addins. In this release, extension points are provided for Framework\+Drivers, Project\+Loaders and Output\+Writers. The following addins are bundled as a part of N\+Unit\+:
+\begin{DoxyItemize}
+\item A Framework\+Driver that allows running N\+Unit V2 tests under N\+Unit 3.\+0.
+\item Project\+Loaders for N\+Unit and Visual Studio projects.
+\item An Output\+Writer that creates X\+ML output in N\+Unit V2 format.
+\end{DoxyItemize}
+\item Domain\+Usage now defaults to Multiple if not specified by the runner
+\end{DoxyItemize}\hypertarget{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md119}{}\doxysubsubsection{Console}\label{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md119}
+
+\begin{DoxyItemize}
+\item New options supported\+:
+\begin{DoxyItemize}
+\item testlist provides a list of tests to run in a file
+\item stoponerror indicates that the run should terminate when any test fails.
+\end{DoxyItemize}
+\end{DoxyItemize}\hypertarget{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md120}{}\doxysubsubsection{Issues Resolved}\label{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md120}
+
+\begin{DoxyItemize}
+\item 20 Test\+Case\+Attribute needs Platform property.
+\item 60 N\+Unit should support async setup, teardown, fixture setup and fixture teardown.
+\item 257 Test\+Case\+Attribute should not require parameters with default values to be specified.
+\item 266 Pluggable framework drivers.
+\item 368 Create addin model.
+\item 369 Project loader addins
+\item 370 Output\+Writer addins
+\item 403 Move Console\+Options.\+cs and Options.\+cs to Common and share...
+\item 419 Create Windows Installer for N\+Unit.
+\item 427 \mbox{[}Test\+Fixture(Ignore=true)\mbox{]} should not be allowed.
+\item 437 Errors in tests under Linux due to hard-\/coded paths.
+\item 441 N\+Unit-\/\+Console should support --testlist option
+\item 442 Add --stoponerror option back to nunit-\/console.
+\item 456 Fix memory leak in Runtime\+Framework.
+\item 459 Remove the Mixed Platforms build configuration.
+\item 468 Change default domain usage to multiple.
+\item 469 Truncate string arguments in test names in order to limit the length.
+\end{DoxyItemize}\hypertarget{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md121}{}\doxysubsection{N\+Unit 3.\+0.\+0 Alpha 4 -\/ December 30, 2014}\label{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md121}
+\hypertarget{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md122}{}\doxysubsubsection{Framework}\label{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md122}
+
+\begin{DoxyItemize}
+\item Apartment\+Attribute has been added, replacing S\+T\+A\+Attribute and M\+T\+A\+Attribute.
+\item Unnecessary overloads of Assert.\+That and Assume.\+That have been removed.
+\item Multiple Set\+Up\+Fixtures may be specified in a single namespace.
+\item Improvements to the Pairwise strategy test case generation algorithm.
+\item The new N\+Unit\+Lite runner --testlist option, allows a list of tests to be kept in a file.
+\end{DoxyItemize}\hypertarget{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md123}{}\doxysubsubsection{Engine}\label{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md123}
+
+\begin{DoxyItemize}
+\item A driver is now included, which allows running N\+Unit 2.\+x tests under N\+Unit 3.\+0.
+\item The engine can now load and run tests specified in a number of project formats\+:
+\begin{DoxyItemize}
+\item N\+Unit (.nunit)
+\item Visual Studio C\# projects (.csproj)
+\item Visual Studio F\# projects (.vjsproj)
+\item Visual Studio Visual Basic projects (.vbproj)
+\item Visual Studio solutions (.sln)
+\item Legacy C++ and Visual J\+Script projects (.csproj and .vjsproj) are also supported
+\item Support for the current C++ format (.csxproj) is not yet available
+\end{DoxyItemize}
+\item Creation of output files like Test\+Result.\+xml in various formats is now a service of the engine, available to any runner.
+\end{DoxyItemize}\hypertarget{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md124}{}\doxysubsubsection{Console}\label{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md124}
+
+\begin{DoxyItemize}
+\item The command-\/line may now include any number of assemblies and/or supported projects.
+\end{DoxyItemize}\hypertarget{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md125}{}\doxysubsubsection{Issues Resolved}\label{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md125}
+
+\begin{DoxyItemize}
+\item 37 Multiple Set\+Up\+Fixtures should be permitted on same namespace
+\item 210 Test\+Context.\+Write\+Line in an App\+Domain causes an error
+\item 227 Add support for VS projects and solutions
+\item 231 Update C\# samples to use N\+Unit 3.\+0
+\item 233 Update F\# samples to use N\+Unit 3.\+0
+\item 234 Update C++ samples to use N\+Unit 3.\+0
+\item 265 Reorganize console reports for nunit-\/console and nunitlite
+\item 299 No full path to assembly in X\+ML file under Compact Framework
+\item 301 Command-\/line length
+\item 363 Make Xml result output an engine service
+\item 377 Combining\+Strategy\+Attributes don\textquotesingle{}t work correctly on generic methods
+\item 388 Improvements to N\+Unit\+Lite runner output
+\item 390 Specify exactly what happens when a test times out
+\item 396 Apartment\+Attribute
+\item 397 CF nunitlite runner assembly has the wrong name
+\item 407 Assert.\+Pass() with \mbox{]}\mbox{]}$>$ in message crashes console runner
+\item 414 Simplify Assert overloads
+\item 416 N\+Unit 2.\+x Framework Driver
+\item 417 Complete work on N\+Unit projects
+\item 420 Create Settings file in proper location
+\end{DoxyItemize}\hypertarget{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md126}{}\doxysubsection{N\+Unit 3.\+0.\+0 Alpha 3 -\/ November 29, 2014}\label{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md126}
+\hypertarget{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md127}{}\doxysubsubsection{Breaking Changes}\label{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md127}
+
+\begin{DoxyItemize}
+\item N\+Unit\+Lite tests must reference both the nunit.\+framework and nunitlite assemblies.
+\end{DoxyItemize}\hypertarget{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md128}{}\doxysubsubsection{Framework}\label{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md128}
+
+\begin{DoxyItemize}
+\item The N\+Unit and N\+Unit\+Lite frameworks have now been merged. There is no longer any distinction between them in terms of features, although some features are not available on all platforms.
+\item The release includes two new framework builds\+: compact framework 3.\+5 and portable. The portable library is compatible with .N\+ET 4.\+5, Silverlight 5.\+0, Windows 8, Windows Phone 8.\+1, Windows Phone Silverlight 8, Mono for Android and Mono\+Touch.
+\item A number of previously unsupported features are available for the Compact Framework\+:
+\begin{DoxyItemize}
+\item Generic methods as tests
+\item Regex\+Constraint
+\item Timeout\+Attribute
+\item File\+Assert, Directory\+Assert and file-\/related constraints
+\end{DoxyItemize}
+\end{DoxyItemize}\hypertarget{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md129}{}\doxysubsubsection{Engine}\label{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md129}
+
+\begin{DoxyItemize}
+\item The logic of runtime selection has now changed so that each assembly runs by default in a separate process using the runtime for which it was built.
+\item On 64-\/bit systems, each test process is automatically created as 32-\/bit or 64-\/bit, depending on the platform specified for the test assembly.
+\end{DoxyItemize}\hypertarget{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md130}{}\doxysubsubsection{Console}\label{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md130}
+
+\begin{DoxyItemize}
+\item The console runner now runs tests in a separate process per assembly by default. They may still be run in process or in a single separate process by use of command-\/line options.
+\item The console runner now starts in the highest version of the .N\+ET runtime available, making it simpler to debug tests by specifying that they should run in-\/process on the command-\/line.
+\item The -\/x86 command-\/line option is provided to force execution in a 32-\/bit process on a 64-\/bit system.
+\item A writeability check is performed for each output result file before trying to run the tests.
+\item The -\/teamcity option is now supported.
+\end{DoxyItemize}\hypertarget{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md131}{}\doxysubsubsection{Issues Resolved}\label{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md131}
+
+\begin{DoxyItemize}
+\item 12 Compact framework should support generic methods
+\item 145 N\+Unit-\/console fails if test result message contains invalid xml characters
+\item 155 Create utility classes for platform-\/specific code
+\item 223 Common code for N\+Unit\+Lite console runner and N\+Unit-\/\+Console
+\item 225 Compact Framework Support
+\item 238 Improvements to running 32 bit tests on a 64 bit system
+\item 261 Add portable nunitlite build
+\item 284 N\+Unit\+Lite Unification
+\item 293 CF does not have a Current\+Directory
+\item 306 Assure N\+Unit can write resultfile
+\item 308 Early disposal of runners
+\item 309 N\+Unit-\/\+Console should support incremental output under Team\+City
+\item 325 Add Regex\+Constraint to compact framework build
+\item 326 Add Timeout\+Attribute to compact framework build
+\item 327 Allow generic test methods in the compact framework
+\item 328 Use .N\+ET Stopwatch class for compact framework builds
+\item 331 Alpha 2 CF does not build
+\item 333 Add parallel execution to desktop builds of N\+Unit\+Lite
+\item 334 Include File-\/related constraints and syntax in N\+Unit\+Lite builds
+\item 335 Re-\/introduce \textquotesingle{}Classic\textquotesingle{} N\+Unit syntax in N\+Unit\+Lite
+\item 336 Document use of separate obj directories per build in our projects
+\item 337 Update Standard Defines page for .N\+ET 3.\+0
+\item 341 Move the N\+Unit\+Lite runners to separate assemblies
+\item 367 Refactor X\+ML Escaping Tests
+\item 372 CF Build Test\+Assembly\+Runner\+Tests
+\item 373 Minor CF Test Fixes
+\item 378 Correct documentation for Pairwise\+Attribute
+\item 386 Console Output Improvements
+\end{DoxyItemize}\hypertarget{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md132}{}\doxysubsection{N\+Unit 3.\+0.\+0 Alpha 2 -\/ November 2, 2014}\label{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md132}
+\hypertarget{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md133}{}\doxysubsubsection{Breaking Changes}\label{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md133}
+
+\begin{DoxyItemize}
+\item The console runner no longer displays test results in the debugger.
+\item The N\+Unit\+Lite compact framework 2.\+0 build has been removed.
+\item All addin support has been removed from the framework. Documentation of N\+Unit 3.\+0 extensibility features will be published in time for the beta release. In the interim, please ask for support on the nunit-\/discuss list.
+\end{DoxyItemize}\hypertarget{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md134}{}\doxysubsubsection{General}\label{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md134}
+
+\begin{DoxyItemize}
+\item A separate solution has been created for Linux
+\item We now have continuous integration builds under both Travis and Appveyor
+\item The compact framework 3.\+5 build is now working and will be supported in future releases.
+\end{DoxyItemize}\hypertarget{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md135}{}\doxysubsubsection{New Features}\label{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md135}
+
+\begin{DoxyItemize}
+\item The console runner now automatically detects 32-\/ versus 64-\/bit test assemblies.
+\item The N\+Unit\+Lite report output has been standardized to match that of nunit-\/console.
+\item The N\+Unit\+Lite command-\/line has been standardized to match that of nunit-\/console where they share the same options.
+\item Both nunit-\/console and N\+Unit\+Lite now display output in color.
+\item Action\+Attributes now allow specification of multiple targets on the attribute as designed. This didn\textquotesingle{}t work in the first alpha.
+\item One\+Time\+Set\+Up and One\+Time\+Tear\+Down failures are now shown on the test report. Individual test failures after One\+Time\+Set\+Up failure are no longer shown.
+\item The console runner refuses to run tests build with older versions of N\+Unit. A plugin will be available to run older tests in the future.
+\end{DoxyItemize}\hypertarget{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md136}{}\doxysubsubsection{Issues Resolved}\label{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md136}
+
+\begin{DoxyItemize}
+\item 222 Color console for N\+Unit\+Lite
+\item 229 Timing failures in tests
+\item 241 Remove reference to Microslft B\+CL packages
+\item 243 Create solution for Linux
+\item 245 Multiple targets on action attributes not implemented
+\item 246 C++ tests do not compile in V\+S2013
+\item 247 Eliminate trace display when running tests in debug
+\item 255 Add new result states for more precision in where failures occur
+\item 256 Contains\+Constraint break when used with And\+Constraint
+\item 264 Stacktrace displays too many entries
+\item 269 Add manifest to nunit-\/console and nunit-\/agent
+\item 270 One\+Time\+Set\+Up failure results in too much output
+\item 271 Invalid tests should be treated as errors
+\item 274 Command line options should be case insensitive
+\item 276 N\+Unit-\/console should not reference nunit.\+framework
+\item 278 New result states (Child\+Failure and Setup\+Failure) break N\+Unit2\+Xml\+Output\+Writer
+\item 282 Get tests for N\+Unit2\+Xml\+Output\+Writer working
+\item 288 Set up Appveyor CI build
+\item 290 Stack trace still displays too many items
+\item 315 N\+Unit 3.\+0 alpha\+: Cannot run in console on my assembly
+\item 319 CI builds are not treating test failures as failures of the build
+\item 322 Remove Stopwatch tests where they test the real .N\+ET Stopwatch
+\end{DoxyItemize}\hypertarget{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md137}{}\doxysubsection{N\+Unit 3.\+0.\+0 Alpha 1 -\/ September 22, 2014}\label{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md137}
+\hypertarget{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md138}{}\doxysubsubsection{Breaking Changes}\label{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md138}
+
+\begin{DoxyItemize}
+\item Legacy suites are no longer supported
+\item Assert.\+Null\+Or\+Empty is no longer supported (Use Is.\+Null.\+Or.\+Empty)
+\end{DoxyItemize}\hypertarget{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md139}{}\doxysubsubsection{General}\label{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md139}
+
+\begin{DoxyItemize}
+\item Ms\+Build is now used for the build rather than N\+Ant
+\item The framework test harness has been removed now that nunit-\/console is at a point where it can run the tests.
+\end{DoxyItemize}\hypertarget{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md140}{}\doxysubsubsection{New Features}\label{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md140}
+
+\begin{DoxyItemize}
+\item Action Attributes have been added with the same features as in N\+Unit 2.\+6.\+3.
+\item Test\+Context now has a method that allows writing to the X\+ML output.
+\item Test\+Context.\+Current\+Context.\+Result now provides the error message and stack trace during teardown.
+\item Does prefix operator supplies several added constraints.
+\end{DoxyItemize}\hypertarget{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md141}{}\doxysubsubsection{Issues Resolved}\label{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md141}
+
+\begin{DoxyItemize}
+\item 6 Log4net not working with N\+Unit
+\item 13 Standardize commandline options for nunitlite runner
+\item 17 No allowance is currently made for nullable arguents in Test\+Case parameter conversions
+\item 33 Test\+Case\+Source cannot refer to a parameterized test fixture
+\item 54 Store message and stack trace in Test\+Context for use in Tear\+Down
+\item 111 Implement Changes to File, Directory and Path Assertions
+\item 112 Implement Action Attributes
+\item 156 Accessing multiple App\+Domains within unit tests result in Serialization\+Exception
+\item 163 Add --trace option to N\+Unit\+Lite
+\item 167 Create interim documentation for the alpha release
+\item 169 Design and implement distribution of N\+Unit packages
+\item 171 Assert.\+That should work with any lambda returning bool
+\item 175 Test Harness should return an error if any tests fail
+\item 180 Errors in Linux CI build
+\item 181 Replace N\+Ant with Ms\+Build / X\+Build
+\item 183 Standardize commandline options for test harness
+\item 188 No output from N\+Unit\+Lite when selected test is not found
+\item 189 Add string operators to Does prefix
+\item 193 Test\+Worker\+Tests.\+Busy\+Executed\+Idle\+Events\+Called\+In\+Sequence fails occasionally
+\item 197 Deprecate or remove Assert.\+Null\+Or\+Empty
+\item 202 Eliminate legacy suites
+\item 203 Combine framework, engine and console runner in a single solution and repository
+\item 209 Make Ignore attribute\textquotesingle{}s reason mandatory
+\item 215 Running 32-\/bit tests on a 64-\/bit OS
+\item 219 Teardown failures are not reported
+\end{DoxyItemize}\hypertarget{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md142}{}\doxysubsubsection{Console Issues Resolved (\+Old nunit-\/console project, now combined with nunit)}\label{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md142}
+
+\begin{DoxyItemize}
+\item 2 Failure in Test\+Fixture\+Set\+Up is not reported correctly
+\item 5 CI Server for nunit-\/console
+\item 6 System.\+Null\+Reference\+Exception on start nunit-\/console-\/x86
+\item 21 N\+Unit\+Framework\+Driver\+Tests fail if not run from same directory
+\item 24 \textquotesingle{}Debug\textquotesingle{} value for /trace option is deprecated in 2.\+6.\+3
+\item 38 Confusing Excluded categories output
+\end{DoxyItemize}\hypertarget{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md143}{}\doxysubsection{N\+Unit 2.\+9.\+7 -\/ August 8, 2014}\label{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md143}
+\hypertarget{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md144}{}\doxysubsubsection{Breaking Changes}\label{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md144}
+
+\begin{DoxyItemize}
+\item N\+Unit no longer supports void async test methods. You should use a Task return Type instead.
+\item The Expected\+Exception\+Attribute is no longer supported. Use Assert.\+Throws() or Assert.\+That(..., Throws) instead for a more precise specification of where the exception is expected to be thrown.
+\end{DoxyItemize}\hypertarget{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md145}{}\doxysubsubsection{New Features}\label{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md145}
+
+\begin{DoxyItemize}
+\item Parallel test execution is supported down to the Fixture level. Use Parallelizable\+Attribute to indicate types that may be run in parallel.
+\item Async tests are supported for .N\+ET 4.\+0 if the user has installed support for them.
+\item A new File\+Exists\+Constraint has been added along with File\+Assert.\+Exists and File\+Assert.\+Does\+Not\+Exist
+\item Expected\+Result is now supported on simple (non-\/\+Test\+Case) tests.
+\item The Ignore attribute now takes a named parameter Until, which allows specifying a date after which the test is no longer ignored.
+\item The following new values are now recognized by Platform\+Attribute\+: Win7, Win8, Win8.\+1, Win2012\+Server, Win2012\+Server\+R2, N\+T6.\+1, N\+T6.\+2, 32-\/bit, 64-\/bit
+\item Timeout\+Attribute is now supported under Silverlight
+\item Values\+Attribute may be used without any values on an enum or boolean argument. All possible values are used.
+\item You may now specify a tolerance using Within when testing equality of Date\+Time\+Offset values.
+\item The X\+ML output now includes a start and end time for each test.
+\end{DoxyItemize}\hypertarget{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md146}{}\doxysubsubsection{Issues Resolved}\label{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md146}
+
+\begin{DoxyItemize}
+\item 8 \mbox{[}Set\+Up\+Fixture\mbox{]} is not working as expected
+\item 14 CI Server for N\+Unit Framework
+\item 21 Is.\+In\+Range Constraint Ambiguity
+\item 27 Values attribute support for enum types
+\item 29 Specifying a tolerance with \char`\"{}\+Within\char`\"{} doesn\textquotesingle{}t work for Date\+Time\+Offset data types
+\item 31 Report start and end time of test execution
+\item 36 Make Requires\+Thread, Requires\+S\+TA, Requires\+M\+TA inheritable
+\item 45 Need of Enddate together with Ignore
+\item 55 Incorrect X\+ML comments for Collection\+Assert.\+Is\+Subset\+Of
+\item 62 Matches(\+Constraint) does not work as expected
+\item 63 Async support should handle Task return type without state machine
+\item 64 Async\+State\+Machine\+Attribute should only be checked by name
+\item 65 Update N\+Unit Wiki to show the new location of samples
+\item 66 Parallel Test Execution within test assemblies
+\item 67 Allow Expected Result on simple tests
+\item 70 Equivalent\+To isn\textquotesingle{}t compatible with Ignore\+Case for dictioneries
+\item 75 Async tests should be supported for projects that target .N\+ET 4.\+0
+\item 82 nunit-\/framework tests are timing out on Linux
+\item 83 Path-\/related tests fail on Linux
+\item 85 Culture-\/dependent N\+Unit tests fail on non-\/\+English machine
+\item 88 Test\+Case\+Source\+Attribute documentation
+\item 90 Equivalent\+To isn\textquotesingle{}t compatible with Ignore\+Case for char
+\item 100 Changes to Tolerance definitions
+\item 110 Add new platforms to Platform\+Attribute
+\item 113 Remove Expected\+Exception
+\item 118 Workarounds for missing Internal\+Preserve\+Stack\+Trace in mono
+\item 121 Test harness does not honor the --worker option when set to zero
+\item 129 Standardize Timeout in the Silverlight build
+\item 130 Add File\+Assert.\+Exists and File\+Assert.\+Does\+Not\+Exist
+\item 132 Drop support for void async methods
+\item 153 Surprising behavior of Delayed\+Constraint polling\+Interval
+\item 161 Update A\+PI to support stopping an ongoing test run
+\end{DoxyItemize}
+
+N\+O\+TE\+: Bug Fixes below this point refer to the number of the bug in Launchpad.\hypertarget{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md147}{}\doxysubsection{N\+Unit 2.\+9.\+6 -\/ October 4, 2013}\label{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md147}
+\hypertarget{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md148}{}\doxysubsubsection{Main Features}\label{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md148}
+
+\begin{DoxyItemize}
+\item Separate projects for nunit-\/console and nunit.\+engine
+\item New builds for .N\+ET 4.\+5 and Silverlight
+\item Test\+Context is now supported
+\item External A\+PI is now stable; internal interfaces are separate from A\+PI
+\item Tests may be run in parallel on separate threads
+\item Solutions and projects now use V\+S2012 (except for Compact framework)
+\end{DoxyItemize}\hypertarget{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md149}{}\doxysubsubsection{Bug Fixes}\label{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md149}
+
+\begin{DoxyItemize}
+\item 463470 We should encapsulate references to pre-\/2.\+0 collections
+\item 498690 Assert.\+That() doesn\textquotesingle{}t like properties with scoped setters
+\item 501784 Theory tests do not work correctly when using null parameters
+\item 531873 Feature\+: Extraction of unit tests from N\+Unit test assembly and calling appropriate one
+\item 611325 Allow Teardown to detect if last test failed
+\item 611938 Generic Test Instances disappear
+\item 655882 Make Category\+Attribute inherited
+\item 664081 Add Server2008 R2 and Windows 7 to Platform\+Attribute
+\item 671432 Upgrade N\+Ant to Latest Release
+\item 676560 Assert.\+Are\+Equal does not support {\ttfamily I\+Equatable$<$T$>$}
+\item 691129 Add Category parameter to Test\+Fixture
+\item 697069 Feature request\+: dynamic location for Test\+Result.\+xml
+\item 708173 N\+Unit\textquotesingle{}s logic for comparing arrays -\/ use {\ttfamily Comparer$<$T\mbox{[}\mbox{]}$>$} if it is provided
+\item 709062 \char`\"{}\+System.\+Argument\+Exception \+: Cannot compare\char`\"{} when the element is a list
+\item 712156 Tests cannot use App\+Domain.\+Set\+Principal\+Policy
+\item 719184 Platformdependency in src/\+Client\+Utilities/util/\+Services/\+Domain\+Manager.\+cs\+:40
+\item 719187 Using Path.\+Get\+Temp\+Path() causes conflicts in shared temporary folders
+\item 735851 Add detection of 3.\+0, 3.\+5 and 4.\+0 frameworks to Platform\+Attribute
+\item 736062 Deadlock when Event\+Listener performs a Trace call + Event\+Pump synchronisation
+\item 756843 Failing assertion does not show non-\/linear tolerance mode
+\item 766749 net-\/2.\+0\textbackslash{}nunit-\/console-\/x86.\+exe.\+config should have a {\ttfamily $<$startup/$>$} element and also enable load\+From\+Remote\+Sources
+\item 770471 Assert.\+Is\+Empty does not support I\+Enumerable
+\item 785460 Add Category parameter to Test\+Case\+Source\+Attribute
+\item 787106 Equal\+Constraint provides inadequate failure information for I\+Enumerables
+\item 792466 Test\+Context Method\+Name
+\item 794115 Hash\+Set incorrectly reported
+\item 800089 Assert.\+Throws() hides details of inner Assertion\+Exception
+\item 848713 Feature request\+: Add switch for console to break on any test case error
+\item 878376 Add \textquotesingle{}Exactly(n)\textquotesingle{} to the N\+Unit constraint syntax
+\item 882137 When no tests are run, higher level suites display as Inconclusive
+\item 882517 N\+Unit 2.\+5.\+10 doesn\textquotesingle{}t recognize Test\+Fixture if there are only Test\+Case\+Source inside
+\item 885173 Tests are still executed after cancellation by user
+\item 885277 Exception when project calls for a runtime using only 2 digits
+\item 885604 Feature request\+: Explicit named parameter to Test\+Case\+Attribute
+\item 890129 Delayed\+Constraint doesn\textquotesingle{}t appear to poll properties of objects
+\item 892844 Not using Mono 4.\+0 profile under Windows
+\item 893919 Delayed\+Constraint fails polling properties on references which are initially null
+\item 896973 Console output lines are run together under Linux
+\item 897289 Is.\+Empty constraint has unclear failure message
+\item 898192 Feature Request\+: Is.\+Negative, Is.\+Positive
+\item 898256 {\ttfamily I\+Enumerable$<$T$>$} for Datapoints doesn\textquotesingle{}t work
+\item 899178 Wrong failure message for parameterized tests that expect exceptions
+\item 904841 After exiting for timeout the teardown method is not executed
+\item 908829 Test\+Case attribute does not play well with variadic test functions
+\item 910218 N\+Unit should add a trailing separator to the Application\+Base
+\item 920472 Collection\+Assert.\+Is\+Not\+Empty must dispose Enumerator
+\item 922455 Add Support for Windows 8 and Windows 2012 Server to Platform\+Attribute
+\item 928246 Use assembly.\+Location instead of assembly.\+Code\+Base
+\item 958766 For development work under Team\+City, we need to support nunit2 formatted output under direct-\/runner
+\item 1000181 Parameterized Test\+Fixture with System.\+Type as constructor arguments fails
+\item 1000213 Inconclusive message Not in report output
+\item 1023084 Add Enum support to Random\+Attribute
+\item 1028188 Add Support for Silverlight
+\item 1029785 Test loaded from remote folder failed to run with exception System.\+I\+O\+Directory
+\item 1037144 Add Mono\+Touch support to Platform\+Attribute
+\item 1041365 Add Max\+OsX and Xbox support to platform attribute
+\item 1057981 C\#5 async tests are not supported
+\item 1060631 Add .N\+ET 4.\+5 build
+\item 1064014 Simple async tests should not return {\ttfamily Task$<$T$>$}
+\item 1071164 Support async methods in usage scenarios of Throws constraints
+\item 1071343 Runner.\+Load fails on CF if the test assembly contains a generic method
+\item 1071861 Error in Path Constraints
+\item 1072379 Report test execution time at a higher resolution
+\item 1074568 Assert/\+Assume should support an async method for the Actual\+Value\+Delegate
+\item 1082330 Better Exception if Set\+Culture attribute is applied multiple times
+\item 1111834 Expose Random Object as part of the test context
+\item 1111838 Include Random Seed in Test Report
+\item 1172979 Add Category Support to nunitlite Runner
+\item 1203361 Randomizer uniqueness tests sometimes fail
+\item 1221712 When non-\/existing test method is specified in -\/test, result is still \char`\"{}\+Tests run\+: 1, Passed\+: 1\char`\"{}
+\item 1223294 System.\+Null\+Reference\+Exception thrown when Expected\+Exception\+Attribute is used in a static class
+\item 1225542 Standardize commandline options for test harness
+\end{DoxyItemize}\hypertarget{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md150}{}\doxysubsubsection{Bug Fixes in 2.\+9.\+6 But Not Listed Here in the Release}\label{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md150}
+
+\begin{DoxyItemize}
+\item 541699 Silverlight Support
+\item 1222148 /framework switch does not recognize net-\/4.\+5
+\item 1228979 Theories with all test cases inconclusive are not reported as failures
+\end{DoxyItemize}\hypertarget{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md151}{}\doxysubsection{N\+Unit 2.\+9.\+5 -\/ July 30, 2010}\label{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md151}
+\hypertarget{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md152}{}\doxysubsubsection{Bug Fixes}\label{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md152}
+
+\begin{DoxyItemize}
+\item 483836 Allow non-\/public test fixtures consistently
+\item 487878 Tests in generic class without proper Test\+Fixture attribute should be invalid
+\item 498656 Test\+Case should show array values in G\+UI
+\item 513989 Is.\+Empty should work for directories
+\item 519912 Thread.\+Current\+Principal Set In Test\+Fixture\+Set\+Up Not Maintained Between Tests
+\item 532488 constraints from Constraint\+Expression/\+Constraint\+Builder are not reusable
+\item 590717 categorie contains dash or trail spaces is not selectable
+\item 590970 static Test\+Fixture\+Set\+Up/\+Test\+Fixture\+Tear\+Down methods in base classes are not run
+\item 595683 N\+Unit console runner fails to load assemblies
+\item 600627 Assertion message formatted poorly by Property\+Constraint
+\item 601108 Duplicate test using abstract test fixtures
+\item 601645 Parametered test should try to convert data type from source to parameter
+\item 605432 To\+String not working properly for some properties
+\item 606548 Deprecate Directory Assert in 2.\+5 and remove it in 3.\+0
+\item 608875 N\+Unit Equality Comparer incorrectly defines equality for Dictionary objects
+\end{DoxyItemize}\hypertarget{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md153}{}\doxysubsection{N\+Unit 2.\+9.\+4 -\/ May 4, 2010}\label{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md153}
+\hypertarget{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md154}{}\doxysubsubsection{Bug Fixes}\label{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md154}
+
+\begin{DoxyItemize}
+\item 419411 Fixture With No Tests Shows as Non-\/\+Runnable
+\item 459219 Changes to thread princpal cause failures under .N\+ET 4.\+0
+\item 459224 Culture test failure under .N\+ET 4.\+0
+\item 462019 Line endings needs to be better controlled in source
+\item 462418 Assume.\+That() fails if I specify a message
+\item 483845 Test\+Case expected return value cannot be null
+\item 488002 Should not report tests in abstract class as invalid
+\item 490679 Category in Test\+Case\+Data clashes with Category on Parameterized\+Method\+Suite
+\item 501352 V\+S2010 projects have not been updated for new directory structure
+\item 504018 Automatic Values For Theory Test Parameters Not Provided For bool And enum
+\item 505899 \textquotesingle{}Description\textquotesingle{} parameter in both Test\+Attribute and Test\+Case\+Attribute is not allowed
+\item 523335 Test\+Fixture\+Tear\+Down in static class not executed
+\item 556971 Datapoint(s)Attribute should work on {\ttfamily I\+Enumerable$<$T$>$} as well as on Arrays
+\item 561436 Set\+Culture broken with 2.\+5.\+4
+\item 563532 Datapoints\+Attribute should be allowed on properties and methods
+\end{DoxyItemize}\hypertarget{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md155}{}\doxysubsection{N\+Unit 2.\+9.\+3 -\/ October 26, 2009}\label{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md155}
+\hypertarget{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md156}{}\doxysubsubsection{Main Features}\label{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md156}
+
+\begin{DoxyItemize}
+\item Created new A\+PI for controlling framework
+\item New builds for .Net 3.\+5 and 4.\+0, compact framework 3.\+5
+\item Support for old style tests has been removed
+\item New adhoc runner for testing the framework
+\end{DoxyItemize}\hypertarget{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md157}{}\doxysubsubsection{Bug Fixes}\label{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md157}
+
+\begin{DoxyItemize}
+\item 432805 Some Framework Tests don\textquotesingle{}t run on Linux
+\item 440109 Full Framework does not support \char`\"{}\+Contains\char`\"{}
+\end{DoxyItemize}\hypertarget{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md158}{}\doxysubsection{N\+Unit 2.\+9.\+2 -\/ September 19, 2009}\label{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md158}
+\hypertarget{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md159}{}\doxysubsubsection{Main Features}\label{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md159}
+
+\begin{DoxyItemize}
+\item N\+Unit\+Lite code is now merged with N\+Unit
+\item Added N\+Unit\+Lite runner to the framework code
+\item Added Compact framework builds
+\end{DoxyItemize}\hypertarget{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md160}{}\doxysubsubsection{Bug Fixes}\label{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md160}
+
+\begin{DoxyItemize}
+\item 430100 {\ttfamily Assert.\+Catch$<$T$>$} should return T
+\item 432566 N\+Unit\+Lite shows empty string as argument
+\item 432573 Mono test should be at runtime
+\end{DoxyItemize}\hypertarget{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md161}{}\doxysubsection{N\+Unit 2.\+9.\+1 -\/ August 27, 2009}\label{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md161}
+\hypertarget{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md162}{}\doxysubsubsection{General}\label{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md162}
+
+\begin{DoxyItemize}
+\item Created a separate project for the framework and framework tests
+\item Changed license to M\+IT / X11
+\item Created Windows installer for the framework
+\end{DoxyItemize}\hypertarget{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md163}{}\doxysubsubsection{Bug Fixes}\label{md_packages__n_unit_83_812_80__c_h_a_n_g_e_s_autotoc_md163}
+
+\begin{DoxyItemize}
+\item 400502 N\+Unit\+Equality\+Comparer.\+Streams\+E­qual fails for same stream
+\item 400508 Test\+Case\+Source attirbute is not working when Type is given
+\item 400510 Test\+Case\+Data variable length ctor drops values
+\item 417557 Add Set\+U\+I\+Culture\+Attribute from N\+Unit 2.\+5.\+2
+\item 417559 Add Ignore to Test\+Fixture, Test\+Case and Test\+Case\+Data
+\item 417560 Merge Assert.\+Throws and Assert.\+Catch changes from N\+Unit 2.\+5.\+2
+\item 417564 Timeout\+Attribute on Assembly 
+\end{DoxyItemize}

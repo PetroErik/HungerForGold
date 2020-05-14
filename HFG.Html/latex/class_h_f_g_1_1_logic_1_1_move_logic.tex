@@ -1,0 +1,233 @@
+\hypertarget{class_h_f_g_1_1_logic_1_1_move_logic}{}\doxysection{H\+F\+G.\+Logic.\+Move\+Logic Class Reference}
+\label{class_h_f_g_1_1_logic_1_1_move_logic}\index{HFG.Logic.MoveLogic@{HFG.Logic.MoveLogic}}
+
+
+Contain all move logic include what happends if the drill colliedes with other elements.  
+
+
+Inheritance diagram for H\+F\+G.\+Logic.\+Move\+Logic\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_h_f_g_1_1_logic_1_1_move_logic}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_h_f_g_1_1_logic_1_1_move_logic_a38987ce4e4691cc292f58b98067d0659}{Move\+Logic}} (\mbox{\hyperlink{class_h_f_g_1_1_display_1_1_game_model}{Game\+Model}} model)
+\begin{DoxyCompactList}\small\item\em Initializes a new instance of the \mbox{\hyperlink{class_h_f_g_1_1_logic_1_1_move_logic}{Move\+Logic}} class. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_h_f_g_1_1_logic_1_1_move_logic_ac7544dfca82b6b4930f964fa51fe7bf1}{Move\+Drill}} (int dx, int dy)
+\begin{DoxyCompactList}\small\item\em Defines the movement of the drill. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_h_f_g_1_1_logic_1_1_move_logic_aa44a7276482f4549a4a897321ce6b7f3}{Collision\+With\+Silo}} ()
+\begin{DoxyCompactList}\small\item\em Checks if the drill hits the Silo. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_h_f_g_1_1_logic_1_1_move_logic_a6462c550f50590c353a933e0f592ded6}{Calc\+Total\+Points}} ()
+\begin{DoxyCompactList}\small\item\em Add the actual points to the Total\+Points. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_h_f_g_1_1_logic_1_1_move_logic_a899e1c800bf6eaf045a8ec76057ce3eb}{Clear\+Storage}} ()
+\begin{DoxyCompactList}\small\item\em Sets the Storage and Fuel\+Tank element to the initial state. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_h_f_g_1_1_logic_1_1_move_logic_a145826cc4c9c248571073fefea488f21}{Collect\+Minerals}} (\mbox{\hyperlink{class_h_f_g_1_1_display_1_1_mineral}{Mineral}} min)
+\begin{DoxyCompactList}\small\item\em When the drill hits a mineral item, then it collects it. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_h_f_g_1_1_logic_1_1_move_logic_a2234ba2b4c3d211b2897d54ce8a1360a}{Collision\+With\+Machinist}} ()
+\begin{DoxyCompactList}\small\item\em Checks if the drill hits the Machinist. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_h_f_g_1_1_logic_1_1_move_logic_a0dd43cc5cae4e6c39ec41a29fd08c9b5}{Collision\+With\+Enemy}} ()
+\begin{DoxyCompactList}\small\item\em Check if the drill collieded with any of the enemies. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_h_f_g_1_1_logic_1_1_move_logic_a84f9adb5ef68b478bcce99020f16f54f}{Collision\+With\+Bomb}} ()
+\begin{DoxyCompactList}\small\item\em Check if the drill collieded with any of the bombs. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_h_f_g_1_1_logic_1_1_move_logic_af01625c7709c228a3d4a02259b9dd2de}{Upgrade\+Drill}} ()
+\begin{DoxyCompactList}\small\item\em Upgrade the drill element. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_h_f_g_1_1_logic_1_1_move_logic_ac939024efa9b4199438173a3add59055}{Upgrade\+Fuel\+Tank}} ()
+\begin{DoxyCompactList}\small\item\em Upgrade the Fuel\+Tank element. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_h_f_g_1_1_logic_1_1_move_logic_a3c65c7e9aaadfb584c420866715c9f6d}{Upgrade\+Storage}} ()
+\begin{DoxyCompactList}\small\item\em Upgrade the Storage element. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Contain all move logic include what happends if the drill colliedes with other elements. 
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_h_f_g_1_1_logic_1_1_move_logic_a38987ce4e4691cc292f58b98067d0659}\label{class_h_f_g_1_1_logic_1_1_move_logic_a38987ce4e4691cc292f58b98067d0659}} 
+\index{HFG.Logic.MoveLogic@{HFG.Logic.MoveLogic}!MoveLogic@{MoveLogic}}
+\index{MoveLogic@{MoveLogic}!HFG.Logic.MoveLogic@{HFG.Logic.MoveLogic}}
+\doxysubsubsection{\texorpdfstring{MoveLogic()}{MoveLogic()}}
+{\footnotesize\ttfamily H\+F\+G.\+Logic.\+Move\+Logic.\+Move\+Logic (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_h_f_g_1_1_display_1_1_game_model}{Game\+Model}}}]{model }\end{DoxyParamCaption})}
+
+
+
+Initializes a new instance of the \mbox{\hyperlink{class_h_f_g_1_1_logic_1_1_move_logic}{Move\+Logic}} class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em model} & Game\+Model instance.\\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_h_f_g_1_1_logic_1_1_move_logic_a6462c550f50590c353a933e0f592ded6}\label{class_h_f_g_1_1_logic_1_1_move_logic_a6462c550f50590c353a933e0f592ded6}} 
+\index{HFG.Logic.MoveLogic@{HFG.Logic.MoveLogic}!CalcTotalPoints@{CalcTotalPoints}}
+\index{CalcTotalPoints@{CalcTotalPoints}!HFG.Logic.MoveLogic@{HFG.Logic.MoveLogic}}
+\doxysubsubsection{\texorpdfstring{CalcTotalPoints()}{CalcTotalPoints()}}
+{\footnotesize\ttfamily void H\+F\+G.\+Logic.\+Move\+Logic.\+Calc\+Total\+Points (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Add the actual points to the Total\+Points. 
+
+
+
+Implements \mbox{\hyperlink{interface_h_f_g_1_1_logic_1_1_i_move_logic_ab83ce4ea8d8d163e4e2f187e2f129b03}{H\+F\+G.\+Logic.\+I\+Move\+Logic}}.
+
+\mbox{\Hypertarget{class_h_f_g_1_1_logic_1_1_move_logic_a899e1c800bf6eaf045a8ec76057ce3eb}\label{class_h_f_g_1_1_logic_1_1_move_logic_a899e1c800bf6eaf045a8ec76057ce3eb}} 
+\index{HFG.Logic.MoveLogic@{HFG.Logic.MoveLogic}!ClearStorage@{ClearStorage}}
+\index{ClearStorage@{ClearStorage}!HFG.Logic.MoveLogic@{HFG.Logic.MoveLogic}}
+\doxysubsubsection{\texorpdfstring{ClearStorage()}{ClearStorage()}}
+{\footnotesize\ttfamily void H\+F\+G.\+Logic.\+Move\+Logic.\+Clear\+Storage (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Sets the Storage and Fuel\+Tank element to the initial state. 
+
+
+
+Implements \mbox{\hyperlink{interface_h_f_g_1_1_logic_1_1_i_move_logic_a0d037001f88edcfaeeee091148e5b255}{H\+F\+G.\+Logic.\+I\+Move\+Logic}}.
+
+\mbox{\Hypertarget{class_h_f_g_1_1_logic_1_1_move_logic_a145826cc4c9c248571073fefea488f21}\label{class_h_f_g_1_1_logic_1_1_move_logic_a145826cc4c9c248571073fefea488f21}} 
+\index{HFG.Logic.MoveLogic@{HFG.Logic.MoveLogic}!CollectMinerals@{CollectMinerals}}
+\index{CollectMinerals@{CollectMinerals}!HFG.Logic.MoveLogic@{HFG.Logic.MoveLogic}}
+\doxysubsubsection{\texorpdfstring{CollectMinerals()}{CollectMinerals()}}
+{\footnotesize\ttfamily void H\+F\+G.\+Logic.\+Move\+Logic.\+Collect\+Minerals (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_h_f_g_1_1_display_1_1_mineral}{Mineral}}}]{min }\end{DoxyParamCaption})}
+
+
+
+When the drill hits a mineral item, then it collects it. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em min} & Mineral that the drill is colliding with.\\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{interface_h_f_g_1_1_logic_1_1_i_move_logic_a76b41730fc2fbcaa747efc42adfc97ca}{H\+F\+G.\+Logic.\+I\+Move\+Logic}}.
+
+\mbox{\Hypertarget{class_h_f_g_1_1_logic_1_1_move_logic_a84f9adb5ef68b478bcce99020f16f54f}\label{class_h_f_g_1_1_logic_1_1_move_logic_a84f9adb5ef68b478bcce99020f16f54f}} 
+\index{HFG.Logic.MoveLogic@{HFG.Logic.MoveLogic}!CollisionWithBomb@{CollisionWithBomb}}
+\index{CollisionWithBomb@{CollisionWithBomb}!HFG.Logic.MoveLogic@{HFG.Logic.MoveLogic}}
+\doxysubsubsection{\texorpdfstring{CollisionWithBomb()}{CollisionWithBomb()}}
+{\footnotesize\ttfamily bool H\+F\+G.\+Logic.\+Move\+Logic.\+Collision\+With\+Bomb (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Check if the drill collieded with any of the bombs. 
+
+\begin{DoxyReturn}{Returns}
+True if the drill hit any of the bombs.
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_h_f_g_1_1_logic_1_1_move_logic_a0dd43cc5cae4e6c39ec41a29fd08c9b5}\label{class_h_f_g_1_1_logic_1_1_move_logic_a0dd43cc5cae4e6c39ec41a29fd08c9b5}} 
+\index{HFG.Logic.MoveLogic@{HFG.Logic.MoveLogic}!CollisionWithEnemy@{CollisionWithEnemy}}
+\index{CollisionWithEnemy@{CollisionWithEnemy}!HFG.Logic.MoveLogic@{HFG.Logic.MoveLogic}}
+\doxysubsubsection{\texorpdfstring{CollisionWithEnemy()}{CollisionWithEnemy()}}
+{\footnotesize\ttfamily bool H\+F\+G.\+Logic.\+Move\+Logic.\+Collision\+With\+Enemy (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Check if the drill collieded with any of the enemies. 
+
+\begin{DoxyReturn}{Returns}
+True if the drill hit any of the enemies.
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_h_f_g_1_1_logic_1_1_move_logic_a2234ba2b4c3d211b2897d54ce8a1360a}\label{class_h_f_g_1_1_logic_1_1_move_logic_a2234ba2b4c3d211b2897d54ce8a1360a}} 
+\index{HFG.Logic.MoveLogic@{HFG.Logic.MoveLogic}!CollisionWithMachinist@{CollisionWithMachinist}}
+\index{CollisionWithMachinist@{CollisionWithMachinist}!HFG.Logic.MoveLogic@{HFG.Logic.MoveLogic}}
+\doxysubsubsection{\texorpdfstring{CollisionWithMachinist()}{CollisionWithMachinist()}}
+{\footnotesize\ttfamily bool H\+F\+G.\+Logic.\+Move\+Logic.\+Collision\+With\+Machinist (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Checks if the drill hits the Machinist. 
+
+\begin{DoxyReturn}{Returns}
+True if the drill is colliding with the Machinist.
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_h_f_g_1_1_logic_1_1_move_logic_aa44a7276482f4549a4a897321ce6b7f3}\label{class_h_f_g_1_1_logic_1_1_move_logic_aa44a7276482f4549a4a897321ce6b7f3}} 
+\index{HFG.Logic.MoveLogic@{HFG.Logic.MoveLogic}!CollisionWithSilo@{CollisionWithSilo}}
+\index{CollisionWithSilo@{CollisionWithSilo}!HFG.Logic.MoveLogic@{HFG.Logic.MoveLogic}}
+\doxysubsubsection{\texorpdfstring{CollisionWithSilo()}{CollisionWithSilo()}}
+{\footnotesize\ttfamily bool H\+F\+G.\+Logic.\+Move\+Logic.\+Collision\+With\+Silo (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Checks if the drill hits the Silo. 
+
+\begin{DoxyReturn}{Returns}
+True if the drill is colliding with the Silo.
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_h_f_g_1_1_logic_1_1_move_logic_ac7544dfca82b6b4930f964fa51fe7bf1}\label{class_h_f_g_1_1_logic_1_1_move_logic_ac7544dfca82b6b4930f964fa51fe7bf1}} 
+\index{HFG.Logic.MoveLogic@{HFG.Logic.MoveLogic}!MoveDrill@{MoveDrill}}
+\index{MoveDrill@{MoveDrill}!HFG.Logic.MoveLogic@{HFG.Logic.MoveLogic}}
+\doxysubsubsection{\texorpdfstring{MoveDrill()}{MoveDrill()}}
+{\footnotesize\ttfamily void H\+F\+G.\+Logic.\+Move\+Logic.\+Move\+Drill (\begin{DoxyParamCaption}\item[{int}]{dx,  }\item[{int}]{dy }\end{DoxyParamCaption})}
+
+
+
+Defines the movement of the drill. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dx} & Movement vector to the x direction.\\
+\hline
+{\em dy} & Movement vector to the y direction.\\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{interface_h_f_g_1_1_logic_1_1_i_move_logic_a9a6bb2efd55edd5fa068d435898b9605}{H\+F\+G.\+Logic.\+I\+Move\+Logic}}.
+
+\mbox{\Hypertarget{class_h_f_g_1_1_logic_1_1_move_logic_af01625c7709c228a3d4a02259b9dd2de}\label{class_h_f_g_1_1_logic_1_1_move_logic_af01625c7709c228a3d4a02259b9dd2de}} 
+\index{HFG.Logic.MoveLogic@{HFG.Logic.MoveLogic}!UpgradeDrill@{UpgradeDrill}}
+\index{UpgradeDrill@{UpgradeDrill}!HFG.Logic.MoveLogic@{HFG.Logic.MoveLogic}}
+\doxysubsubsection{\texorpdfstring{UpgradeDrill()}{UpgradeDrill()}}
+{\footnotesize\ttfamily void H\+F\+G.\+Logic.\+Move\+Logic.\+Upgrade\+Drill (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Upgrade the drill element. 
+
+
+
+Implements \mbox{\hyperlink{interface_h_f_g_1_1_logic_1_1_i_move_logic_a058eb88099ef1afceda1a79a772d71d6}{H\+F\+G.\+Logic.\+I\+Move\+Logic}}.
+
+\mbox{\Hypertarget{class_h_f_g_1_1_logic_1_1_move_logic_ac939024efa9b4199438173a3add59055}\label{class_h_f_g_1_1_logic_1_1_move_logic_ac939024efa9b4199438173a3add59055}} 
+\index{HFG.Logic.MoveLogic@{HFG.Logic.MoveLogic}!UpgradeFuelTank@{UpgradeFuelTank}}
+\index{UpgradeFuelTank@{UpgradeFuelTank}!HFG.Logic.MoveLogic@{HFG.Logic.MoveLogic}}
+\doxysubsubsection{\texorpdfstring{UpgradeFuelTank()}{UpgradeFuelTank()}}
+{\footnotesize\ttfamily void H\+F\+G.\+Logic.\+Move\+Logic.\+Upgrade\+Fuel\+Tank (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Upgrade the Fuel\+Tank element. 
+
+
+
+Implements \mbox{\hyperlink{interface_h_f_g_1_1_logic_1_1_i_move_logic_ab70fe5cf109621eaf65dc08bb3f80e95}{H\+F\+G.\+Logic.\+I\+Move\+Logic}}.
+
+\mbox{\Hypertarget{class_h_f_g_1_1_logic_1_1_move_logic_a3c65c7e9aaadfb584c420866715c9f6d}\label{class_h_f_g_1_1_logic_1_1_move_logic_a3c65c7e9aaadfb584c420866715c9f6d}} 
+\index{HFG.Logic.MoveLogic@{HFG.Logic.MoveLogic}!UpgradeStorage@{UpgradeStorage}}
+\index{UpgradeStorage@{UpgradeStorage}!HFG.Logic.MoveLogic@{HFG.Logic.MoveLogic}}
+\doxysubsubsection{\texorpdfstring{UpgradeStorage()}{UpgradeStorage()}}
+{\footnotesize\ttfamily void H\+F\+G.\+Logic.\+Move\+Logic.\+Upgrade\+Storage (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Upgrade the Storage element. 
+
+
+
+Implements \mbox{\hyperlink{interface_h_f_g_1_1_logic_1_1_i_move_logic_a2ec5ef7cce57482613eae88c1d1e29a1}{H\+F\+G.\+Logic.\+I\+Move\+Logic}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+H\+F\+G.\+Logic/\+Logic/Move\+Logic.\+cs\end{DoxyCompactItemize}

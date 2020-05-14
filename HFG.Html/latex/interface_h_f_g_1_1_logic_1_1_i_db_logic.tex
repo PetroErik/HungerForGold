@@ -1,0 +1,90 @@
+\hypertarget{interface_h_f_g_1_1_logic_1_1_i_db_logic}{}\doxysection{H\+F\+G.\+Logic.\+I\+Db\+Logic Interface Reference}
+\label{interface_h_f_g_1_1_logic_1_1_i_db_logic}\index{HFG.Logic.IDbLogic@{HFG.Logic.IDbLogic}}
+
+
+Interface for the logic of the \mbox{\hyperlink{namespace_h_f_g_1_1_database}{Database}}.  
+
+
+Inheritance diagram for H\+F\+G.\+Logic.\+I\+Db\+Logic\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{interface_h_f_g_1_1_logic_1_1_i_db_logic}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{interface_h_f_g_1_1_logic_1_1_i_db_logic_a92fe9d181a00047299b862458fc922ff}{Save\+Game}} (\mbox{\hyperlink{class_h_f_g_1_1_display_1_1_drill}{Drill}} \mbox{\hyperlink{class_h_f_g_1_1_database_1_1drill}{drill}}, List$<$ \mbox{\hyperlink{class_h_f_g_1_1_display_1_1_mineral}{Mineral}} $>$ minerals)
+\begin{DoxyCompactList}\small\item\em Saves the state of the game. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{interface_h_f_g_1_1_logic_1_1_i_db_logic_ae75060727448b6a6dd4f13747764dc26}{Load\+Game}} ()
+\begin{DoxyCompactList}\small\item\em Loads the previous state of the game. \end{DoxyCompactList}\item 
+List$<$ int?$>$ \mbox{\hyperlink{interface_h_f_g_1_1_logic_1_1_i_db_logic_ad9045f04ad6b1af4f414044a2c3386c7}{Highscore}} ()
+\begin{DoxyCompactList}\small\item\em Lists the highest scores. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Interface for the logic of the \mbox{\hyperlink{namespace_h_f_g_1_1_database}{Database}}. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{interface_h_f_g_1_1_logic_1_1_i_db_logic_ad9045f04ad6b1af4f414044a2c3386c7}\label{interface_h_f_g_1_1_logic_1_1_i_db_logic_ad9045f04ad6b1af4f414044a2c3386c7}} 
+\index{HFG.Logic.IDbLogic@{HFG.Logic.IDbLogic}!Highscore@{Highscore}}
+\index{Highscore@{Highscore}!HFG.Logic.IDbLogic@{HFG.Logic.IDbLogic}}
+\doxysubsubsection{\texorpdfstring{Highscore()}{Highscore()}}
+{\footnotesize\ttfamily List$<$int?$>$ H\+F\+G.\+Logic.\+I\+Db\+Logic.\+Highscore (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Lists the highest scores. 
+
+\begin{DoxyReturn}{Returns}
+List of the 5 highest score.
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{class_h_f_g_1_1_logic_1_1_db_logic_a6b64f07667ca55e419509da90a8e413f}{H\+F\+G.\+Logic.\+Db\+Logic}}.
+
+\mbox{\Hypertarget{interface_h_f_g_1_1_logic_1_1_i_db_logic_ae75060727448b6a6dd4f13747764dc26}\label{interface_h_f_g_1_1_logic_1_1_i_db_logic_ae75060727448b6a6dd4f13747764dc26}} 
+\index{HFG.Logic.IDbLogic@{HFG.Logic.IDbLogic}!LoadGame@{LoadGame}}
+\index{LoadGame@{LoadGame}!HFG.Logic.IDbLogic@{HFG.Logic.IDbLogic}}
+\doxysubsubsection{\texorpdfstring{LoadGame()}{LoadGame()}}
+{\footnotesize\ttfamily bool H\+F\+G.\+Logic.\+I\+Db\+Logic.\+Load\+Game (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Loads the previous state of the game. 
+
+\begin{DoxyReturn}{Returns}
+True if there is a saved game in the \mbox{\hyperlink{namespace_h_f_g_1_1_database}{Database}}.
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{class_h_f_g_1_1_logic_1_1_db_logic_a95e84f8859797a6c09e3fe565dc54d4e}{H\+F\+G.\+Logic.\+Db\+Logic}}.
+
+\mbox{\Hypertarget{interface_h_f_g_1_1_logic_1_1_i_db_logic_a92fe9d181a00047299b862458fc922ff}\label{interface_h_f_g_1_1_logic_1_1_i_db_logic_a92fe9d181a00047299b862458fc922ff}} 
+\index{HFG.Logic.IDbLogic@{HFG.Logic.IDbLogic}!SaveGame@{SaveGame}}
+\index{SaveGame@{SaveGame}!HFG.Logic.IDbLogic@{HFG.Logic.IDbLogic}}
+\doxysubsubsection{\texorpdfstring{SaveGame()}{SaveGame()}}
+{\footnotesize\ttfamily void H\+F\+G.\+Logic.\+I\+Db\+Logic.\+Save\+Game (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_h_f_g_1_1_display_1_1_drill}{Drill}}}]{drill,  }\item[{List$<$ \mbox{\hyperlink{class_h_f_g_1_1_display_1_1_mineral}{Mineral}} $>$}]{minerals }\end{DoxyParamCaption})}
+
+
+
+Saves the state of the game. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em drill} & Drill to be saved.\\
+\hline
+{\em minerals} & Minerals to be saved.\\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{class_h_f_g_1_1_logic_1_1_db_logic_aaab2db58cb158222c8c947301d8ac855}{H\+F\+G.\+Logic.\+Db\+Logic}}.
+
+
+
+The documentation for this interface was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+H\+F\+G.\+Logic/\+Interfaces/I\+Db\+Logic.\+cs\end{DoxyCompactItemize}

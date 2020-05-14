@@ -1,0 +1,97 @@
+\hypertarget{class_h_f_g_1_1_logic_1_1_tick_logic}{}\doxysection{H\+F\+G.\+Logic.\+Tick\+Logic Class Reference}
+\label{class_h_f_g_1_1_logic_1_1_tick_logic}\index{HFG.Logic.TickLogic@{HFG.Logic.TickLogic}}
+
+
+Moves elements in every tick.  
+
+
+Inheritance diagram for H\+F\+G.\+Logic.\+Tick\+Logic\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_h_f_g_1_1_logic_1_1_tick_logic}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_h_f_g_1_1_logic_1_1_tick_logic_a2837298597bac9ab0ff03a6a4da45736}{Tick\+Logic}} (\mbox{\hyperlink{class_h_f_g_1_1_display_1_1_game_model}{Game\+Model}} model)
+\begin{DoxyCompactList}\small\item\em Initializes a new instance of the \mbox{\hyperlink{class_h_f_g_1_1_logic_1_1_tick_logic}{Tick\+Logic}} class. Initialize the Game\+Model property. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_h_f_g_1_1_logic_1_1_tick_logic_aa49a90b177377a7151d26aa9e605c1a4}{Enemy\+Tick}} ()
+\begin{DoxyCompactList}\small\item\em Moves enemies at every tick. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_h_f_g_1_1_logic_1_1_tick_logic_a8896515a91d4a51425cf68d3e5d92ee1}{Fuel\+Tick}} ()
+\begin{DoxyCompactList}\small\item\em If fuel tank is not empty, then decrease it\textquotesingle{}s value by 1. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_h_f_g_1_1_logic_1_1_tick_logic_ad1eb42fff03ac07a4401b7c4088007af}{Boom\+Tick}} ()
+\begin{DoxyCompactList}\small\item\em Time decreases and bomb will explode . \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Moves elements in every tick. 
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_h_f_g_1_1_logic_1_1_tick_logic_a2837298597bac9ab0ff03a6a4da45736}\label{class_h_f_g_1_1_logic_1_1_tick_logic_a2837298597bac9ab0ff03a6a4da45736}} 
+\index{HFG.Logic.TickLogic@{HFG.Logic.TickLogic}!TickLogic@{TickLogic}}
+\index{TickLogic@{TickLogic}!HFG.Logic.TickLogic@{HFG.Logic.TickLogic}}
+\doxysubsubsection{\texorpdfstring{TickLogic()}{TickLogic()}}
+{\footnotesize\ttfamily H\+F\+G.\+Logic.\+Tick\+Logic.\+Tick\+Logic (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_h_f_g_1_1_display_1_1_game_model}{Game\+Model}}}]{model }\end{DoxyParamCaption})}
+
+
+
+Initializes a new instance of the \mbox{\hyperlink{class_h_f_g_1_1_logic_1_1_tick_logic}{Tick\+Logic}} class. Initialize the Game\+Model property. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em model} & Game\+Model parameter to set the value of game\+Model.\\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_h_f_g_1_1_logic_1_1_tick_logic_ad1eb42fff03ac07a4401b7c4088007af}\label{class_h_f_g_1_1_logic_1_1_tick_logic_ad1eb42fff03ac07a4401b7c4088007af}} 
+\index{HFG.Logic.TickLogic@{HFG.Logic.TickLogic}!BoomTick@{BoomTick}}
+\index{BoomTick@{BoomTick}!HFG.Logic.TickLogic@{HFG.Logic.TickLogic}}
+\doxysubsubsection{\texorpdfstring{BoomTick()}{BoomTick()}}
+{\footnotesize\ttfamily void H\+F\+G.\+Logic.\+Tick\+Logic.\+Boom\+Tick (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Time decreases and bomb will explode . 
+
+
+
+Implements \mbox{\hyperlink{interface_h_f_g_1_1_logic_1_1_i_tick_logic_add2712f9674da9e96018301e5ae25c45}{H\+F\+G.\+Logic.\+I\+Tick\+Logic}}.
+
+\mbox{\Hypertarget{class_h_f_g_1_1_logic_1_1_tick_logic_aa49a90b177377a7151d26aa9e605c1a4}\label{class_h_f_g_1_1_logic_1_1_tick_logic_aa49a90b177377a7151d26aa9e605c1a4}} 
+\index{HFG.Logic.TickLogic@{HFG.Logic.TickLogic}!EnemyTick@{EnemyTick}}
+\index{EnemyTick@{EnemyTick}!HFG.Logic.TickLogic@{HFG.Logic.TickLogic}}
+\doxysubsubsection{\texorpdfstring{EnemyTick()}{EnemyTick()}}
+{\footnotesize\ttfamily void H\+F\+G.\+Logic.\+Tick\+Logic.\+Enemy\+Tick (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Moves enemies at every tick. 
+
+
+
+Implements \mbox{\hyperlink{interface_h_f_g_1_1_logic_1_1_i_tick_logic_aada20ff79eecf30cb62afb6e7a779a30}{H\+F\+G.\+Logic.\+I\+Tick\+Logic}}.
+
+\mbox{\Hypertarget{class_h_f_g_1_1_logic_1_1_tick_logic_a8896515a91d4a51425cf68d3e5d92ee1}\label{class_h_f_g_1_1_logic_1_1_tick_logic_a8896515a91d4a51425cf68d3e5d92ee1}} 
+\index{HFG.Logic.TickLogic@{HFG.Logic.TickLogic}!FuelTick@{FuelTick}}
+\index{FuelTick@{FuelTick}!HFG.Logic.TickLogic@{HFG.Logic.TickLogic}}
+\doxysubsubsection{\texorpdfstring{FuelTick()}{FuelTick()}}
+{\footnotesize\ttfamily void H\+F\+G.\+Logic.\+Tick\+Logic.\+Fuel\+Tick (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+If fuel tank is not empty, then decrease it\textquotesingle{}s value by 1. 
+
+
+
+Implements \mbox{\hyperlink{interface_h_f_g_1_1_logic_1_1_i_tick_logic_a7bcc4e278bb2ea9f308f19a7fb4fc7eb}{H\+F\+G.\+Logic.\+I\+Tick\+Logic}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+H\+F\+G.\+Logic/\+Logic/Tick\+Logic.\+cs\end{DoxyCompactItemize}

@@ -1,0 +1,153 @@
+\hypertarget{interface_h_f_g_1_1_logic_1_1_i_move_logic}{}\doxysection{H\+F\+G.\+Logic.\+I\+Move\+Logic Interface Reference}
+\label{interface_h_f_g_1_1_logic_1_1_i_move_logic}\index{HFG.Logic.IMoveLogic@{HFG.Logic.IMoveLogic}}
+
+
+Interface for the movement of the drill.  
+
+
+Inheritance diagram for H\+F\+G.\+Logic.\+I\+Move\+Logic\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{interface_h_f_g_1_1_logic_1_1_i_move_logic}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{interface_h_f_g_1_1_logic_1_1_i_move_logic_a76b41730fc2fbcaa747efc42adfc97ca}{Collect\+Minerals}} (\mbox{\hyperlink{class_h_f_g_1_1_display_1_1_mineral}{Mineral}} min)
+\begin{DoxyCompactList}\small\item\em Collects a mineral that the drill is colliding with. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{interface_h_f_g_1_1_logic_1_1_i_move_logic_ab83ce4ea8d8d163e4e2f187e2f129b03}{Calc\+Total\+Points}} ()
+\begin{DoxyCompactList}\small\item\em Calculates the total points. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{interface_h_f_g_1_1_logic_1_1_i_move_logic_a9a6bb2efd55edd5fa068d435898b9605}{Move\+Drill}} (int dx, int dy)
+\begin{DoxyCompactList}\small\item\em Moves the drill to x and y direction. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{interface_h_f_g_1_1_logic_1_1_i_move_logic_a0d037001f88edcfaeeee091148e5b255}{Clear\+Storage}} ()
+\begin{DoxyCompactList}\small\item\em Sets the storage fullness to 0. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{interface_h_f_g_1_1_logic_1_1_i_move_logic_a058eb88099ef1afceda1a79a772d71d6}{Upgrade\+Drill}} ()
+\begin{DoxyCompactList}\small\item\em Upgrades the drill. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{interface_h_f_g_1_1_logic_1_1_i_move_logic_ab70fe5cf109621eaf65dc08bb3f80e95}{Upgrade\+Fuel\+Tank}} ()
+\begin{DoxyCompactList}\small\item\em Upgrades the Fuel\+Tank element. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{interface_h_f_g_1_1_logic_1_1_i_move_logic_a2ec5ef7cce57482613eae88c1d1e29a1}{Upgrade\+Storage}} ()
+\begin{DoxyCompactList}\small\item\em Upgrades the Storage element. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Interface for the movement of the drill. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{interface_h_f_g_1_1_logic_1_1_i_move_logic_ab83ce4ea8d8d163e4e2f187e2f129b03}\label{interface_h_f_g_1_1_logic_1_1_i_move_logic_ab83ce4ea8d8d163e4e2f187e2f129b03}} 
+\index{HFG.Logic.IMoveLogic@{HFG.Logic.IMoveLogic}!CalcTotalPoints@{CalcTotalPoints}}
+\index{CalcTotalPoints@{CalcTotalPoints}!HFG.Logic.IMoveLogic@{HFG.Logic.IMoveLogic}}
+\doxysubsubsection{\texorpdfstring{CalcTotalPoints()}{CalcTotalPoints()}}
+{\footnotesize\ttfamily void H\+F\+G.\+Logic.\+I\+Move\+Logic.\+Calc\+Total\+Points (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Calculates the total points. 
+
+
+
+Implemented in \mbox{\hyperlink{class_h_f_g_1_1_logic_1_1_move_logic_a6462c550f50590c353a933e0f592ded6}{H\+F\+G.\+Logic.\+Move\+Logic}}.
+
+\mbox{\Hypertarget{interface_h_f_g_1_1_logic_1_1_i_move_logic_a0d037001f88edcfaeeee091148e5b255}\label{interface_h_f_g_1_1_logic_1_1_i_move_logic_a0d037001f88edcfaeeee091148e5b255}} 
+\index{HFG.Logic.IMoveLogic@{HFG.Logic.IMoveLogic}!ClearStorage@{ClearStorage}}
+\index{ClearStorage@{ClearStorage}!HFG.Logic.IMoveLogic@{HFG.Logic.IMoveLogic}}
+\doxysubsubsection{\texorpdfstring{ClearStorage()}{ClearStorage()}}
+{\footnotesize\ttfamily void H\+F\+G.\+Logic.\+I\+Move\+Logic.\+Clear\+Storage (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Sets the storage fullness to 0. 
+
+
+
+Implemented in \mbox{\hyperlink{class_h_f_g_1_1_logic_1_1_move_logic_a899e1c800bf6eaf045a8ec76057ce3eb}{H\+F\+G.\+Logic.\+Move\+Logic}}.
+
+\mbox{\Hypertarget{interface_h_f_g_1_1_logic_1_1_i_move_logic_a76b41730fc2fbcaa747efc42adfc97ca}\label{interface_h_f_g_1_1_logic_1_1_i_move_logic_a76b41730fc2fbcaa747efc42adfc97ca}} 
+\index{HFG.Logic.IMoveLogic@{HFG.Logic.IMoveLogic}!CollectMinerals@{CollectMinerals}}
+\index{CollectMinerals@{CollectMinerals}!HFG.Logic.IMoveLogic@{HFG.Logic.IMoveLogic}}
+\doxysubsubsection{\texorpdfstring{CollectMinerals()}{CollectMinerals()}}
+{\footnotesize\ttfamily void H\+F\+G.\+Logic.\+I\+Move\+Logic.\+Collect\+Minerals (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_h_f_g_1_1_display_1_1_mineral}{Mineral}}}]{min }\end{DoxyParamCaption})}
+
+
+
+Collects a mineral that the drill is colliding with. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em min} & Mineral that is collected.\\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{class_h_f_g_1_1_logic_1_1_move_logic_a145826cc4c9c248571073fefea488f21}{H\+F\+G.\+Logic.\+Move\+Logic}}.
+
+\mbox{\Hypertarget{interface_h_f_g_1_1_logic_1_1_i_move_logic_a9a6bb2efd55edd5fa068d435898b9605}\label{interface_h_f_g_1_1_logic_1_1_i_move_logic_a9a6bb2efd55edd5fa068d435898b9605}} 
+\index{HFG.Logic.IMoveLogic@{HFG.Logic.IMoveLogic}!MoveDrill@{MoveDrill}}
+\index{MoveDrill@{MoveDrill}!HFG.Logic.IMoveLogic@{HFG.Logic.IMoveLogic}}
+\doxysubsubsection{\texorpdfstring{MoveDrill()}{MoveDrill()}}
+{\footnotesize\ttfamily void H\+F\+G.\+Logic.\+I\+Move\+Logic.\+Move\+Drill (\begin{DoxyParamCaption}\item[{int}]{dx,  }\item[{int}]{dy }\end{DoxyParamCaption})}
+
+
+
+Moves the drill to x and y direction. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dx} & Movement to the x direction.\\
+\hline
+{\em dy} & Movement to the y direction.\\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{class_h_f_g_1_1_logic_1_1_move_logic_ac7544dfca82b6b4930f964fa51fe7bf1}{H\+F\+G.\+Logic.\+Move\+Logic}}.
+
+\mbox{\Hypertarget{interface_h_f_g_1_1_logic_1_1_i_move_logic_a058eb88099ef1afceda1a79a772d71d6}\label{interface_h_f_g_1_1_logic_1_1_i_move_logic_a058eb88099ef1afceda1a79a772d71d6}} 
+\index{HFG.Logic.IMoveLogic@{HFG.Logic.IMoveLogic}!UpgradeDrill@{UpgradeDrill}}
+\index{UpgradeDrill@{UpgradeDrill}!HFG.Logic.IMoveLogic@{HFG.Logic.IMoveLogic}}
+\doxysubsubsection{\texorpdfstring{UpgradeDrill()}{UpgradeDrill()}}
+{\footnotesize\ttfamily void H\+F\+G.\+Logic.\+I\+Move\+Logic.\+Upgrade\+Drill (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Upgrades the drill. 
+
+
+
+Implemented in \mbox{\hyperlink{class_h_f_g_1_1_logic_1_1_move_logic_af01625c7709c228a3d4a02259b9dd2de}{H\+F\+G.\+Logic.\+Move\+Logic}}.
+
+\mbox{\Hypertarget{interface_h_f_g_1_1_logic_1_1_i_move_logic_ab70fe5cf109621eaf65dc08bb3f80e95}\label{interface_h_f_g_1_1_logic_1_1_i_move_logic_ab70fe5cf109621eaf65dc08bb3f80e95}} 
+\index{HFG.Logic.IMoveLogic@{HFG.Logic.IMoveLogic}!UpgradeFuelTank@{UpgradeFuelTank}}
+\index{UpgradeFuelTank@{UpgradeFuelTank}!HFG.Logic.IMoveLogic@{HFG.Logic.IMoveLogic}}
+\doxysubsubsection{\texorpdfstring{UpgradeFuelTank()}{UpgradeFuelTank()}}
+{\footnotesize\ttfamily void H\+F\+G.\+Logic.\+I\+Move\+Logic.\+Upgrade\+Fuel\+Tank (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Upgrades the Fuel\+Tank element. 
+
+
+
+Implemented in \mbox{\hyperlink{class_h_f_g_1_1_logic_1_1_move_logic_ac939024efa9b4199438173a3add59055}{H\+F\+G.\+Logic.\+Move\+Logic}}.
+
+\mbox{\Hypertarget{interface_h_f_g_1_1_logic_1_1_i_move_logic_a2ec5ef7cce57482613eae88c1d1e29a1}\label{interface_h_f_g_1_1_logic_1_1_i_move_logic_a2ec5ef7cce57482613eae88c1d1e29a1}} 
+\index{HFG.Logic.IMoveLogic@{HFG.Logic.IMoveLogic}!UpgradeStorage@{UpgradeStorage}}
+\index{UpgradeStorage@{UpgradeStorage}!HFG.Logic.IMoveLogic@{HFG.Logic.IMoveLogic}}
+\doxysubsubsection{\texorpdfstring{UpgradeStorage()}{UpgradeStorage()}}
+{\footnotesize\ttfamily void H\+F\+G.\+Logic.\+I\+Move\+Logic.\+Upgrade\+Storage (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Upgrades the Storage element. 
+
+
+
+Implemented in \mbox{\hyperlink{class_h_f_g_1_1_logic_1_1_move_logic_a3c65c7e9aaadfb584c420866715c9f6d}{H\+F\+G.\+Logic.\+Move\+Logic}}.
+
+
+
+The documentation for this interface was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+H\+F\+G.\+Logic/\+Interfaces/I\+Move\+Logic.\+cs\end{DoxyCompactItemize}

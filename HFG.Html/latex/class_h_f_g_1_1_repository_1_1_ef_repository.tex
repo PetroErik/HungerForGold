@@ -1,0 +1,145 @@
+\hypertarget{class_h_f_g_1_1_repository_1_1_ef_repository}{}\doxysection{H\+F\+G.\+Repository.\+Ef\+Repository$<$ T\+Entity $>$ Class Template Reference}
+\label{class_h_f_g_1_1_repository_1_1_ef_repository}\index{HFG.Repository.EfRepository$<$ TEntity $>$@{HFG.Repository.EfRepository$<$ TEntity $>$}}
+
+
+abstract class has basic functions that all repositories have.  
+
+
+Inheritance diagram for H\+F\+G.\+Repository.\+Ef\+Repository$<$ T\+Entity $>$\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_h_f_g_1_1_repository_1_1_ef_repository}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_h_f_g_1_1_repository_1_1_ef_repository_ab8f220956ee5374be69ad61fb881c1aa}{Ef\+Repository}} (Db\+Context ctx)
+\begin{DoxyCompactList}\small\item\em Initializes a new instance of the \mbox{\hyperlink{class_h_f_g_1_1_repository_1_1_ef_repository_ab8f220956ee5374be69ad61fb881c1aa}{Ef\+Repository$<$\+T\+Entity$>$}} class. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_h_f_g_1_1_repository_1_1_ef_repository_aebd9ac28e0a264582b3edf537903576e}{Addnew}} (T\+Entity newinstance)
+\begin{DoxyCompactList}\small\item\em method to add new instance . \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_h_f_g_1_1_repository_1_1_ef_repository_aa8d54a759113365bf9fbdf763f1343c6}{Delete}} (T\+Entity instance)
+\begin{DoxyCompactList}\small\item\em method to delete instance . \end{DoxyCompactList}\item 
+I\+Queryable$<$ T\+Entity $>$ \mbox{\hyperlink{class_h_f_g_1_1_repository_1_1_ef_repository_a9f9b4b8ab2be8bb6225cdd2a14344d6e}{Get\+All}} ()
+\begin{DoxyCompactList}\small\item\em method to return collection of entity. \end{DoxyCompactList}\item 
+T\+Entity \mbox{\hyperlink{class_h_f_g_1_1_repository_1_1_ef_repository_afa53ff82706971f579d52a3c1c1c5921}{Get\+One}} (int id)
+\begin{DoxyCompactList}\small\item\em method to return 1 instance. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+Db\+Context \mbox{\hyperlink{class_h_f_g_1_1_repository_1_1_ef_repository_aaf21e86a54b0695f6ff98cf0adc5f704}{Ctx}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets or sets encapsulation data of database context. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+abstract class has basic functions that all repositories have. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T\+Entity} & type of repository entity.\\
+\hline
+\end{DoxyTemplParams}
+\begin{Desc}
+\item[Type Constraints]\begin{description}
+\item[{\em T\+Entity} : {\em class}]\end{description}
+\end{Desc}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_h_f_g_1_1_repository_1_1_ef_repository_ab8f220956ee5374be69ad61fb881c1aa}\label{class_h_f_g_1_1_repository_1_1_ef_repository_ab8f220956ee5374be69ad61fb881c1aa}} 
+\index{HFG.Repository.EfRepository$<$ TEntity $>$@{HFG.Repository.EfRepository$<$ TEntity $>$}!EfRepository@{EfRepository}}
+\index{EfRepository@{EfRepository}!HFG.Repository.EfRepository$<$ TEntity $>$@{HFG.Repository.EfRepository$<$ TEntity $>$}}
+\doxysubsubsection{\texorpdfstring{EfRepository()}{EfRepository()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_h_f_g_1_1_repository_1_1_ef_repository}{H\+F\+G.\+Repository.\+Ef\+Repository}}$<$ T\+Entity $>$.\mbox{\hyperlink{class_h_f_g_1_1_repository_1_1_ef_repository}{Ef\+Repository}} (\begin{DoxyParamCaption}\item[{Db\+Context}]{ctx }\end{DoxyParamCaption})}
+
+
+
+Initializes a new instance of the \mbox{\hyperlink{class_h_f_g_1_1_repository_1_1_ef_repository_ab8f220956ee5374be69ad61fb881c1aa}{Ef\+Repository$<$\+T\+Entity$>$}} class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ctx} & databasecontext .\\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_h_f_g_1_1_repository_1_1_ef_repository_aebd9ac28e0a264582b3edf537903576e}\label{class_h_f_g_1_1_repository_1_1_ef_repository_aebd9ac28e0a264582b3edf537903576e}} 
+\index{HFG.Repository.EfRepository$<$ TEntity $>$@{HFG.Repository.EfRepository$<$ TEntity $>$}!Addnew@{Addnew}}
+\index{Addnew@{Addnew}!HFG.Repository.EfRepository$<$ TEntity $>$@{HFG.Repository.EfRepository$<$ TEntity $>$}}
+\doxysubsubsection{\texorpdfstring{Addnew()}{Addnew()}}
+{\footnotesize\ttfamily void \mbox{\hyperlink{class_h_f_g_1_1_repository_1_1_ef_repository}{H\+F\+G.\+Repository.\+Ef\+Repository}}$<$ T\+Entity $>$.Addnew (\begin{DoxyParamCaption}\item[{T\+Entity}]{newinstance }\end{DoxyParamCaption})}
+
+
+
+method to add new instance . 
+
+
+\begin{DoxyParams}{Parameters}
+{\em newinstance} & new entity instance.\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_h_f_g_1_1_repository_1_1_ef_repository_aa8d54a759113365bf9fbdf763f1343c6}\label{class_h_f_g_1_1_repository_1_1_ef_repository_aa8d54a759113365bf9fbdf763f1343c6}} 
+\index{HFG.Repository.EfRepository$<$ TEntity $>$@{HFG.Repository.EfRepository$<$ TEntity $>$}!Delete@{Delete}}
+\index{Delete@{Delete}!HFG.Repository.EfRepository$<$ TEntity $>$@{HFG.Repository.EfRepository$<$ TEntity $>$}}
+\doxysubsubsection{\texorpdfstring{Delete()}{Delete()}}
+{\footnotesize\ttfamily void \mbox{\hyperlink{class_h_f_g_1_1_repository_1_1_ef_repository}{H\+F\+G.\+Repository.\+Ef\+Repository}}$<$ T\+Entity $>$.Delete (\begin{DoxyParamCaption}\item[{T\+Entity}]{instance }\end{DoxyParamCaption})}
+
+
+
+method to delete instance . 
+
+
+\begin{DoxyParams}{Parameters}
+{\em instance} & entity instance.\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_h_f_g_1_1_repository_1_1_ef_repository_a9f9b4b8ab2be8bb6225cdd2a14344d6e}\label{class_h_f_g_1_1_repository_1_1_ef_repository_a9f9b4b8ab2be8bb6225cdd2a14344d6e}} 
+\index{HFG.Repository.EfRepository$<$ TEntity $>$@{HFG.Repository.EfRepository$<$ TEntity $>$}!GetAll@{GetAll}}
+\index{GetAll@{GetAll}!HFG.Repository.EfRepository$<$ TEntity $>$@{HFG.Repository.EfRepository$<$ TEntity $>$}}
+\doxysubsubsection{\texorpdfstring{GetAll()}{GetAll()}}
+{\footnotesize\ttfamily I\+Queryable$<$T\+Entity$>$ \mbox{\hyperlink{class_h_f_g_1_1_repository_1_1_ef_repository}{H\+F\+G.\+Repository.\+Ef\+Repository}}$<$ T\+Entity $>$.Get\+All (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+method to return collection of entity. 
+
+\begin{DoxyReturn}{Returns}
+I\+Queryable entity instance.
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_h_f_g_1_1_repository_1_1_ef_repository_afa53ff82706971f579d52a3c1c1c5921}\label{class_h_f_g_1_1_repository_1_1_ef_repository_afa53ff82706971f579d52a3c1c1c5921}} 
+\index{HFG.Repository.EfRepository$<$ TEntity $>$@{HFG.Repository.EfRepository$<$ TEntity $>$}!GetOne@{GetOne}}
+\index{GetOne@{GetOne}!HFG.Repository.EfRepository$<$ TEntity $>$@{HFG.Repository.EfRepository$<$ TEntity $>$}}
+\doxysubsubsection{\texorpdfstring{GetOne()}{GetOne()}}
+{\footnotesize\ttfamily T\+Entity \mbox{\hyperlink{class_h_f_g_1_1_repository_1_1_ef_repository}{H\+F\+G.\+Repository.\+Ef\+Repository}}$<$ T\+Entity $>$.Get\+One (\begin{DoxyParamCaption}\item[{int}]{id }\end{DoxyParamCaption})}
+
+
+
+method to return 1 instance. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & id of the instance.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+an entity instance.
+\end{DoxyReturn}
+
+
+\doxysubsection{Property Documentation}
+\mbox{\Hypertarget{class_h_f_g_1_1_repository_1_1_ef_repository_aaf21e86a54b0695f6ff98cf0adc5f704}\label{class_h_f_g_1_1_repository_1_1_ef_repository_aaf21e86a54b0695f6ff98cf0adc5f704}} 
+\index{HFG.Repository.EfRepository$<$ TEntity $>$@{HFG.Repository.EfRepository$<$ TEntity $>$}!Ctx@{Ctx}}
+\index{Ctx@{Ctx}!HFG.Repository.EfRepository$<$ TEntity $>$@{HFG.Repository.EfRepository$<$ TEntity $>$}}
+\doxysubsubsection{\texorpdfstring{Ctx}{Ctx}}
+{\footnotesize\ttfamily Db\+Context \mbox{\hyperlink{class_h_f_g_1_1_repository_1_1_ef_repository}{H\+F\+G.\+Repository.\+Ef\+Repository}}$<$ T\+Entity $>$.Ctx\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}, {\ttfamily [protected]}}
+
+
+
+Gets or sets encapsulation data of database context. 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+H\+F\+G.\+Repository/\+Abstract\+Classes/Ef\+Repository.\+cs\end{DoxyCompactItemize}

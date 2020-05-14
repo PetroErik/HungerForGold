@@ -1,0 +1,272 @@
+\hypertarget{class_h_f_g_1_1_logic_1_1_db_logic}{}\doxysection{H\+F\+G.\+Logic.\+Db\+Logic Class Reference}
+\label{class_h_f_g_1_1_logic_1_1_db_logic}\index{HFG.Logic.DbLogic@{HFG.Logic.DbLogic}}
+
+
+\mbox{\hyperlink{namespace_h_f_g_1_1_logic}{Logic}} which related with the database.  
+
+
+Inheritance diagram for H\+F\+G.\+Logic.\+Db\+Logic\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_h_f_g_1_1_logic_1_1_db_logic}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_h_f_g_1_1_logic_1_1_db_logic_aef08d79b00087b5980c525c322562102}{Db\+Logic}} (\mbox{\hyperlink{class_h_f_g_1_1_display_1_1_game_model}{Game\+Model}} model, \mbox{\hyperlink{interface_h_f_g_1_1_repository_1_1_i_drill_repository}{I\+Drill\+Repository}} drill\+Repo, \mbox{\hyperlink{interface_h_f_g_1_1_repository_1_1_i_brick_repository}{I\+Brick\+Repository}} brick\+Repo, \mbox{\hyperlink{interface_h_f_g_1_1_repository_1_1_i_conn_repository}{I\+Conn\+Repository}} conn\+Repo)
+\begin{DoxyCompactList}\small\item\em Initializes a new instance of the \mbox{\hyperlink{class_h_f_g_1_1_logic_1_1_db_logic}{Db\+Logic}} class. Sets the intial values of the properties. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_h_f_g_1_1_logic_1_1_db_logic_a95e84f8859797a6c09e3fe565dc54d4e}{Load\+Game}} ()
+\begin{DoxyCompactList}\small\item\em Modify T\+H\+IS -\/ repo is always not null Bool type to verify if there\textquotesingle{}s a prev game or not . If false show a notification. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_h_f_g_1_1_logic_1_1_db_logic_a20d2adbcc67de39677ded81cc94fbc5c}{Add\+New\+Drill}} (\mbox{\hyperlink{class_h_f_g_1_1_database_1_1drill}{drill}} \mbox{\hyperlink{class_h_f_g_1_1_database_1_1drill}{drill}})
+\begin{DoxyCompactList}\small\item\em Add new drill to database. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_h_f_g_1_1_logic_1_1_db_logic_a8ff2084964a71087ef68fe2f7f479c7f}{Add\+New\+Brick}} (\mbox{\hyperlink{class_h_f_g_1_1_database_1_1brick}{brick}} \mbox{\hyperlink{class_h_f_g_1_1_database_1_1brick}{brick}})
+\begin{DoxyCompactList}\small\item\em Add new brick to database. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_h_f_g_1_1_logic_1_1_db_logic_a961a3796c53e45090057a63dcdefbccb}{Add\+New\+Connection}} (\mbox{\hyperlink{class_h_f_g_1_1_database_1_1conn}{conn}} \mbox{\hyperlink{class_h_f_g_1_1_database_1_1conn}{conn}})
+\begin{DoxyCompactList}\small\item\em Add new connection in the database. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_h_f_g_1_1_database_1_1drill}{drill}} \mbox{\hyperlink{class_h_f_g_1_1_logic_1_1_db_logic_acaaab73329a8221a6fd7101ac6419e8d}{Get\+Drill\+Instance}} (int id)
+\begin{DoxyCompactList}\small\item\em Get 1 drill from database. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_h_f_g_1_1_database_1_1brick}{brick}} \mbox{\hyperlink{class_h_f_g_1_1_logic_1_1_db_logic_a55608a11139b25c918af3a8243207584}{Get\+Brick\+Instance}} (int id)
+\begin{DoxyCompactList}\small\item\em Get 1 Brick from database. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_h_f_g_1_1_database_1_1conn}{conn}} \mbox{\hyperlink{class_h_f_g_1_1_logic_1_1_db_logic_af97d56598aee1423f0c8d300baac7658}{Get\+Conn\+Instance}} (int id)
+\begin{DoxyCompactList}\small\item\em Get 1 Connection from database. \end{DoxyCompactList}\item 
+I\+Queryable$<$ \mbox{\hyperlink{class_h_f_g_1_1_database_1_1brick}{brick}} $>$ \mbox{\hyperlink{class_h_f_g_1_1_logic_1_1_db_logic_a2924ca1bbbcb2b359e04d47212d76601}{Get\+Bricks}} ()
+\begin{DoxyCompactList}\small\item\em Method to get the list of bricks. \end{DoxyCompactList}\item 
+I\+Queryable$<$ \mbox{\hyperlink{class_h_f_g_1_1_database_1_1drill}{drill}} $>$ \mbox{\hyperlink{class_h_f_g_1_1_logic_1_1_db_logic_adbbb9747484bcd42da384e7e5c2a1c15}{Get\+Drills}} ()
+\begin{DoxyCompactList}\small\item\em Method to get the list of drills. \end{DoxyCompactList}\item 
+I\+Queryable$<$ \mbox{\hyperlink{class_h_f_g_1_1_database_1_1conn}{conn}} $>$ \mbox{\hyperlink{class_h_f_g_1_1_logic_1_1_db_logic_a3e2bec86daf9fa90724327f12fca6c38}{Get\+Conns}} ()
+\begin{DoxyCompactList}\small\item\em Method to get the list of connections. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_h_f_g_1_1_logic_1_1_db_logic_aaab2db58cb158222c8c947301d8ac855}{Save\+Game}} (\mbox{\hyperlink{class_h_f_g_1_1_display_1_1_drill}{Drill}} \mbox{\hyperlink{class_h_f_g_1_1_database_1_1drill}{drill}}, List$<$ \mbox{\hyperlink{class_h_f_g_1_1_display_1_1_mineral}{Mineral}} $>$ minerals)
+\begin{DoxyCompactList}\small\item\em Save the actual state of the game. \end{DoxyCompactList}\item 
+List$<$ int?$>$ \mbox{\hyperlink{class_h_f_g_1_1_logic_1_1_db_logic_a6b64f07667ca55e419509da90a8e413f}{Highscore}} ()
+\begin{DoxyCompactList}\small\item\em Lists High\+Scores. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\mbox{\hyperlink{namespace_h_f_g_1_1_logic}{Logic}} which related with the database. 
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_h_f_g_1_1_logic_1_1_db_logic_aef08d79b00087b5980c525c322562102}\label{class_h_f_g_1_1_logic_1_1_db_logic_aef08d79b00087b5980c525c322562102}} 
+\index{HFG.Logic.DbLogic@{HFG.Logic.DbLogic}!DbLogic@{DbLogic}}
+\index{DbLogic@{DbLogic}!HFG.Logic.DbLogic@{HFG.Logic.DbLogic}}
+\doxysubsubsection{\texorpdfstring{DbLogic()}{DbLogic()}}
+{\footnotesize\ttfamily H\+F\+G.\+Logic.\+Db\+Logic.\+Db\+Logic (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_h_f_g_1_1_display_1_1_game_model}{Game\+Model}}}]{model,  }\item[{\mbox{\hyperlink{interface_h_f_g_1_1_repository_1_1_i_drill_repository}{I\+Drill\+Repository}}}]{drill\+Repo,  }\item[{\mbox{\hyperlink{interface_h_f_g_1_1_repository_1_1_i_brick_repository}{I\+Brick\+Repository}}}]{brick\+Repo,  }\item[{\mbox{\hyperlink{interface_h_f_g_1_1_repository_1_1_i_conn_repository}{I\+Conn\+Repository}}}]{conn\+Repo }\end{DoxyParamCaption})}
+
+
+
+Initializes a new instance of the \mbox{\hyperlink{class_h_f_g_1_1_logic_1_1_db_logic}{Db\+Logic}} class. Sets the intial values of the properties. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em model} & Initial Game\+Model.\\
+\hline
+{\em drill\+Repo} & Initial Drill\+Repository.\\
+\hline
+{\em brick\+Repo} & Initial Brick\+Repository.\\
+\hline
+{\em conn\+Repo} & Initial Conn\+Repository.\\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_h_f_g_1_1_logic_1_1_db_logic_a8ff2084964a71087ef68fe2f7f479c7f}\label{class_h_f_g_1_1_logic_1_1_db_logic_a8ff2084964a71087ef68fe2f7f479c7f}} 
+\index{HFG.Logic.DbLogic@{HFG.Logic.DbLogic}!AddNewBrick@{AddNewBrick}}
+\index{AddNewBrick@{AddNewBrick}!HFG.Logic.DbLogic@{HFG.Logic.DbLogic}}
+\doxysubsubsection{\texorpdfstring{AddNewBrick()}{AddNewBrick()}}
+{\footnotesize\ttfamily void H\+F\+G.\+Logic.\+Db\+Logic.\+Add\+New\+Brick (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_h_f_g_1_1_database_1_1brick}{brick}}}]{brick }\end{DoxyParamCaption})}
+
+
+
+Add new brick to database. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em brick} & new brick instance.\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_h_f_g_1_1_logic_1_1_db_logic_a961a3796c53e45090057a63dcdefbccb}\label{class_h_f_g_1_1_logic_1_1_db_logic_a961a3796c53e45090057a63dcdefbccb}} 
+\index{HFG.Logic.DbLogic@{HFG.Logic.DbLogic}!AddNewConnection@{AddNewConnection}}
+\index{AddNewConnection@{AddNewConnection}!HFG.Logic.DbLogic@{HFG.Logic.DbLogic}}
+\doxysubsubsection{\texorpdfstring{AddNewConnection()}{AddNewConnection()}}
+{\footnotesize\ttfamily void H\+F\+G.\+Logic.\+Db\+Logic.\+Add\+New\+Connection (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_h_f_g_1_1_database_1_1conn}{conn}}}]{conn }\end{DoxyParamCaption})}
+
+
+
+Add new connection in the database. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em conn} & new connection instance.\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_h_f_g_1_1_logic_1_1_db_logic_a20d2adbcc67de39677ded81cc94fbc5c}\label{class_h_f_g_1_1_logic_1_1_db_logic_a20d2adbcc67de39677ded81cc94fbc5c}} 
+\index{HFG.Logic.DbLogic@{HFG.Logic.DbLogic}!AddNewDrill@{AddNewDrill}}
+\index{AddNewDrill@{AddNewDrill}!HFG.Logic.DbLogic@{HFG.Logic.DbLogic}}
+\doxysubsubsection{\texorpdfstring{AddNewDrill()}{AddNewDrill()}}
+{\footnotesize\ttfamily void H\+F\+G.\+Logic.\+Db\+Logic.\+Add\+New\+Drill (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_h_f_g_1_1_database_1_1drill}{drill}}}]{drill }\end{DoxyParamCaption})}
+
+
+
+Add new drill to database. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em drill} & new drill instance.\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_h_f_g_1_1_logic_1_1_db_logic_a55608a11139b25c918af3a8243207584}\label{class_h_f_g_1_1_logic_1_1_db_logic_a55608a11139b25c918af3a8243207584}} 
+\index{HFG.Logic.DbLogic@{HFG.Logic.DbLogic}!GetBrickInstance@{GetBrickInstance}}
+\index{GetBrickInstance@{GetBrickInstance}!HFG.Logic.DbLogic@{HFG.Logic.DbLogic}}
+\doxysubsubsection{\texorpdfstring{GetBrickInstance()}{GetBrickInstance()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_h_f_g_1_1_database_1_1brick}{brick}} H\+F\+G.\+Logic.\+Db\+Logic.\+Get\+Brick\+Instance (\begin{DoxyParamCaption}\item[{int}]{id }\end{DoxyParamCaption})}
+
+
+
+Get 1 Brick from database. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & the chosen brick.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+brick instance.
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_h_f_g_1_1_logic_1_1_db_logic_a2924ca1bbbcb2b359e04d47212d76601}\label{class_h_f_g_1_1_logic_1_1_db_logic_a2924ca1bbbcb2b359e04d47212d76601}} 
+\index{HFG.Logic.DbLogic@{HFG.Logic.DbLogic}!GetBricks@{GetBricks}}
+\index{GetBricks@{GetBricks}!HFG.Logic.DbLogic@{HFG.Logic.DbLogic}}
+\doxysubsubsection{\texorpdfstring{GetBricks()}{GetBricks()}}
+{\footnotesize\ttfamily I\+Queryable$<$\mbox{\hyperlink{class_h_f_g_1_1_database_1_1brick}{brick}}$>$ H\+F\+G.\+Logic.\+Db\+Logic.\+Get\+Bricks (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Method to get the list of bricks. 
+
+\begin{DoxyReturn}{Returns}
+a list of brick types.
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_h_f_g_1_1_logic_1_1_db_logic_af97d56598aee1423f0c8d300baac7658}\label{class_h_f_g_1_1_logic_1_1_db_logic_af97d56598aee1423f0c8d300baac7658}} 
+\index{HFG.Logic.DbLogic@{HFG.Logic.DbLogic}!GetConnInstance@{GetConnInstance}}
+\index{GetConnInstance@{GetConnInstance}!HFG.Logic.DbLogic@{HFG.Logic.DbLogic}}
+\doxysubsubsection{\texorpdfstring{GetConnInstance()}{GetConnInstance()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_h_f_g_1_1_database_1_1conn}{conn}} H\+F\+G.\+Logic.\+Db\+Logic.\+Get\+Conn\+Instance (\begin{DoxyParamCaption}\item[{int}]{id }\end{DoxyParamCaption})}
+
+
+
+Get 1 Connection from database. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & the chosen connection.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+connection instance.
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_h_f_g_1_1_logic_1_1_db_logic_a3e2bec86daf9fa90724327f12fca6c38}\label{class_h_f_g_1_1_logic_1_1_db_logic_a3e2bec86daf9fa90724327f12fca6c38}} 
+\index{HFG.Logic.DbLogic@{HFG.Logic.DbLogic}!GetConns@{GetConns}}
+\index{GetConns@{GetConns}!HFG.Logic.DbLogic@{HFG.Logic.DbLogic}}
+\doxysubsubsection{\texorpdfstring{GetConns()}{GetConns()}}
+{\footnotesize\ttfamily I\+Queryable$<$\mbox{\hyperlink{class_h_f_g_1_1_database_1_1conn}{conn}}$>$ H\+F\+G.\+Logic.\+Db\+Logic.\+Get\+Conns (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Method to get the list of connections. 
+
+\begin{DoxyReturn}{Returns}
+a list of all the connections.
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_h_f_g_1_1_logic_1_1_db_logic_acaaab73329a8221a6fd7101ac6419e8d}\label{class_h_f_g_1_1_logic_1_1_db_logic_acaaab73329a8221a6fd7101ac6419e8d}} 
+\index{HFG.Logic.DbLogic@{HFG.Logic.DbLogic}!GetDrillInstance@{GetDrillInstance}}
+\index{GetDrillInstance@{GetDrillInstance}!HFG.Logic.DbLogic@{HFG.Logic.DbLogic}}
+\doxysubsubsection{\texorpdfstring{GetDrillInstance()}{GetDrillInstance()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_h_f_g_1_1_database_1_1drill}{drill}} H\+F\+G.\+Logic.\+Db\+Logic.\+Get\+Drill\+Instance (\begin{DoxyParamCaption}\item[{int}]{id }\end{DoxyParamCaption})}
+
+
+
+Get 1 drill from database. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & the chosen drill.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+drill instance.
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_h_f_g_1_1_logic_1_1_db_logic_adbbb9747484bcd42da384e7e5c2a1c15}\label{class_h_f_g_1_1_logic_1_1_db_logic_adbbb9747484bcd42da384e7e5c2a1c15}} 
+\index{HFG.Logic.DbLogic@{HFG.Logic.DbLogic}!GetDrills@{GetDrills}}
+\index{GetDrills@{GetDrills}!HFG.Logic.DbLogic@{HFG.Logic.DbLogic}}
+\doxysubsubsection{\texorpdfstring{GetDrills()}{GetDrills()}}
+{\footnotesize\ttfamily I\+Queryable$<$\mbox{\hyperlink{class_h_f_g_1_1_database_1_1drill}{drill}}$>$ H\+F\+G.\+Logic.\+Db\+Logic.\+Get\+Drills (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Method to get the list of drills. 
+
+\begin{DoxyReturn}{Returns}
+a list of all the drills.
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_h_f_g_1_1_logic_1_1_db_logic_a6b64f07667ca55e419509da90a8e413f}\label{class_h_f_g_1_1_logic_1_1_db_logic_a6b64f07667ca55e419509da90a8e413f}} 
+\index{HFG.Logic.DbLogic@{HFG.Logic.DbLogic}!Highscore@{Highscore}}
+\index{Highscore@{Highscore}!HFG.Logic.DbLogic@{HFG.Logic.DbLogic}}
+\doxysubsubsection{\texorpdfstring{Highscore()}{Highscore()}}
+{\footnotesize\ttfamily List$<$int?$>$ H\+F\+G.\+Logic.\+Db\+Logic.\+Highscore (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Lists High\+Scores. 
+
+\begin{DoxyReturn}{Returns}
+List of the top 5 highest score.
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{interface_h_f_g_1_1_logic_1_1_i_db_logic_ad9045f04ad6b1af4f414044a2c3386c7}{H\+F\+G.\+Logic.\+I\+Db\+Logic}}.
+
+\mbox{\Hypertarget{class_h_f_g_1_1_logic_1_1_db_logic_a95e84f8859797a6c09e3fe565dc54d4e}\label{class_h_f_g_1_1_logic_1_1_db_logic_a95e84f8859797a6c09e3fe565dc54d4e}} 
+\index{HFG.Logic.DbLogic@{HFG.Logic.DbLogic}!LoadGame@{LoadGame}}
+\index{LoadGame@{LoadGame}!HFG.Logic.DbLogic@{HFG.Logic.DbLogic}}
+\doxysubsubsection{\texorpdfstring{LoadGame()}{LoadGame()}}
+{\footnotesize\ttfamily bool H\+F\+G.\+Logic.\+Db\+Logic.\+Load\+Game (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Modify T\+H\+IS -\/ repo is always not null Bool type to verify if there\textquotesingle{}s a prev game or not . If false show a notification. 
+
+\begin{DoxyReturn}{Returns}
+True if there is a previously saved game.
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{interface_h_f_g_1_1_logic_1_1_i_db_logic_ae75060727448b6a6dd4f13747764dc26}{H\+F\+G.\+Logic.\+I\+Db\+Logic}}.
+
+\mbox{\Hypertarget{class_h_f_g_1_1_logic_1_1_db_logic_aaab2db58cb158222c8c947301d8ac855}\label{class_h_f_g_1_1_logic_1_1_db_logic_aaab2db58cb158222c8c947301d8ac855}} 
+\index{HFG.Logic.DbLogic@{HFG.Logic.DbLogic}!SaveGame@{SaveGame}}
+\index{SaveGame@{SaveGame}!HFG.Logic.DbLogic@{HFG.Logic.DbLogic}}
+\doxysubsubsection{\texorpdfstring{SaveGame()}{SaveGame()}}
+{\footnotesize\ttfamily void H\+F\+G.\+Logic.\+Db\+Logic.\+Save\+Game (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_h_f_g_1_1_display_1_1_drill}{Drill}}}]{drill,  }\item[{List$<$ \mbox{\hyperlink{class_h_f_g_1_1_display_1_1_mineral}{Mineral}} $>$}]{minerals }\end{DoxyParamCaption})}
+
+
+
+Save the actual state of the game. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em drill} & Drill that has to be saved.\\
+\hline
+{\em minerals} & List of minerals that are have to be saved.\\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{interface_h_f_g_1_1_logic_1_1_i_db_logic_a92fe9d181a00047299b862458fc922ff}{H\+F\+G.\+Logic.\+I\+Db\+Logic}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+H\+F\+G.\+Logic/\+Logic/Db\+Logic.\+cs\end{DoxyCompactItemize}
