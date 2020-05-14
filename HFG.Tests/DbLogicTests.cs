@@ -172,6 +172,10 @@ namespace HFG.Tests
             Assert.That(this.dbLogic.GetDrillInstance(id).drill_score, Is.EqualTo(drill_score));
         }
 
+        /// <summary>
+        /// Tests the get one brick method.
+        /// </summary>
+        /// <param name="id">Id of brick that we would like to recieve.</param>
         [TestCase(1)]
         [TestCase(2)]
         [TestCase(3)]
@@ -183,6 +187,10 @@ namespace HFG.Tests
             Assert.That(this.dbLogic.GetBrickInstance(id).brick_id, Is.EqualTo(id));
         }
 
+        /// <summary>
+        /// Tests the get one connection method.
+        /// </summary>
+        /// <param name="id">Id of the connection we would like to recieve.</param>
         [TestCase(1)]
         [TestCase(2)]
         [TestCase(3)]

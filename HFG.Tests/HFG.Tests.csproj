@@ -65,10 +65,7 @@
   <ItemGroup>
     <Compile Include="DbLogicTests.cs" />
     <Compile Include="GameLogicTest.cs" />
-    <Compile Include="NotUse\MoveLogicTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="NotUse\TickLogicTests.cs" />
-    <Compile Include="NotUse\UpgradeLogicTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="oenik.ruleset" />
