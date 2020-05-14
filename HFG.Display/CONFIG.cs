@@ -65,7 +65,7 @@ namespace HFG.Display
         private static int maxFuelTankLevel = 3;
 
         /// <summary>
-        /// Maximum levele of the storage element.
+        /// Maximum level of the storage element.
         /// </summary>
         private static int maxStorageLevel = 3;
 
@@ -79,7 +79,7 @@ namespace HFG.Display
         /// </summary>
         private static int upgradePrice = 5000;
 
-       /// <summary>
+        /// <summary>
         /// Brush for the background.
         /// </summary>
         private static string backgroundBrush = "OENIK_PROG4_2020_1_LDK923_YCSNU5.IMG.background.jpg";
@@ -184,42 +184,99 @@ namespace HFG.Display
         /// </summary>
         public static int FuelCapacity { get => fuelCapacity; set => fuelCapacity = value; }
 
+        /// <summary>
+        /// Gets or sets the multiplier for the storage capacity at a given storage level.
+        /// </summary>
         public static int StorageCapacity { get => storageCapacity; set => storageCapacity = value; }
 
+        /// <summary>
+        /// gets or sets the number of tiles in the X direction.
+        /// </summary>
         public static int MapWidth { get => mapWidth; set => mapWidth = value; }
 
+        /// <summary>
+        /// gets or sets the number of tiles in the Y direction.
+        /// </summary>
         public static int MapHeight { get => mapHeight; set => mapHeight = value; }
 
+        /// <summary>
+        /// gets or sets the number of bombs in the game.
+        /// </summary>
         public static int NmbOfBombs { get => nmbOfBombs; set => nmbOfBombs = value; }
 
+        /// <summary>
+        /// gets or sets the number of enemies in the game.
+        /// </summary>
         public static int NmbOfEnemies { get => nmbOfEnemies; set => nmbOfEnemies = value; }
 
+        /// <summary>
+        /// gets or sets the number of minerals of the game.
+        /// </summary>
         public static int NmbOfMinerals { get => nmbOfMinerals; set => nmbOfMinerals = value; }
 
+        /// <summary>
+        /// gets or sets the maximum level of the fuel tank element.
+        /// </summary>
         public static int MaxFuelTankLevel { get => maxFuelTankLevel; set => maxFuelTankLevel = value; }
 
+        /// <summary>
+        /// gets or sets the maximum level of the storage element.
+        /// </summary>
         public static int MaxStorageLevel { get => maxStorageLevel; set => maxStorageLevel = value; }
 
+        /// <summary>
+        /// GetS OR sets the maximum level of the drill element.
+        /// </summary>
         public static int MaxDrillLevel { get => maxDrillLevel; set => maxDrillLevel = value; }
 
+        /// <summary>
+        /// gets or sets the brush for the background.
+        /// </summary>
         public static string BackgroundBrush { get => backgroundBrush; set => backgroundBrush = value; }
 
+        /// <summary>
+        /// gets or sets the brush for the drill.
+        /// </summary>
         public static string DrillBrush { get => drillBrush; set => drillBrush = value; }
 
+        /// <summary>
+        /// gets or sets the brush for the ground.
+        /// </summary>
         public static string GroundBrush { get => groundBrush; set => groundBrush = value; }
 
+        /// <summary>
+        /// gets or sets the brush for the grass.
+        /// </summary>
         public static string GroundLevelBrush { get => groundLevelBrush; set => groundLevelBrush = value; }
 
+        /// <summary>
+        /// gets or sets the brush for the gold mineral type.
+        /// </summary>
         public static string GoldBrush { get => goldBrush; set => goldBrush = value; }
 
+        /// <summary>
+        /// gets or sets the brush for the silver mineral type.
+        /// </summary>
         public static string SilverBrush { get => silverBrush; set => silverBrush = value; }
 
+        /// <summary>
+        /// gets or sets the brush for the bronze mineral type.
+        /// </summary>
         public static string BronzeBrush { get => bronzeBrush; set => bronzeBrush = value; }
 
+        /// <summary>
+        /// gets or sets the brush for Silo.
+        /// </summary>
         public static string SiloBrush { get => siloBrush; set => siloBrush = value; }
 
+        /// <summary>
+        /// gets or sets the brush for Machinist.
+        /// </summary>
         public static string MachinistBrush { get => machinistBrush; set => machinistBrush = value; }
 
+        /// <summary>
+        /// gets or sets the brush for the enemy.
+        /// </summary>
         public static string EnemyBrush { get => enemyBrush; set => enemyBrush = value; }
     }
 }

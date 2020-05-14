@@ -4,14 +4,14 @@
 
 namespace HFG.Tests
 {
-    using System.Collections.Generic;
-    using System.Linq;
     using HFG.Database;
     using HFG.Display;
     using HFG.Logic;
     using HFG.Repository;
     using Moq;
     using NUnit.Framework;
+    using System.Collections.Generic;
+    using System.Linq;
 
     /// <summary>
     /// Tests for Database logic.
@@ -172,6 +172,10 @@ namespace HFG.Tests
             Assert.That(this.dbLogic.GetDrillInstance(id).drill_score, Is.EqualTo(drill_score));
         }
 
+        /// <summary>
+        /// TestGetOneBrick to test and make sure that the brick is correct .
+        /// </summary>
+        /// <param name="id">index of the chosen brick.</param>
         [TestCase(1)]
         [TestCase(2)]
         [TestCase(3)]
@@ -183,6 +187,10 @@ namespace HFG.Tests
             Assert.That(this.dbLogic.GetBrickInstance(id).brick_id, Is.EqualTo(id));
         }
 
+        /// <summary>
+        /// TestGetOneConnection to test and make sure that the connection is correct .
+        /// </summary>
+        /// <param name="id">index of the chosen connection.</param>
         [TestCase(1)]
         [TestCase(2)]
         [TestCase(3)]

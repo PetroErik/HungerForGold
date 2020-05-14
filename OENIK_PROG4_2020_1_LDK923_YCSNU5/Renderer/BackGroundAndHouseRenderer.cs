@@ -14,19 +14,19 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5
     public class BackGroundAndHouseRenderer
     {
         /// <summary>
-        /// Starting point of the drill.
-        /// </summary>
-        public double StartingPointToDrill;
-
-        /// <summary>
         /// DrawExtension instance for the help of rendering.
         /// </summary>
-        public DrawExtension DrawExntension;
+        private DrawExtension drawExntension;
 
         /// <summary>
         /// Drawing group for ground and house.
         /// </summary>
-        public DrawingGroup GroundAndHouseGroup;
+        private DrawingGroup groundAndHouseGroup;
+
+        /// <summary>
+        /// Starting point of the drill.
+        /// </summary>
+        private double startingPointToDrill;
 
         private GameModel model;
 
@@ -45,6 +45,21 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5
             this.GroundAndHouseGroup.Children.Add(this.GetSilo());
             this.GroundAndHouseGroup.Children.Add(this.GetMachinist());
         }
+
+        /// <summary>
+        /// gets or sets the starting point of the drill.
+        /// </summary>
+        public double StartingPointToDrill { get => this.startingPointToDrill; set => this.startingPointToDrill = value; }
+
+        /// <summary>
+        /// gets or sets the drawExtension instance for the help of rendering.
+        /// </summary>
+        public DrawExtension DrawExntension { get => this.drawExntension; set => this.drawExntension = value; }
+
+        /// <summary>
+        /// gets or sets the Drawing group for ground and house.
+        /// </summary>
+        public DrawingGroup GroundAndHouseGroup { get => this.groundAndHouseGroup; set => this.groundAndHouseGroup = value; }
 
         /// <summary>
         /// Cloning background.

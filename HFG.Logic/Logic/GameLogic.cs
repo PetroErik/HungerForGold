@@ -17,33 +17,18 @@ namespace HFG.Logic
     /// </summary>
     public class GameLogic : IGameLogic
     {
-        /// <summary>
-        /// GameModel instance for the logic.
-        /// </summary>
-        public GameModel GameModel;
-
-        /// <summary>
-        /// MoveLogic instance for the logic.
-        /// </summary>
-        public MoveLogic MoveLogic;
-
-        /// <summary>
-        /// Database logic instance for the logic.
-        /// </summary>
-        public DbLogic DbLogic;
-
-        /// <summary>
-        /// TickLogic instance for the logic.
-        /// </summary>
-        public TickLogic TickLogic;
-
         private static Random r = new Random();
 
         /// <summary>
         /// Initializes a new instance of the <see cref="GameLogic"/> class.
-        /// Initiates properties of logics and model.
+        /// TickLogic instance for the logic.
         /// </summary>
-        /// <param name="model">GameModel parameter help the initialization of properties.</param>
+        private TickLogic tickLogic;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="GameLogic"/> class.
+        /// </summary>
+        /// <param name="model">game model .</param>
         public GameLogic(GameModel model)
         {
             HFGEntities entities = new HFGEntities();
@@ -68,6 +53,32 @@ namespace HFG.Logic
                 this.GameModel.Enemies.Add(new Enemy((double)(CONFIG.MapWidth / 2 * this.GameModel.TileSize), (double)(r.Next((CONFIG.MapHeight / 3) + 2, CONFIG.MapHeight) * this.GameModel.TileSize)));
             }
         }
+
+        /// <summary>
+        /// Gets or sets gameModel instance for the logic.
+        /// </summary>
+        public GameModel GameModel { get; set; }
+
+        /// <summary>
+        /// Gets or sets moveLogic instance for the logic.
+        /// </summary>
+        public MoveLogic MoveLogic { get; set; }
+
+        /// <summary>
+        /// Gets or sets database logic instance for the logic.
+        /// </summary>
+        public DbLogic DbLogic { get; set; }
+
+        /// <summary>
+        /// gets or sets the TickLogic instance for the logic.
+        /// </summary>
+        public TickLogic TickLogic { get => this.tickLogic; set => this.tickLogic = value; }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="GameLogic"/> class.
+        /// Initiates properties of logics and model.
+        /// </summary>
+        /// <param name="model">GameModel parameter help the initialization of properties.</param>
 
         /// <summary>
         /// Sets the initial state of the game.

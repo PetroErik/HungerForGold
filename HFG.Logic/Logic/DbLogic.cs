@@ -150,6 +150,10 @@ namespace HFG.Logic
             return this.drillRepo.GetAll();
         }
 
+        /// <summary>
+        /// Method to get the list of connections.
+        /// </summary>
+        /// <returns>a list of all the connections.</returns>
         public IQueryable<conn> GetConns()
         {
             return this.connRepo.GetAll();
