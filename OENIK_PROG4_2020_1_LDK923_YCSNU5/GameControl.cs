@@ -6,6 +6,7 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5
 {
     using System;
     using System.Collections.Generic;
+    using System.Data.Entity.Infrastructure;
     using System.Windows;
     using System.Windows.Input;
     using System.Windows.Media;
@@ -58,7 +59,7 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5
                 {
                     highscore = this.gameLogic.DbLogic.Highscore();
                 }
-                catch (Exception ex)
+                catch (DbUpdateException ex)
                 {
                     highscore = new List<int?>();
                     message = ex.Message;
@@ -143,7 +144,7 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5
             {
                 this.gameLogic.DbLogic.SaveGame(this.model.Drill, this.model.Minerals);
             }
-            catch (Exception ex)
+            catch (DbUpdateException ex)
             {
                 MessageBox.Show($"DATABASE ERROR {ex.Message}", string.Empty, MessageBoxButton.OK, MessageBoxImage.Error);
             }
@@ -162,7 +163,7 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5
                     MessageBox.Show("There is no Save Game!", string.Empty, MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
-            catch (Exception ex)
+            catch (DbUpdateException ex)
             {
                 MessageBox.Show($"DATABASE ERROR {ex.Message}", string.Empty, MessageBoxButton.OK, MessageBoxImage.Error);
             }
@@ -170,7 +171,7 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5
 
         private void GameExit()
         {
-            MessageBoxResult result = MessageBox.Show("Are you sure you want to quit?", "QUIT GAME", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            MessageBoxResult result = MessageBox.Show("Are you sure you want to quit?", CONFIG.QuitGameText, MessageBoxButton.YesNo, MessageBoxImage.Question);
             if (result == MessageBoxResult.Yes)
             {
                 this.SaveIntoDB();
@@ -206,7 +207,7 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5
                 this.gameLogic.StartGame();
                 this.gameLogic.GameOver();
             }
-            catch (Exception ex)
+            catch (DbUpdateException ex)
             {
                 MessageBox.Show($"DATABASE ERROR {ex.Message}", string.Empty, MessageBoxButton.OK, MessageBoxImage.Error);
             }

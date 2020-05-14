@@ -4,14 +4,14 @@
 
 namespace HFG.Tests
 {
+    using System.Collections.Generic;
+    using System.Linq;
     using HFG.Database;
     using HFG.Display;
     using HFG.Logic;
     using HFG.Repository;
     using Moq;
     using NUnit.Framework;
-    using System.Collections.Generic;
-    using System.Linq;
 
     /// <summary>
     /// Tests for Database logic.

@@ -145,6 +145,41 @@ namespace HFG.Display
         private static string highscoreMessage = "No data yet!";
 
         /// <summary>
+        /// game over text.
+        /// </summary>
+        private static string gameOverText = "GAME OVER!";
+
+        /// <summary>
+        /// highscore text.
+        /// </summary>
+        private static string highscoreText = "HIGHSCORE";
+
+        /// <summary>
+        /// game name text.
+        /// </summary>
+        private static string gameNameText = "Hunger for Gold";
+
+        /// <summary>
+        /// menu text 1.
+        /// </summary>
+        private static string menuText1 = "1. Start Game";
+
+        /// <summary>
+        /// menu text 2.
+        /// </summary>
+        private static string menuText2 = "2. Continues";
+
+        /// <summary>
+        /// menu text 3.
+        /// </summary>
+        private static string menuText3 = "3. Highscore";
+
+        /// <summary>
+        /// Quick game text.
+        /// </summary>
+        private static string quitGameText = "QUIT GAME";
+
+        /// <summary>
         /// Gets or sets bomb exlode time.
         /// </summary>
         public static int BombExplodeTime { get => bombExplodeTime; set => bombExplodeTime = value; }
@@ -278,5 +313,40 @@ namespace HFG.Display
         /// gets or sets the brush for the enemy.
         /// </summary>
         public static string EnemyBrush { get => enemyBrush; set => enemyBrush = value; }
+
+        /// <summary>
+        /// Gets or sets game over text.
+        /// </summary>
+        public static string GameOverText { get => gameOverText; set => gameOverText = value; }
+
+        /// <summary>
+        /// Gets or sets highscore text.
+        /// </summary>
+        public static string HighscoreText { get => highscoreText; set => highscoreText = value; }
+
+        /// <summary>
+        /// Gets or sets game name text.
+        /// </summary>
+        public static string GameNameText { get => gameNameText; set => gameNameText = value; }
+
+        /// <summary>
+        /// Gets or sets menu text.
+        /// </summary>
+        public static string MenuText1 { get => menuText1; set => menuText1 = value; }
+
+        /// <summary>
+        /// Gets or sets menu text.
+        /// </summary>
+        public static string MenuText2 { get => menuText2; set => menuText2 = value; }
+
+        /// <summary>
+        /// Gets or sets menu text.
+        /// </summary>
+        public static string MenuText3 { get => menuText3; set => menuText3 = value; }
+
+        /// <summary>
+        /// Gets or sets quit game text.
+        /// </summary>
+        public static string QuitGameText { get => quitGameText; set => quitGameText = value; }
     }
 }

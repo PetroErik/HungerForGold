@@ -75,7 +75,7 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5
 
             if (gameOver)
             {
-                dg.Children.Add(this.drawExtension.DrawText("GAME OVER!", 40, (this.model.GameWidth / 2) - 120, (this.model.GameHeight / 2) - 160));
+                dg.Children.Add(this.drawExtension.DrawText(CONFIG.GameOverText, 40, (this.model.GameWidth / 2) - 120, (this.model.GameHeight / 2) - 160));
             }
 
             return dg;
@@ -92,7 +92,7 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5
             DrawingGroup dg = new DrawingGroup();
 
             dg.Children.Add(this.backgroundClone);
-            dg.Children.Add(this.drawExtension.TitleText("HIGHSCORE", (this.model.GameWidth / 2) - 180, (this.model.GameHeight / 2) - 120, (this.model.GameWidth / 2) - 90, (this.model.GameHeight / 2) - 120));
+            dg.Children.Add(this.drawExtension.TitleText(CONFIG.HighscoreText, (this.model.GameWidth / 2) - 180, (this.model.GameHeight / 2) - 120, (this.model.GameWidth / 2) - 90, (this.model.GameHeight / 2) - 120));
             int distance = -60;
             if (scores.Any())
             {

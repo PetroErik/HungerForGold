@@ -16,7 +16,7 @@ namespace OENIK_PROG4_2020_1_LDK923_YCSNU5
         /// <summary>
         /// Initializes a new instance of the <see cref="ControlExtension"/> class.
         /// </summary>
-        /// <param name="logic">GameLogic instance</param>
+        /// <param name="logic">GameLogic instance. </param>
         public ControlExtension(GameLogic logic)
         {
             this.gameLogic = logic;
