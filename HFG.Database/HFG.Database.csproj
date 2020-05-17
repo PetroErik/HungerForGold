@@ -94,7 +94,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="HFG.mdf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="HFGModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -107,7 +107,7 @@
       <LastGenOutput>HFGModel.cs</LastGenOutput>
     </Content>
     <Content Include="HFG_log.ldf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>HFG.mdf</DependentUpon>
     </Content>
     <Content Include="initial.sql" />

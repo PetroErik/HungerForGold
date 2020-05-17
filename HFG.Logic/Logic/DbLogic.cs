@@ -204,7 +204,7 @@ namespace HFG.Logic
             List<int?> highScore = new List<int?>();
             if (this.GetDrills().Any())
             {
-                var scores = this.GetDrills().Select(x => x.drill_score).Distinct().OrderByDescending(x => x);
+                var scores = this.GetDrills().Select(x => x.drill_score).Distinct().OrderByDescending(x => x).Take(5);
 
                 foreach (var score in scores)
                 {
